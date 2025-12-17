@@ -82,10 +82,20 @@ IMPORTANTE: Retorne APENAS o JSON, sem texto adicional antes ou depois.
     `;
 
     const text = await callGroq(prompt, true);
+    console.log('Raw Groq response:', text); // Debug
+    
     const cleanText = text.replace(/```json\n?|\n?```/g, '').trim();
-    return JSON.parse(cleanText);
+    const parsed = JSON.parse(cleanText);
+    
+    // Validação e garantia de estrutura correta
+    return {
+      content: parsed.content || '',
+      hashtags: Array.isArray(parsed.hashtags) ? parsed.hashtags : [],
+      imagePrompt: parsed.imagePrompt || ''
+    };
   } catch (error) {
     console.error("Post Generation Error:", error);
+    console.error("Failed text:", error);
     throw new Error("Falha ao gerar o post.");
   }
 };
@@ -110,14 +120,18 @@ IMPORTANTE: Retorne APENAS o JSON array, sem texto adicional.
     `;
 
     const text = await callGroq(prompt, true);
+    console.log('Raw overlays response:', text); // Debug
+    
     const cleanText = text.replace(/```json\n?|\n?```/g, '').trim();
-    return JSON.parse(cleanText);
+    const parsed = JSON.parse(cleanText);
+    
+    // Garante que retorna array
+    return Array.isArray(parsed) ? parsed : ["Oferta Especial", "Confira!", "Qualidade Premium", "Não Perca", "Visite Hoje"];
   } catch (error) {
     console.error("Overlay Gen Error:", error);
     return ["Oferta Especial", "Confira!", "Qualidade Premium", "Não Perca", "Visite Hoje"];
   }
 };
-
 // --- 3. Resposta de Reviews ---
 export const generateReviewResponse = async (
   reviewText: string,
