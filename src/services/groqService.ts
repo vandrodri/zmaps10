@@ -1,10 +1,10 @@
 import { AnalysisResult, PostResult, ReviewResponseResult, FaqResult } from "../types";
 
-const DEEPSEEK_FUNCTION_URL = '/.netlify/functions/deepseek';
+const GROQ_FUNCTION_URL = '/.netlify/functions/groq';
 
-async function callDeepSeek(prompt: string, jsonMode: boolean = false): Promise<string> {
+async function callGroq(prompt: string, jsonMode: boolean = false): Promise<string> {
   try {
-    const response = await fetch(DEEPSEEK_FUNCTION_URL, {
+    const response = await fetch(GROQ_FUNCTION_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ async function callDeepSeek(prompt: string, jsonMode: boolean = false): Promise<
     const data = await response.json();
     return data.text;
   } catch (error) {
-    console.error('Error calling DeepSeek:', error);
+    console.error('Error calling Groq:', error);
     throw error;
   }
 }
@@ -43,7 +43,7 @@ GERE UM RELATÓRIO MARKDOWN COM:
 Seja direto, profissional e use emojis quando apropriado.
     `;
 
-    const markdown = await callDeepSeek(prompt);
+    const markdown = await callGroq(prompt);
 
     return {
       markdown: markdown || "Erro ao analisar.",
@@ -81,7 +81,7 @@ SAÍDA ESPERADA (JSON válido):
 IMPORTANTE: Retorne APENAS o JSON, sem texto adicional antes ou depois.
     `;
 
-    const text = await callDeepSeek(prompt, true);
+    const text = await callGroq(prompt, true);
     const cleanText = text.replace(/```json\n?|\n?```/g, '').trim();
     return JSON.parse(cleanText);
   } catch (error) {
@@ -109,7 +109,7 @@ Exemplo: ["Frase 1", "Frase 2", "Frase 3", "Frase 4", "Frase 5"]
 IMPORTANTE: Retorne APENAS o JSON array, sem texto adicional.
     `;
 
-    const text = await callDeepSeek(prompt, true);
+    const text = await callGroq(prompt, true);
     const cleanText = text.replace(/```json\n?|\n?```/g, '').trim();
     return JSON.parse(cleanText);
   } catch (error) {
@@ -147,7 +147,7 @@ SAÍDA ESPERADA (JSON válido):
 IMPORTANTE: Retorne APENAS o JSON, sem texto adicional.
     `;
 
-    const text = await callDeepSeek(prompt, true);
+    const text = await callGroq(prompt, true);
     const cleanText = text.replace(/```json\n?|\n?```/g, '').trim();
     return JSON.parse(cleanText);
   } catch (error) {
@@ -174,7 +174,7 @@ DIRETRIZES DA RESPOSTA:
 6. Use um tom encorajador e profissional.
     `;
 
-    const response = await callDeepSeek(prompt);
+    const response = await callGroq(prompt);
     return response || "Não consegui gerar uma resposta no momento.";
   } catch (error) {
     console.error("Consultant Error:", error);
@@ -210,7 +210,7 @@ SAÍDA ESPERADA (JSON válido):
 IMPORTANTE: Retorne APENAS o JSON, sem texto adicional.
     `;
 
-    const text = await callDeepSeek(prompt, true);
+    const text = await callGroq(prompt, true);
     const cleanText = text.replace(/```json\n?|\n?```/g, '').trim();
     return JSON.parse(cleanText);
   } catch (error) {
@@ -219,12 +219,11 @@ IMPORTANTE: Retorne APENAS o JSON, sem texto adicional.
   }
 };
 
-// --- NOTA: Funções de imagem virão do Hugging Face ---
-// Por enquanto, vamos manter as do Gemini como fallback
+// Funções de imagem (implementar Hugging Face depois)
 export const generateAiImage = async (prompt: string): Promise<string> => {
-  throw new Error("Função de imagem ainda não implementada. Use Gemini temporariamente.");
+  throw new Error("Função de imagem ainda não implementada.");
 };
 
 export const remixImage = async (base64Image: string, promptInstruction: string): Promise<string> => {
-  throw new Error("Função de imagem ainda não implementada. Use Gemini temporariamente.");
+  throw new Error("Função de imagem ainda não implementada.");
 };

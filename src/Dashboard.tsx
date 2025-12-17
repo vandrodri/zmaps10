@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { analyzeBusiness } from './services/deepseekService';
+import { analyzeBusiness } from './services/groqService';
 import { AnalysisView } from './components/AnalysisView';
 import { AnalysisResult } from './types';
 
