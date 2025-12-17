@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { generateReviewResponse } from '../services/geminiService';
+import { generateReviewResponse } from '../services/groqService';
 import { ReviewResponseResult } from '../types';
 
 export const ReviewResponder: React.FC = () => {

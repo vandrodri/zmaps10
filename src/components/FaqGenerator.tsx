@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { generateFaqAnswer } from '../services/geminiService';
+import { generateFaqAnswer } from '../services/groqService';
 import { FaqResult } from '../types';
 
 const FaqGenerator: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { generatePost, generateAiImage, remixImage, generateImageOverlays } from '../services/geminiService';
+import { generatePost, generateAiImage, remixImage, generateImageOverlays } from '../services/groqService;
 import { PostResult } from '../types';
 
 // --- CONFIGURAÇÕES DO EDITOR DE IMAGEM ---
