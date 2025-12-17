@@ -234,10 +234,82 @@ IMPORTANTE: Retorne APENAS o JSON, sem texto adicional.
 };
 
 // Funções de imagem (implementar Hugging Face depois)
+// --- GERAÇÃO DE IMAGENS COM HUGGING FACE ---
+
+const HF_IMAGE_FUNCTION_URL = '/.netlify/functions/huggingface-image';
+
 export const generateAiImage = async (prompt: string): Promise<string> => {
-  throw new Error("Função de imagem ainda não implementada.");
+  try {
+    console.log('Generating image with HuggingFace...');
+    
+    const response = await fetch(HF_IMAGE_FUNCTION_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        prompt,
+        action: 'generate',
+        model: 'stabilityai/stable-diffusion-xl-base-1.0'
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      
+      // Se o modelo estiver carregando, espera e tenta novamente
+      if (response.status === 503) {
+        console.log('Model is loading, retrying in 15 seconds...');
+        await new Promise(resolve => setTimeout(resolve, 15000));
+        return generateAiImage(prompt); // Retry
+      }
+      
+      throw new Error(errorData.error || 'Failed to generate image');
+    }
+
+    const data = await response.json();
+    return data.image;
+  } catch (error) {
+    console.error('Error generating image:', error);
+    throw error;
+  }
 };
 
-export const remixImage = async (base64Image: string, promptInstruction: string): Promise<string> => {
-  throw new Error("Função de imagem ainda não implementada.");
+export const remixImage = async (
+  base64Image: string, 
+  promptInstruction: string
+): Promise<string> => {
+  try {
+    console.log('Remixing image with HuggingFace...');
+    
+    const response = await fetch(HF_IMAGE_FUNCTION_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        prompt: promptInstruction,
+        base64Image: base64Image,
+        action: 'remix'
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      
+      if (response.status === 503) {
+        console.log('Model is loading, retrying in 15 seconds...');
+        await new Promise(resolve => setTimeout(resolve, 15000));
+        return remixImage(base64Image, promptInstruction);
+      }
+      
+      throw new Error(errorData.error || 'Failed to remix image');
+    }
+
+    const data = await response.json();
+    return data.image;
+  } catch (error) {
+    console.error('Error remixing image:', error);
+    throw error;
+  }
 };

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/genai": "*",
+    "@huggingface/inference": "^4.13.5",
     "firebase": "^12.6.0",
     "node-fetch": "^2.7.0",
     "openai": "^6.13.0",
