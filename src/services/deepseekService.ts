@@ -31,17 +31,7 @@ export const analyzeBusiness = async (
   location: string
 ): Promise<AnalysisResult> => {
   try {
-    const prompt = `
-ATUE COMO: Um Gerente de Google Business Profile (GBP) Senior.
-TAREFA: Auditar o negócio "${businessName}" em "${location}".
-
-GERE UM RELATÓRIO MARKDOWN COM:
-1. Diagnóstico do Perfil (estimativa de Nota, Reviews, Status típico).
-2. Comparativo com 2 concorrentes típicos do setor.
-3. 3 Ideias rápidas de melhoria aplicáveis.
-
-Seja direto, profissional e use emojis quando apropriado.
-    `;
+    const prompt = `Analise rápido "${businessName}" em "${location}". 2 parágrafos: status e melhorias.`;
 
     const markdown = await callDeepSeek(prompt);
 
