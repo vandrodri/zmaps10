@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { askBusinessConsultant } from '../services/geminiService';
+import { askBusinessConsultant } from '../services/groqService';
 
 export const BusinessConsultant: React.FC = () => {
   const [question, setQuestion] = useState('');
