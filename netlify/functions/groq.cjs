@@ -22,9 +22,13 @@ exports.handler = async (event, context) => {
   }
 
   try {
+<<<<<<< HEAD
       
     const { prompt, jsonMode = false } = JSON.parse(event.body);
   
+=======
+    const { prompt, jsonMode = false } = JSON.parse(event.body);
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
     
     if (!prompt) {
       return {

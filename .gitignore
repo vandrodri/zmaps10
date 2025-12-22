@@ -25,4 +25,8 @@ dist-ssr
 # Variáveis de ambiente
 .env
 .env.local
+<<<<<<< HEAD
 .env.production
+=======
+.env.production
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380

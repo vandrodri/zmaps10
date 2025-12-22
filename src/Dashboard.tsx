@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 // ============================================================
@@ -5,6 +6,9 @@ import React from 'react';
 // ============================================================
 /*
 import { useState } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
 import { analyzeBusiness } from './services/groqService';
 import { AnalysisView } from './components/AnalysisView';
 import { AnalysisResult } from './types';
@@ -41,6 +45,10 @@ const Dashboard: React.FC = () => {
   return (
     <div className="animate-fade-in space-y-8">
       
+<<<<<<< HEAD
+=======
+      {/* Welcome / Header Section inside Dashboard */}
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
       {!result && (
         <div className="text-center space-y-4 py-8">
           <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -52,6 +60,10 @@ const Dashboard: React.FC = () => {
         </div>
       )}
 
+<<<<<<< HEAD
+=======
+      {/* Input Section */}
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
       <div className={`transition-all duration-500 ${result ? '' : 'max-w-3xl mx-auto'}`}>
         <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
           <div className="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center gap-2">
@@ -139,6 +151,10 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
+<<<<<<< HEAD
+=======
+      {/* Error Display */}
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
       {error && (
         <div className="max-w-3xl mx-auto bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg flex items-center animate-fade-in-up">
            <svg className="w-6 h-6 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -148,6 +164,10 @@ const Dashboard: React.FC = () => {
         </div>
       )}
 
+<<<<<<< HEAD
+=======
+      {/* Results View */}
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
       {result && (
         <div className="animate-fade-in-up">
            <AnalysisView result={result} />
@@ -156,6 +176,7 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+<<<<<<< HEAD
 */
 // ============================================================
 // FIM DO CÓDIGO ORIGINAL
@@ -261,5 +282,7 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+=======
+>>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
 
 export default Dashboard;
