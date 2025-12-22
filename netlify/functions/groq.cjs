@@ -1,101 +1,35 @@
-const fetch = require('node-fetch');
+const Groq = require('groq-sdk');
 
-exports.handler = async (event, context) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json'
-  };
-
-  if (event.httpMethod === 'OPTIONS') {
-    return { statusCode: 200, headers, body: '' };
-  }
-
+exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: 'Method not allowed' })
-    };
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
+
+  const groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY
+  });
 
   try {
-<<<<<<< HEAD
-      
-    const { prompt, jsonMode = false } = JSON.parse(event.body);
-  
-=======
-    const { prompt, jsonMode = false } = JSON.parse(event.body);
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
-    
-    if (!prompt) {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({ error: 'Prompt is required' })
-      };
-    }
+    const { prompt } = JSON.parse(event.body);
 
-    console.log('Calling Groq API...');
-
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile', // Modelo mais completo e rápido
-        messages: [{ 
-          role: 'user', 
-          content: prompt 
-        }],
-        max_tokens: 4000,
-        temperature: 0.7,
-        ...(jsonMode && { response_format: { type: 'json_object' } })
-      })
+    const completion = await groq.chat.completions.create({
+      messages: [{ role: 'user', content: prompt }],
+      model: 'llama-3.3-70b-versatile',
+      temperature: 0.7,
+      max_tokens: 1024
     });
-
-    const responseText = await response.text();
-    console.log('Groq Response Status:', response.status);
-
-    if (!response.ok) {
-      console.error('Groq Error:', responseText);
-      return {
-        statusCode: response.status,
-        headers,
-        body: JSON.stringify({ 
-          error: 'Groq API error',
-          details: responseText
-        })
-      };
-    }
-
-    const data = JSON.parse(responseText);
-    const text = data.choices[0].message.content;
-
-    console.log('Groq response received successfully');
 
     return {
       statusCode: 200,
-      headers,
-      body: JSON.stringify({ 
-        text, 
-        usage: data.usage 
+      body: JSON.stringify({
+        text: completion.choices[0]?.message?.content || ''
       })
     };
-
   } catch (error) {
-    console.error('Groq Error:', error.message);
+    console.error('Groq Error:', error);
     return {
       statusCode: 500,
-      headers,
-      body: JSON.stringify({ 
-        error: 'Failed to generate content',
-        details: error.message 
-      })
+      body: JSON.stringify({ error: error.message })
     };
   }
 };
