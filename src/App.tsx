@@ -1,0 +1,267 @@
+import React, { useState, useEffect } from 'react';
+import { User } from 'firebase/auth';
+import { onAuthChange, logout } from './authService';
+import { PostGenerator } from './components/PostGenerator';
+import { ReviewResponder } from './components/ReviewResponder';
+import { BusinessConsultant } from './components/BusinessConsultant';
+import FaqGenerator from './components/FaqGenerator';
+import { Login } from './components/Login';
+import { Footer } from './components/Footer';
+import { AppView, UserProfile } from './types';
+
+const App: React.FC = () => {
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [currentView, setCurrentView] = useState<AppView>('posts'); // ✅ Começa direto nos Posts
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthChange((firebaseUser: User | null) => {
+      if (firebaseUser) {
+        setUser({
+          name: firebaseUser.displayName || 'Usuário',
+          email: firebaseUser.email || '',
+          avatar: firebaseUser.displayName?.charAt(0).toUpperCase() || 'U',
+          photoURL: firebaseUser.photoURL || undefined
+        });
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogin = (firebaseUser: User) => {
+    setUser({
+      name: firebaseUser.displayName || 'Usuário',
+      email: firebaseUser.email || '',
+      avatar: firebaseUser.displayName?.charAt(0).toUpperCase() || 'U',
+      photoURL: firebaseUser.photoURL || undefined
+    });
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setUser(null);
+      setCurrentView('posts'); // ✅ Volta pros Posts ao deslogar
+      setIsMobileMenuOpen(false);
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+    }
+  };
+
+  const navigateTo = (view: AppView) => {
+    setCurrentView(view);
+    setIsMobileMenuOpen(false);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600 font-medium">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Login onLogin={handleLogin} />;
+  }
+
+  // ✅ DASHBOARD REMOVIDO
+  const renderContent = () => {
+    switch (currentView) {
+      case 'posts':
+        return <PostGenerator />;
+      case 'reviews':
+        return <ReviewResponder />;
+      case 'faq':
+        return <FaqGenerator />;
+      case 'consultation':
+        return <BusinessConsultant />;
+      default:
+        return <PostGenerator />; // ✅ Fallback para Posts
+    }
+  };
+
+  const getTitle = () => {
+    switch(currentView) {
+        case 'posts': return 'Estúdio de Criação';
+        case 'reviews': return 'Gestão de Reviews';
+        case 'faq': return 'Perguntas Frequentes (FAQ)';
+        case 'consultation': return 'Consultoria Estratégica';
+        default: return 'Estúdio de Criação';
+    }
+  }
+
+  return (
+    <div className="flex h-screen bg-slate-50 font-sans overflow-hidden">
+      
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 z-20 md:hidden backdrop-blur-sm transition-opacity duration-300"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      <aside className={`
+        fixed inset-y-0 left-0 z-30 w-72 bg-slate-900 text-white shadow-2xl transition-transform duration-300 ease-in-out flex flex-col
+        md:relative md:translate-x-0
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        <div className="flex items-center gap-3 px-6 h-24 border-b border-slate-800">
+           <div className="w-10 h-10 bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/30 transform -rotate-3 border border-white/10">
+                <span className="text-white font-black text-2xl font-serif italic">Z</span>
+           </div>
+          <div>
+            <span className="block text-xl font-bold tracking-tight leading-none text-white">ZMaps</span>
+            <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">AI Suite Pro</span>
+          </div>
+          <button onClick={() => setIsMobileMenuOpen(false)} className="md:hidden ml-auto text-slate-400">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+
+        <div className="px-4 py-6 flex-1 overflow-y-auto">
+            {/* ✅ SEÇÃO "GESTÃO" AGORA SEM AUDITORIA */}
+            <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Criação de Conteúdo</p>
+            <nav className="space-y-1">
+              <button 
+                onClick={() => navigateTo('posts')}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'posts' ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+                <span className="font-medium">Criar Post & Mídia</span>
+              </button>
+
+              <button 
+                onClick={() => navigateTo('reviews')}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'reviews' ? 'bg-green-600 text-white shadow-lg shadow-green-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+                <span className="font-medium">Responder Reviews</span>
+              </button>
+
+               <button 
+                onClick={() => navigateTo('faq')}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'faq' ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="font-medium">Gerador de FAQ</span>
+              </button>
+            </nav>
+
+            <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mt-6 mb-2">Estratégia</p>
+            <nav className="space-y-1">
+              <button 
+                onClick={() => navigateTo('consultation')}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'consultation' ? 'bg-orange-500 text-white shadow-lg shadow-orange-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <span className="font-medium">Consultor IA</span>
+              </button>
+            </nav>
+        </div>
+
+        <div className="mt-auto p-4 border-t border-slate-800">
+          <div className="bg-slate-800 rounded-xl p-4 border border-slate-700/50 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+                {user.photoURL ? (
+                  <img 
+                    src={user.photoURL} 
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-sm">
+                    {user.avatar}
+                  </div>
+                )}
+                <div className="overflow-hidden">
+                    <p className="text-sm font-semibold text-white truncate w-24">{user.name}</p>
+                    <p className="text-xs text-slate-400">Plano Pro</p>
+                </div>
+            </div>
+            <button onClick={handleLogout} className="text-slate-400 hover:text-white" title="Sair">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-6 0v-1m6 0H9" />
+                </svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50 relative">
+        
+        <header className="h-20 bg-white/90 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm transition-all">
+          
+          <div className="flex items-center gap-4">
+             <div className="w-12 h-12 bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 transform -rotate-3 hover:rotate-0 transition-all duration-300 border border-white/20">
+                <span className="text-white font-black text-3xl font-serif italic drop-shadow-md select-none">Z</span>
+             </div>
+             
+             <div className="flex flex-col">
+                <h1 className="text-2xl font-black text-slate-800 tracking-tighter leading-none">
+                    ZMaps
+                </h1>
+                <p className="text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 uppercase tracking-wide">
+                    Google Maps na Mão
+                </p>
+             </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+             
+             <div className="hidden md:block text-right mr-4 border-r border-slate-200 pr-6">
+                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Módulo Atual</p>
+                <p className="text-sm font-bold text-slate-700">{getTitle()}</p>
+             </div>
+
+             <div className="hidden sm:flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 border border-green-200 shadow-sm">
+                <span className="relative flex h-2 w-2 mr-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                Online
+             </div>
+
+             <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 text-slate-600 hover:bg-slate-100 hover:text-blue-600 rounded-lg transition-colors focus:outline-none"
+                aria-label="Menu Principal"
+             >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+             </button>
+          </div>
+        </header>
+
+        <main className="flex-1 overflow-y-auto flex flex-col scroll-smooth">
+          <div className="flex-1 p-4 md:p-8">
+            <div className="max-w-7xl mx-auto">
+                {renderContent()}
+            </div>
+          </div>
+          <Footer />
+        </main>
+
+      </div>
+    </div>
+  );
+};
+
+export default App;
