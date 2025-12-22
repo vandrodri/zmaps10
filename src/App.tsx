@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { User } from 'firebase/auth';
 import { onAuthChange, logout } from './authService';
-<<<<<<< HEAD
-=======
-import Dashboard from './Dashboard';
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
 import { PostGenerator } from './components/PostGenerator';
 import { ReviewResponder } from './components/ReviewResponder';
 import { BusinessConsultant } from './components/BusinessConsultant';
@@ -14,32 +10,14 @@ import { Footer } from './components/Footer';
 import { AppView, UserProfile } from './types';
 
 const App: React.FC = () => {
-<<<<<<< HEAD
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
-  const [currentView, setCurrentView] = useState<AppView>('posts'); // ✅ Começa direto nos Posts
+  const [currentView, setCurrentView] = useState<AppView>('posts');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthChange((firebaseUser: User | null) => {
       if (firebaseUser) {
-=======
-  // Estado de Autenticação (Firebase)
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true); // Loading inicial
-  
-  // Estado de Roteamento (Simples)
-  const [currentView, setCurrentView] = useState<AppView>('dashboard');
-
-  // Estado do Menu Mobile
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Observa mudanças de autenticação do Firebase
-  useEffect(() => {
-    const unsubscribe = onAuthChange((firebaseUser: User | null) => {
-      if (firebaseUser) {
-        // Usuário logado
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
         setUser({
           name: firebaseUser.displayName || 'Usuário',
           email: firebaseUser.email || '',
@@ -47,19 +25,11 @@ const App: React.FC = () => {
           photoURL: firebaseUser.photoURL || undefined
         });
       } else {
-<<<<<<< HEAD
-=======
-        // Usuário deslogado
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
         setUser(null);
       }
       setLoading(false);
     });
 
-<<<<<<< HEAD
-=======
-    // Cleanup: cancela o listener quando o componente desmonta
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
     return () => unsubscribe();
   }, []);
 
@@ -76,11 +46,7 @@ const App: React.FC = () => {
     try {
       await logout();
       setUser(null);
-<<<<<<< HEAD
-      setCurrentView('posts'); // ✅ Volta pros Posts ao deslogar
-=======
-      setCurrentView('dashboard');
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
+      setCurrentView('posts');
       setIsMobileMenuOpen(false);
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
@@ -89,16 +55,9 @@ const App: React.FC = () => {
 
   const navigateTo = (view: AppView) => {
     setCurrentView(view);
-<<<<<<< HEAD
     setIsMobileMenuOpen(false);
   };
 
-=======
-    setIsMobileMenuOpen(false); // Fecha o menu ao navegar no mobile
-  };
-
-  // Loading inicial enquanto verifica autenticação
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
@@ -110,25 +69,12 @@ const App: React.FC = () => {
     );
   }
 
-<<<<<<< HEAD
-=======
-  // Se não estiver logado, mostra a tela de login
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
   if (!user) {
     return <Login onLogin={handleLogin} />;
   }
 
-<<<<<<< HEAD
-  // ✅ DASHBOARD REMOVIDO
   const renderContent = () => {
     switch (currentView) {
-=======
-  // Renderizador de Views
-  const renderContent = () => {
-    switch (currentView) {
-      case 'dashboard':
-        return <Dashboard />;
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
       case 'posts':
         return <PostGenerator />;
       case 'reviews':
@@ -138,39 +84,23 @@ const App: React.FC = () => {
       case 'consultation':
         return <BusinessConsultant />;
       default:
-<<<<<<< HEAD
-        return <PostGenerator />; // ✅ Fallback para Posts
-=======
-        return <Dashboard />;
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
+        return <PostGenerator />;
     }
   };
 
   const getTitle = () => {
     switch(currentView) {
-<<<<<<< HEAD
-=======
-        case 'dashboard': return 'Análise Competitiva';
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
         case 'posts': return 'Estúdio de Criação';
         case 'reviews': return 'Gestão de Reviews';
         case 'faq': return 'Perguntas Frequentes (FAQ)';
         case 'consultation': return 'Consultoria Estratégica';
-<<<<<<< HEAD
         default: return 'Estúdio de Criação';
-=======
-        default: return 'Dashboard';
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
     }
   }
 
   return (
     <div className="flex h-screen bg-slate-50 font-sans overflow-hidden">
       
-<<<<<<< HEAD
-=======
-      {/* MOBILE OVERLAY (Fundo escuro quando menu abre) */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
       {isMobileMenuOpen && (
         <div 
           className="fixed inset-0 bg-black/60 z-20 md:hidden backdrop-blur-sm transition-opacity duration-300"
@@ -178,20 +108,12 @@ const App: React.FC = () => {
         />
       )}
 
-<<<<<<< HEAD
-=======
-      {/* SIDEBAR (Responsiva) */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
       <aside className={`
         fixed inset-y-0 left-0 z-30 w-72 bg-slate-900 text-white shadow-2xl transition-transform duration-300 ease-in-out flex flex-col
         md:relative md:translate-x-0
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="flex items-center gap-3 px-6 h-24 border-b border-slate-800">
-<<<<<<< HEAD
-=======
-           {/* Logo na Sidebar também para consistência */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
            <div className="w-10 h-10 bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/30 transform -rotate-3 border border-white/10">
                 <span className="text-white font-black text-2xl font-serif italic">Z</span>
            </div>
@@ -199,36 +121,15 @@ const App: React.FC = () => {
             <span className="block text-xl font-bold tracking-tight leading-none text-white">ZMaps</span>
             <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">AI Suite Pro</span>
           </div>
-<<<<<<< HEAD
-=======
-          {/* Botão fechar mobile */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
           <button onClick={() => setIsMobileMenuOpen(false)} className="md:hidden ml-auto text-slate-400">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
 
         <div className="px-4 py-6 flex-1 overflow-y-auto">
-<<<<<<< HEAD
-            {/* ✅ SEÇÃO "GESTÃO" AGORA SEM AUDITORIA */}
             <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Criação de Conteúdo</p>
             <nav className="space-y-1">
               <button 
-=======
-            <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Gestão</p>
-            <nav className="space-y-1">
-              <button 
-                onClick={() => navigateTo('dashboard')}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'dashboard' ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                <span className="font-medium">Auditoria</span>
-              </button>
-              
-              <button 
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
                 onClick={() => navigateTo('posts')}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'posts' ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
               >
@@ -301,31 +202,15 @@ const App: React.FC = () => {
         </div>
       </aside>
 
-<<<<<<< HEAD
       <div className="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50 relative">
         
         <header className="h-20 bg-white/90 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm transition-all">
           
           <div className="flex items-center gap-4">
-=======
-      {/* CONTEÚDO PRINCIPAL */}
-      <div className="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50 relative">
-        
-        {/* HEADER CUSTOMIZADO - ZMaps */}
-        <header className="h-20 bg-white/90 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm transition-all">
-          
-          {/* LADO ESQUERDO: Logo Z + Slogan */}
-          <div className="flex items-center gap-4">
-             {/* Logo Z */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
              <div className="w-12 h-12 bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 transform -rotate-3 hover:rotate-0 transition-all duration-300 border border-white/20">
                 <span className="text-white font-black text-3xl font-serif italic drop-shadow-md select-none">Z</span>
              </div>
              
-<<<<<<< HEAD
-=======
-             {/* Nome e Slogan */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
              <div className="flex flex-col">
                 <h1 className="text-2xl font-black text-slate-800 tracking-tighter leading-none">
                     ZMaps
@@ -336,24 +221,13 @@ const App: React.FC = () => {
              </div>
           </div>
 
-<<<<<<< HEAD
           <div className="flex items-center gap-4">
              
-=======
-          {/* LADO DIREITO: Status + Menu Hamburguer */}
-          <div className="flex items-center gap-4">
-             
-             {/* Título da Página (Visível apenas em Desktop) */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
              <div className="hidden md:block text-right mr-4 border-r border-slate-200 pr-6">
                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Módulo Atual</p>
                 <p className="text-sm font-bold text-slate-700">{getTitle()}</p>
              </div>
 
-<<<<<<< HEAD
-=======
-             {/* Status Online (Opcional no mobile se faltar espaço, aqui mantido) */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
              <div className="hidden sm:flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 border border-green-200 shadow-sm">
                 <span className="relative flex h-2 w-2 mr-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -362,10 +236,6 @@ const App: React.FC = () => {
                 Online
              </div>
 
-<<<<<<< HEAD
-=======
-             {/* Menu Hamburguer (Visível apenas em Mobile) */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
              <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="md:hidden p-2 text-slate-600 hover:bg-slate-100 hover:text-blue-600 rounded-lg transition-colors focus:outline-none"
@@ -378,10 +248,6 @@ const App: React.FC = () => {
           </div>
         </header>
 
-<<<<<<< HEAD
-=======
-        {/* Área Renderizada + Footer */}
->>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
         <main className="flex-1 overflow-y-auto flex flex-col scroll-smooth">
           <div className="flex-1 p-4 md:p-8">
             <div className="max-w-7xl mx-auto">
