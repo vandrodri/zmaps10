@@ -1,23 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { User } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from './firebaseConfig';
 import { onAuthChange, logout } from './authService';
+import { createOrUpdateUser } from './firestoreService';
 import { PostGenerator } from './components/PostGenerator';
 import { ReviewResponder } from './components/ReviewResponder';
 import { BusinessConsultant } from './components/BusinessConsultant';
 import FaqGenerator from './components/FaqGenerator';
 import { Login } from './components/Login';
 import { Footer } from './components/Footer';
+import { FounderBadge } from './components/FounderBadge';
 import { AppView, UserProfile } from './types';
+import { getUserPlan, getDaysRemaining, shouldShowAlert, canUseApp, UserPlan } from './planService';
+import { TrialAlert, ExpiredTrialBanner } from './components/TrialAlert';
+import { CheckoutModal } from './components/CheckoutModal';
+import { auth } from './firebaseConfig';
 
 const App: React.FC = () => {
+  // Estados
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentView, setCurrentView] = useState<AppView>('posts');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [userPlan, setUserPlan] = useState<UserPlan | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [founderNumber, setFounderNumber] = useState<number | null>(null);
 
+  // useEffect para autenticação e plano
   useEffect(() => {
-    const unsubscribe = onAuthChange((firebaseUser: User | null) => {
+    const unsubscribe = onAuthChange(async (firebaseUser: User | null) => {
       if (firebaseUser) {
+        await createOrUpdateUser(firebaseUser);
+        
+        const plan = await getUserPlan(firebaseUser.uid);
+        setUserPlan(plan);
+        
+        // Busca informações de fundador
+        if (plan?.isFounder) {
+          const userRef = doc(db, "users", firebaseUser.uid);
+          const userSnap = await getDoc(userRef);
+          if (userSnap.exists()) {
+            const userData = userSnap.data();
+            setFounderNumber(userData.founderNumber || null);
+          }
+        }
+        
         setUser({
           name: firebaseUser.displayName || 'Usuário',
           email: firebaseUser.email || '',
@@ -26,6 +54,8 @@ const App: React.FC = () => {
         });
       } else {
         setUser(null);
+        setUserPlan(null);
+        setFounderNumber(null);
       }
       setLoading(false);
     });
@@ -33,7 +63,22 @@ const App: React.FC = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogin = (firebaseUser: User) => {
+  // Funções
+  const handleLogin = async (firebaseUser: User) => {
+    await createOrUpdateUser(firebaseUser);
+    const plan = await getUserPlan(firebaseUser.uid);
+    setUserPlan(plan);
+    
+    // Busca informações de fundador
+    if (plan?.isFounder) {
+      const userRef = doc(db, "users", firebaseUser.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+        setFounderNumber(userData.founderNumber || null);
+      }
+    }
+    
     setUser({
       name: firebaseUser.displayName || 'Usuário',
       email: firebaseUser.email || '',
@@ -46,6 +91,8 @@ const App: React.FC = () => {
     try {
       await logout();
       setUser(null);
+      setUserPlan(null);
+      setFounderNumber(null);
       setCurrentView('posts');
       setIsMobileMenuOpen(false);
     } catch (error) {
@@ -57,21 +104,6 @@ const App: React.FC = () => {
     setCurrentView(view);
     setIsMobileMenuOpen(false);
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600 font-medium">Carregando...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return <Login onLogin={handleLogin} />;
-  }
 
   const renderContent = () => {
     switch (currentView) {
@@ -90,14 +122,31 @@ const App: React.FC = () => {
 
   const getTitle = () => {
     switch(currentView) {
-        case 'posts': return 'Estúdio de Criação';
-        case 'reviews': return 'Gestão de Reviews';
-        case 'faq': return 'Perguntas Frequentes (FAQ)';
-        case 'consultation': return 'Consultoria Estratégica';
-        default: return 'Estúdio de Criação';
+      case 'posts': return 'Estúdio de Criação';
+      case 'reviews': return 'Gestão de Reviews';
+      case 'faq': return 'Perguntas Frequentes (FAQ)';
+      case 'consultation': return 'Consultoria Estratégica';
+      default: return 'Estúdio de Criação';
     }
+  };
+
+  // Early returns
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600 font-medium">Carregando...</p>
+        </div>
+      </div>
+    );
   }
 
+  if (!user) {
+    return <Login onLogin={handleLogin} />;
+  }
+
+  // Return principal
   return (
     <div className="flex h-screen bg-slate-50 font-sans overflow-hidden">
       
@@ -175,29 +224,40 @@ const App: React.FC = () => {
         </div>
 
         <div className="mt-auto p-4 border-t border-slate-800">
-          <div className="bg-slate-800 rounded-xl p-4 border border-slate-700/50 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-                {user.photoURL ? (
-                  <img 
-                    src={user.photoURL} 
-                    alt={user.name}
-                    className="w-8 h-8 rounded-full"
-                  />
-                ) : (
-                  <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-sm">
-                    {user.avatar}
+          <div className="bg-slate-800 rounded-xl p-4 border border-slate-700/50">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                  {user.photoURL ? (
+                    <img 
+                      src={user.photoURL} 
+                      alt={user.name}
+                      className="w-8 h-8 rounded-full"
+                    />
+                  ) : (
+                    <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-sm">
+                      {user.avatar}
+                    </div>
+                  )}
+                  <div className="overflow-hidden">
+                      <p className="text-sm font-semibold text-white truncate w-24">{user.name}</p>
+                      <p className="text-xs text-slate-400">
+                        {userPlan?.isFounder ? 'Fundador' : 'Plano Pro'}
+                      </p>
                   </div>
-                )}
-                <div className="overflow-hidden">
-                    <p className="text-sm font-semibold text-white truncate w-24">{user.name}</p>
-                    <p className="text-xs text-slate-400">Plano Pro</p>
-                </div>
+              </div>
+              <button onClick={handleLogout} className="text-slate-400 hover:text-white" title="Sair">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-6 0v-1m6 0H9" />
+                  </svg>
+              </button>
             </div>
-            <button onClick={handleLogout} className="text-slate-400 hover:text-white" title="Sair">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-6 0v-1m6 0H9" />
-                </svg>
-            </button>
+            
+            {/* BADGE DE FUNDADOR */}
+            {userPlan?.isFounder && (
+              <div className="mt-2 pt-2 border-t border-slate-700">
+                <FounderBadge founderNumber={founderNumber || undefined} variant="sidebar" />
+              </div>
+            )}
           </div>
         </div>
       </aside>
@@ -228,6 +288,13 @@ const App: React.FC = () => {
                 <p className="text-sm font-bold text-slate-700">{getTitle()}</p>
              </div>
 
+             {/* Badge compacto no header (mobile) */}
+             {userPlan?.isFounder && (
+               <div className="hidden sm:block">
+                 <FounderBadge founderNumber={founderNumber || undefined} variant="compact" />
+               </div>
+             )}
+
              <div className="hidden sm:flex items-center px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700 border border-green-200 shadow-sm">
                 <span className="relative flex h-2 w-2 mr-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -251,14 +318,48 @@ const App: React.FC = () => {
         <main className="flex-1 overflow-y-auto flex flex-col scroll-smooth">
           <div className="flex-1 p-4 md:p-8">
             <div className="max-w-7xl mx-auto">
-                {renderContent()}
+              
+              {/* Alertas de Trial */}
+              {userPlan && shouldShowAlert(getDaysRemaining(userPlan.trialEndsAt)) && (
+                <TrialAlert 
+                  daysRemaining={getDaysRemaining(userPlan.trialEndsAt)}
+                  onUpgrade={() => setShowUpgradeModal(true)}
+                />
+              )}
+              
+              {/* Banner de Trial Expirado */}
+              {userPlan && !canUseApp(userPlan) && (
+                <ExpiredTrialBanner 
+                  onUpgrade={() => setShowUpgradeModal(true)}
+                />
+              )}
+             
+              {renderContent()}
             </div>
           </div>
           <Footer />
         </main>
 
       </div>
-    </div>
+      
+      {/* Banner de Trial Expirado (Overlay) */}
+      {userPlan && !canUseApp(userPlan) && (
+        <ExpiredTrialBanner 
+          onUpgrade={() => setShowUpgradeModal(true)}
+        />
+      )}
+      
+      {/* Modal de Checkout */}
+      {showUpgradeModal && user && (
+        <CheckoutModal
+          isOpen={showUpgradeModal}
+          onClose={() => setShowUpgradeModal(false)}
+          userId={auth.currentUser?.uid || ''}
+          userEmail={user.email}
+          userName={user.name}
+        />
+      )}
+   </div>
   );
 };
 

@@ -49,7 +49,8 @@ export const PostGenerator: React.FC = () => {
   const [selectedTextId, setSelectedTextId] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-
+ // ⭐ NOVO: Estado do popup de preview
+  const [showImagePreview, setShowImagePreview] = useState(false);
   // --- FUNÇÕES DE TEXTO ---
   const handleGenerateText = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -288,8 +289,15 @@ export const PostGenerator: React.FC = () => {
 
   const selectedText = texts.find(t => t.id === selectedTextId);
 
+const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    // Se não estiver arrastando, abre o preview
+    if (!isDragging && imageSrc) {
+      setShowImagePreview(true);
+    }
+  };
+
   return (
-    <div className="animate-fade-in grid grid-cols-1 xl:grid-cols-2 gap-8 h-[calc(100vh-8rem)]">
+    <div className="animate-fade-in flex flex-col xl:grid xl:grid-cols-2 gap-8 xl:h-[calc(100vh-8rem)]">
       
       {/* COLUNA ESQUERDA: GERAÇÃO DE TEXTO */}
       <div className="flex flex-col space-y-6 overflow-y-auto pr-2">
@@ -581,13 +589,14 @@ export const PostGenerator: React.FC = () => {
                 </div>
             ) : (
                 <canvas
-                    ref={canvasRef}
-                    onMouseDown={handleMouseDown}
-                    onMouseMove={handleMouseMove}
-                    onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseUp}
-                    className="max-w-full max-h-full object-contain cursor-crosshair shadow-lg"
-                />
+  ref={canvasRef}
+  onClick={handleCanvasClick}
+  onMouseDown={handleMouseDown}
+  onMouseMove={handleMouseMove}
+  onMouseUp={handleMouseUp}
+  onMouseLeave={handleMouseUp}
+  className="max-w-full max-h-full object-contain cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
+/>     
             )}
             
             {/* Botões Flutuantes sobre o Canvas */}
@@ -619,6 +628,31 @@ export const PostGenerator: React.FC = () => {
         </div>
 
       </div>
+      {/* Modal de Preview da Imagem */}
+      {/* Modal de Preview da Imagem */}
+      {/* Modal de Preview da Imagem */}
+      {showImagePreview && imageSrc && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center animate-in fade-in duration-200"
+          onClick={() => setShowImagePreview(false)}
+        >
+          <button
+            onClick={() => setShowImagePreview(false)}
+            className="absolute top-6 right-6 bg-white/90 rounded-full p-3 shadow-xl hover:bg-white transition-all z-20"
+          >
+            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          <img 
+            src={canvasRef.current?.toDataURL() || imageSrc}
+            alt="Preview" 
+            className="w-[90vw] h-[60vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 };

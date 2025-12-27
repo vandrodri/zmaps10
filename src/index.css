@@ -13,3 +13,67 @@ body { font-family: 'Inter', sans-serif; }
 .markdown-body li { margin-bottom: 0.5rem; color: #4b5563; }
 .markdown-body strong { font-weight: 600; color: #0f172a; }
 .markdown-body blockquote { border-left: 4px solid #e2e8f0; padding-left: 1rem; font-style: italic; color: #64748b; }
+/* Adicione este CSS no seu arquivo src/index.css ou src/App.css */
+
+@layer components {
+  .neumorph-flat {
+    background: #f0f2f5;
+    box-shadow: 20px 20px 60px #ccd0d5, -20px -20px 60px #ffffff;
+  }
+  
+  .neumorph-inset {
+    background: #f0f2f5;
+    box-shadow: inset 6px 6px 12px #ccd0d5, inset -6px -6px 12px #ffffff;
+  }
+  
+  .neumorph-button {
+    background: #f0f2f5;
+    box-shadow: 8px 8px 16px #ccd0d5, -8px -8px 16px #ffffff;
+    transition: all 0.2s ease;
+  }
+  
+  .neumorph-button:active {
+    box-shadow: inset 4px 4px 8px #ccd0d5, inset -4px -4px 8px #ffffff;
+    transform: scale(0.98);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+@layer components {
+  .neumorph-flat {
+    background: #f0f2f5;
+    box-shadow: 20px 20px 60px #ccd0d5, -20px -20px 60px #ffffff;
+  }
+  
+  .neumorph-inset {
+    background: #f0f2f5;
+    box-shadow: inset 6px 6px 12px #ccd0d5, inset -6px -6px 12px #ffffff;
+  }
+  
+  .neumorph-button {
+    background: #f0f2f5;
+    box-shadow: 8px 8px 16px #ccd0d5, -8px -8px 16px #ffffff;
+    transition: all 0.2s ease;
+  }
+  
+  .neumorph-button:active {
+    box-shadow: inset 4px 4px 8px #ccd0d5, inset -4px -4px 8px #ffffff;
+    transform: scale(0.98);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

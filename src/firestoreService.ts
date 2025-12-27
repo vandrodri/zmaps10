@@ -1,0 +1,42 @@
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "./firebaseConfig";
+import { User } from "firebase/auth";
+
+export const createOrUpdateUser = async (firebaseUser: User) => {
+  try {
+    const userRef = doc(db, "users", firebaseUser.uid);
+    const userSnap = await getDoc(userRef);
+    
+    if (!userSnap.exists()) {
+      const trialEndDate = new Date();
+      trialEndDate.setDate(trialEndDate.getDate() + 7);
+      
+      await setDoc(userRef, {
+        displayName: firebaseUser.displayName || "Usuário",
+        email: firebaseUser.email || "",
+        photoURL: firebaseUser.photoURL || null,
+        plan: "trial",
+        trialEndsAt: trialEndDate,
+        usageCount: 0,
+        usageLimit: 3,
+        lastResetDate: serverTimestamp(),
+        subscriptionStatus: "trial",
+        subscriptionType: null,
+        subscriptionStartDate: null,
+        subscriptionEndDate: null,
+        mercadoPagoSubscriptionId: null,
+        mercadoPagoPaymentId: null,
+        isFounder: false,
+        founderNumber: null,
+        founderPaidAt: null,
+        paidPrice: null,
+        paidPlan: null,
+        createdAt: serverTimestamp()
+      });
+      
+      console.log("✅ Novo usuário criado:", firebaseUser.email);
+    }
+  } catch (error) {
+    console.error("❌ Erro ao criar usuário:", error);
+  }
+};

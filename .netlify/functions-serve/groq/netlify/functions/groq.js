@@ -4,6 +4,62 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 
+// node_modules/groq-sdk/version.js
+var require_version = __commonJS({
+  "node_modules/groq-sdk/version.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.VERSION = void 0;
+    exports2.VERSION = "0.37.0";
+  }
+});
+
+// node_modules/groq-sdk/_shims/registry.js
+var require_registry = __commonJS({
+  "node_modules/groq-sdk/_shims/registry.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.setShims = exports2.isFsReadStream = exports2.fileFromPath = exports2.getDefaultAgent = exports2.getMultipartRequestOptions = exports2.ReadableStream = exports2.File = exports2.Blob = exports2.FormData = exports2.Headers = exports2.Response = exports2.Request = exports2.fetch = exports2.kind = exports2.auto = void 0;
+    exports2.auto = false;
+    exports2.kind = void 0;
+    exports2.fetch = void 0;
+    exports2.Request = void 0;
+    exports2.Response = void 0;
+    exports2.Headers = void 0;
+    exports2.FormData = void 0;
+    exports2.Blob = void 0;
+    exports2.File = void 0;
+    exports2.ReadableStream = void 0;
+    exports2.getMultipartRequestOptions = void 0;
+    exports2.getDefaultAgent = void 0;
+    exports2.fileFromPath = void 0;
+    exports2.isFsReadStream = void 0;
+    function setShims(shims, options = { auto: false }) {
+      if (exports2.auto) {
+        throw new Error(`you must \`import 'groq-sdk/shims/${shims.kind}'\` before importing anything else from groq-sdk`);
+      }
+      if (exports2.kind) {
+        throw new Error(`can't \`import 'groq-sdk/shims/${shims.kind}'\` after \`import 'groq-sdk/shims/${exports2.kind}'\``);
+      }
+      exports2.auto = options.auto;
+      exports2.kind = shims.kind;
+      exports2.fetch = shims.fetch;
+      exports2.Request = shims.Request;
+      exports2.Response = shims.Response;
+      exports2.Headers = shims.Headers;
+      exports2.FormData = shims.FormData;
+      exports2.Blob = shims.Blob;
+      exports2.File = shims.File;
+      exports2.ReadableStream = shims.ReadableStream;
+      exports2.getMultipartRequestOptions = shims.getMultipartRequestOptions;
+      exports2.getDefaultAgent = shims.getDefaultAgent;
+      exports2.fileFromPath = shims.fileFromPath;
+      exports2.isFsReadStream = shims.isFsReadStream;
+    }
+    exports2.setShims = setShims;
+  }
+});
+
 // node_modules/webidl-conversions/lib/index.js
 var require_lib = __commonJS({
   "node_modules/webidl-conversions/lib/index.js"(exports2, module2) {
@@ -1583,8 +1639,8 @@ var require_URL = __commonJS({
     var utils = require_utils();
     var Impl = require_URL_impl();
     var impl = utils.implSymbol;
-    function URL(url) {
-      if (!this || this[impl] || !(this instanceof URL)) {
+    function URL2(url) {
+      if (!this || this[impl] || !(this instanceof URL2)) {
         throw new TypeError("Failed to construct 'URL': Please use the 'new' operator, this DOM object constructor cannot be called as a function.");
       }
       if (arguments.length < 1) {
@@ -1600,7 +1656,7 @@ var require_URL = __commonJS({
       }
       module2.exports.setup(this, args);
     }
-    URL.prototype.toJSON = function toJSON() {
+    URL2.prototype.toJSON = function toJSON() {
       if (!this || !module2.exports.is(this)) {
         throw new TypeError("Illegal invocation");
       }
@@ -1610,7 +1666,7 @@ var require_URL = __commonJS({
       }
       return this[impl].toJSON.apply(this[impl], args);
     };
-    Object.defineProperty(URL.prototype, "href", {
+    Object.defineProperty(URL2.prototype, "href", {
       get() {
         return this[impl].href;
       },
@@ -1621,20 +1677,20 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    URL.prototype.toString = function() {
+    URL2.prototype.toString = function() {
       if (!this || !module2.exports.is(this)) {
         throw new TypeError("Illegal invocation");
       }
       return this.href;
     };
-    Object.defineProperty(URL.prototype, "origin", {
+    Object.defineProperty(URL2.prototype, "origin", {
       get() {
         return this[impl].origin;
       },
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "protocol", {
+    Object.defineProperty(URL2.prototype, "protocol", {
       get() {
         return this[impl].protocol;
       },
@@ -1645,7 +1701,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "username", {
+    Object.defineProperty(URL2.prototype, "username", {
       get() {
         return this[impl].username;
       },
@@ -1656,7 +1712,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "password", {
+    Object.defineProperty(URL2.prototype, "password", {
       get() {
         return this[impl].password;
       },
@@ -1667,7 +1723,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "host", {
+    Object.defineProperty(URL2.prototype, "host", {
       get() {
         return this[impl].host;
       },
@@ -1678,7 +1734,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "hostname", {
+    Object.defineProperty(URL2.prototype, "hostname", {
       get() {
         return this[impl].hostname;
       },
@@ -1689,7 +1745,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "port", {
+    Object.defineProperty(URL2.prototype, "port", {
       get() {
         return this[impl].port;
       },
@@ -1700,7 +1756,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "pathname", {
+    Object.defineProperty(URL2.prototype, "pathname", {
       get() {
         return this[impl].pathname;
       },
@@ -1711,7 +1767,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "search", {
+    Object.defineProperty(URL2.prototype, "search", {
       get() {
         return this[impl].search;
       },
@@ -1722,7 +1778,7 @@ var require_URL = __commonJS({
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(URL.prototype, "hash", {
+    Object.defineProperty(URL2.prototype, "hash", {
       get() {
         return this[impl].hash;
       },
@@ -1738,7 +1794,7 @@ var require_URL = __commonJS({
         return !!obj && obj[impl] instanceof Impl.implementation;
       },
       create(constructorArgs, privateData) {
-        let obj = Object.create(URL.prototype);
+        let obj = Object.create(URL2.prototype);
         this.setup(obj, constructorArgs, privateData);
         return obj;
       },
@@ -1748,10 +1804,10 @@ var require_URL = __commonJS({
         obj[impl] = new Impl.implementation(constructorArgs, privateData);
         obj[impl][utils.wrapperSymbol] = obj;
       },
-      interface: URL,
+      interface: URL2,
       expose: {
-        Window: { URL },
-        Worker: { URL }
+        Window: { URL: URL2 },
+        Worker: { URL: URL2 }
       }
     };
   }
@@ -2598,12 +2654,12 @@ var require_lib2 = __commonJS({
       configurable: true
     });
     var INTERNALS$2 = Symbol("Request internals");
-    var URL = Url.URL || whatwgUrl.URL;
+    var URL2 = Url.URL || whatwgUrl.URL;
     var parse_url = Url.parse;
     var format_url = Url.format;
     function parseURL(urlStr) {
       if (/^[a-zA-Z][a-zA-Z\d+\-.]*:/.exec(urlStr)) {
-        urlStr = new URL(urlStr).toString();
+        urlStr = new URL2(urlStr).toString();
       }
       return parse_url(urlStr);
     }
@@ -2767,12 +2823,12 @@ var require_lib2 = __commonJS({
       const dest = new URL$1(destination).protocol;
       return orig === dest;
     };
-    function fetch2(url, opts) {
-      if (!fetch2.Promise) {
+    function fetch(url, opts) {
+      if (!fetch.Promise) {
         throw new Error("native promise missing, set fetch.Promise to your favorite alternative");
       }
-      Body.Promise = fetch2.Promise;
-      return new fetch2.Promise(function(resolve, reject) {
+      Body.Promise = fetch.Promise;
+      return new fetch.Promise(function(resolve, reject) {
         const request = new Request(url, opts);
         const options = getNodeRequestOptions(request);
         const send = (options.protocol === "https:" ? https : http).request;
@@ -2843,7 +2899,7 @@ var require_lib2 = __commonJS({
         req.on("response", function(res) {
           clearTimeout(reqTimeout);
           const headers = createHeadersLenient(res.headers);
-          if (fetch2.isRedirect(res.statusCode)) {
+          if (fetch.isRedirect(res.statusCode)) {
             const location = headers.get("Location");
             let locationURL = null;
             try {
@@ -2905,7 +2961,7 @@ var require_lib2 = __commonJS({
                   requestOpts.body = void 0;
                   requestOpts.headers.delete("content-length");
                 }
-                resolve(fetch2(new Request(locationURL, requestOpts)));
+                resolve(fetch(new Request(locationURL, requestOpts)));
                 finalize();
                 return;
             }
@@ -2997,11 +3053,11 @@ var require_lib2 = __commonJS({
         stream.end();
       }
     }
-    fetch2.isRedirect = function(code) {
+    fetch.isRedirect = function(code) {
       return code === 301 || code === 302 || code === 303 || code === 307 || code === 308;
     };
-    fetch2.Promise = global.Promise;
-    module2.exports = exports2 = fetch2;
+    fetch.Promise = global.Promise;
+    module2.exports = exports2 = fetch;
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.default = exports2;
     exports2.Headers = Headers;
@@ -3012,87 +3068,6231 @@ var require_lib2 = __commonJS({
   }
 });
 
-// netlify/functions/groq.cjs
-var fetch = require_lib2();
-exports.handler = async (event, context) => {
-  context.callbackWaitsForEmptyEventLoop = false;
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Content-Type": "application/json"
-  };
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, headers, body: "" };
+// node_modules/formdata-node/node_modules/web-streams-polyfill/dist/ponyfill.js
+var require_ponyfill = __commonJS({
+  "node_modules/formdata-node/node_modules/web-streams-polyfill/dist/ponyfill.js"(exports2, module2) {
+    !(function(e, t) {
+      "object" == typeof exports2 && "undefined" != typeof module2 ? t(exports2) : "function" == typeof define && define.amd ? define(["exports"], t) : t((e = "undefined" != typeof globalThis ? globalThis : e || self).WebStreamsPolyfill = {});
+    })(exports2, (function(e) {
+      "use strict";
+      const t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? Symbol : (e2) => `Symbol(${e2})`;
+      function r() {
+      }
+      function o(e2) {
+        return "object" == typeof e2 && null !== e2 || "function" == typeof e2;
+      }
+      const n = r;
+      function a(e2, t2) {
+        try {
+          Object.defineProperty(e2, "name", { value: t2, configurable: true });
+        } catch (e3) {
+        }
+      }
+      const i = Promise, l = Promise.prototype.then, s = Promise.resolve.bind(i), u = Promise.reject.bind(i);
+      function c(e2) {
+        return new i(e2);
+      }
+      function d(e2) {
+        return s(e2);
+      }
+      function f(e2) {
+        return u(e2);
+      }
+      function b(e2, t2, r2) {
+        return l.call(e2, t2, r2);
+      }
+      function h(e2, t2, r2) {
+        b(b(e2, t2, r2), void 0, n);
+      }
+      function _(e2, t2) {
+        h(e2, t2);
+      }
+      function p(e2, t2) {
+        h(e2, void 0, t2);
+      }
+      function m(e2, t2, r2) {
+        return b(e2, t2, r2);
+      }
+      function y(e2) {
+        b(e2, void 0, n);
+      }
+      let g = (e2) => {
+        if ("function" == typeof queueMicrotask) g = queueMicrotask;
+        else {
+          const e3 = d(void 0);
+          g = (t2) => b(e3, t2);
+        }
+        return g(e2);
+      };
+      function S(e2, t2, r2) {
+        if ("function" != typeof e2) throw new TypeError("Argument is not a function");
+        return Function.prototype.apply.call(e2, t2, r2);
+      }
+      function w(e2, t2, r2) {
+        try {
+          return d(S(e2, t2, r2));
+        } catch (e3) {
+          return f(e3);
+        }
+      }
+      class v {
+        constructor() {
+          this._cursor = 0, this._size = 0, this._front = { _elements: [], _next: void 0 }, this._back = this._front, this._cursor = 0, this._size = 0;
+        }
+        get length() {
+          return this._size;
+        }
+        push(e2) {
+          const t2 = this._back;
+          let r2 = t2;
+          16383 === t2._elements.length && (r2 = { _elements: [], _next: void 0 }), t2._elements.push(e2), r2 !== t2 && (this._back = r2, t2._next = r2), ++this._size;
+        }
+        shift() {
+          const e2 = this._front;
+          let t2 = e2;
+          const r2 = this._cursor;
+          let o2 = r2 + 1;
+          const n2 = e2._elements, a2 = n2[r2];
+          return 16384 === o2 && (t2 = e2._next, o2 = 0), --this._size, this._cursor = o2, e2 !== t2 && (this._front = t2), n2[r2] = void 0, a2;
+        }
+        forEach(e2) {
+          let t2 = this._cursor, r2 = this._front, o2 = r2._elements;
+          for (; !(t2 === o2.length && void 0 === r2._next || t2 === o2.length && (r2 = r2._next, o2 = r2._elements, t2 = 0, 0 === o2.length)); ) e2(o2[t2]), ++t2;
+        }
+        peek() {
+          const e2 = this._front, t2 = this._cursor;
+          return e2._elements[t2];
+        }
+      }
+      const R = t("[[AbortSteps]]"), T = t("[[ErrorSteps]]"), q = t("[[CancelSteps]]"), C = t("[[PullSteps]]"), P = t("[[ReleaseSteps]]");
+      function E(e2, t2) {
+        e2._ownerReadableStream = t2, t2._reader = e2, "readable" === t2._state ? B(e2) : "closed" === t2._state ? (function(e3) {
+          B(e3), z(e3);
+        })(e2) : A(e2, t2._storedError);
+      }
+      function W(e2, t2) {
+        return Xt(e2._ownerReadableStream, t2);
+      }
+      function O(e2) {
+        const t2 = e2._ownerReadableStream;
+        "readable" === t2._state ? j(e2, new TypeError("Reader was released and can no longer be used to monitor the stream's closedness")) : (function(e3, t3) {
+          A(e3, t3);
+        })(e2, new TypeError("Reader was released and can no longer be used to monitor the stream's closedness")), t2._readableStreamController[P](), t2._reader = void 0, e2._ownerReadableStream = void 0;
+      }
+      function k(e2) {
+        return new TypeError("Cannot " + e2 + " a stream using a released reader");
+      }
+      function B(e2) {
+        e2._closedPromise = c(((t2, r2) => {
+          e2._closedPromise_resolve = t2, e2._closedPromise_reject = r2;
+        }));
+      }
+      function A(e2, t2) {
+        B(e2), j(e2, t2);
+      }
+      function j(e2, t2) {
+        void 0 !== e2._closedPromise_reject && (y(e2._closedPromise), e2._closedPromise_reject(t2), e2._closedPromise_resolve = void 0, e2._closedPromise_reject = void 0);
+      }
+      function z(e2) {
+        void 0 !== e2._closedPromise_resolve && (e2._closedPromise_resolve(void 0), e2._closedPromise_resolve = void 0, e2._closedPromise_reject = void 0);
+      }
+      const L = Number.isFinite || function(e2) {
+        return "number" == typeof e2 && isFinite(e2);
+      }, F = Math.trunc || function(e2) {
+        return e2 < 0 ? Math.ceil(e2) : Math.floor(e2);
+      };
+      function D(e2, t2) {
+        if (void 0 !== e2 && ("object" != typeof (r2 = e2) && "function" != typeof r2)) throw new TypeError(`${t2} is not an object.`);
+        var r2;
+      }
+      function I(e2, t2) {
+        if ("function" != typeof e2) throw new TypeError(`${t2} is not a function.`);
+      }
+      function $(e2, t2) {
+        if (!/* @__PURE__ */ (function(e3) {
+          return "object" == typeof e3 && null !== e3 || "function" == typeof e3;
+        })(e2)) throw new TypeError(`${t2} is not an object.`);
+      }
+      function M(e2, t2, r2) {
+        if (void 0 === e2) throw new TypeError(`Parameter ${t2} is required in '${r2}'.`);
+      }
+      function Y(e2, t2, r2) {
+        if (void 0 === e2) throw new TypeError(`${t2} is required in '${r2}'.`);
+      }
+      function Q(e2) {
+        return Number(e2);
+      }
+      function N(e2) {
+        return 0 === e2 ? 0 : e2;
+      }
+      function x(e2, t2) {
+        const r2 = Number.MAX_SAFE_INTEGER;
+        let o2 = Number(e2);
+        if (o2 = N(o2), !L(o2)) throw new TypeError(`${t2} is not a finite number`);
+        if (o2 = (function(e3) {
+          return N(F(e3));
+        })(o2), o2 < 0 || o2 > r2) throw new TypeError(`${t2} is outside the accepted range of 0 to ${r2}, inclusive`);
+        return L(o2) && 0 !== o2 ? o2 : 0;
+      }
+      function H(e2) {
+        if (!o(e2)) return false;
+        if ("function" != typeof e2.getReader) return false;
+        try {
+          return "boolean" == typeof e2.locked;
+        } catch (e3) {
+          return false;
+        }
+      }
+      function V(e2) {
+        if (!o(e2)) return false;
+        if ("function" != typeof e2.getWriter) return false;
+        try {
+          return "boolean" == typeof e2.locked;
+        } catch (e3) {
+          return false;
+        }
+      }
+      function U(e2, t2) {
+        if (!Ut(e2)) throw new TypeError(`${t2} is not a ReadableStream.`);
+      }
+      function G(e2, t2) {
+        e2._reader._readRequests.push(t2);
+      }
+      function X(e2, t2, r2) {
+        const o2 = e2._reader._readRequests.shift();
+        r2 ? o2._closeSteps() : o2._chunkSteps(t2);
+      }
+      function J(e2) {
+        return e2._reader._readRequests.length;
+      }
+      function K(e2) {
+        const t2 = e2._reader;
+        return void 0 !== t2 && !!Z(t2);
+      }
+      class ReadableStreamDefaultReader {
+        constructor(e2) {
+          if (M(e2, 1, "ReadableStreamDefaultReader"), U(e2, "First parameter"), Gt(e2)) throw new TypeError("This stream has already been locked for exclusive reading by another reader");
+          E(this, e2), this._readRequests = new v();
+        }
+        get closed() {
+          return Z(this) ? this._closedPromise : f(te("closed"));
+        }
+        cancel(e2) {
+          return Z(this) ? void 0 === this._ownerReadableStream ? f(k("cancel")) : W(this, e2) : f(te("cancel"));
+        }
+        read() {
+          if (!Z(this)) return f(te("read"));
+          if (void 0 === this._ownerReadableStream) return f(k("read from"));
+          let e2, t2;
+          const r2 = c(((r3, o2) => {
+            e2 = r3, t2 = o2;
+          }));
+          return (function(e3, t3) {
+            const r3 = e3._ownerReadableStream;
+            r3._disturbed = true, "closed" === r3._state ? t3._closeSteps() : "errored" === r3._state ? t3._errorSteps(r3._storedError) : r3._readableStreamController[C](t3);
+          })(this, { _chunkSteps: (t3) => e2({ value: t3, done: false }), _closeSteps: () => e2({ value: void 0, done: true }), _errorSteps: (e3) => t2(e3) }), r2;
+        }
+        releaseLock() {
+          if (!Z(this)) throw te("releaseLock");
+          void 0 !== this._ownerReadableStream && (function(e2) {
+            O(e2);
+            const t2 = new TypeError("Reader was released");
+            ee(e2, t2);
+          })(this);
+        }
+      }
+      function Z(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_readRequests") && e2 instanceof ReadableStreamDefaultReader);
+      }
+      function ee(e2, t2) {
+        const r2 = e2._readRequests;
+        e2._readRequests = new v(), r2.forEach(((e3) => {
+          e3._errorSteps(t2);
+        }));
+      }
+      function te(e2) {
+        return new TypeError(`ReadableStreamDefaultReader.prototype.${e2} can only be used on a ReadableStreamDefaultReader`);
+      }
+      Object.defineProperties(ReadableStreamDefaultReader.prototype, { cancel: { enumerable: true }, read: { enumerable: true }, releaseLock: { enumerable: true }, closed: { enumerable: true } }), a(ReadableStreamDefaultReader.prototype.cancel, "cancel"), a(ReadableStreamDefaultReader.prototype.read, "read"), a(ReadableStreamDefaultReader.prototype.releaseLock, "releaseLock"), "symbol" == typeof t.toStringTag && Object.defineProperty(ReadableStreamDefaultReader.prototype, t.toStringTag, { value: "ReadableStreamDefaultReader", configurable: true });
+      class re {
+        constructor(e2, t2) {
+          this._ongoingPromise = void 0, this._isFinished = false, this._reader = e2, this._preventCancel = t2;
+        }
+        next() {
+          const e2 = () => this._nextSteps();
+          return this._ongoingPromise = this._ongoingPromise ? m(this._ongoingPromise, e2, e2) : e2(), this._ongoingPromise;
+        }
+        return(e2) {
+          const t2 = () => this._returnSteps(e2);
+          return this._ongoingPromise ? m(this._ongoingPromise, t2, t2) : t2();
+        }
+        _nextSteps() {
+          if (this._isFinished) return Promise.resolve({ value: void 0, done: true });
+          const e2 = this._reader;
+          return void 0 === e2 ? f(k("iterate")) : b(e2.read(), ((e3) => {
+            var t2;
+            return this._ongoingPromise = void 0, e3.done && (this._isFinished = true, null === (t2 = this._reader) || void 0 === t2 || t2.releaseLock(), this._reader = void 0), e3;
+          }), ((e3) => {
+            var t2;
+            throw this._ongoingPromise = void 0, this._isFinished = true, null === (t2 = this._reader) || void 0 === t2 || t2.releaseLock(), this._reader = void 0, e3;
+          }));
+        }
+        _returnSteps(e2) {
+          if (this._isFinished) return Promise.resolve({ value: e2, done: true });
+          this._isFinished = true;
+          const t2 = this._reader;
+          if (void 0 === t2) return f(k("finish iterating"));
+          if (this._reader = void 0, !this._preventCancel) {
+            const r2 = t2.cancel(e2);
+            return t2.releaseLock(), m(r2, (() => ({ value: e2, done: true })));
+          }
+          return t2.releaseLock(), d({ value: e2, done: true });
+        }
+      }
+      const oe = { next() {
+        return ne(this) ? this._asyncIteratorImpl.next() : f(ae("next"));
+      }, return(e2) {
+        return ne(this) ? this._asyncIteratorImpl.return(e2) : f(ae("return"));
+      } };
+      function ne(e2) {
+        if (!o(e2)) return false;
+        if (!Object.prototype.hasOwnProperty.call(e2, "_asyncIteratorImpl")) return false;
+        try {
+          return e2._asyncIteratorImpl instanceof re;
+        } catch (e3) {
+          return false;
+        }
+      }
+      function ae(e2) {
+        return new TypeError(`ReadableStreamAsyncIterator.${e2} can only be used on a ReadableSteamAsyncIterator`);
+      }
+      "symbol" == typeof t.asyncIterator && Object.defineProperty(oe, t.asyncIterator, { value() {
+        return this;
+      }, writable: true, configurable: true });
+      const ie = Number.isNaN || function(e2) {
+        return e2 != e2;
+      };
+      function le(e2, t2, r2, o2, n2) {
+        new Uint8Array(e2).set(new Uint8Array(r2, o2, n2), t2);
+      }
+      function se(e2) {
+        const t2 = (function(e3, t3, r2) {
+          if (e3.slice) return e3.slice(t3, r2);
+          const o2 = r2 - t3, n2 = new ArrayBuffer(o2);
+          return le(n2, 0, e3, t3, o2), n2;
+        })(e2.buffer, e2.byteOffset, e2.byteOffset + e2.byteLength);
+        return new Uint8Array(t2);
+      }
+      function ue(e2) {
+        const t2 = e2._queue.shift();
+        return e2._queueTotalSize -= t2.size, e2._queueTotalSize < 0 && (e2._queueTotalSize = 0), t2.value;
+      }
+      function ce(e2, t2, r2) {
+        if ("number" != typeof (o2 = r2) || ie(o2) || o2 < 0 || r2 === 1 / 0) throw new RangeError("Size must be a finite, non-NaN, non-negative number.");
+        var o2;
+        e2._queue.push({ value: t2, size: r2 }), e2._queueTotalSize += r2;
+      }
+      function de(e2) {
+        e2._queue = new v(), e2._queueTotalSize = 0;
+      }
+      class ReadableStreamBYOBRequest {
+        constructor() {
+          throw new TypeError("Illegal constructor");
+        }
+        get view() {
+          if (!be(this)) throw Ae("view");
+          return this._view;
+        }
+        respond(e2) {
+          if (!be(this)) throw Ae("respond");
+          if (M(e2, 1, "respond"), e2 = x(e2, "First parameter"), void 0 === this._associatedReadableByteStreamController) throw new TypeError("This BYOB request has been invalidated");
+          this._view.buffer, (function(e3, t2) {
+            const r2 = e3._pendingPullIntos.peek();
+            if ("closed" === e3._controlledReadableByteStream._state) {
+              if (0 !== t2) throw new TypeError("bytesWritten must be 0 when calling respond() on a closed stream");
+            } else {
+              if (0 === t2) throw new TypeError("bytesWritten must be greater than 0 when calling respond() on a readable stream");
+              if (r2.bytesFilled + t2 > r2.byteLength) throw new RangeError("bytesWritten out of range");
+            }
+            r2.buffer = r2.buffer, Ce(e3, t2);
+          })(this._associatedReadableByteStreamController, e2);
+        }
+        respondWithNewView(e2) {
+          if (!be(this)) throw Ae("respondWithNewView");
+          if (M(e2, 1, "respondWithNewView"), !ArrayBuffer.isView(e2)) throw new TypeError("You can only respond with array buffer views");
+          if (void 0 === this._associatedReadableByteStreamController) throw new TypeError("This BYOB request has been invalidated");
+          e2.buffer, (function(e3, t2) {
+            const r2 = e3._pendingPullIntos.peek();
+            if ("closed" === e3._controlledReadableByteStream._state) {
+              if (0 !== t2.byteLength) throw new TypeError("The view's length must be 0 when calling respondWithNewView() on a closed stream");
+            } else if (0 === t2.byteLength) throw new TypeError("The view's length must be greater than 0 when calling respondWithNewView() on a readable stream");
+            if (r2.byteOffset + r2.bytesFilled !== t2.byteOffset) throw new RangeError("The region specified by view does not match byobRequest");
+            if (r2.bufferByteLength !== t2.buffer.byteLength) throw new RangeError("The buffer of view has different capacity than byobRequest");
+            if (r2.bytesFilled + t2.byteLength > r2.byteLength) throw new RangeError("The region specified by view is larger than byobRequest");
+            const o2 = t2.byteLength;
+            r2.buffer = t2.buffer, Ce(e3, o2);
+          })(this._associatedReadableByteStreamController, e2);
+        }
+      }
+      Object.defineProperties(ReadableStreamBYOBRequest.prototype, { respond: { enumerable: true }, respondWithNewView: { enumerable: true }, view: { enumerable: true } }), a(ReadableStreamBYOBRequest.prototype.respond, "respond"), a(ReadableStreamBYOBRequest.prototype.respondWithNewView, "respondWithNewView"), "symbol" == typeof t.toStringTag && Object.defineProperty(ReadableStreamBYOBRequest.prototype, t.toStringTag, { value: "ReadableStreamBYOBRequest", configurable: true });
+      class ReadableByteStreamController {
+        constructor() {
+          throw new TypeError("Illegal constructor");
+        }
+        get byobRequest() {
+          if (!fe(this)) throw je("byobRequest");
+          return (function(e2) {
+            if (null === e2._byobRequest && e2._pendingPullIntos.length > 0) {
+              const t2 = e2._pendingPullIntos.peek(), r2 = new Uint8Array(t2.buffer, t2.byteOffset + t2.bytesFilled, t2.byteLength - t2.bytesFilled), o2 = Object.create(ReadableStreamBYOBRequest.prototype);
+              !(function(e3, t3, r3) {
+                e3._associatedReadableByteStreamController = t3, e3._view = r3;
+              })(o2, e2, r2), e2._byobRequest = o2;
+            }
+            return e2._byobRequest;
+          })(this);
+        }
+        get desiredSize() {
+          if (!fe(this)) throw je("desiredSize");
+          return ke(this);
+        }
+        close() {
+          if (!fe(this)) throw je("close");
+          if (this._closeRequested) throw new TypeError("The stream has already been closed; do not close it again!");
+          const e2 = this._controlledReadableByteStream._state;
+          if ("readable" !== e2) throw new TypeError(`The stream (in ${e2} state) is not in the readable state and cannot be closed`);
+          !(function(e3) {
+            const t2 = e3._controlledReadableByteStream;
+            if (e3._closeRequested || "readable" !== t2._state) return;
+            if (e3._queueTotalSize > 0) return void (e3._closeRequested = true);
+            if (e3._pendingPullIntos.length > 0) {
+              if (e3._pendingPullIntos.peek().bytesFilled > 0) {
+                const t3 = new TypeError("Insufficient bytes to fill elements in the given buffer");
+                throw We(e3, t3), t3;
+              }
+            }
+            Ee(e3), Jt(t2);
+          })(this);
+        }
+        enqueue(e2) {
+          if (!fe(this)) throw je("enqueue");
+          if (M(e2, 1, "enqueue"), !ArrayBuffer.isView(e2)) throw new TypeError("chunk must be an array buffer view");
+          if (0 === e2.byteLength) throw new TypeError("chunk must have non-zero byteLength");
+          if (0 === e2.buffer.byteLength) throw new TypeError("chunk's buffer must have non-zero byteLength");
+          if (this._closeRequested) throw new TypeError("stream is closed or draining");
+          const t2 = this._controlledReadableByteStream._state;
+          if ("readable" !== t2) throw new TypeError(`The stream (in ${t2} state) is not in the readable state and cannot be enqueued to`);
+          !(function(e3, t3) {
+            const r2 = e3._controlledReadableByteStream;
+            if (e3._closeRequested || "readable" !== r2._state) return;
+            const o2 = t3.buffer, n2 = t3.byteOffset, a2 = t3.byteLength, i2 = o2;
+            if (e3._pendingPullIntos.length > 0) {
+              const t4 = e3._pendingPullIntos.peek();
+              t4.buffer, 0, Te(e3), t4.buffer = t4.buffer, "none" === t4.readerType && Se(e3, t4);
+            }
+            if (K(r2)) if ((function(e4) {
+              const t4 = e4._controlledReadableByteStream._reader;
+              for (; t4._readRequests.length > 0; ) {
+                if (0 === e4._queueTotalSize) return;
+                Oe(e4, t4._readRequests.shift());
+              }
+            })(e3), 0 === J(r2)) ye(e3, i2, n2, a2);
+            else {
+              e3._pendingPullIntos.length > 0 && Pe(e3);
+              X(r2, new Uint8Array(i2, n2, a2), false);
+            }
+            else Fe(r2) ? (ye(e3, i2, n2, a2), qe(e3)) : ye(e3, i2, n2, a2);
+            he(e3);
+          })(this, e2);
+        }
+        error(e2) {
+          if (!fe(this)) throw je("error");
+          We(this, e2);
+        }
+        [q](e2) {
+          _e(this), de(this);
+          const t2 = this._cancelAlgorithm(e2);
+          return Ee(this), t2;
+        }
+        [C](e2) {
+          const t2 = this._controlledReadableByteStream;
+          if (this._queueTotalSize > 0) return void Oe(this, e2);
+          const r2 = this._autoAllocateChunkSize;
+          if (void 0 !== r2) {
+            let t3;
+            try {
+              t3 = new ArrayBuffer(r2);
+            } catch (t4) {
+              return void e2._errorSteps(t4);
+            }
+            const o2 = { buffer: t3, bufferByteLength: r2, byteOffset: 0, byteLength: r2, bytesFilled: 0, elementSize: 1, viewConstructor: Uint8Array, readerType: "default" };
+            this._pendingPullIntos.push(o2);
+          }
+          G(t2, e2), he(this);
+        }
+        [P]() {
+          if (this._pendingPullIntos.length > 0) {
+            const e2 = this._pendingPullIntos.peek();
+            e2.readerType = "none", this._pendingPullIntos = new v(), this._pendingPullIntos.push(e2);
+          }
+        }
+      }
+      function fe(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_controlledReadableByteStream") && e2 instanceof ReadableByteStreamController);
+      }
+      function be(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_associatedReadableByteStreamController") && e2 instanceof ReadableStreamBYOBRequest);
+      }
+      function he(e2) {
+        const t2 = (function(e3) {
+          const t3 = e3._controlledReadableByteStream;
+          if ("readable" !== t3._state) return false;
+          if (e3._closeRequested) return false;
+          if (!e3._started) return false;
+          if (K(t3) && J(t3) > 0) return true;
+          if (Fe(t3) && Le(t3) > 0) return true;
+          if (ke(e3) > 0) return true;
+          return false;
+        })(e2);
+        if (!t2) return;
+        if (e2._pulling) return void (e2._pullAgain = true);
+        e2._pulling = true;
+        h(e2._pullAlgorithm(), (() => (e2._pulling = false, e2._pullAgain && (e2._pullAgain = false, he(e2)), null)), ((t3) => (We(e2, t3), null)));
+      }
+      function _e(e2) {
+        Te(e2), e2._pendingPullIntos = new v();
+      }
+      function pe(e2, t2) {
+        let r2 = false;
+        "closed" === e2._state && (r2 = true);
+        const o2 = me(t2);
+        "default" === t2.readerType ? X(e2, o2, r2) : (function(e3, t3, r3) {
+          const o3 = e3._reader._readIntoRequests.shift();
+          r3 ? o3._closeSteps(t3) : o3._chunkSteps(t3);
+        })(e2, o2, r2);
+      }
+      function me(e2) {
+        const t2 = e2.bytesFilled, r2 = e2.elementSize;
+        return new e2.viewConstructor(e2.buffer, e2.byteOffset, t2 / r2);
+      }
+      function ye(e2, t2, r2, o2) {
+        e2._queue.push({ buffer: t2, byteOffset: r2, byteLength: o2 }), e2._queueTotalSize += o2;
+      }
+      function ge(e2, t2, r2, o2) {
+        let n2;
+        try {
+          n2 = t2.slice(r2, r2 + o2);
+        } catch (t3) {
+          throw We(e2, t3), t3;
+        }
+        ye(e2, n2, 0, o2);
+      }
+      function Se(e2, t2) {
+        t2.bytesFilled > 0 && ge(e2, t2.buffer, t2.byteOffset, t2.bytesFilled), Pe(e2);
+      }
+      function we(e2, t2) {
+        const r2 = t2.elementSize, o2 = t2.bytesFilled - t2.bytesFilled % r2, n2 = Math.min(e2._queueTotalSize, t2.byteLength - t2.bytesFilled), a2 = t2.bytesFilled + n2, i2 = a2 - a2 % r2;
+        let l2 = n2, s2 = false;
+        i2 > o2 && (l2 = i2 - t2.bytesFilled, s2 = true);
+        const u2 = e2._queue;
+        for (; l2 > 0; ) {
+          const r3 = u2.peek(), o3 = Math.min(l2, r3.byteLength), n3 = t2.byteOffset + t2.bytesFilled;
+          le(t2.buffer, n3, r3.buffer, r3.byteOffset, o3), r3.byteLength === o3 ? u2.shift() : (r3.byteOffset += o3, r3.byteLength -= o3), e2._queueTotalSize -= o3, ve(e2, o3, t2), l2 -= o3;
+        }
+        return s2;
+      }
+      function ve(e2, t2, r2) {
+        r2.bytesFilled += t2;
+      }
+      function Re(e2) {
+        0 === e2._queueTotalSize && e2._closeRequested ? (Ee(e2), Jt(e2._controlledReadableByteStream)) : he(e2);
+      }
+      function Te(e2) {
+        null !== e2._byobRequest && (e2._byobRequest._associatedReadableByteStreamController = void 0, e2._byobRequest._view = null, e2._byobRequest = null);
+      }
+      function qe(e2) {
+        for (; e2._pendingPullIntos.length > 0; ) {
+          if (0 === e2._queueTotalSize) return;
+          const t2 = e2._pendingPullIntos.peek();
+          we(e2, t2) && (Pe(e2), pe(e2._controlledReadableByteStream, t2));
+        }
+      }
+      function Ce(e2, t2) {
+        const r2 = e2._pendingPullIntos.peek();
+        Te(e2);
+        "closed" === e2._controlledReadableByteStream._state ? (function(e3, t3) {
+          "none" === t3.readerType && Pe(e3);
+          const r3 = e3._controlledReadableByteStream;
+          if (Fe(r3)) for (; Le(r3) > 0; ) pe(r3, Pe(e3));
+        })(e2, r2) : (function(e3, t3, r3) {
+          if (ve(0, t3, r3), "none" === r3.readerType) return Se(e3, r3), void qe(e3);
+          if (r3.bytesFilled < r3.elementSize) return;
+          Pe(e3);
+          const o2 = r3.bytesFilled % r3.elementSize;
+          if (o2 > 0) {
+            const t4 = r3.byteOffset + r3.bytesFilled;
+            ge(e3, r3.buffer, t4 - o2, o2);
+          }
+          r3.bytesFilled -= o2, pe(e3._controlledReadableByteStream, r3), qe(e3);
+        })(e2, t2, r2), he(e2);
+      }
+      function Pe(e2) {
+        return e2._pendingPullIntos.shift();
+      }
+      function Ee(e2) {
+        e2._pullAlgorithm = void 0, e2._cancelAlgorithm = void 0;
+      }
+      function We(e2, t2) {
+        const r2 = e2._controlledReadableByteStream;
+        "readable" === r2._state && (_e(e2), de(e2), Ee(e2), Kt(r2, t2));
+      }
+      function Oe(e2, t2) {
+        const r2 = e2._queue.shift();
+        e2._queueTotalSize -= r2.byteLength, Re(e2);
+        const o2 = new Uint8Array(r2.buffer, r2.byteOffset, r2.byteLength);
+        t2._chunkSteps(o2);
+      }
+      function ke(e2) {
+        const t2 = e2._controlledReadableByteStream._state;
+        return "errored" === t2 ? null : "closed" === t2 ? 0 : e2._strategyHWM - e2._queueTotalSize;
+      }
+      function Be(e2, t2, r2) {
+        const o2 = Object.create(ReadableByteStreamController.prototype);
+        let n2, a2, i2;
+        n2 = void 0 !== t2.start ? () => t2.start(o2) : () => {
+        }, a2 = void 0 !== t2.pull ? () => t2.pull(o2) : () => d(void 0), i2 = void 0 !== t2.cancel ? (e3) => t2.cancel(e3) : () => d(void 0);
+        const l2 = t2.autoAllocateChunkSize;
+        if (0 === l2) throw new TypeError("autoAllocateChunkSize must be greater than 0");
+        !(function(e3, t3, r3, o3, n3, a3, i3) {
+          t3._controlledReadableByteStream = e3, t3._pullAgain = false, t3._pulling = false, t3._byobRequest = null, t3._queue = t3._queueTotalSize = void 0, de(t3), t3._closeRequested = false, t3._started = false, t3._strategyHWM = a3, t3._pullAlgorithm = o3, t3._cancelAlgorithm = n3, t3._autoAllocateChunkSize = i3, t3._pendingPullIntos = new v(), e3._readableStreamController = t3, h(d(r3()), (() => (t3._started = true, he(t3), null)), ((e4) => (We(t3, e4), null)));
+        })(e2, o2, n2, a2, i2, r2, l2);
+      }
+      function Ae(e2) {
+        return new TypeError(`ReadableStreamBYOBRequest.prototype.${e2} can only be used on a ReadableStreamBYOBRequest`);
+      }
+      function je(e2) {
+        return new TypeError(`ReadableByteStreamController.prototype.${e2} can only be used on a ReadableByteStreamController`);
+      }
+      function ze(e2, t2) {
+        e2._reader._readIntoRequests.push(t2);
+      }
+      function Le(e2) {
+        return e2._reader._readIntoRequests.length;
+      }
+      function Fe(e2) {
+        const t2 = e2._reader;
+        return void 0 !== t2 && !!De(t2);
+      }
+      Object.defineProperties(ReadableByteStreamController.prototype, { close: { enumerable: true }, enqueue: { enumerable: true }, error: { enumerable: true }, byobRequest: { enumerable: true }, desiredSize: { enumerable: true } }), a(ReadableByteStreamController.prototype.close, "close"), a(ReadableByteStreamController.prototype.enqueue, "enqueue"), a(ReadableByteStreamController.prototype.error, "error"), "symbol" == typeof t.toStringTag && Object.defineProperty(ReadableByteStreamController.prototype, t.toStringTag, { value: "ReadableByteStreamController", configurable: true });
+      class ReadableStreamBYOBReader {
+        constructor(e2) {
+          if (M(e2, 1, "ReadableStreamBYOBReader"), U(e2, "First parameter"), Gt(e2)) throw new TypeError("This stream has already been locked for exclusive reading by another reader");
+          if (!fe(e2._readableStreamController)) throw new TypeError("Cannot construct a ReadableStreamBYOBReader for a stream not constructed with a byte source");
+          E(this, e2), this._readIntoRequests = new v();
+        }
+        get closed() {
+          return De(this) ? this._closedPromise : f($e("closed"));
+        }
+        cancel(e2) {
+          return De(this) ? void 0 === this._ownerReadableStream ? f(k("cancel")) : W(this, e2) : f($e("cancel"));
+        }
+        read(e2) {
+          if (!De(this)) return f($e("read"));
+          if (!ArrayBuffer.isView(e2)) return f(new TypeError("view must be an array buffer view"));
+          if (0 === e2.byteLength) return f(new TypeError("view must have non-zero byteLength"));
+          if (0 === e2.buffer.byteLength) return f(new TypeError("view's buffer must have non-zero byteLength"));
+          if (e2.buffer, void 0 === this._ownerReadableStream) return f(k("read from"));
+          let t2, r2;
+          const o2 = c(((e3, o3) => {
+            t2 = e3, r2 = o3;
+          }));
+          return (function(e3, t3, r3) {
+            const o3 = e3._ownerReadableStream;
+            o3._disturbed = true, "errored" === o3._state ? r3._errorSteps(o3._storedError) : (function(e4, t4, r4) {
+              const o4 = e4._controlledReadableByteStream;
+              let n2 = 1;
+              t4.constructor !== DataView && (n2 = t4.constructor.BYTES_PER_ELEMENT);
+              const a2 = t4.constructor, i2 = t4.buffer, l2 = { buffer: i2, bufferByteLength: i2.byteLength, byteOffset: t4.byteOffset, byteLength: t4.byteLength, bytesFilled: 0, elementSize: n2, viewConstructor: a2, readerType: "byob" };
+              if (e4._pendingPullIntos.length > 0) return e4._pendingPullIntos.push(l2), void ze(o4, r4);
+              if ("closed" !== o4._state) {
+                if (e4._queueTotalSize > 0) {
+                  if (we(e4, l2)) {
+                    const t5 = me(l2);
+                    return Re(e4), void r4._chunkSteps(t5);
+                  }
+                  if (e4._closeRequested) {
+                    const t5 = new TypeError("Insufficient bytes to fill elements in the given buffer");
+                    return We(e4, t5), void r4._errorSteps(t5);
+                  }
+                }
+                e4._pendingPullIntos.push(l2), ze(o4, r4), he(e4);
+              } else {
+                const e5 = new a2(l2.buffer, l2.byteOffset, 0);
+                r4._closeSteps(e5);
+              }
+            })(o3._readableStreamController, t3, r3);
+          })(this, e2, { _chunkSteps: (e3) => t2({ value: e3, done: false }), _closeSteps: (e3) => t2({ value: e3, done: true }), _errorSteps: (e3) => r2(e3) }), o2;
+        }
+        releaseLock() {
+          if (!De(this)) throw $e("releaseLock");
+          void 0 !== this._ownerReadableStream && (function(e2) {
+            O(e2);
+            const t2 = new TypeError("Reader was released");
+            Ie(e2, t2);
+          })(this);
+        }
+      }
+      function De(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_readIntoRequests") && e2 instanceof ReadableStreamBYOBReader);
+      }
+      function Ie(e2, t2) {
+        const r2 = e2._readIntoRequests;
+        e2._readIntoRequests = new v(), r2.forEach(((e3) => {
+          e3._errorSteps(t2);
+        }));
+      }
+      function $e(e2) {
+        return new TypeError(`ReadableStreamBYOBReader.prototype.${e2} can only be used on a ReadableStreamBYOBReader`);
+      }
+      function Me(e2, t2) {
+        const { highWaterMark: r2 } = e2;
+        if (void 0 === r2) return t2;
+        if (ie(r2) || r2 < 0) throw new RangeError("Invalid highWaterMark");
+        return r2;
+      }
+      function Ye(e2) {
+        const { size: t2 } = e2;
+        return t2 || (() => 1);
+      }
+      function Qe(e2, t2) {
+        D(e2, t2);
+        const r2 = null == e2 ? void 0 : e2.highWaterMark, o2 = null == e2 ? void 0 : e2.size;
+        return { highWaterMark: void 0 === r2 ? void 0 : Q(r2), size: void 0 === o2 ? void 0 : Ne(o2, `${t2} has member 'size' that`) };
+      }
+      function Ne(e2, t2) {
+        return I(e2, t2), (t3) => Q(e2(t3));
+      }
+      function xe(e2, t2, r2) {
+        return I(e2, r2), (r3) => w(e2, t2, [r3]);
+      }
+      function He(e2, t2, r2) {
+        return I(e2, r2), () => w(e2, t2, []);
+      }
+      function Ve(e2, t2, r2) {
+        return I(e2, r2), (r3) => S(e2, t2, [r3]);
+      }
+      function Ue(e2, t2, r2) {
+        return I(e2, r2), (r3, o2) => w(e2, t2, [r3, o2]);
+      }
+      Object.defineProperties(ReadableStreamBYOBReader.prototype, { cancel: { enumerable: true }, read: { enumerable: true }, releaseLock: { enumerable: true }, closed: { enumerable: true } }), a(ReadableStreamBYOBReader.prototype.cancel, "cancel"), a(ReadableStreamBYOBReader.prototype.read, "read"), a(ReadableStreamBYOBReader.prototype.releaseLock, "releaseLock"), "symbol" == typeof t.toStringTag && Object.defineProperty(ReadableStreamBYOBReader.prototype, t.toStringTag, { value: "ReadableStreamBYOBReader", configurable: true });
+      const Ge = "function" == typeof AbortController;
+      class WritableStream {
+        constructor(e2 = {}, t2 = {}) {
+          void 0 === e2 ? e2 = null : $(e2, "First parameter");
+          const r2 = Qe(t2, "Second parameter"), o2 = (function(e3, t3) {
+            D(e3, t3);
+            const r3 = null == e3 ? void 0 : e3.abort, o3 = null == e3 ? void 0 : e3.close, n3 = null == e3 ? void 0 : e3.start, a3 = null == e3 ? void 0 : e3.type, i2 = null == e3 ? void 0 : e3.write;
+            return { abort: void 0 === r3 ? void 0 : xe(r3, e3, `${t3} has member 'abort' that`), close: void 0 === o3 ? void 0 : He(o3, e3, `${t3} has member 'close' that`), start: void 0 === n3 ? void 0 : Ve(n3, e3, `${t3} has member 'start' that`), write: void 0 === i2 ? void 0 : Ue(i2, e3, `${t3} has member 'write' that`), type: a3 };
+          })(e2, "First parameter");
+          var n2;
+          (n2 = this)._state = "writable", n2._storedError = void 0, n2._writer = void 0, n2._writableStreamController = void 0, n2._writeRequests = new v(), n2._inFlightWriteRequest = void 0, n2._closeRequest = void 0, n2._inFlightCloseRequest = void 0, n2._pendingAbortRequest = void 0, n2._backpressure = false;
+          if (void 0 !== o2.type) throw new RangeError("Invalid type is specified");
+          const a2 = Ye(r2);
+          !(function(e3, t3, r3, o3) {
+            const n3 = Object.create(WritableStreamDefaultController.prototype);
+            let a3, i2, l2, s2;
+            a3 = void 0 !== t3.start ? () => t3.start(n3) : () => {
+            };
+            i2 = void 0 !== t3.write ? (e4) => t3.write(e4, n3) : () => d(void 0);
+            l2 = void 0 !== t3.close ? () => t3.close() : () => d(void 0);
+            s2 = void 0 !== t3.abort ? (e4) => t3.abort(e4) : () => d(void 0);
+            !(function(e4, t4, r4, o4, n4, a4, i3, l3) {
+              t4._controlledWritableStream = e4, e4._writableStreamController = t4, t4._queue = void 0, t4._queueTotalSize = void 0, de(t4), t4._abortReason = void 0, t4._abortController = (function() {
+                if (Ge) return new AbortController();
+              })(), t4._started = false, t4._strategySizeAlgorithm = l3, t4._strategyHWM = i3, t4._writeAlgorithm = o4, t4._closeAlgorithm = n4, t4._abortAlgorithm = a4;
+              const s3 = ht(t4);
+              at(e4, s3);
+              const u2 = r4();
+              h(d(u2), (() => (t4._started = true, ft(t4), null)), ((r5) => (t4._started = true, et(e4, r5), null)));
+            })(e3, n3, a3, i2, l2, s2, r3, o3);
+          })(this, o2, Me(r2, 1), a2);
+        }
+        get locked() {
+          if (!Xe(this)) throw pt("locked");
+          return Je(this);
+        }
+        abort(e2) {
+          return Xe(this) ? Je(this) ? f(new TypeError("Cannot abort a stream that already has a writer")) : Ke(this, e2) : f(pt("abort"));
+        }
+        close() {
+          return Xe(this) ? Je(this) ? f(new TypeError("Cannot close a stream that already has a writer")) : ot(this) ? f(new TypeError("Cannot close an already-closing stream")) : Ze(this) : f(pt("close"));
+        }
+        getWriter() {
+          if (!Xe(this)) throw pt("getWriter");
+          return new WritableStreamDefaultWriter(this);
+        }
+      }
+      function Xe(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_writableStreamController") && e2 instanceof WritableStream);
+      }
+      function Je(e2) {
+        return void 0 !== e2._writer;
+      }
+      function Ke(e2, t2) {
+        var r2;
+        if ("closed" === e2._state || "errored" === e2._state) return d(void 0);
+        e2._writableStreamController._abortReason = t2, null === (r2 = e2._writableStreamController._abortController) || void 0 === r2 || r2.abort(t2);
+        const o2 = e2._state;
+        if ("closed" === o2 || "errored" === o2) return d(void 0);
+        if (void 0 !== e2._pendingAbortRequest) return e2._pendingAbortRequest._promise;
+        let n2 = false;
+        "erroring" === o2 && (n2 = true, t2 = void 0);
+        const a2 = c(((r3, o3) => {
+          e2._pendingAbortRequest = { _promise: void 0, _resolve: r3, _reject: o3, _reason: t2, _wasAlreadyErroring: n2 };
+        }));
+        return e2._pendingAbortRequest._promise = a2, n2 || tt(e2, t2), a2;
+      }
+      function Ze(e2) {
+        const t2 = e2._state;
+        if ("closed" === t2 || "errored" === t2) return f(new TypeError(`The stream (in ${t2} state) is not in the writable state and cannot be closed`));
+        const r2 = c(((t3, r3) => {
+          const o3 = { _resolve: t3, _reject: r3 };
+          e2._closeRequest = o3;
+        })), o2 = e2._writer;
+        var n2;
+        return void 0 !== o2 && e2._backpressure && "writable" === t2 && Et(o2), ce(n2 = e2._writableStreamController, st, 0), ft(n2), r2;
+      }
+      function et(e2, t2) {
+        "writable" !== e2._state ? rt(e2) : tt(e2, t2);
+      }
+      function tt(e2, t2) {
+        const r2 = e2._writableStreamController;
+        e2._state = "erroring", e2._storedError = t2;
+        const o2 = e2._writer;
+        void 0 !== o2 && lt(o2, t2), !(function(e3) {
+          if (void 0 === e3._inFlightWriteRequest && void 0 === e3._inFlightCloseRequest) return false;
+          return true;
+        })(e2) && r2._started && rt(e2);
+      }
+      function rt(e2) {
+        e2._state = "errored", e2._writableStreamController[T]();
+        const t2 = e2._storedError;
+        if (e2._writeRequests.forEach(((e3) => {
+          e3._reject(t2);
+        })), e2._writeRequests = new v(), void 0 === e2._pendingAbortRequest) return void nt(e2);
+        const r2 = e2._pendingAbortRequest;
+        if (e2._pendingAbortRequest = void 0, r2._wasAlreadyErroring) return r2._reject(t2), void nt(e2);
+        h(e2._writableStreamController[R](r2._reason), (() => (r2._resolve(), nt(e2), null)), ((t3) => (r2._reject(t3), nt(e2), null)));
+      }
+      function ot(e2) {
+        return void 0 !== e2._closeRequest || void 0 !== e2._inFlightCloseRequest;
+      }
+      function nt(e2) {
+        void 0 !== e2._closeRequest && (e2._closeRequest._reject(e2._storedError), e2._closeRequest = void 0);
+        const t2 = e2._writer;
+        void 0 !== t2 && vt(t2, e2._storedError);
+      }
+      function at(e2, t2) {
+        const r2 = e2._writer;
+        void 0 !== r2 && t2 !== e2._backpressure && (t2 ? (function(e3) {
+          Tt(e3);
+        })(r2) : Et(r2)), e2._backpressure = t2;
+      }
+      Object.defineProperties(WritableStream.prototype, { abort: { enumerable: true }, close: { enumerable: true }, getWriter: { enumerable: true }, locked: { enumerable: true } }), a(WritableStream.prototype.abort, "abort"), a(WritableStream.prototype.close, "close"), a(WritableStream.prototype.getWriter, "getWriter"), "symbol" == typeof t.toStringTag && Object.defineProperty(WritableStream.prototype, t.toStringTag, { value: "WritableStream", configurable: true });
+      class WritableStreamDefaultWriter {
+        constructor(e2) {
+          if (M(e2, 1, "WritableStreamDefaultWriter"), (function(e3, t3) {
+            if (!Xe(e3)) throw new TypeError(`${t3} is not a WritableStream.`);
+          })(e2, "First parameter"), Je(e2)) throw new TypeError("This stream has already been locked for exclusive writing by another writer");
+          this._ownerWritableStream = e2, e2._writer = this;
+          const t2 = e2._state;
+          if ("writable" === t2) !ot(e2) && e2._backpressure ? Tt(this) : Ct(this), St(this);
+          else if ("erroring" === t2) qt(this, e2._storedError), St(this);
+          else if ("closed" === t2) Ct(this), St(r2 = this), Rt(r2);
+          else {
+            const t3 = e2._storedError;
+            qt(this, t3), wt(this, t3);
+          }
+          var r2;
+        }
+        get closed() {
+          return it(this) ? this._closedPromise : f(yt("closed"));
+        }
+        get desiredSize() {
+          if (!it(this)) throw yt("desiredSize");
+          if (void 0 === this._ownerWritableStream) throw gt("desiredSize");
+          return (function(e2) {
+            const t2 = e2._ownerWritableStream, r2 = t2._state;
+            if ("errored" === r2 || "erroring" === r2) return null;
+            if ("closed" === r2) return 0;
+            return dt(t2._writableStreamController);
+          })(this);
+        }
+        get ready() {
+          return it(this) ? this._readyPromise : f(yt("ready"));
+        }
+        abort(e2) {
+          return it(this) ? void 0 === this._ownerWritableStream ? f(gt("abort")) : (function(e3, t2) {
+            return Ke(e3._ownerWritableStream, t2);
+          })(this, e2) : f(yt("abort"));
+        }
+        close() {
+          if (!it(this)) return f(yt("close"));
+          const e2 = this._ownerWritableStream;
+          return void 0 === e2 ? f(gt("close")) : ot(e2) ? f(new TypeError("Cannot close an already-closing stream")) : Ze(this._ownerWritableStream);
+        }
+        releaseLock() {
+          if (!it(this)) throw yt("releaseLock");
+          void 0 !== this._ownerWritableStream && (function(e2) {
+            const t2 = e2._ownerWritableStream, r2 = new TypeError("Writer was released and can no longer be used to monitor the stream's closedness");
+            lt(e2, r2), (function(e3, t3) {
+              "pending" === e3._closedPromiseState ? vt(e3, t3) : (function(e4, t4) {
+                wt(e4, t4);
+              })(e3, t3);
+            })(e2, r2), t2._writer = void 0, e2._ownerWritableStream = void 0;
+          })(this);
+        }
+        write(e2) {
+          return it(this) ? void 0 === this._ownerWritableStream ? f(gt("write to")) : (function(e3, t2) {
+            const r2 = e3._ownerWritableStream, o2 = r2._writableStreamController, n2 = (function(e4, t3) {
+              try {
+                return e4._strategySizeAlgorithm(t3);
+              } catch (t4) {
+                return bt(e4, t4), 1;
+              }
+            })(o2, t2);
+            if (r2 !== e3._ownerWritableStream) return f(gt("write to"));
+            const a2 = r2._state;
+            if ("errored" === a2) return f(r2._storedError);
+            if (ot(r2) || "closed" === a2) return f(new TypeError("The stream is closing or closed and cannot be written to"));
+            if ("erroring" === a2) return f(r2._storedError);
+            const i2 = (function(e4) {
+              return c(((t3, r3) => {
+                const o3 = { _resolve: t3, _reject: r3 };
+                e4._writeRequests.push(o3);
+              }));
+            })(r2);
+            return (function(e4, t3, r3) {
+              try {
+                ce(e4, t3, r3);
+              } catch (t4) {
+                return void bt(e4, t4);
+              }
+              const o3 = e4._controlledWritableStream;
+              if (!ot(o3) && "writable" === o3._state) {
+                at(o3, ht(e4));
+              }
+              ft(e4);
+            })(o2, t2, n2), i2;
+          })(this, e2) : f(yt("write"));
+        }
+      }
+      function it(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_ownerWritableStream") && e2 instanceof WritableStreamDefaultWriter);
+      }
+      function lt(e2, t2) {
+        "pending" === e2._readyPromiseState ? Pt(e2, t2) : (function(e3, t3) {
+          qt(e3, t3);
+        })(e2, t2);
+      }
+      Object.defineProperties(WritableStreamDefaultWriter.prototype, { abort: { enumerable: true }, close: { enumerable: true }, releaseLock: { enumerable: true }, write: { enumerable: true }, closed: { enumerable: true }, desiredSize: { enumerable: true }, ready: { enumerable: true } }), a(WritableStreamDefaultWriter.prototype.abort, "abort"), a(WritableStreamDefaultWriter.prototype.close, "close"), a(WritableStreamDefaultWriter.prototype.releaseLock, "releaseLock"), a(WritableStreamDefaultWriter.prototype.write, "write"), "symbol" == typeof t.toStringTag && Object.defineProperty(WritableStreamDefaultWriter.prototype, t.toStringTag, { value: "WritableStreamDefaultWriter", configurable: true });
+      const st = {};
+      class WritableStreamDefaultController {
+        constructor() {
+          throw new TypeError("Illegal constructor");
+        }
+        get abortReason() {
+          if (!ut(this)) throw mt("abortReason");
+          return this._abortReason;
+        }
+        get signal() {
+          if (!ut(this)) throw mt("signal");
+          if (void 0 === this._abortController) throw new TypeError("WritableStreamDefaultController.prototype.signal is not supported");
+          return this._abortController.signal;
+        }
+        error(e2) {
+          if (!ut(this)) throw mt("error");
+          "writable" === this._controlledWritableStream._state && _t(this, e2);
+        }
+        [R](e2) {
+          const t2 = this._abortAlgorithm(e2);
+          return ct(this), t2;
+        }
+        [T]() {
+          de(this);
+        }
+      }
+      function ut(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_controlledWritableStream") && e2 instanceof WritableStreamDefaultController);
+      }
+      function ct(e2) {
+        e2._writeAlgorithm = void 0, e2._closeAlgorithm = void 0, e2._abortAlgorithm = void 0, e2._strategySizeAlgorithm = void 0;
+      }
+      function dt(e2) {
+        return e2._strategyHWM - e2._queueTotalSize;
+      }
+      function ft(e2) {
+        const t2 = e2._controlledWritableStream;
+        if (!e2._started) return;
+        if (void 0 !== t2._inFlightWriteRequest) return;
+        if ("erroring" === t2._state) return void rt(t2);
+        if (0 === e2._queue.length) return;
+        const r2 = e2._queue.peek().value;
+        r2 === st ? (function(e3) {
+          const t3 = e3._controlledWritableStream;
+          (function(e4) {
+            e4._inFlightCloseRequest = e4._closeRequest, e4._closeRequest = void 0;
+          })(t3), ue(e3);
+          const r3 = e3._closeAlgorithm();
+          ct(e3), h(r3, (() => ((function(e4) {
+            e4._inFlightCloseRequest._resolve(void 0), e4._inFlightCloseRequest = void 0, "erroring" === e4._state && (e4._storedError = void 0, void 0 !== e4._pendingAbortRequest && (e4._pendingAbortRequest._resolve(), e4._pendingAbortRequest = void 0)), e4._state = "closed";
+            const t4 = e4._writer;
+            void 0 !== t4 && Rt(t4);
+          })(t3), null)), ((e4) => ((function(e5, t4) {
+            e5._inFlightCloseRequest._reject(t4), e5._inFlightCloseRequest = void 0, void 0 !== e5._pendingAbortRequest && (e5._pendingAbortRequest._reject(t4), e5._pendingAbortRequest = void 0), et(e5, t4);
+          })(t3, e4), null)));
+        })(e2) : (function(e3, t3) {
+          const r3 = e3._controlledWritableStream;
+          !(function(e4) {
+            e4._inFlightWriteRequest = e4._writeRequests.shift();
+          })(r3);
+          h(e3._writeAlgorithm(t3), (() => {
+            !(function(e4) {
+              e4._inFlightWriteRequest._resolve(void 0), e4._inFlightWriteRequest = void 0;
+            })(r3);
+            const t4 = r3._state;
+            if (ue(e3), !ot(r3) && "writable" === t4) {
+              const t5 = ht(e3);
+              at(r3, t5);
+            }
+            return ft(e3), null;
+          }), ((t4) => ("writable" === r3._state && ct(e3), (function(e4, t5) {
+            e4._inFlightWriteRequest._reject(t5), e4._inFlightWriteRequest = void 0, et(e4, t5);
+          })(r3, t4), null)));
+        })(e2, r2);
+      }
+      function bt(e2, t2) {
+        "writable" === e2._controlledWritableStream._state && _t(e2, t2);
+      }
+      function ht(e2) {
+        return dt(e2) <= 0;
+      }
+      function _t(e2, t2) {
+        const r2 = e2._controlledWritableStream;
+        ct(e2), tt(r2, t2);
+      }
+      function pt(e2) {
+        return new TypeError(`WritableStream.prototype.${e2} can only be used on a WritableStream`);
+      }
+      function mt(e2) {
+        return new TypeError(`WritableStreamDefaultController.prototype.${e2} can only be used on a WritableStreamDefaultController`);
+      }
+      function yt(e2) {
+        return new TypeError(`WritableStreamDefaultWriter.prototype.${e2} can only be used on a WritableStreamDefaultWriter`);
+      }
+      function gt(e2) {
+        return new TypeError("Cannot " + e2 + " a stream using a released writer");
+      }
+      function St(e2) {
+        e2._closedPromise = c(((t2, r2) => {
+          e2._closedPromise_resolve = t2, e2._closedPromise_reject = r2, e2._closedPromiseState = "pending";
+        }));
+      }
+      function wt(e2, t2) {
+        St(e2), vt(e2, t2);
+      }
+      function vt(e2, t2) {
+        void 0 !== e2._closedPromise_reject && (y(e2._closedPromise), e2._closedPromise_reject(t2), e2._closedPromise_resolve = void 0, e2._closedPromise_reject = void 0, e2._closedPromiseState = "rejected");
+      }
+      function Rt(e2) {
+        void 0 !== e2._closedPromise_resolve && (e2._closedPromise_resolve(void 0), e2._closedPromise_resolve = void 0, e2._closedPromise_reject = void 0, e2._closedPromiseState = "resolved");
+      }
+      function Tt(e2) {
+        e2._readyPromise = c(((t2, r2) => {
+          e2._readyPromise_resolve = t2, e2._readyPromise_reject = r2;
+        })), e2._readyPromiseState = "pending";
+      }
+      function qt(e2, t2) {
+        Tt(e2), Pt(e2, t2);
+      }
+      function Ct(e2) {
+        Tt(e2), Et(e2);
+      }
+      function Pt(e2, t2) {
+        void 0 !== e2._readyPromise_reject && (y(e2._readyPromise), e2._readyPromise_reject(t2), e2._readyPromise_resolve = void 0, e2._readyPromise_reject = void 0, e2._readyPromiseState = "rejected");
+      }
+      function Et(e2) {
+        void 0 !== e2._readyPromise_resolve && (e2._readyPromise_resolve(void 0), e2._readyPromise_resolve = void 0, e2._readyPromise_reject = void 0, e2._readyPromiseState = "fulfilled");
+      }
+      Object.defineProperties(WritableStreamDefaultController.prototype, { abortReason: { enumerable: true }, signal: { enumerable: true }, error: { enumerable: true } }), "symbol" == typeof t.toStringTag && Object.defineProperty(WritableStreamDefaultController.prototype, t.toStringTag, { value: "WritableStreamDefaultController", configurable: true });
+      const Wt = "undefined" != typeof DOMException ? DOMException : void 0;
+      const Ot = (function(e2) {
+        if ("function" != typeof e2 && "object" != typeof e2) return false;
+        try {
+          return new e2(), true;
+        } catch (e3) {
+          return false;
+        }
+      })(Wt) ? Wt : (function() {
+        const e2 = function(e3, t2) {
+          this.message = e3 || "", this.name = t2 || "Error", Error.captureStackTrace && Error.captureStackTrace(this, this.constructor);
+        };
+        return e2.prototype = Object.create(Error.prototype), Object.defineProperty(e2.prototype, "constructor", { value: e2, writable: true, configurable: true }), e2;
+      })();
+      function kt(e2, t2, r2, o2, n2, a2) {
+        const i2 = e2.getReader(), l2 = t2.getWriter();
+        Ut(e2) && (e2._disturbed = true);
+        let s2, u2, p2, S2 = false, w2 = false, v2 = "readable", R2 = "writable", T2 = false, q2 = false;
+        const C2 = c(((e3) => {
+          p2 = e3;
+        }));
+        let P2 = Promise.resolve(void 0);
+        return c(((E2, W2) => {
+          let O2;
+          function k2() {
+            if (S2) return;
+            const e3 = c(((e4, t3) => {
+              !(function r3(o3) {
+                o3 ? e4() : b((function() {
+                  if (S2) return d(true);
+                  return b(l2.ready, (() => b(i2.read(), ((e5) => !!e5.done || (P2 = l2.write(e5.value), y(P2), false)))));
+                })(), r3, t3);
+              })(false);
+            }));
+            y(e3);
+          }
+          function B2() {
+            return v2 = "closed", r2 ? L2() : z2((() => (Xe(t2) && (T2 = ot(t2), R2 = t2._state), T2 || "closed" === R2 ? d(void 0) : "erroring" === R2 || "errored" === R2 ? f(u2) : (T2 = true, l2.close()))), false, void 0), null;
+          }
+          function A2(e3) {
+            return S2 || (v2 = "errored", s2 = e3, o2 ? L2(true, e3) : z2((() => l2.abort(e3)), true, e3)), null;
+          }
+          function j2(e3) {
+            return w2 || (R2 = "errored", u2 = e3, n2 ? L2(true, e3) : z2((() => i2.cancel(e3)), true, e3)), null;
+          }
+          if (void 0 !== a2 && (O2 = () => {
+            const e3 = void 0 !== a2.reason ? a2.reason : new Ot("Aborted", "AbortError"), t3 = [];
+            o2 || t3.push((() => "writable" === R2 ? l2.abort(e3) : d(void 0))), n2 || t3.push((() => "readable" === v2 ? i2.cancel(e3) : d(void 0))), z2((() => Promise.all(t3.map(((e4) => e4())))), true, e3);
+          }, a2.aborted ? O2() : a2.addEventListener("abort", O2)), Ut(e2) && (v2 = e2._state, s2 = e2._storedError), Xe(t2) && (R2 = t2._state, u2 = t2._storedError, T2 = ot(t2)), Ut(e2) && Xe(t2) && (q2 = true, p2()), "errored" === v2) A2(s2);
+          else if ("erroring" === R2 || "errored" === R2) j2(u2);
+          else if ("closed" === v2) B2();
+          else if (T2 || "closed" === R2) {
+            const e3 = new TypeError("the destination writable stream closed before all data could be piped to it");
+            n2 ? L2(true, e3) : z2((() => i2.cancel(e3)), true, e3);
+          }
+          function z2(e3, t3, r3) {
+            function o3() {
+              return "writable" !== R2 || T2 ? n3() : _((function() {
+                let e4;
+                return d((function t4() {
+                  if (e4 !== P2) return e4 = P2, m(P2, t4, t4);
+                })());
+              })(), n3), null;
+            }
+            function n3() {
+              return e3 ? h(e3(), (() => F2(t3, r3)), ((e4) => F2(true, e4))) : F2(t3, r3), null;
+            }
+            S2 || (S2 = true, q2 ? o3() : _(C2, o3));
+          }
+          function L2(e3, t3) {
+            z2(void 0, e3, t3);
+          }
+          function F2(e3, t3) {
+            return w2 = true, l2.releaseLock(), i2.releaseLock(), void 0 !== a2 && a2.removeEventListener("abort", O2), e3 ? W2(t3) : E2(void 0), null;
+          }
+          S2 || (h(i2.closed, B2, A2), h(l2.closed, (function() {
+            return w2 || (R2 = "closed"), null;
+          }), j2)), q2 ? k2() : g((() => {
+            q2 = true, p2(), k2();
+          }));
+        }));
+      }
+      function Bt(e2, t2) {
+        return (function(e3) {
+          try {
+            return e3.getReader({ mode: "byob" }).releaseLock(), true;
+          } catch (e4) {
+            return false;
+          }
+        })(e2) ? (function(e3) {
+          let t3, r2, o2, n2, a2, i2 = e3.getReader(), l2 = false, s2 = false, u2 = false, f2 = false, b2 = false, _2 = false;
+          const m2 = c(((e4) => {
+            a2 = e4;
+          }));
+          function y2(e4) {
+            p(e4.closed, ((t4) => (e4 !== i2 || (o2.error(t4), n2.error(t4), b2 && _2 || a2(void 0)), null)));
+          }
+          function g2() {
+            l2 && (i2.releaseLock(), i2 = e3.getReader(), y2(i2), l2 = false), h(i2.read(), ((e4) => {
+              var t4, r3;
+              if (u2 = false, f2 = false, e4.done) return b2 || o2.close(), _2 || n2.close(), null === (t4 = o2.byobRequest) || void 0 === t4 || t4.respond(0), null === (r3 = n2.byobRequest) || void 0 === r3 || r3.respond(0), b2 && _2 || a2(void 0), null;
+              const l3 = e4.value, c2 = l3;
+              let d2 = l3;
+              if (!b2 && !_2) try {
+                d2 = se(l3);
+              } catch (e5) {
+                return o2.error(e5), n2.error(e5), a2(i2.cancel(e5)), null;
+              }
+              return b2 || o2.enqueue(c2), _2 || n2.enqueue(d2), s2 = false, u2 ? w2() : f2 && v2(), null;
+            }), (() => (s2 = false, null)));
+          }
+          function S2(t4, r3) {
+            l2 || (i2.releaseLock(), i2 = e3.getReader({ mode: "byob" }), y2(i2), l2 = true);
+            const c2 = r3 ? n2 : o2, d2 = r3 ? o2 : n2;
+            h(i2.read(t4), ((e4) => {
+              var t5;
+              u2 = false, f2 = false;
+              const o3 = r3 ? _2 : b2, n3 = r3 ? b2 : _2;
+              if (e4.done) {
+                o3 || c2.close(), n3 || d2.close();
+                const r4 = e4.value;
+                return void 0 !== r4 && (o3 || c2.byobRequest.respondWithNewView(r4), n3 || null === (t5 = d2.byobRequest) || void 0 === t5 || t5.respond(0)), o3 && n3 || a2(void 0), null;
+              }
+              const l3 = e4.value;
+              if (n3) o3 || c2.byobRequest.respondWithNewView(l3);
+              else {
+                let e5;
+                try {
+                  e5 = se(l3);
+                } catch (e6) {
+                  return c2.error(e6), d2.error(e6), a2(i2.cancel(e6)), null;
+                }
+                o3 || c2.byobRequest.respondWithNewView(l3), d2.enqueue(e5);
+              }
+              return s2 = false, u2 ? w2() : f2 && v2(), null;
+            }), (() => (s2 = false, null)));
+          }
+          function w2() {
+            if (s2) return u2 = true, d(void 0);
+            s2 = true;
+            const e4 = o2.byobRequest;
+            return null === e4 ? g2() : S2(e4.view, false), d(void 0);
+          }
+          function v2() {
+            if (s2) return f2 = true, d(void 0);
+            s2 = true;
+            const e4 = n2.byobRequest;
+            return null === e4 ? g2() : S2(e4.view, true), d(void 0);
+          }
+          function R2(e4) {
+            if (b2 = true, t3 = e4, _2) {
+              const e5 = [t3, r2], o3 = i2.cancel(e5);
+              a2(o3);
+            }
+            return m2;
+          }
+          function T2(e4) {
+            if (_2 = true, r2 = e4, b2) {
+              const e5 = [t3, r2], o3 = i2.cancel(e5);
+              a2(o3);
+            }
+            return m2;
+          }
+          const q2 = new ReadableStream({ type: "bytes", start(e4) {
+            o2 = e4;
+          }, pull: w2, cancel: R2 }), C2 = new ReadableStream({ type: "bytes", start(e4) {
+            n2 = e4;
+          }, pull: v2, cancel: T2 });
+          return y2(i2), [q2, C2];
+        })(e2) : (function(e3, t3) {
+          const r2 = e3.getReader();
+          let o2, n2, a2, i2, l2, s2 = false, u2 = false, f2 = false, b2 = false;
+          const _2 = c(((e4) => {
+            l2 = e4;
+          }));
+          function m2() {
+            return s2 ? (u2 = true, d(void 0)) : (s2 = true, h(r2.read(), ((e4) => {
+              if (u2 = false, e4.done) return f2 || a2.close(), b2 || i2.close(), f2 && b2 || l2(void 0), null;
+              const t4 = e4.value, r3 = t4, o3 = t4;
+              return f2 || a2.enqueue(r3), b2 || i2.enqueue(o3), s2 = false, u2 && m2(), null;
+            }), (() => (s2 = false, null))), d(void 0));
+          }
+          function y2(e4) {
+            if (f2 = true, o2 = e4, b2) {
+              const e5 = [o2, n2], t4 = r2.cancel(e5);
+              l2(t4);
+            }
+            return _2;
+          }
+          function g2(e4) {
+            if (b2 = true, n2 = e4, f2) {
+              const e5 = [o2, n2], t4 = r2.cancel(e5);
+              l2(t4);
+            }
+            return _2;
+          }
+          const S2 = new ReadableStream({ start(e4) {
+            a2 = e4;
+          }, pull: m2, cancel: y2 }), w2 = new ReadableStream({ start(e4) {
+            i2 = e4;
+          }, pull: m2, cancel: g2 });
+          return p(r2.closed, ((e4) => (a2.error(e4), i2.error(e4), f2 && b2 || l2(void 0), null))), [S2, w2];
+        })(e2);
+      }
+      class ReadableStreamDefaultController {
+        constructor() {
+          throw new TypeError("Illegal constructor");
+        }
+        get desiredSize() {
+          if (!At(this)) throw $t("desiredSize");
+          return Ft(this);
+        }
+        close() {
+          if (!At(this)) throw $t("close");
+          if (!Dt(this)) throw new TypeError("The stream is not in a state that permits close");
+          !(function(e2) {
+            if (!Dt(e2)) return;
+            const t2 = e2._controlledReadableStream;
+            e2._closeRequested = true, 0 === e2._queue.length && (zt(e2), Jt(t2));
+          })(this);
+        }
+        enqueue(e2) {
+          if (!At(this)) throw $t("enqueue");
+          if (!Dt(this)) throw new TypeError("The stream is not in a state that permits enqueue");
+          return (function(e3, t2) {
+            if (!Dt(e3)) return;
+            const r2 = e3._controlledReadableStream;
+            if (Gt(r2) && J(r2) > 0) X(r2, t2, false);
+            else {
+              let r3;
+              try {
+                r3 = e3._strategySizeAlgorithm(t2);
+              } catch (t3) {
+                throw Lt(e3, t3), t3;
+              }
+              try {
+                ce(e3, t2, r3);
+              } catch (t3) {
+                throw Lt(e3, t3), t3;
+              }
+            }
+            jt(e3);
+          })(this, e2);
+        }
+        error(e2) {
+          if (!At(this)) throw $t("error");
+          Lt(this, e2);
+        }
+        [q](e2) {
+          de(this);
+          const t2 = this._cancelAlgorithm(e2);
+          return zt(this), t2;
+        }
+        [C](e2) {
+          const t2 = this._controlledReadableStream;
+          if (this._queue.length > 0) {
+            const r2 = ue(this);
+            this._closeRequested && 0 === this._queue.length ? (zt(this), Jt(t2)) : jt(this), e2._chunkSteps(r2);
+          } else G(t2, e2), jt(this);
+        }
+        [P]() {
+        }
+      }
+      function At(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_controlledReadableStream") && e2 instanceof ReadableStreamDefaultController);
+      }
+      function jt(e2) {
+        const t2 = (function(e3) {
+          const t3 = e3._controlledReadableStream;
+          if (!Dt(e3)) return false;
+          if (!e3._started) return false;
+          if (Gt(t3) && J(t3) > 0) return true;
+          if (Ft(e3) > 0) return true;
+          return false;
+        })(e2);
+        if (!t2) return;
+        if (e2._pulling) return void (e2._pullAgain = true);
+        e2._pulling = true;
+        h(e2._pullAlgorithm(), (() => (e2._pulling = false, e2._pullAgain && (e2._pullAgain = false, jt(e2)), null)), ((t3) => (Lt(e2, t3), null)));
+      }
+      function zt(e2) {
+        e2._pullAlgorithm = void 0, e2._cancelAlgorithm = void 0, e2._strategySizeAlgorithm = void 0;
+      }
+      function Lt(e2, t2) {
+        const r2 = e2._controlledReadableStream;
+        "readable" === r2._state && (de(e2), zt(e2), Kt(r2, t2));
+      }
+      function Ft(e2) {
+        const t2 = e2._controlledReadableStream._state;
+        return "errored" === t2 ? null : "closed" === t2 ? 0 : e2._strategyHWM - e2._queueTotalSize;
+      }
+      function Dt(e2) {
+        return !e2._closeRequested && "readable" === e2._controlledReadableStream._state;
+      }
+      function It(e2, t2, r2, o2) {
+        const n2 = Object.create(ReadableStreamDefaultController.prototype);
+        let a2, i2, l2;
+        a2 = void 0 !== t2.start ? () => t2.start(n2) : () => {
+        }, i2 = void 0 !== t2.pull ? () => t2.pull(n2) : () => d(void 0), l2 = void 0 !== t2.cancel ? (e3) => t2.cancel(e3) : () => d(void 0), (function(e3, t3, r3, o3, n3, a3, i3) {
+          t3._controlledReadableStream = e3, t3._queue = void 0, t3._queueTotalSize = void 0, de(t3), t3._started = false, t3._closeRequested = false, t3._pullAgain = false, t3._pulling = false, t3._strategySizeAlgorithm = i3, t3._strategyHWM = a3, t3._pullAlgorithm = o3, t3._cancelAlgorithm = n3, e3._readableStreamController = t3, h(d(r3()), (() => (t3._started = true, jt(t3), null)), ((e4) => (Lt(t3, e4), null)));
+        })(e2, n2, a2, i2, l2, r2, o2);
+      }
+      function $t(e2) {
+        return new TypeError(`ReadableStreamDefaultController.prototype.${e2} can only be used on a ReadableStreamDefaultController`);
+      }
+      function Mt(e2, t2, r2) {
+        return I(e2, r2), (r3) => w(e2, t2, [r3]);
+      }
+      function Yt(e2, t2, r2) {
+        return I(e2, r2), (r3) => w(e2, t2, [r3]);
+      }
+      function Qt(e2, t2, r2) {
+        return I(e2, r2), (r3) => S(e2, t2, [r3]);
+      }
+      function Nt(e2, t2) {
+        if ("bytes" !== (e2 = `${e2}`)) throw new TypeError(`${t2} '${e2}' is not a valid enumeration value for ReadableStreamType`);
+        return e2;
+      }
+      function xt(e2, t2) {
+        if ("byob" !== (e2 = `${e2}`)) throw new TypeError(`${t2} '${e2}' is not a valid enumeration value for ReadableStreamReaderMode`);
+        return e2;
+      }
+      function Ht(e2, t2) {
+        D(e2, t2);
+        const r2 = null == e2 ? void 0 : e2.preventAbort, o2 = null == e2 ? void 0 : e2.preventCancel, n2 = null == e2 ? void 0 : e2.preventClose, a2 = null == e2 ? void 0 : e2.signal;
+        return void 0 !== a2 && (function(e3, t3) {
+          if (!(function(e4) {
+            if ("object" != typeof e4 || null === e4) return false;
+            try {
+              return "boolean" == typeof e4.aborted;
+            } catch (e5) {
+              return false;
+            }
+          })(e3)) throw new TypeError(`${t3} is not an AbortSignal.`);
+        })(a2, `${t2} has member 'signal' that`), { preventAbort: Boolean(r2), preventCancel: Boolean(o2), preventClose: Boolean(n2), signal: a2 };
+      }
+      function Vt(e2, t2) {
+        D(e2, t2);
+        const r2 = null == e2 ? void 0 : e2.readable;
+        Y(r2, "readable", "ReadableWritablePair"), (function(e3, t3) {
+          if (!H(e3)) throw new TypeError(`${t3} is not a ReadableStream.`);
+        })(r2, `${t2} has member 'readable' that`);
+        const o2 = null == e2 ? void 0 : e2.writable;
+        return Y(o2, "writable", "ReadableWritablePair"), (function(e3, t3) {
+          if (!V(e3)) throw new TypeError(`${t3} is not a WritableStream.`);
+        })(o2, `${t2} has member 'writable' that`), { readable: r2, writable: o2 };
+      }
+      Object.defineProperties(ReadableStreamDefaultController.prototype, { close: { enumerable: true }, enqueue: { enumerable: true }, error: { enumerable: true }, desiredSize: { enumerable: true } }), a(ReadableStreamDefaultController.prototype.close, "close"), a(ReadableStreamDefaultController.prototype.enqueue, "enqueue"), a(ReadableStreamDefaultController.prototype.error, "error"), "symbol" == typeof t.toStringTag && Object.defineProperty(ReadableStreamDefaultController.prototype, t.toStringTag, { value: "ReadableStreamDefaultController", configurable: true });
+      class ReadableStream {
+        constructor(e2 = {}, t2 = {}) {
+          void 0 === e2 ? e2 = null : $(e2, "First parameter");
+          const r2 = Qe(t2, "Second parameter"), o2 = (function(e3, t3) {
+            D(e3, t3);
+            const r3 = e3, o3 = null == r3 ? void 0 : r3.autoAllocateChunkSize, n3 = null == r3 ? void 0 : r3.cancel, a2 = null == r3 ? void 0 : r3.pull, i2 = null == r3 ? void 0 : r3.start, l2 = null == r3 ? void 0 : r3.type;
+            return { autoAllocateChunkSize: void 0 === o3 ? void 0 : x(o3, `${t3} has member 'autoAllocateChunkSize' that`), cancel: void 0 === n3 ? void 0 : Mt(n3, r3, `${t3} has member 'cancel' that`), pull: void 0 === a2 ? void 0 : Yt(a2, r3, `${t3} has member 'pull' that`), start: void 0 === i2 ? void 0 : Qt(i2, r3, `${t3} has member 'start' that`), type: void 0 === l2 ? void 0 : Nt(l2, `${t3} has member 'type' that`) };
+          })(e2, "First parameter");
+          var n2;
+          if ((n2 = this)._state = "readable", n2._reader = void 0, n2._storedError = void 0, n2._disturbed = false, "bytes" === o2.type) {
+            if (void 0 !== r2.size) throw new RangeError("The strategy for a byte stream cannot have a size function");
+            Be(this, o2, Me(r2, 0));
+          } else {
+            const e3 = Ye(r2);
+            It(this, o2, Me(r2, 1), e3);
+          }
+        }
+        get locked() {
+          if (!Ut(this)) throw Zt("locked");
+          return Gt(this);
+        }
+        cancel(e2) {
+          return Ut(this) ? Gt(this) ? f(new TypeError("Cannot cancel a stream that already has a reader")) : Xt(this, e2) : f(Zt("cancel"));
+        }
+        getReader(e2) {
+          if (!Ut(this)) throw Zt("getReader");
+          return void 0 === (function(e3, t2) {
+            D(e3, t2);
+            const r2 = null == e3 ? void 0 : e3.mode;
+            return { mode: void 0 === r2 ? void 0 : xt(r2, `${t2} has member 'mode' that`) };
+          })(e2, "First parameter").mode ? new ReadableStreamDefaultReader(this) : (function(e3) {
+            return new ReadableStreamBYOBReader(e3);
+          })(this);
+        }
+        pipeThrough(e2, t2 = {}) {
+          if (!H(this)) throw Zt("pipeThrough");
+          M(e2, 1, "pipeThrough");
+          const r2 = Vt(e2, "First parameter"), o2 = Ht(t2, "Second parameter");
+          if (this.locked) throw new TypeError("ReadableStream.prototype.pipeThrough cannot be used on a locked ReadableStream");
+          if (r2.writable.locked) throw new TypeError("ReadableStream.prototype.pipeThrough cannot be used on a locked WritableStream");
+          return y(kt(this, r2.writable, o2.preventClose, o2.preventAbort, o2.preventCancel, o2.signal)), r2.readable;
+        }
+        pipeTo(e2, t2 = {}) {
+          if (!H(this)) return f(Zt("pipeTo"));
+          if (void 0 === e2) return f("Parameter 1 is required in 'pipeTo'.");
+          if (!V(e2)) return f(new TypeError("ReadableStream.prototype.pipeTo's first argument must be a WritableStream"));
+          let r2;
+          try {
+            r2 = Ht(t2, "Second parameter");
+          } catch (e3) {
+            return f(e3);
+          }
+          return this.locked ? f(new TypeError("ReadableStream.prototype.pipeTo cannot be used on a locked ReadableStream")) : e2.locked ? f(new TypeError("ReadableStream.prototype.pipeTo cannot be used on a locked WritableStream")) : kt(this, e2, r2.preventClose, r2.preventAbort, r2.preventCancel, r2.signal);
+        }
+        tee() {
+          if (!H(this)) throw Zt("tee");
+          if (this.locked) throw new TypeError("Cannot tee a stream that already has a reader");
+          return Bt(this);
+        }
+        values(e2) {
+          if (!H(this)) throw Zt("values");
+          return (function(e3, t2) {
+            const r2 = e3.getReader(), o2 = new re(r2, t2), n2 = Object.create(oe);
+            return n2._asyncIteratorImpl = o2, n2;
+          })(this, (function(e3, t2) {
+            D(e3, t2);
+            const r2 = null == e3 ? void 0 : e3.preventCancel;
+            return { preventCancel: Boolean(r2) };
+          })(e2, "First parameter").preventCancel);
+        }
+      }
+      function Ut(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_readableStreamController") && e2 instanceof ReadableStream);
+      }
+      function Gt(e2) {
+        return void 0 !== e2._reader;
+      }
+      function Xt(e2, t2) {
+        if (e2._disturbed = true, "closed" === e2._state) return d(void 0);
+        if ("errored" === e2._state) return f(e2._storedError);
+        Jt(e2);
+        const o2 = e2._reader;
+        if (void 0 !== o2 && De(o2)) {
+          const e3 = o2._readIntoRequests;
+          o2._readIntoRequests = new v(), e3.forEach(((e4) => {
+            e4._closeSteps(void 0);
+          }));
+        }
+        return m(e2._readableStreamController[q](t2), r);
+      }
+      function Jt(e2) {
+        e2._state = "closed";
+        const t2 = e2._reader;
+        if (void 0 !== t2 && (z(t2), Z(t2))) {
+          const e3 = t2._readRequests;
+          t2._readRequests = new v(), e3.forEach(((e4) => {
+            e4._closeSteps();
+          }));
+        }
+      }
+      function Kt(e2, t2) {
+        e2._state = "errored", e2._storedError = t2;
+        const r2 = e2._reader;
+        void 0 !== r2 && (j(r2, t2), Z(r2) ? ee(r2, t2) : Ie(r2, t2));
+      }
+      function Zt(e2) {
+        return new TypeError(`ReadableStream.prototype.${e2} can only be used on a ReadableStream`);
+      }
+      function er(e2, t2) {
+        D(e2, t2);
+        const r2 = null == e2 ? void 0 : e2.highWaterMark;
+        return Y(r2, "highWaterMark", "QueuingStrategyInit"), { highWaterMark: Q(r2) };
+      }
+      Object.defineProperties(ReadableStream.prototype, { cancel: { enumerable: true }, getReader: { enumerable: true }, pipeThrough: { enumerable: true }, pipeTo: { enumerable: true }, tee: { enumerable: true }, values: { enumerable: true }, locked: { enumerable: true } }), a(ReadableStream.prototype.cancel, "cancel"), a(ReadableStream.prototype.getReader, "getReader"), a(ReadableStream.prototype.pipeThrough, "pipeThrough"), a(ReadableStream.prototype.pipeTo, "pipeTo"), a(ReadableStream.prototype.tee, "tee"), a(ReadableStream.prototype.values, "values"), "symbol" == typeof t.toStringTag && Object.defineProperty(ReadableStream.prototype, t.toStringTag, { value: "ReadableStream", configurable: true }), "symbol" == typeof t.asyncIterator && Object.defineProperty(ReadableStream.prototype, t.asyncIterator, { value: ReadableStream.prototype.values, writable: true, configurable: true });
+      const tr = (e2) => e2.byteLength;
+      a(tr, "size");
+      class ByteLengthQueuingStrategy {
+        constructor(e2) {
+          M(e2, 1, "ByteLengthQueuingStrategy"), e2 = er(e2, "First parameter"), this._byteLengthQueuingStrategyHighWaterMark = e2.highWaterMark;
+        }
+        get highWaterMark() {
+          if (!or(this)) throw rr("highWaterMark");
+          return this._byteLengthQueuingStrategyHighWaterMark;
+        }
+        get size() {
+          if (!or(this)) throw rr("size");
+          return tr;
+        }
+      }
+      function rr(e2) {
+        return new TypeError(`ByteLengthQueuingStrategy.prototype.${e2} can only be used on a ByteLengthQueuingStrategy`);
+      }
+      function or(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_byteLengthQueuingStrategyHighWaterMark") && e2 instanceof ByteLengthQueuingStrategy);
+      }
+      Object.defineProperties(ByteLengthQueuingStrategy.prototype, { highWaterMark: { enumerable: true }, size: { enumerable: true } }), "symbol" == typeof t.toStringTag && Object.defineProperty(ByteLengthQueuingStrategy.prototype, t.toStringTag, { value: "ByteLengthQueuingStrategy", configurable: true });
+      const nr = () => 1;
+      a(nr, "size");
+      class CountQueuingStrategy {
+        constructor(e2) {
+          M(e2, 1, "CountQueuingStrategy"), e2 = er(e2, "First parameter"), this._countQueuingStrategyHighWaterMark = e2.highWaterMark;
+        }
+        get highWaterMark() {
+          if (!ir(this)) throw ar("highWaterMark");
+          return this._countQueuingStrategyHighWaterMark;
+        }
+        get size() {
+          if (!ir(this)) throw ar("size");
+          return nr;
+        }
+      }
+      function ar(e2) {
+        return new TypeError(`CountQueuingStrategy.prototype.${e2} can only be used on a CountQueuingStrategy`);
+      }
+      function ir(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_countQueuingStrategyHighWaterMark") && e2 instanceof CountQueuingStrategy);
+      }
+      function lr(e2, t2, r2) {
+        return I(e2, r2), (r3) => w(e2, t2, [r3]);
+      }
+      function sr(e2, t2, r2) {
+        return I(e2, r2), (r3) => S(e2, t2, [r3]);
+      }
+      function ur(e2, t2, r2) {
+        return I(e2, r2), (r3, o2) => w(e2, t2, [r3, o2]);
+      }
+      Object.defineProperties(CountQueuingStrategy.prototype, { highWaterMark: { enumerable: true }, size: { enumerable: true } }), "symbol" == typeof t.toStringTag && Object.defineProperty(CountQueuingStrategy.prototype, t.toStringTag, { value: "CountQueuingStrategy", configurable: true });
+      class TransformStream {
+        constructor(e2 = {}, t2 = {}, r2 = {}) {
+          void 0 === e2 && (e2 = null);
+          const o2 = Qe(t2, "Second parameter"), n2 = Qe(r2, "Third parameter"), a2 = (function(e3, t3) {
+            D(e3, t3);
+            const r3 = null == e3 ? void 0 : e3.flush, o3 = null == e3 ? void 0 : e3.readableType, n3 = null == e3 ? void 0 : e3.start, a3 = null == e3 ? void 0 : e3.transform, i3 = null == e3 ? void 0 : e3.writableType;
+            return { flush: void 0 === r3 ? void 0 : lr(r3, e3, `${t3} has member 'flush' that`), readableType: o3, start: void 0 === n3 ? void 0 : sr(n3, e3, `${t3} has member 'start' that`), transform: void 0 === a3 ? void 0 : ur(a3, e3, `${t3} has member 'transform' that`), writableType: i3 };
+          })(e2, "First parameter");
+          if (void 0 !== a2.readableType) throw new RangeError("Invalid readableType specified");
+          if (void 0 !== a2.writableType) throw new RangeError("Invalid writableType specified");
+          const i2 = Me(n2, 0), l2 = Ye(n2), s2 = Me(o2, 1), u2 = Ye(o2);
+          let b2;
+          !(function(e3, t3, r3, o3, n3, a3) {
+            function i3() {
+              return t3;
+            }
+            function l3(t4) {
+              return (function(e4, t5) {
+                const r4 = e4._transformStreamController;
+                if (e4._backpressure) {
+                  return m(e4._backpressureChangePromise, (() => {
+                    if ("erroring" === (Xe(e4._writable) ? e4._writable._state : e4._writableState)) throw Xe(e4._writable) ? e4._writable._storedError : e4._writableStoredError;
+                    return mr(r4, t5);
+                  }));
+                }
+                return mr(r4, t5);
+              })(e3, t4);
+            }
+            function s3(t4) {
+              return (function(e4, t5) {
+                return dr(e4, t5), d(void 0);
+              })(e3, t4);
+            }
+            function u3() {
+              return (function(e4) {
+                const t4 = e4._transformStreamController, r4 = t4._flushAlgorithm();
+                return _r(t4), m(r4, (() => {
+                  if ("errored" === e4._readableState) throw e4._readableStoredError;
+                  Sr(e4) && wr(e4);
+                }), ((t5) => {
+                  throw dr(e4, t5), e4._readableStoredError;
+                }));
+              })(e3);
+            }
+            function c2() {
+              return (function(e4) {
+                return br(e4, false), e4._backpressureChangePromise;
+              })(e3);
+            }
+            function f2(t4) {
+              return fr(e3, t4), d(void 0);
+            }
+            e3._writableState = "writable", e3._writableStoredError = void 0, e3._writableHasInFlightOperation = false, e3._writableStarted = false, e3._writable = (function(e4, t4, r4, o4, n4, a4, i4) {
+              return new WritableStream({ start(r5) {
+                e4._writableController = r5;
+                try {
+                  const t5 = r5.signal;
+                  void 0 !== t5 && t5.addEventListener("abort", (() => {
+                    "writable" === e4._writableState && (e4._writableState = "erroring", t5.reason && (e4._writableStoredError = t5.reason));
+                  }));
+                } catch (e5) {
+                }
+                return m(t4(), (() => (e4._writableStarted = true, Pr(e4), null)), ((t5) => {
+                  throw e4._writableStarted = true, Tr(e4, t5), t5;
+                }));
+              }, write: (t5) => ((function(e5) {
+                e5._writableHasInFlightOperation = true;
+              })(e4), m(r4(t5), (() => ((function(e5) {
+                e5._writableHasInFlightOperation = false;
+              })(e4), Pr(e4), null)), ((t6) => {
+                throw (function(e5, t7) {
+                  e5._writableHasInFlightOperation = false, Tr(e5, t7);
+                })(e4, t6), t6;
+              }))), close: () => ((function(e5) {
+                e5._writableHasInFlightOperation = true;
+              })(e4), m(o4(), (() => ((function(e5) {
+                e5._writableHasInFlightOperation = false;
+                "erroring" === e5._writableState && (e5._writableStoredError = void 0);
+                e5._writableState = "closed";
+              })(e4), null)), ((t5) => {
+                throw (function(e5, t6) {
+                  e5._writableHasInFlightOperation = false, e5._writableState, Tr(e5, t6);
+                })(e4, t5), t5;
+              }))), abort: (t5) => (e4._writableState = "errored", e4._writableStoredError = t5, n4(t5)) }, { highWaterMark: a4, size: i4 });
+            })(e3, i3, l3, u3, s3, r3, o3), e3._readableState = "readable", e3._readableStoredError = void 0, e3._readableCloseRequested = false, e3._readablePulling = false, e3._readable = (function(e4, t4, r4, o4, n4, a4) {
+              return new ReadableStream({ start: (r5) => (e4._readableController = r5, t4().catch(((t5) => {
+                vr(e4, t5);
+              }))), pull: () => (e4._readablePulling = true, r4().catch(((t5) => {
+                vr(e4, t5);
+              }))), cancel: (t5) => (e4._readableState = "closed", o4(t5)) }, { highWaterMark: n4, size: a4 });
+            })(e3, i3, c2, f2, n3, a3), e3._backpressure = void 0, e3._backpressureChangePromise = void 0, e3._backpressureChangePromise_resolve = void 0, br(e3, true), e3._transformStreamController = void 0;
+          })(this, c(((e3) => {
+            b2 = e3;
+          })), s2, u2, i2, l2), (function(e3, t3) {
+            const r3 = Object.create(TransformStreamDefaultController.prototype);
+            let o3, n3;
+            o3 = void 0 !== t3.transform ? (e4) => t3.transform(e4, r3) : (e4) => {
+              try {
+                return pr(r3, e4), d(void 0);
+              } catch (e5) {
+                return f(e5);
+              }
+            };
+            n3 = void 0 !== t3.flush ? () => t3.flush(r3) : () => d(void 0);
+            !(function(e4, t4, r4, o4) {
+              t4._controlledTransformStream = e4, e4._transformStreamController = t4, t4._transformAlgorithm = r4, t4._flushAlgorithm = o4;
+            })(e3, r3, o3, n3);
+          })(this, a2), void 0 !== a2.start ? b2(a2.start(this._transformStreamController)) : b2(void 0);
+        }
+        get readable() {
+          if (!cr(this)) throw gr("readable");
+          return this._readable;
+        }
+        get writable() {
+          if (!cr(this)) throw gr("writable");
+          return this._writable;
+        }
+      }
+      function cr(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_transformStreamController") && e2 instanceof TransformStream);
+      }
+      function dr(e2, t2) {
+        vr(e2, t2), fr(e2, t2);
+      }
+      function fr(e2, t2) {
+        _r(e2._transformStreamController), (function(e3, t3) {
+          e3._writableController.error(t3);
+          "writable" === e3._writableState && qr(e3, t3);
+        })(e2, t2), e2._backpressure && br(e2, false);
+      }
+      function br(e2, t2) {
+        void 0 !== e2._backpressureChangePromise && e2._backpressureChangePromise_resolve(), e2._backpressureChangePromise = c(((t3) => {
+          e2._backpressureChangePromise_resolve = t3;
+        })), e2._backpressure = t2;
+      }
+      Object.defineProperties(TransformStream.prototype, { readable: { enumerable: true }, writable: { enumerable: true } }), "symbol" == typeof t.toStringTag && Object.defineProperty(TransformStream.prototype, t.toStringTag, { value: "TransformStream", configurable: true });
+      class TransformStreamDefaultController {
+        constructor() {
+          throw new TypeError("Illegal constructor");
+        }
+        get desiredSize() {
+          if (!hr(this)) throw yr("desiredSize");
+          return Rr(this._controlledTransformStream);
+        }
+        enqueue(e2) {
+          if (!hr(this)) throw yr("enqueue");
+          pr(this, e2);
+        }
+        error(e2) {
+          if (!hr(this)) throw yr("error");
+          var t2;
+          t2 = e2, dr(this._controlledTransformStream, t2);
+        }
+        terminate() {
+          if (!hr(this)) throw yr("terminate");
+          !(function(e2) {
+            const t2 = e2._controlledTransformStream;
+            Sr(t2) && wr(t2);
+            const r2 = new TypeError("TransformStream terminated");
+            fr(t2, r2);
+          })(this);
+        }
+      }
+      function hr(e2) {
+        return !!o(e2) && (!!Object.prototype.hasOwnProperty.call(e2, "_controlledTransformStream") && e2 instanceof TransformStreamDefaultController);
+      }
+      function _r(e2) {
+        e2._transformAlgorithm = void 0, e2._flushAlgorithm = void 0;
+      }
+      function pr(e2, t2) {
+        const r2 = e2._controlledTransformStream;
+        if (!Sr(r2)) throw new TypeError("Readable side is not in a state that permits enqueue");
+        try {
+          !(function(e3, t3) {
+            e3._readablePulling = false;
+            try {
+              e3._readableController.enqueue(t3);
+            } catch (t4) {
+              throw vr(e3, t4), t4;
+            }
+          })(r2, t2);
+        } catch (e3) {
+          throw fr(r2, e3), r2._readableStoredError;
+        }
+        const o2 = (function(e3) {
+          return !(function(e4) {
+            if (!Sr(e4)) return false;
+            if (e4._readablePulling) return true;
+            if (Rr(e4) > 0) return true;
+            return false;
+          })(e3);
+        })(r2);
+        o2 !== r2._backpressure && br(r2, true);
+      }
+      function mr(e2, t2) {
+        return m(e2._transformAlgorithm(t2), void 0, ((t3) => {
+          throw dr(e2._controlledTransformStream, t3), t3;
+        }));
+      }
+      function yr(e2) {
+        return new TypeError(`TransformStreamDefaultController.prototype.${e2} can only be used on a TransformStreamDefaultController`);
+      }
+      function gr(e2) {
+        return new TypeError(`TransformStream.prototype.${e2} can only be used on a TransformStream`);
+      }
+      function Sr(e2) {
+        return !e2._readableCloseRequested && "readable" === e2._readableState;
+      }
+      function wr(e2) {
+        e2._readableState = "closed", e2._readableCloseRequested = true, e2._readableController.close();
+      }
+      function vr(e2, t2) {
+        "readable" === e2._readableState && (e2._readableState = "errored", e2._readableStoredError = t2), e2._readableController.error(t2);
+      }
+      function Rr(e2) {
+        return e2._readableController.desiredSize;
+      }
+      function Tr(e2, t2) {
+        "writable" !== e2._writableState ? Cr(e2) : qr(e2, t2);
+      }
+      function qr(e2, t2) {
+        e2._writableState = "erroring", e2._writableStoredError = t2, !(function(e3) {
+          return e3._writableHasInFlightOperation;
+        })(e2) && e2._writableStarted && Cr(e2);
+      }
+      function Cr(e2) {
+        e2._writableState = "errored";
+      }
+      function Pr(e2) {
+        "erroring" === e2._writableState && Cr(e2);
+      }
+      Object.defineProperties(TransformStreamDefaultController.prototype, { enqueue: { enumerable: true }, error: { enumerable: true }, terminate: { enumerable: true }, desiredSize: { enumerable: true } }), a(TransformStreamDefaultController.prototype.enqueue, "enqueue"), a(TransformStreamDefaultController.prototype.error, "error"), a(TransformStreamDefaultController.prototype.terminate, "terminate"), "symbol" == typeof t.toStringTag && Object.defineProperty(TransformStreamDefaultController.prototype, t.toStringTag, { value: "TransformStreamDefaultController", configurable: true }), e.ByteLengthQueuingStrategy = ByteLengthQueuingStrategy, e.CountQueuingStrategy = CountQueuingStrategy, e.ReadableByteStreamController = ReadableByteStreamController, e.ReadableStream = ReadableStream, e.ReadableStreamBYOBReader = ReadableStreamBYOBReader, e.ReadableStreamBYOBRequest = ReadableStreamBYOBRequest, e.ReadableStreamDefaultController = ReadableStreamDefaultController, e.ReadableStreamDefaultReader = ReadableStreamDefaultReader, e.TransformStream = TransformStream, e.TransformStreamDefaultController = TransformStreamDefaultController, e.WritableStream = WritableStream, e.WritableStreamDefaultController = WritableStreamDefaultController, e.WritableStreamDefaultWriter = WritableStreamDefaultWriter, Object.defineProperty(e, "__esModule", { value: true });
+    }));
   }
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: "Method not allowed" })
+});
+
+// node_modules/formdata-node/lib/cjs/isFunction.js
+var require_isFunction = __commonJS({
+  "node_modules/formdata-node/lib/cjs/isFunction.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.isFunction = void 0;
+    var isFunction = (value) => typeof value === "function";
+    exports2.isFunction = isFunction;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/blobHelpers.js
+var require_blobHelpers = __commonJS({
+  "node_modules/formdata-node/lib/cjs/blobHelpers.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.sliceBlob = exports2.consumeBlobParts = void 0;
+    var isFunction_1 = require_isFunction();
+    var CHUNK_SIZE = 65536;
+    async function* clonePart(part) {
+      const end = part.byteOffset + part.byteLength;
+      let position = part.byteOffset;
+      while (position !== end) {
+        const size = Math.min(end - position, CHUNK_SIZE);
+        const chunk = part.buffer.slice(position, position + size);
+        position += chunk.byteLength;
+        yield new Uint8Array(chunk);
+      }
+    }
+    async function* consumeNodeBlob(blob) {
+      let position = 0;
+      while (position !== blob.size) {
+        const chunk = blob.slice(position, Math.min(blob.size, position + CHUNK_SIZE));
+        const buffer = await chunk.arrayBuffer();
+        position += buffer.byteLength;
+        yield new Uint8Array(buffer);
+      }
+    }
+    async function* consumeBlobParts(parts, clone = false) {
+      for (const part of parts) {
+        if (ArrayBuffer.isView(part)) {
+          if (clone) {
+            yield* clonePart(part);
+          } else {
+            yield part;
+          }
+        } else if ((0, isFunction_1.isFunction)(part.stream)) {
+          yield* part.stream();
+        } else {
+          yield* consumeNodeBlob(part);
+        }
+      }
+    }
+    exports2.consumeBlobParts = consumeBlobParts;
+    function* sliceBlob(blobParts, blobSize, start = 0, end) {
+      end !== null && end !== void 0 ? end : end = blobSize;
+      let relativeStart = start < 0 ? Math.max(blobSize + start, 0) : Math.min(start, blobSize);
+      let relativeEnd = end < 0 ? Math.max(blobSize + end, 0) : Math.min(end, blobSize);
+      const span = Math.max(relativeEnd - relativeStart, 0);
+      let added = 0;
+      for (const part of blobParts) {
+        if (added >= span) {
+          break;
+        }
+        const partSize = ArrayBuffer.isView(part) ? part.byteLength : part.size;
+        if (relativeStart && partSize <= relativeStart) {
+          relativeStart -= partSize;
+          relativeEnd -= partSize;
+        } else {
+          let chunk;
+          if (ArrayBuffer.isView(part)) {
+            chunk = part.subarray(relativeStart, Math.min(partSize, relativeEnd));
+            added += chunk.byteLength;
+          } else {
+            chunk = part.slice(relativeStart, Math.min(partSize, relativeEnd));
+            added += chunk.size;
+          }
+          relativeEnd -= partSize;
+          relativeStart = 0;
+          yield chunk;
+        }
+      }
+    }
+    exports2.sliceBlob = sliceBlob;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/Blob.js
+var require_Blob = __commonJS({
+  "node_modules/formdata-node/lib/cjs/Blob.js"(exports2) {
+    "use strict";
+    var __classPrivateFieldGet = exports2 && exports2.__classPrivateFieldGet || function(receiver, state, kind, f) {
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+      return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
+    var __classPrivateFieldSet = exports2 && exports2.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+      if (kind === "m") throw new TypeError("Private method is not writable");
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+      return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+    };
+    var _Blob_parts;
+    var _Blob_type;
+    var _Blob_size;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Blob = void 0;
+    var web_streams_polyfill_1 = require_ponyfill();
+    var isFunction_1 = require_isFunction();
+    var blobHelpers_1 = require_blobHelpers();
+    var Blob = class _Blob {
+      constructor(blobParts = [], options = {}) {
+        _Blob_parts.set(this, []);
+        _Blob_type.set(this, "");
+        _Blob_size.set(this, 0);
+        options !== null && options !== void 0 ? options : options = {};
+        if (typeof blobParts !== "object" || blobParts === null) {
+          throw new TypeError("Failed to construct 'Blob': The provided value cannot be converted to a sequence.");
+        }
+        if (!(0, isFunction_1.isFunction)(blobParts[Symbol.iterator])) {
+          throw new TypeError("Failed to construct 'Blob': The object must have a callable @@iterator property.");
+        }
+        if (typeof options !== "object" && !(0, isFunction_1.isFunction)(options)) {
+          throw new TypeError("Failed to construct 'Blob': parameter 2 cannot convert to dictionary.");
+        }
+        const encoder = new TextEncoder();
+        for (const raw of blobParts) {
+          let part;
+          if (ArrayBuffer.isView(raw)) {
+            part = new Uint8Array(raw.buffer.slice(raw.byteOffset, raw.byteOffset + raw.byteLength));
+          } else if (raw instanceof ArrayBuffer) {
+            part = new Uint8Array(raw.slice(0));
+          } else if (raw instanceof _Blob) {
+            part = raw;
+          } else {
+            part = encoder.encode(String(raw));
+          }
+          __classPrivateFieldSet(this, _Blob_size, __classPrivateFieldGet(this, _Blob_size, "f") + (ArrayBuffer.isView(part) ? part.byteLength : part.size), "f");
+          __classPrivateFieldGet(this, _Blob_parts, "f").push(part);
+        }
+        const type = options.type === void 0 ? "" : String(options.type);
+        __classPrivateFieldSet(this, _Blob_type, /^[\x20-\x7E]*$/.test(type) ? type : "", "f");
+      }
+      static [(_Blob_parts = /* @__PURE__ */ new WeakMap(), _Blob_type = /* @__PURE__ */ new WeakMap(), _Blob_size = /* @__PURE__ */ new WeakMap(), Symbol.hasInstance)](value) {
+        return Boolean(value && typeof value === "object" && (0, isFunction_1.isFunction)(value.constructor) && ((0, isFunction_1.isFunction)(value.stream) || (0, isFunction_1.isFunction)(value.arrayBuffer)) && /^(Blob|File)$/.test(value[Symbol.toStringTag]));
+      }
+      get type() {
+        return __classPrivateFieldGet(this, _Blob_type, "f");
+      }
+      get size() {
+        return __classPrivateFieldGet(this, _Blob_size, "f");
+      }
+      slice(start, end, contentType) {
+        return new _Blob((0, blobHelpers_1.sliceBlob)(__classPrivateFieldGet(this, _Blob_parts, "f"), this.size, start, end), {
+          type: contentType
+        });
+      }
+      async text() {
+        const decoder = new TextDecoder();
+        let result = "";
+        for await (const chunk of (0, blobHelpers_1.consumeBlobParts)(__classPrivateFieldGet(this, _Blob_parts, "f"))) {
+          result += decoder.decode(chunk, { stream: true });
+        }
+        result += decoder.decode();
+        return result;
+      }
+      async arrayBuffer() {
+        const view = new Uint8Array(this.size);
+        let offset = 0;
+        for await (const chunk of (0, blobHelpers_1.consumeBlobParts)(__classPrivateFieldGet(this, _Blob_parts, "f"))) {
+          view.set(chunk, offset);
+          offset += chunk.length;
+        }
+        return view.buffer;
+      }
+      stream() {
+        const iterator = (0, blobHelpers_1.consumeBlobParts)(__classPrivateFieldGet(this, _Blob_parts, "f"), true);
+        return new web_streams_polyfill_1.ReadableStream({
+          async pull(controller) {
+            const { value, done } = await iterator.next();
+            if (done) {
+              return queueMicrotask(() => controller.close());
+            }
+            controller.enqueue(value);
+          },
+          async cancel() {
+            await iterator.return();
+          }
+        });
+      }
+      get [Symbol.toStringTag]() {
+        return "Blob";
+      }
+    };
+    exports2.Blob = Blob;
+    Object.defineProperties(Blob.prototype, {
+      type: { enumerable: true },
+      size: { enumerable: true },
+      slice: { enumerable: true },
+      stream: { enumerable: true },
+      text: { enumerable: true },
+      arrayBuffer: { enumerable: true }
+    });
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/File.js
+var require_File = __commonJS({
+  "node_modules/formdata-node/lib/cjs/File.js"(exports2) {
+    "use strict";
+    var __classPrivateFieldSet = exports2 && exports2.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+      if (kind === "m") throw new TypeError("Private method is not writable");
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+      return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+    };
+    var __classPrivateFieldGet = exports2 && exports2.__classPrivateFieldGet || function(receiver, state, kind, f) {
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+      return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
+    var _File_name;
+    var _File_lastModified;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.File = void 0;
+    var Blob_1 = require_Blob();
+    var File = class extends Blob_1.Blob {
+      constructor(fileBits, name, options = {}) {
+        super(fileBits, options);
+        _File_name.set(this, void 0);
+        _File_lastModified.set(this, 0);
+        if (arguments.length < 2) {
+          throw new TypeError(`Failed to construct 'File': 2 arguments required, but only ${arguments.length} present.`);
+        }
+        __classPrivateFieldSet(this, _File_name, String(name), "f");
+        const lastModified = options.lastModified === void 0 ? Date.now() : Number(options.lastModified);
+        if (!Number.isNaN(lastModified)) {
+          __classPrivateFieldSet(this, _File_lastModified, lastModified, "f");
+        }
+      }
+      static [(_File_name = /* @__PURE__ */ new WeakMap(), _File_lastModified = /* @__PURE__ */ new WeakMap(), Symbol.hasInstance)](value) {
+        return value instanceof Blob_1.Blob && value[Symbol.toStringTag] === "File" && typeof value.name === "string";
+      }
+      get name() {
+        return __classPrivateFieldGet(this, _File_name, "f");
+      }
+      get lastModified() {
+        return __classPrivateFieldGet(this, _File_lastModified, "f");
+      }
+      get webkitRelativePath() {
+        return "";
+      }
+      get [Symbol.toStringTag]() {
+        return "File";
+      }
+    };
+    exports2.File = File;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/isFile.js
+var require_isFile = __commonJS({
+  "node_modules/formdata-node/lib/cjs/isFile.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.isFile = void 0;
+    var File_1 = require_File();
+    var isFile = (value) => value instanceof File_1.File;
+    exports2.isFile = isFile;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/isBlob.js
+var require_isBlob = __commonJS({
+  "node_modules/formdata-node/lib/cjs/isBlob.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.isBlob = void 0;
+    var Blob_1 = require_Blob();
+    var isBlob = (value) => value instanceof Blob_1.Blob;
+    exports2.isBlob = isBlob;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/deprecateConstructorEntries.js
+var require_deprecateConstructorEntries = __commonJS({
+  "node_modules/formdata-node/lib/cjs/deprecateConstructorEntries.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.deprecateConstructorEntries = void 0;
+    var util_1 = require("util");
+    exports2.deprecateConstructorEntries = (0, util_1.deprecate)(() => {
+    }, 'Constructor "entries" argument is not spec-compliant and will be removed in next major release.');
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/FormData.js
+var require_FormData = __commonJS({
+  "node_modules/formdata-node/lib/cjs/FormData.js"(exports2) {
+    "use strict";
+    var __classPrivateFieldGet = exports2 && exports2.__classPrivateFieldGet || function(receiver, state, kind, f) {
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+      return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
+    var _FormData_instances;
+    var _FormData_entries;
+    var _FormData_setEntry;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.FormData = void 0;
+    var util_1 = require("util");
+    var File_1 = require_File();
+    var isFile_1 = require_isFile();
+    var isBlob_1 = require_isBlob();
+    var isFunction_1 = require_isFunction();
+    var deprecateConstructorEntries_1 = require_deprecateConstructorEntries();
+    var FormData = class {
+      constructor(entries) {
+        _FormData_instances.add(this);
+        _FormData_entries.set(this, /* @__PURE__ */ new Map());
+        if (entries) {
+          (0, deprecateConstructorEntries_1.deprecateConstructorEntries)();
+          entries.forEach(({ name, value, fileName }) => this.append(name, value, fileName));
+        }
+      }
+      static [(_FormData_entries = /* @__PURE__ */ new WeakMap(), _FormData_instances = /* @__PURE__ */ new WeakSet(), Symbol.hasInstance)](value) {
+        return Boolean(value && (0, isFunction_1.isFunction)(value.constructor) && value[Symbol.toStringTag] === "FormData" && (0, isFunction_1.isFunction)(value.append) && (0, isFunction_1.isFunction)(value.set) && (0, isFunction_1.isFunction)(value.get) && (0, isFunction_1.isFunction)(value.getAll) && (0, isFunction_1.isFunction)(value.has) && (0, isFunction_1.isFunction)(value.delete) && (0, isFunction_1.isFunction)(value.entries) && (0, isFunction_1.isFunction)(value.values) && (0, isFunction_1.isFunction)(value.keys) && (0, isFunction_1.isFunction)(value[Symbol.iterator]) && (0, isFunction_1.isFunction)(value.forEach));
+      }
+      append(name, value, fileName) {
+        __classPrivateFieldGet(this, _FormData_instances, "m", _FormData_setEntry).call(this, {
+          name,
+          fileName,
+          append: true,
+          rawValue: value,
+          argsLength: arguments.length
+        });
+      }
+      set(name, value, fileName) {
+        __classPrivateFieldGet(this, _FormData_instances, "m", _FormData_setEntry).call(this, {
+          name,
+          fileName,
+          append: false,
+          rawValue: value,
+          argsLength: arguments.length
+        });
+      }
+      get(name) {
+        const field = __classPrivateFieldGet(this, _FormData_entries, "f").get(String(name));
+        if (!field) {
+          return null;
+        }
+        return field[0];
+      }
+      getAll(name) {
+        const field = __classPrivateFieldGet(this, _FormData_entries, "f").get(String(name));
+        if (!field) {
+          return [];
+        }
+        return field.slice();
+      }
+      has(name) {
+        return __classPrivateFieldGet(this, _FormData_entries, "f").has(String(name));
+      }
+      delete(name) {
+        __classPrivateFieldGet(this, _FormData_entries, "f").delete(String(name));
+      }
+      *keys() {
+        for (const key of __classPrivateFieldGet(this, _FormData_entries, "f").keys()) {
+          yield key;
+        }
+      }
+      *entries() {
+        for (const name of this.keys()) {
+          const values = this.getAll(name);
+          for (const value of values) {
+            yield [name, value];
+          }
+        }
+      }
+      *values() {
+        for (const [, value] of this) {
+          yield value;
+        }
+      }
+      [(_FormData_setEntry = function _FormData_setEntry2({ name, rawValue, append, fileName, argsLength }) {
+        const methodName = append ? "append" : "set";
+        if (argsLength < 2) {
+          throw new TypeError(`Failed to execute '${methodName}' on 'FormData': 2 arguments required, but only ${argsLength} present.`);
+        }
+        name = String(name);
+        let value;
+        if ((0, isFile_1.isFile)(rawValue)) {
+          value = fileName === void 0 ? rawValue : new File_1.File([rawValue], fileName, {
+            type: rawValue.type,
+            lastModified: rawValue.lastModified
+          });
+        } else if ((0, isBlob_1.isBlob)(rawValue)) {
+          value = new File_1.File([rawValue], fileName === void 0 ? "blob" : fileName, {
+            type: rawValue.type
+          });
+        } else if (fileName) {
+          throw new TypeError(`Failed to execute '${methodName}' on 'FormData': parameter 2 is not of type 'Blob'.`);
+        } else {
+          value = String(rawValue);
+        }
+        const values = __classPrivateFieldGet(this, _FormData_entries, "f").get(name);
+        if (!values) {
+          return void __classPrivateFieldGet(this, _FormData_entries, "f").set(name, [value]);
+        }
+        if (!append) {
+          return void __classPrivateFieldGet(this, _FormData_entries, "f").set(name, [value]);
+        }
+        values.push(value);
+      }, Symbol.iterator)]() {
+        return this.entries();
+      }
+      forEach(callback, thisArg) {
+        for (const [name, value] of this) {
+          callback.call(thisArg, value, name, this);
+        }
+      }
+      get [Symbol.toStringTag]() {
+        return "FormData";
+      }
+      [util_1.inspect.custom]() {
+        return this[Symbol.toStringTag];
+      }
+    };
+    exports2.FormData = FormData;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/index.js
+var require_cjs = __commonJS({
+  "node_modules/formdata-node/lib/cjs/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_FormData(), exports2);
+    __exportStar(require_Blob(), exports2);
+    __exportStar(require_File(), exports2);
+  }
+});
+
+// node_modules/ms/index.js
+var require_ms = __commonJS({
+  "node_modules/ms/index.js"(exports2, module2) {
+    var s = 1e3;
+    var m = s * 60;
+    var h = m * 60;
+    var d = h * 24;
+    var w = d * 7;
+    var y = d * 365.25;
+    module2.exports = function(val, options) {
+      options = options || {};
+      var type = typeof val;
+      if (type === "string" && val.length > 0) {
+        return parse(val);
+      } else if (type === "number" && isFinite(val)) {
+        return options.long ? fmtLong(val) : fmtShort(val);
+      }
+      throw new Error(
+        "val is not a non-empty string or a valid number. val=" + JSON.stringify(val)
+      );
+    };
+    function parse(str) {
+      str = String(str);
+      if (str.length > 100) {
+        return;
+      }
+      var match = /^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(
+        str
+      );
+      if (!match) {
+        return;
+      }
+      var n = parseFloat(match[1]);
+      var type = (match[2] || "ms").toLowerCase();
+      switch (type) {
+        case "years":
+        case "year":
+        case "yrs":
+        case "yr":
+        case "y":
+          return n * y;
+        case "weeks":
+        case "week":
+        case "w":
+          return n * w;
+        case "days":
+        case "day":
+        case "d":
+          return n * d;
+        case "hours":
+        case "hour":
+        case "hrs":
+        case "hr":
+        case "h":
+          return n * h;
+        case "minutes":
+        case "minute":
+        case "mins":
+        case "min":
+        case "m":
+          return n * m;
+        case "seconds":
+        case "second":
+        case "secs":
+        case "sec":
+        case "s":
+          return n * s;
+        case "milliseconds":
+        case "millisecond":
+        case "msecs":
+        case "msec":
+        case "ms":
+          return n;
+        default:
+          return void 0;
+      }
+    }
+    function fmtShort(ms) {
+      var msAbs = Math.abs(ms);
+      if (msAbs >= d) {
+        return Math.round(ms / d) + "d";
+      }
+      if (msAbs >= h) {
+        return Math.round(ms / h) + "h";
+      }
+      if (msAbs >= m) {
+        return Math.round(ms / m) + "m";
+      }
+      if (msAbs >= s) {
+        return Math.round(ms / s) + "s";
+      }
+      return ms + "ms";
+    }
+    function fmtLong(ms) {
+      var msAbs = Math.abs(ms);
+      if (msAbs >= d) {
+        return plural(ms, msAbs, d, "day");
+      }
+      if (msAbs >= h) {
+        return plural(ms, msAbs, h, "hour");
+      }
+      if (msAbs >= m) {
+        return plural(ms, msAbs, m, "minute");
+      }
+      if (msAbs >= s) {
+        return plural(ms, msAbs, s, "second");
+      }
+      return ms + " ms";
+    }
+    function plural(ms, msAbs, n, name) {
+      var isPlural = msAbs >= n * 1.5;
+      return Math.round(ms / n) + " " + name + (isPlural ? "s" : "");
+    }
+  }
+});
+
+// node_modules/humanize-ms/index.js
+var require_humanize_ms = __commonJS({
+  "node_modules/humanize-ms/index.js"(exports2, module2) {
+    "use strict";
+    var util = require("util");
+    var ms = require_ms();
+    module2.exports = function(t) {
+      if (typeof t === "number") return t;
+      var r = ms(t);
+      if (r === void 0) {
+        var err = new Error(util.format("humanize-ms(%j) result undefined", t));
+        console.warn(err.stack);
+      }
+      return r;
     };
   }
-  try {
-    const { prompt, jsonMode = false } = JSON.parse(event.body);
-    if (!prompt) {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({ error: "Prompt is required" })
-      };
+});
+
+// node_modules/agentkeepalive/lib/constants.js
+var require_constants = __commonJS({
+  "node_modules/agentkeepalive/lib/constants.js"(exports2, module2) {
+    "use strict";
+    module2.exports = {
+      // agent
+      CURRENT_ID: Symbol("agentkeepalive#currentId"),
+      CREATE_ID: Symbol("agentkeepalive#createId"),
+      INIT_SOCKET: Symbol("agentkeepalive#initSocket"),
+      CREATE_HTTPS_CONNECTION: Symbol("agentkeepalive#createHttpsConnection"),
+      // socket
+      SOCKET_CREATED_TIME: Symbol("agentkeepalive#socketCreatedTime"),
+      SOCKET_NAME: Symbol("agentkeepalive#socketName"),
+      SOCKET_REQUEST_COUNT: Symbol("agentkeepalive#socketRequestCount"),
+      SOCKET_REQUEST_FINISHED_COUNT: Symbol("agentkeepalive#socketRequestFinishedCount")
+    };
+  }
+});
+
+// node_modules/agentkeepalive/lib/agent.js
+var require_agent = __commonJS({
+  "node_modules/agentkeepalive/lib/agent.js"(exports2, module2) {
+    "use strict";
+    var OriginalAgent = require("http").Agent;
+    var ms = require_humanize_ms();
+    var debug = require("util").debuglog("agentkeepalive");
+    var {
+      INIT_SOCKET,
+      CURRENT_ID,
+      CREATE_ID,
+      SOCKET_CREATED_TIME,
+      SOCKET_NAME,
+      SOCKET_REQUEST_COUNT,
+      SOCKET_REQUEST_FINISHED_COUNT
+    } = require_constants();
+    var defaultTimeoutListenerCount = 1;
+    var majorVersion = parseInt(process.version.split(".", 1)[0].substring(1));
+    if (majorVersion >= 11 && majorVersion <= 12) {
+      defaultTimeoutListenerCount = 2;
+    } else if (majorVersion >= 13) {
+      defaultTimeoutListenerCount = 3;
     }
-    console.log("Calling Groq API...");
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        // Modelo mais completo e rápido
-        messages: [{
-          role: "user",
-          content: prompt
-        }],
-        max_tokens: 4e3,
-        temperature: 0.7,
-        ...jsonMode && { response_format: { type: "json_object" } }
-      })
+    function deprecate(message) {
+      console.log("[agentkeepalive:deprecated] %s", message);
+    }
+    var Agent = class extends OriginalAgent {
+      constructor(options) {
+        options = options || {};
+        options.keepAlive = options.keepAlive !== false;
+        if (options.freeSocketTimeout === void 0) {
+          options.freeSocketTimeout = 4e3;
+        }
+        if (options.keepAliveTimeout) {
+          deprecate("options.keepAliveTimeout is deprecated, please use options.freeSocketTimeout instead");
+          options.freeSocketTimeout = options.keepAliveTimeout;
+          delete options.keepAliveTimeout;
+        }
+        if (options.freeSocketKeepAliveTimeout) {
+          deprecate("options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead");
+          options.freeSocketTimeout = options.freeSocketKeepAliveTimeout;
+          delete options.freeSocketKeepAliveTimeout;
+        }
+        if (options.timeout === void 0) {
+          options.timeout = Math.max(options.freeSocketTimeout * 2, 8e3);
+        }
+        options.timeout = ms(options.timeout);
+        options.freeSocketTimeout = ms(options.freeSocketTimeout);
+        options.socketActiveTTL = options.socketActiveTTL ? ms(options.socketActiveTTL) : 0;
+        super(options);
+        this[CURRENT_ID] = 0;
+        this.createSocketCount = 0;
+        this.createSocketCountLastCheck = 0;
+        this.createSocketErrorCount = 0;
+        this.createSocketErrorCountLastCheck = 0;
+        this.closeSocketCount = 0;
+        this.closeSocketCountLastCheck = 0;
+        this.errorSocketCount = 0;
+        this.errorSocketCountLastCheck = 0;
+        this.requestCount = 0;
+        this.requestCountLastCheck = 0;
+        this.timeoutSocketCount = 0;
+        this.timeoutSocketCountLastCheck = 0;
+        this.on("free", (socket) => {
+          const timeout = this.calcSocketTimeout(socket);
+          if (timeout > 0 && socket.timeout !== timeout) {
+            socket.setTimeout(timeout);
+          }
+        });
+      }
+      get freeSocketKeepAliveTimeout() {
+        deprecate("agent.freeSocketKeepAliveTimeout is deprecated, please use agent.options.freeSocketTimeout instead");
+        return this.options.freeSocketTimeout;
+      }
+      get timeout() {
+        deprecate("agent.timeout is deprecated, please use agent.options.timeout instead");
+        return this.options.timeout;
+      }
+      get socketActiveTTL() {
+        deprecate("agent.socketActiveTTL is deprecated, please use agent.options.socketActiveTTL instead");
+        return this.options.socketActiveTTL;
+      }
+      calcSocketTimeout(socket) {
+        let freeSocketTimeout = this.options.freeSocketTimeout;
+        const socketActiveTTL = this.options.socketActiveTTL;
+        if (socketActiveTTL) {
+          const aliveTime = Date.now() - socket[SOCKET_CREATED_TIME];
+          const diff = socketActiveTTL - aliveTime;
+          if (diff <= 0) {
+            return diff;
+          }
+          if (freeSocketTimeout && diff < freeSocketTimeout) {
+            freeSocketTimeout = diff;
+          }
+        }
+        if (freeSocketTimeout) {
+          const customFreeSocketTimeout = socket.freeSocketTimeout || socket.freeSocketKeepAliveTimeout;
+          return customFreeSocketTimeout || freeSocketTimeout;
+        }
+      }
+      keepSocketAlive(socket) {
+        const result = super.keepSocketAlive(socket);
+        if (!result) return result;
+        const customTimeout = this.calcSocketTimeout(socket);
+        if (typeof customTimeout === "undefined") {
+          return true;
+        }
+        if (customTimeout <= 0) {
+          debug(
+            "%s(requests: %s, finished: %s) free but need to destroy by TTL, request count %s, diff is %s",
+            socket[SOCKET_NAME],
+            socket[SOCKET_REQUEST_COUNT],
+            socket[SOCKET_REQUEST_FINISHED_COUNT],
+            customTimeout
+          );
+          return false;
+        }
+        if (socket.timeout !== customTimeout) {
+          socket.setTimeout(customTimeout);
+        }
+        return true;
+      }
+      // only call on addRequest
+      reuseSocket(...args) {
+        super.reuseSocket(...args);
+        const socket = args[0];
+        const req = args[1];
+        req.reusedSocket = true;
+        const agentTimeout = this.options.timeout;
+        if (getSocketTimeout(socket) !== agentTimeout) {
+          socket.setTimeout(agentTimeout);
+          debug("%s reset timeout to %sms", socket[SOCKET_NAME], agentTimeout);
+        }
+        socket[SOCKET_REQUEST_COUNT]++;
+        debug(
+          "%s(requests: %s, finished: %s) reuse on addRequest, timeout %sms",
+          socket[SOCKET_NAME],
+          socket[SOCKET_REQUEST_COUNT],
+          socket[SOCKET_REQUEST_FINISHED_COUNT],
+          getSocketTimeout(socket)
+        );
+      }
+      [CREATE_ID]() {
+        const id = this[CURRENT_ID]++;
+        if (this[CURRENT_ID] === Number.MAX_SAFE_INTEGER) this[CURRENT_ID] = 0;
+        return id;
+      }
+      [INIT_SOCKET](socket, options) {
+        if (options.timeout) {
+          const timeout = getSocketTimeout(socket);
+          if (!timeout) {
+            socket.setTimeout(options.timeout);
+          }
+        }
+        if (this.options.keepAlive) {
+          socket.setNoDelay(true);
+        }
+        this.createSocketCount++;
+        if (this.options.socketActiveTTL) {
+          socket[SOCKET_CREATED_TIME] = Date.now();
+        }
+        socket[SOCKET_NAME] = `sock[${this[CREATE_ID]()}#${options._agentKey}]`.split("-----BEGIN", 1)[0];
+        socket[SOCKET_REQUEST_COUNT] = 1;
+        socket[SOCKET_REQUEST_FINISHED_COUNT] = 0;
+        installListeners(this, socket, options);
+      }
+      createConnection(options, oncreate) {
+        let called = false;
+        const onNewCreate = (err, socket) => {
+          if (called) return;
+          called = true;
+          if (err) {
+            this.createSocketErrorCount++;
+            return oncreate(err);
+          }
+          this[INIT_SOCKET](socket, options);
+          oncreate(err, socket);
+        };
+        const newSocket = super.createConnection(options, onNewCreate);
+        if (newSocket) onNewCreate(null, newSocket);
+        return newSocket;
+      }
+      get statusChanged() {
+        const changed = this.createSocketCount !== this.createSocketCountLastCheck || this.createSocketErrorCount !== this.createSocketErrorCountLastCheck || this.closeSocketCount !== this.closeSocketCountLastCheck || this.errorSocketCount !== this.errorSocketCountLastCheck || this.timeoutSocketCount !== this.timeoutSocketCountLastCheck || this.requestCount !== this.requestCountLastCheck;
+        if (changed) {
+          this.createSocketCountLastCheck = this.createSocketCount;
+          this.createSocketErrorCountLastCheck = this.createSocketErrorCount;
+          this.closeSocketCountLastCheck = this.closeSocketCount;
+          this.errorSocketCountLastCheck = this.errorSocketCount;
+          this.timeoutSocketCountLastCheck = this.timeoutSocketCount;
+          this.requestCountLastCheck = this.requestCount;
+        }
+        return changed;
+      }
+      getCurrentStatus() {
+        return {
+          createSocketCount: this.createSocketCount,
+          createSocketErrorCount: this.createSocketErrorCount,
+          closeSocketCount: this.closeSocketCount,
+          errorSocketCount: this.errorSocketCount,
+          timeoutSocketCount: this.timeoutSocketCount,
+          requestCount: this.requestCount,
+          freeSockets: inspect(this.freeSockets),
+          sockets: inspect(this.sockets),
+          requests: inspect(this.requests)
+        };
+      }
+    };
+    function getSocketTimeout(socket) {
+      return socket.timeout || socket._idleTimeout;
+    }
+    function installListeners(agent, socket, options) {
+      debug("%s create, timeout %sms", socket[SOCKET_NAME], getSocketTimeout(socket));
+      function onFree() {
+        if (!socket._httpMessage && socket[SOCKET_REQUEST_COUNT] === 1) return;
+        socket[SOCKET_REQUEST_FINISHED_COUNT]++;
+        agent.requestCount++;
+        debug(
+          "%s(requests: %s, finished: %s) free",
+          socket[SOCKET_NAME],
+          socket[SOCKET_REQUEST_COUNT],
+          socket[SOCKET_REQUEST_FINISHED_COUNT]
+        );
+        const name = agent.getName(options);
+        if (socket.writable && agent.requests[name] && agent.requests[name].length) {
+          socket[SOCKET_REQUEST_COUNT]++;
+          debug(
+            "%s(requests: %s, finished: %s) will be reuse on agent free event",
+            socket[SOCKET_NAME],
+            socket[SOCKET_REQUEST_COUNT],
+            socket[SOCKET_REQUEST_FINISHED_COUNT]
+          );
+        }
+      }
+      socket.on("free", onFree);
+      function onClose(isError) {
+        debug(
+          "%s(requests: %s, finished: %s) close, isError: %s",
+          socket[SOCKET_NAME],
+          socket[SOCKET_REQUEST_COUNT],
+          socket[SOCKET_REQUEST_FINISHED_COUNT],
+          isError
+        );
+        agent.closeSocketCount++;
+      }
+      socket.on("close", onClose);
+      function onTimeout() {
+        const listenerCount = socket.listeners("timeout").length;
+        const timeout = getSocketTimeout(socket);
+        const req = socket._httpMessage;
+        const reqTimeoutListenerCount = req && req.listeners("timeout").length || 0;
+        debug(
+          "%s(requests: %s, finished: %s) timeout after %sms, listeners %s, defaultTimeoutListenerCount %s, hasHttpRequest %s, HttpRequest timeoutListenerCount %s",
+          socket[SOCKET_NAME],
+          socket[SOCKET_REQUEST_COUNT],
+          socket[SOCKET_REQUEST_FINISHED_COUNT],
+          timeout,
+          listenerCount,
+          defaultTimeoutListenerCount,
+          !!req,
+          reqTimeoutListenerCount
+        );
+        if (debug.enabled) {
+          debug("timeout listeners: %s", socket.listeners("timeout").map((f) => f.name).join(", "));
+        }
+        agent.timeoutSocketCount++;
+        const name = agent.getName(options);
+        if (agent.freeSockets[name] && agent.freeSockets[name].indexOf(socket) !== -1) {
+          socket.destroy();
+          agent.removeSocket(socket, options);
+          debug("%s is free, destroy quietly", socket[SOCKET_NAME]);
+        } else {
+          if (reqTimeoutListenerCount === 0) {
+            const error = new Error("Socket timeout");
+            error.code = "ERR_SOCKET_TIMEOUT";
+            error.timeout = timeout;
+            socket.destroy(error);
+            agent.removeSocket(socket, options);
+            debug("%s destroy with timeout error", socket[SOCKET_NAME]);
+          }
+        }
+      }
+      socket.on("timeout", onTimeout);
+      function onError(err) {
+        const listenerCount = socket.listeners("error").length;
+        debug(
+          "%s(requests: %s, finished: %s) error: %s, listenerCount: %s",
+          socket[SOCKET_NAME],
+          socket[SOCKET_REQUEST_COUNT],
+          socket[SOCKET_REQUEST_FINISHED_COUNT],
+          err,
+          listenerCount
+        );
+        agent.errorSocketCount++;
+        if (listenerCount === 1) {
+          debug("%s emit uncaught error event", socket[SOCKET_NAME]);
+          socket.removeListener("error", onError);
+          socket.emit("error", err);
+        }
+      }
+      socket.on("error", onError);
+      function onRemove() {
+        debug(
+          "%s(requests: %s, finished: %s) agentRemove",
+          socket[SOCKET_NAME],
+          socket[SOCKET_REQUEST_COUNT],
+          socket[SOCKET_REQUEST_FINISHED_COUNT]
+        );
+        socket.removeListener("close", onClose);
+        socket.removeListener("error", onError);
+        socket.removeListener("free", onFree);
+        socket.removeListener("timeout", onTimeout);
+        socket.removeListener("agentRemove", onRemove);
+      }
+      socket.on("agentRemove", onRemove);
+    }
+    module2.exports = Agent;
+    function inspect(obj) {
+      const res = {};
+      for (const key in obj) {
+        res[key] = obj[key].length;
+      }
+      return res;
+    }
+  }
+});
+
+// node_modules/agentkeepalive/lib/https_agent.js
+var require_https_agent = __commonJS({
+  "node_modules/agentkeepalive/lib/https_agent.js"(exports2, module2) {
+    "use strict";
+    var OriginalHttpsAgent = require("https").Agent;
+    var HttpAgent = require_agent();
+    var {
+      INIT_SOCKET,
+      CREATE_HTTPS_CONNECTION
+    } = require_constants();
+    var HttpsAgent = class extends HttpAgent {
+      constructor(options) {
+        super(options);
+        this.defaultPort = 443;
+        this.protocol = "https:";
+        this.maxCachedSessions = this.options.maxCachedSessions;
+        if (this.maxCachedSessions === void 0) {
+          this.maxCachedSessions = 100;
+        }
+        this._sessionCache = {
+          map: {},
+          list: []
+        };
+      }
+      createConnection(options, oncreate) {
+        const socket = this[CREATE_HTTPS_CONNECTION](options, oncreate);
+        this[INIT_SOCKET](socket, options);
+        return socket;
+      }
+    };
+    HttpsAgent.prototype[CREATE_HTTPS_CONNECTION] = OriginalHttpsAgent.prototype.createConnection;
+    [
+      "getName",
+      "_getSession",
+      "_cacheSession",
+      // https://github.com/nodejs/node/pull/4982
+      "_evictSession"
+    ].forEach(function(method) {
+      if (typeof OriginalHttpsAgent.prototype[method] === "function") {
+        HttpsAgent.prototype[method] = OriginalHttpsAgent.prototype[method];
+      }
     });
-    const responseText = await response.text();
-    console.log("Groq Response Status:", response.status);
-    if (!response.ok) {
-      console.error("Groq Error:", responseText);
+    module2.exports = HttpsAgent;
+  }
+});
+
+// node_modules/agentkeepalive/index.js
+var require_agentkeepalive = __commonJS({
+  "node_modules/agentkeepalive/index.js"(exports2, module2) {
+    "use strict";
+    var HttpAgent = require_agent();
+    module2.exports = HttpAgent;
+    module2.exports.HttpAgent = HttpAgent;
+    module2.exports.HttpsAgent = require_https_agent();
+    module2.exports.constants = require_constants();
+  }
+});
+
+// node_modules/event-target-shim/dist/event-target-shim.js
+var require_event_target_shim = __commonJS({
+  "node_modules/event-target-shim/dist/event-target-shim.js"(exports2, module2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var privateData = /* @__PURE__ */ new WeakMap();
+    var wrappers = /* @__PURE__ */ new WeakMap();
+    function pd(event) {
+      const retv = privateData.get(event);
+      console.assert(
+        retv != null,
+        "'this' is expected an Event object, but got",
+        event
+      );
+      return retv;
+    }
+    function setCancelFlag(data) {
+      if (data.passiveListener != null) {
+        if (typeof console !== "undefined" && typeof console.error === "function") {
+          console.error(
+            "Unable to preventDefault inside passive event listener invocation.",
+            data.passiveListener
+          );
+        }
+        return;
+      }
+      if (!data.event.cancelable) {
+        return;
+      }
+      data.canceled = true;
+      if (typeof data.event.preventDefault === "function") {
+        data.event.preventDefault();
+      }
+    }
+    function Event(eventTarget, event) {
+      privateData.set(this, {
+        eventTarget,
+        event,
+        eventPhase: 2,
+        currentTarget: eventTarget,
+        canceled: false,
+        stopped: false,
+        immediateStopped: false,
+        passiveListener: null,
+        timeStamp: event.timeStamp || Date.now()
+      });
+      Object.defineProperty(this, "isTrusted", { value: false, enumerable: true });
+      const keys = Object.keys(event);
+      for (let i = 0; i < keys.length; ++i) {
+        const key = keys[i];
+        if (!(key in this)) {
+          Object.defineProperty(this, key, defineRedirectDescriptor(key));
+        }
+      }
+    }
+    Event.prototype = {
+      /**
+       * The type of this event.
+       * @type {string}
+       */
+      get type() {
+        return pd(this).event.type;
+      },
+      /**
+       * The target of this event.
+       * @type {EventTarget}
+       */
+      get target() {
+        return pd(this).eventTarget;
+      },
+      /**
+       * The target of this event.
+       * @type {EventTarget}
+       */
+      get currentTarget() {
+        return pd(this).currentTarget;
+      },
+      /**
+       * @returns {EventTarget[]} The composed path of this event.
+       */
+      composedPath() {
+        const currentTarget = pd(this).currentTarget;
+        if (currentTarget == null) {
+          return [];
+        }
+        return [currentTarget];
+      },
+      /**
+       * Constant of NONE.
+       * @type {number}
+       */
+      get NONE() {
+        return 0;
+      },
+      /**
+       * Constant of CAPTURING_PHASE.
+       * @type {number}
+       */
+      get CAPTURING_PHASE() {
+        return 1;
+      },
+      /**
+       * Constant of AT_TARGET.
+       * @type {number}
+       */
+      get AT_TARGET() {
+        return 2;
+      },
+      /**
+       * Constant of BUBBLING_PHASE.
+       * @type {number}
+       */
+      get BUBBLING_PHASE() {
+        return 3;
+      },
+      /**
+       * The target of this event.
+       * @type {number}
+       */
+      get eventPhase() {
+        return pd(this).eventPhase;
+      },
+      /**
+       * Stop event bubbling.
+       * @returns {void}
+       */
+      stopPropagation() {
+        const data = pd(this);
+        data.stopped = true;
+        if (typeof data.event.stopPropagation === "function") {
+          data.event.stopPropagation();
+        }
+      },
+      /**
+       * Stop event bubbling.
+       * @returns {void}
+       */
+      stopImmediatePropagation() {
+        const data = pd(this);
+        data.stopped = true;
+        data.immediateStopped = true;
+        if (typeof data.event.stopImmediatePropagation === "function") {
+          data.event.stopImmediatePropagation();
+        }
+      },
+      /**
+       * The flag to be bubbling.
+       * @type {boolean}
+       */
+      get bubbles() {
+        return Boolean(pd(this).event.bubbles);
+      },
+      /**
+       * The flag to be cancelable.
+       * @type {boolean}
+       */
+      get cancelable() {
+        return Boolean(pd(this).event.cancelable);
+      },
+      /**
+       * Cancel this event.
+       * @returns {void}
+       */
+      preventDefault() {
+        setCancelFlag(pd(this));
+      },
+      /**
+       * The flag to indicate cancellation state.
+       * @type {boolean}
+       */
+      get defaultPrevented() {
+        return pd(this).canceled;
+      },
+      /**
+       * The flag to be composed.
+       * @type {boolean}
+       */
+      get composed() {
+        return Boolean(pd(this).event.composed);
+      },
+      /**
+       * The unix time of this event.
+       * @type {number}
+       */
+      get timeStamp() {
+        return pd(this).timeStamp;
+      },
+      /**
+       * The target of this event.
+       * @type {EventTarget}
+       * @deprecated
+       */
+      get srcElement() {
+        return pd(this).eventTarget;
+      },
+      /**
+       * The flag to stop event bubbling.
+       * @type {boolean}
+       * @deprecated
+       */
+      get cancelBubble() {
+        return pd(this).stopped;
+      },
+      set cancelBubble(value) {
+        if (!value) {
+          return;
+        }
+        const data = pd(this);
+        data.stopped = true;
+        if (typeof data.event.cancelBubble === "boolean") {
+          data.event.cancelBubble = true;
+        }
+      },
+      /**
+       * The flag to indicate cancellation state.
+       * @type {boolean}
+       * @deprecated
+       */
+      get returnValue() {
+        return !pd(this).canceled;
+      },
+      set returnValue(value) {
+        if (!value) {
+          setCancelFlag(pd(this));
+        }
+      },
+      /**
+       * Initialize this event object. But do nothing under event dispatching.
+       * @param {string} type The event type.
+       * @param {boolean} [bubbles=false] The flag to be possible to bubble up.
+       * @param {boolean} [cancelable=false] The flag to be possible to cancel.
+       * @deprecated
+       */
+      initEvent() {
+      }
+    };
+    Object.defineProperty(Event.prototype, "constructor", {
+      value: Event,
+      configurable: true,
+      writable: true
+    });
+    if (typeof window !== "undefined" && typeof window.Event !== "undefined") {
+      Object.setPrototypeOf(Event.prototype, window.Event.prototype);
+      wrappers.set(window.Event.prototype, Event);
+    }
+    function defineRedirectDescriptor(key) {
       return {
-        statusCode: response.status,
-        headers,
-        body: JSON.stringify({
-          error: "Groq API error",
-          details: responseText
-        })
+        get() {
+          return pd(this).event[key];
+        },
+        set(value) {
+          pd(this).event[key] = value;
+        },
+        configurable: true,
+        enumerable: true
       };
     }
-    const data = JSON.parse(responseText);
-    const text = data.choices[0].message.content;
-    console.log("Groq response received successfully");
+    function defineCallDescriptor(key) {
+      return {
+        value() {
+          const event = pd(this).event;
+          return event[key].apply(event, arguments);
+        },
+        configurable: true,
+        enumerable: true
+      };
+    }
+    function defineWrapper(BaseEvent, proto) {
+      const keys = Object.keys(proto);
+      if (keys.length === 0) {
+        return BaseEvent;
+      }
+      function CustomEvent(eventTarget, event) {
+        BaseEvent.call(this, eventTarget, event);
+      }
+      CustomEvent.prototype = Object.create(BaseEvent.prototype, {
+        constructor: { value: CustomEvent, configurable: true, writable: true }
+      });
+      for (let i = 0; i < keys.length; ++i) {
+        const key = keys[i];
+        if (!(key in BaseEvent.prototype)) {
+          const descriptor = Object.getOwnPropertyDescriptor(proto, key);
+          const isFunc = typeof descriptor.value === "function";
+          Object.defineProperty(
+            CustomEvent.prototype,
+            key,
+            isFunc ? defineCallDescriptor(key) : defineRedirectDescriptor(key)
+          );
+        }
+      }
+      return CustomEvent;
+    }
+    function getWrapper(proto) {
+      if (proto == null || proto === Object.prototype) {
+        return Event;
+      }
+      let wrapper = wrappers.get(proto);
+      if (wrapper == null) {
+        wrapper = defineWrapper(getWrapper(Object.getPrototypeOf(proto)), proto);
+        wrappers.set(proto, wrapper);
+      }
+      return wrapper;
+    }
+    function wrapEvent(eventTarget, event) {
+      const Wrapper = getWrapper(Object.getPrototypeOf(event));
+      return new Wrapper(eventTarget, event);
+    }
+    function isStopped(event) {
+      return pd(event).immediateStopped;
+    }
+    function setEventPhase(event, eventPhase) {
+      pd(event).eventPhase = eventPhase;
+    }
+    function setCurrentTarget(event, currentTarget) {
+      pd(event).currentTarget = currentTarget;
+    }
+    function setPassiveListener(event, passiveListener) {
+      pd(event).passiveListener = passiveListener;
+    }
+    var listenersMap = /* @__PURE__ */ new WeakMap();
+    var CAPTURE = 1;
+    var BUBBLE = 2;
+    var ATTRIBUTE = 3;
+    function isObject(x) {
+      return x !== null && typeof x === "object";
+    }
+    function getListeners(eventTarget) {
+      const listeners = listenersMap.get(eventTarget);
+      if (listeners == null) {
+        throw new TypeError(
+          "'this' is expected an EventTarget object, but got another value."
+        );
+      }
+      return listeners;
+    }
+    function defineEventAttributeDescriptor(eventName) {
+      return {
+        get() {
+          const listeners = getListeners(this);
+          let node = listeners.get(eventName);
+          while (node != null) {
+            if (node.listenerType === ATTRIBUTE) {
+              return node.listener;
+            }
+            node = node.next;
+          }
+          return null;
+        },
+        set(listener) {
+          if (typeof listener !== "function" && !isObject(listener)) {
+            listener = null;
+          }
+          const listeners = getListeners(this);
+          let prev = null;
+          let node = listeners.get(eventName);
+          while (node != null) {
+            if (node.listenerType === ATTRIBUTE) {
+              if (prev !== null) {
+                prev.next = node.next;
+              } else if (node.next !== null) {
+                listeners.set(eventName, node.next);
+              } else {
+                listeners.delete(eventName);
+              }
+            } else {
+              prev = node;
+            }
+            node = node.next;
+          }
+          if (listener !== null) {
+            const newNode = {
+              listener,
+              listenerType: ATTRIBUTE,
+              passive: false,
+              once: false,
+              next: null
+            };
+            if (prev === null) {
+              listeners.set(eventName, newNode);
+            } else {
+              prev.next = newNode;
+            }
+          }
+        },
+        configurable: true,
+        enumerable: true
+      };
+    }
+    function defineEventAttribute(eventTargetPrototype, eventName) {
+      Object.defineProperty(
+        eventTargetPrototype,
+        `on${eventName}`,
+        defineEventAttributeDescriptor(eventName)
+      );
+    }
+    function defineCustomEventTarget(eventNames) {
+      function CustomEventTarget() {
+        EventTarget.call(this);
+      }
+      CustomEventTarget.prototype = Object.create(EventTarget.prototype, {
+        constructor: {
+          value: CustomEventTarget,
+          configurable: true,
+          writable: true
+        }
+      });
+      for (let i = 0; i < eventNames.length; ++i) {
+        defineEventAttribute(CustomEventTarget.prototype, eventNames[i]);
+      }
+      return CustomEventTarget;
+    }
+    function EventTarget() {
+      if (this instanceof EventTarget) {
+        listenersMap.set(this, /* @__PURE__ */ new Map());
+        return;
+      }
+      if (arguments.length === 1 && Array.isArray(arguments[0])) {
+        return defineCustomEventTarget(arguments[0]);
+      }
+      if (arguments.length > 0) {
+        const types = new Array(arguments.length);
+        for (let i = 0; i < arguments.length; ++i) {
+          types[i] = arguments[i];
+        }
+        return defineCustomEventTarget(types);
+      }
+      throw new TypeError("Cannot call a class as a function");
+    }
+    EventTarget.prototype = {
+      /**
+       * Add a given listener to this event target.
+       * @param {string} eventName The event name to add.
+       * @param {Function} listener The listener to add.
+       * @param {boolean|{capture?:boolean,passive?:boolean,once?:boolean}} [options] The options for this listener.
+       * @returns {void}
+       */
+      addEventListener(eventName, listener, options) {
+        if (listener == null) {
+          return;
+        }
+        if (typeof listener !== "function" && !isObject(listener)) {
+          throw new TypeError("'listener' should be a function or an object.");
+        }
+        const listeners = getListeners(this);
+        const optionsIsObj = isObject(options);
+        const capture = optionsIsObj ? Boolean(options.capture) : Boolean(options);
+        const listenerType = capture ? CAPTURE : BUBBLE;
+        const newNode = {
+          listener,
+          listenerType,
+          passive: optionsIsObj && Boolean(options.passive),
+          once: optionsIsObj && Boolean(options.once),
+          next: null
+        };
+        let node = listeners.get(eventName);
+        if (node === void 0) {
+          listeners.set(eventName, newNode);
+          return;
+        }
+        let prev = null;
+        while (node != null) {
+          if (node.listener === listener && node.listenerType === listenerType) {
+            return;
+          }
+          prev = node;
+          node = node.next;
+        }
+        prev.next = newNode;
+      },
+      /**
+       * Remove a given listener from this event target.
+       * @param {string} eventName The event name to remove.
+       * @param {Function} listener The listener to remove.
+       * @param {boolean|{capture?:boolean,passive?:boolean,once?:boolean}} [options] The options for this listener.
+       * @returns {void}
+       */
+      removeEventListener(eventName, listener, options) {
+        if (listener == null) {
+          return;
+        }
+        const listeners = getListeners(this);
+        const capture = isObject(options) ? Boolean(options.capture) : Boolean(options);
+        const listenerType = capture ? CAPTURE : BUBBLE;
+        let prev = null;
+        let node = listeners.get(eventName);
+        while (node != null) {
+          if (node.listener === listener && node.listenerType === listenerType) {
+            if (prev !== null) {
+              prev.next = node.next;
+            } else if (node.next !== null) {
+              listeners.set(eventName, node.next);
+            } else {
+              listeners.delete(eventName);
+            }
+            return;
+          }
+          prev = node;
+          node = node.next;
+        }
+      },
+      /**
+       * Dispatch a given event.
+       * @param {Event|{type:string}} event The event to dispatch.
+       * @returns {boolean} `false` if canceled.
+       */
+      dispatchEvent(event) {
+        if (event == null || typeof event.type !== "string") {
+          throw new TypeError('"event.type" should be a string.');
+        }
+        const listeners = getListeners(this);
+        const eventName = event.type;
+        let node = listeners.get(eventName);
+        if (node == null) {
+          return true;
+        }
+        const wrappedEvent = wrapEvent(this, event);
+        let prev = null;
+        while (node != null) {
+          if (node.once) {
+            if (prev !== null) {
+              prev.next = node.next;
+            } else if (node.next !== null) {
+              listeners.set(eventName, node.next);
+            } else {
+              listeners.delete(eventName);
+            }
+          } else {
+            prev = node;
+          }
+          setPassiveListener(
+            wrappedEvent,
+            node.passive ? node.listener : null
+          );
+          if (typeof node.listener === "function") {
+            try {
+              node.listener.call(this, wrappedEvent);
+            } catch (err) {
+              if (typeof console !== "undefined" && typeof console.error === "function") {
+                console.error(err);
+              }
+            }
+          } else if (node.listenerType !== ATTRIBUTE && typeof node.listener.handleEvent === "function") {
+            node.listener.handleEvent(wrappedEvent);
+          }
+          if (isStopped(wrappedEvent)) {
+            break;
+          }
+          node = node.next;
+        }
+        setPassiveListener(wrappedEvent, null);
+        setEventPhase(wrappedEvent, 0);
+        setCurrentTarget(wrappedEvent, null);
+        return !wrappedEvent.defaultPrevented;
+      }
+    };
+    Object.defineProperty(EventTarget.prototype, "constructor", {
+      value: EventTarget,
+      configurable: true,
+      writable: true
+    });
+    if (typeof window !== "undefined" && typeof window.EventTarget !== "undefined") {
+      Object.setPrototypeOf(EventTarget.prototype, window.EventTarget.prototype);
+    }
+    exports2.defineEventAttribute = defineEventAttribute;
+    exports2.EventTarget = EventTarget;
+    exports2.default = EventTarget;
+    module2.exports = EventTarget;
+    module2.exports.EventTarget = module2.exports["default"] = EventTarget;
+    module2.exports.defineEventAttribute = defineEventAttribute;
+  }
+});
+
+// node_modules/abort-controller/dist/abort-controller.js
+var require_abort_controller = __commonJS({
+  "node_modules/abort-controller/dist/abort-controller.js"(exports2, module2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var eventTargetShim = require_event_target_shim();
+    var AbortSignal = class extends eventTargetShim.EventTarget {
+      /**
+       * AbortSignal cannot be constructed directly.
+       */
+      constructor() {
+        super();
+        throw new TypeError("AbortSignal cannot be constructed directly");
+      }
+      /**
+       * Returns `true` if this `AbortSignal`'s `AbortController` has signaled to abort, and `false` otherwise.
+       */
+      get aborted() {
+        const aborted = abortedFlags.get(this);
+        if (typeof aborted !== "boolean") {
+          throw new TypeError(`Expected 'this' to be an 'AbortSignal' object, but got ${this === null ? "null" : typeof this}`);
+        }
+        return aborted;
+      }
+    };
+    eventTargetShim.defineEventAttribute(AbortSignal.prototype, "abort");
+    function createAbortSignal() {
+      const signal = Object.create(AbortSignal.prototype);
+      eventTargetShim.EventTarget.call(signal);
+      abortedFlags.set(signal, false);
+      return signal;
+    }
+    function abortSignal(signal) {
+      if (abortedFlags.get(signal) !== false) {
+        return;
+      }
+      abortedFlags.set(signal, true);
+      signal.dispatchEvent({ type: "abort" });
+    }
+    var abortedFlags = /* @__PURE__ */ new WeakMap();
+    Object.defineProperties(AbortSignal.prototype, {
+      aborted: { enumerable: true }
+    });
+    if (typeof Symbol === "function" && typeof Symbol.toStringTag === "symbol") {
+      Object.defineProperty(AbortSignal.prototype, Symbol.toStringTag, {
+        configurable: true,
+        value: "AbortSignal"
+      });
+    }
+    var AbortController2 = class {
+      /**
+       * Initialize this controller.
+       */
+      constructor() {
+        signals.set(this, createAbortSignal());
+      }
+      /**
+       * Returns the `AbortSignal` object associated with this object.
+       */
+      get signal() {
+        return getSignal(this);
+      }
+      /**
+       * Abort and signal to any observers that the associated activity is to be aborted.
+       */
+      abort() {
+        abortSignal(getSignal(this));
+      }
+    };
+    var signals = /* @__PURE__ */ new WeakMap();
+    function getSignal(controller) {
+      const signal = signals.get(controller);
+      if (signal == null) {
+        throw new TypeError(`Expected 'this' to be an 'AbortController' object, but got ${controller === null ? "null" : typeof controller}`);
+      }
+      return signal;
+    }
+    Object.defineProperties(AbortController2.prototype, {
+      signal: { enumerable: true },
+      abort: { enumerable: true }
+    });
+    if (typeof Symbol === "function" && typeof Symbol.toStringTag === "symbol") {
+      Object.defineProperty(AbortController2.prototype, Symbol.toStringTag, {
+        configurable: true,
+        value: "AbortController"
+      });
+    }
+    exports2.AbortController = AbortController2;
+    exports2.AbortSignal = AbortSignal;
+    exports2.default = AbortController2;
+    module2.exports = AbortController2;
+    module2.exports.AbortController = module2.exports["default"] = AbortController2;
+    module2.exports.AbortSignal = AbortSignal;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/util/createBoundary.js
+var require_createBoundary = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/util/createBoundary.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
+    function createBoundary() {
+      let size = 16;
+      let res = "";
+      while (size--) {
+        res += alphabet[Math.random() * alphabet.length << 0];
+      }
+      return res;
+    }
+    exports2.default = createBoundary;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/util/isPlainObject.js
+var require_isPlainObject = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/util/isPlainObject.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var getType = (value) => Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+    function isPlainObject(value) {
+      if (getType(value) !== "object") {
+        return false;
+      }
+      const pp = Object.getPrototypeOf(value);
+      if (pp === null || pp === void 0) {
+        return true;
+      }
+      const Ctor = pp.constructor && pp.constructor.toString();
+      return Ctor === Object.toString();
+    }
+    exports2.default = isPlainObject;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/util/normalizeValue.js
+var require_normalizeValue = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/util/normalizeValue.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var normalizeValue = (value) => String(value).replace(/\r|\n/g, (match, i, str) => {
+      if (match === "\r" && str[i + 1] !== "\n" || match === "\n" && str[i - 1] !== "\r") {
+        return "\r\n";
+      }
+      return match;
+    });
+    exports2.default = normalizeValue;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/util/escapeName.js
+var require_escapeName = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/util/escapeName.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var escapeName = (name) => String(name).replace(/\r/g, "%0D").replace(/\n/g, "%0A").replace(/"/g, "%22");
+    exports2.default = escapeName;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/util/isFunction.js
+var require_isFunction2 = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/util/isFunction.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var isFunction = (value) => typeof value === "function";
+    exports2.default = isFunction;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/util/isFileLike.js
+var require_isFileLike = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/util/isFileLike.js"(exports2) {
+    "use strict";
+    var __importDefault = exports2 && exports2.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.isFileLike = void 0;
+    var isFunction_1 = __importDefault(require_isFunction2());
+    var isFileLike = (value) => Boolean(value && typeof value === "object" && (0, isFunction_1.default)(value.constructor) && value[Symbol.toStringTag] === "File" && (0, isFunction_1.default)(value.stream) && value.name != null && value.size != null && value.lastModified != null);
+    exports2.isFileLike = isFileLike;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/util/isFormData.js
+var require_isFormData = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/util/isFormData.js"(exports2) {
+    "use strict";
+    var __importDefault = exports2 && exports2.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.isFormDataLike = exports2.isFormData = void 0;
+    var isFunction_1 = __importDefault(require_isFunction2());
+    var isFormData = (value) => Boolean(value && (0, isFunction_1.default)(value.constructor) && value[Symbol.toStringTag] === "FormData" && (0, isFunction_1.default)(value.append) && (0, isFunction_1.default)(value.getAll) && (0, isFunction_1.default)(value.entries) && (0, isFunction_1.default)(value[Symbol.iterator]));
+    exports2.isFormData = isFormData;
+    exports2.isFormDataLike = exports2.isFormData;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/FormDataEncoder.js
+var require_FormDataEncoder = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/FormDataEncoder.js"(exports2) {
+    "use strict";
+    var __classPrivateFieldSet = exports2 && exports2.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+      if (kind === "m") throw new TypeError("Private method is not writable");
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+      return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+    };
+    var __classPrivateFieldGet = exports2 && exports2.__classPrivateFieldGet || function(receiver, state, kind, f) {
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+      return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
+    var __importDefault = exports2 && exports2.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    var _FormDataEncoder_instances;
+    var _FormDataEncoder_CRLF;
+    var _FormDataEncoder_CRLF_BYTES;
+    var _FormDataEncoder_CRLF_BYTES_LENGTH;
+    var _FormDataEncoder_DASHES;
+    var _FormDataEncoder_encoder;
+    var _FormDataEncoder_footer;
+    var _FormDataEncoder_form;
+    var _FormDataEncoder_options;
+    var _FormDataEncoder_getFieldHeader;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Encoder = exports2.FormDataEncoder = void 0;
+    var createBoundary_1 = __importDefault(require_createBoundary());
+    var isPlainObject_1 = __importDefault(require_isPlainObject());
+    var normalizeValue_1 = __importDefault(require_normalizeValue());
+    var escapeName_1 = __importDefault(require_escapeName());
+    var isFileLike_1 = require_isFileLike();
+    var isFormData_1 = require_isFormData();
+    var defaultOptions = {
+      enableAdditionalHeaders: false
+    };
+    var FormDataEncoder = class {
+      constructor(form, boundaryOrOptions, options) {
+        _FormDataEncoder_instances.add(this);
+        _FormDataEncoder_CRLF.set(this, "\r\n");
+        _FormDataEncoder_CRLF_BYTES.set(this, void 0);
+        _FormDataEncoder_CRLF_BYTES_LENGTH.set(this, void 0);
+        _FormDataEncoder_DASHES.set(this, "-".repeat(2));
+        _FormDataEncoder_encoder.set(this, new TextEncoder());
+        _FormDataEncoder_footer.set(this, void 0);
+        _FormDataEncoder_form.set(this, void 0);
+        _FormDataEncoder_options.set(this, void 0);
+        if (!(0, isFormData_1.isFormData)(form)) {
+          throw new TypeError("Expected first argument to be a FormData instance.");
+        }
+        let boundary;
+        if ((0, isPlainObject_1.default)(boundaryOrOptions)) {
+          options = boundaryOrOptions;
+        } else {
+          boundary = boundaryOrOptions;
+        }
+        if (!boundary) {
+          boundary = (0, createBoundary_1.default)();
+        }
+        if (typeof boundary !== "string") {
+          throw new TypeError("Expected boundary argument to be a string.");
+        }
+        if (options && !(0, isPlainObject_1.default)(options)) {
+          throw new TypeError("Expected options argument to be an object.");
+        }
+        __classPrivateFieldSet(this, _FormDataEncoder_form, form, "f");
+        __classPrivateFieldSet(this, _FormDataEncoder_options, { ...defaultOptions, ...options }, "f");
+        __classPrivateFieldSet(this, _FormDataEncoder_CRLF_BYTES, __classPrivateFieldGet(this, _FormDataEncoder_encoder, "f").encode(__classPrivateFieldGet(this, _FormDataEncoder_CRLF, "f")), "f");
+        __classPrivateFieldSet(this, _FormDataEncoder_CRLF_BYTES_LENGTH, __classPrivateFieldGet(this, _FormDataEncoder_CRLF_BYTES, "f").byteLength, "f");
+        this.boundary = `form-data-boundary-${boundary}`;
+        this.contentType = `multipart/form-data; boundary=${this.boundary}`;
+        __classPrivateFieldSet(this, _FormDataEncoder_footer, __classPrivateFieldGet(this, _FormDataEncoder_encoder, "f").encode(`${__classPrivateFieldGet(this, _FormDataEncoder_DASHES, "f")}${this.boundary}${__classPrivateFieldGet(this, _FormDataEncoder_DASHES, "f")}${__classPrivateFieldGet(this, _FormDataEncoder_CRLF, "f").repeat(2)}`), "f");
+        this.contentLength = String(this.getContentLength());
+        this.headers = Object.freeze({
+          "Content-Type": this.contentType,
+          "Content-Length": this.contentLength
+        });
+        Object.defineProperties(this, {
+          boundary: { writable: false, configurable: false },
+          contentType: { writable: false, configurable: false },
+          contentLength: { writable: false, configurable: false },
+          headers: { writable: false, configurable: false }
+        });
+      }
+      getContentLength() {
+        let length = 0;
+        for (const [name, raw] of __classPrivateFieldGet(this, _FormDataEncoder_form, "f")) {
+          const value = (0, isFileLike_1.isFileLike)(raw) ? raw : __classPrivateFieldGet(this, _FormDataEncoder_encoder, "f").encode((0, normalizeValue_1.default)(raw));
+          length += __classPrivateFieldGet(this, _FormDataEncoder_instances, "m", _FormDataEncoder_getFieldHeader).call(this, name, value).byteLength;
+          length += (0, isFileLike_1.isFileLike)(value) ? value.size : value.byteLength;
+          length += __classPrivateFieldGet(this, _FormDataEncoder_CRLF_BYTES_LENGTH, "f");
+        }
+        return length + __classPrivateFieldGet(this, _FormDataEncoder_footer, "f").byteLength;
+      }
+      *values() {
+        for (const [name, raw] of __classPrivateFieldGet(this, _FormDataEncoder_form, "f").entries()) {
+          const value = (0, isFileLike_1.isFileLike)(raw) ? raw : __classPrivateFieldGet(this, _FormDataEncoder_encoder, "f").encode((0, normalizeValue_1.default)(raw));
+          yield __classPrivateFieldGet(this, _FormDataEncoder_instances, "m", _FormDataEncoder_getFieldHeader).call(this, name, value);
+          yield value;
+          yield __classPrivateFieldGet(this, _FormDataEncoder_CRLF_BYTES, "f");
+        }
+        yield __classPrivateFieldGet(this, _FormDataEncoder_footer, "f");
+      }
+      async *encode() {
+        for (const part of this.values()) {
+          if ((0, isFileLike_1.isFileLike)(part)) {
+            yield* part.stream();
+          } else {
+            yield part;
+          }
+        }
+      }
+      [(_FormDataEncoder_CRLF = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_CRLF_BYTES = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_CRLF_BYTES_LENGTH = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_DASHES = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_encoder = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_footer = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_form = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_options = /* @__PURE__ */ new WeakMap(), _FormDataEncoder_instances = /* @__PURE__ */ new WeakSet(), _FormDataEncoder_getFieldHeader = function _FormDataEncoder_getFieldHeader2(name, value) {
+        let header = "";
+        header += `${__classPrivateFieldGet(this, _FormDataEncoder_DASHES, "f")}${this.boundary}${__classPrivateFieldGet(this, _FormDataEncoder_CRLF, "f")}`;
+        header += `Content-Disposition: form-data; name="${(0, escapeName_1.default)(name)}"`;
+        if ((0, isFileLike_1.isFileLike)(value)) {
+          header += `; filename="${(0, escapeName_1.default)(value.name)}"${__classPrivateFieldGet(this, _FormDataEncoder_CRLF, "f")}`;
+          header += `Content-Type: ${value.type || "application/octet-stream"}`;
+        }
+        if (__classPrivateFieldGet(this, _FormDataEncoder_options, "f").enableAdditionalHeaders === true) {
+          header += `${__classPrivateFieldGet(this, _FormDataEncoder_CRLF, "f")}Content-Length: ${(0, isFileLike_1.isFileLike)(value) ? value.size : value.byteLength}`;
+        }
+        return __classPrivateFieldGet(this, _FormDataEncoder_encoder, "f").encode(`${header}${__classPrivateFieldGet(this, _FormDataEncoder_CRLF, "f").repeat(2)}`);
+      }, Symbol.iterator)]() {
+        return this.values();
+      }
+      [Symbol.asyncIterator]() {
+        return this.encode();
+      }
+    };
+    exports2.FormDataEncoder = FormDataEncoder;
+    exports2.Encoder = FormDataEncoder;
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/FileLike.js
+var require_FileLike = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/FileLike.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/FormDataLike.js
+var require_FormDataLike = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/FormDataLike.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/form-data-encoder/lib/cjs/index.js
+var require_cjs2 = __commonJS({
+  "node_modules/form-data-encoder/lib/cjs/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_FormDataEncoder(), exports2);
+    __exportStar(require_FileLike(), exports2);
+    __exportStar(require_FormDataLike(), exports2);
+    __exportStar(require_isFileLike(), exports2);
+    __exportStar(require_isFormData(), exports2);
+  }
+});
+
+// node_modules/groq-sdk/_shims/MultipartBody.js
+var require_MultipartBody = __commonJS({
+  "node_modules/groq-sdk/_shims/MultipartBody.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.MultipartBody = void 0;
+    var MultipartBody = class {
+      constructor(body) {
+        this.body = body;
+      }
+      get [Symbol.toStringTag]() {
+        return "MultipartBody";
+      }
+    };
+    exports2.MultipartBody = MultipartBody;
+  }
+});
+
+// node_modules/node-domexception/index.js
+var require_node_domexception = __commonJS({
+  "node_modules/node-domexception/index.js"(exports2, module2) {
+    if (!globalThis.DOMException) {
+      try {
+        const { MessageChannel } = require("worker_threads"), port = new MessageChannel().port1, ab = new ArrayBuffer();
+        port.postMessage(ab, [ab, ab]);
+      } catch (err) {
+        err.constructor.name === "DOMException" && (globalThis.DOMException = err.constructor);
+      }
+    }
+    module2.exports = globalThis.DOMException;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/isPlainObject.js
+var require_isPlainObject2 = __commonJS({
+  "node_modules/formdata-node/lib/cjs/isPlainObject.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    var getType = (value) => Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+    function isPlainObject(value) {
+      if (getType(value) !== "object") {
+        return false;
+      }
+      const pp = Object.getPrototypeOf(value);
+      if (pp === null || pp === void 0) {
+        return true;
+      }
+      const Ctor = pp.constructor && pp.constructor.toString();
+      return Ctor === Object.toString();
+    }
+    exports2.default = isPlainObject;
+  }
+});
+
+// node_modules/formdata-node/lib/cjs/fileFromPath.js
+var require_fileFromPath = __commonJS({
+  "node_modules/formdata-node/lib/cjs/fileFromPath.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+        return m[k];
+      } });
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    var __classPrivateFieldSet = exports2 && exports2.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+      if (kind === "m") throw new TypeError("Private method is not writable");
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+      return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+    };
+    var __classPrivateFieldGet = exports2 && exports2.__classPrivateFieldGet || function(receiver, state, kind, f) {
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+      return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
+    var __importDefault = exports2 && exports2.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    var _FileFromPath_path;
+    var _FileFromPath_start;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.fileFromPath = exports2.fileFromPathSync = void 0;
+    var fs_1 = require("fs");
+    var path_1 = require("path");
+    var node_domexception_1 = __importDefault(require_node_domexception());
+    var File_1 = require_File();
+    var isPlainObject_1 = __importDefault(require_isPlainObject2());
+    __exportStar(require_isFile(), exports2);
+    var MESSAGE = "The requested file could not be read, typically due to permission problems that have occurred after a reference to a file was acquired.";
+    var FileFromPath = class _FileFromPath {
+      constructor(input) {
+        _FileFromPath_path.set(this, void 0);
+        _FileFromPath_start.set(this, void 0);
+        __classPrivateFieldSet(this, _FileFromPath_path, input.path, "f");
+        __classPrivateFieldSet(this, _FileFromPath_start, input.start || 0, "f");
+        this.name = (0, path_1.basename)(__classPrivateFieldGet(this, _FileFromPath_path, "f"));
+        this.size = input.size;
+        this.lastModified = input.lastModified;
+      }
+      slice(start, end) {
+        return new _FileFromPath({
+          path: __classPrivateFieldGet(this, _FileFromPath_path, "f"),
+          lastModified: this.lastModified,
+          size: end - start,
+          start
+        });
+      }
+      async *stream() {
+        const { mtimeMs } = await fs_1.promises.stat(__classPrivateFieldGet(this, _FileFromPath_path, "f"));
+        if (mtimeMs > this.lastModified) {
+          throw new node_domexception_1.default(MESSAGE, "NotReadableError");
+        }
+        if (this.size) {
+          yield* (0, fs_1.createReadStream)(__classPrivateFieldGet(this, _FileFromPath_path, "f"), {
+            start: __classPrivateFieldGet(this, _FileFromPath_start, "f"),
+            end: __classPrivateFieldGet(this, _FileFromPath_start, "f") + this.size - 1
+          });
+        }
+      }
+      get [(_FileFromPath_path = /* @__PURE__ */ new WeakMap(), _FileFromPath_start = /* @__PURE__ */ new WeakMap(), Symbol.toStringTag)]() {
+        return "File";
+      }
+    };
+    function createFileFromPath(path, { mtimeMs, size }, filenameOrOptions, options = {}) {
+      let filename;
+      if ((0, isPlainObject_1.default)(filenameOrOptions)) {
+        [options, filename] = [filenameOrOptions, void 0];
+      } else {
+        filename = filenameOrOptions;
+      }
+      const file = new FileFromPath({ path, size, lastModified: mtimeMs });
+      if (!filename) {
+        filename = file.name;
+      }
+      return new File_1.File([file], filename, {
+        ...options,
+        lastModified: file.lastModified
+      });
+    }
+    function fileFromPathSync(path, filenameOrOptions, options = {}) {
+      const stats = (0, fs_1.statSync)(path);
+      return createFileFromPath(path, stats, filenameOrOptions, options);
+    }
+    exports2.fileFromPathSync = fileFromPathSync;
+    async function fileFromPath(path, filenameOrOptions, options) {
+      const stats = await fs_1.promises.stat(path);
+      return createFileFromPath(path, stats, filenameOrOptions, options);
+    }
+    exports2.fileFromPath = fileFromPath;
+  }
+});
+
+// node_modules/groq-sdk/_shims/node-runtime.js
+var require_node_runtime = __commonJS({
+  "node_modules/groq-sdk/_shims/node-runtime.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var __importDefault = exports2 && exports2.__importDefault || function(mod) {
+      return mod && mod.__esModule ? mod : { "default": mod };
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.getRuntime = void 0;
+    var nf = __importStar(require_lib2());
+    var fd = __importStar(require_cjs());
+    var agentkeepalive_1 = __importDefault(require_agentkeepalive());
+    var abort_controller_1 = require_abort_controller();
+    var node_fs_1 = require("fs");
+    var form_data_encoder_1 = require_cjs2();
+    var node_stream_1 = require("stream");
+    var MultipartBody_1 = require_MultipartBody();
+    var web_1 = require("stream/web");
+    var fileFromPathWarned = false;
+    async function fileFromPath(path, ...args) {
+      const { fileFromPath: _fileFromPath } = await Promise.resolve().then(() => __importStar(require_fileFromPath()));
+      if (!fileFromPathWarned) {
+        console.warn(`fileFromPath is deprecated; use fs.createReadStream(${JSON.stringify(path)}) instead`);
+        fileFromPathWarned = true;
+      }
+      return await _fileFromPath(path, ...args);
+    }
+    var defaultHttpAgent = new agentkeepalive_1.default({ keepAlive: true, timeout: 5 * 60 * 1e3 });
+    var defaultHttpsAgent = new agentkeepalive_1.default.HttpsAgent({ keepAlive: true, timeout: 5 * 60 * 1e3 });
+    async function getMultipartRequestOptions(form, opts) {
+      const encoder = new form_data_encoder_1.FormDataEncoder(form);
+      const readable = node_stream_1.Readable.from(encoder);
+      const body = new MultipartBody_1.MultipartBody(readable);
+      const headers = {
+        ...opts.headers,
+        ...encoder.headers,
+        "Content-Length": encoder.contentLength
+      };
+      return { ...opts, body, headers };
+    }
+    function getRuntime() {
+      if (typeof AbortController === "undefined") {
+        globalThis.AbortController = abort_controller_1.AbortController;
+      }
+      return {
+        kind: "node",
+        fetch: nf.default,
+        Request: nf.Request,
+        Response: nf.Response,
+        Headers: nf.Headers,
+        FormData: fd.FormData,
+        Blob: fd.Blob,
+        File: fd.File,
+        ReadableStream: web_1.ReadableStream,
+        getMultipartRequestOptions,
+        getDefaultAgent: (url) => url.startsWith("https") ? defaultHttpsAgent : defaultHttpAgent,
+        fileFromPath,
+        isFsReadStream: (value) => value instanceof node_fs_1.ReadStream
+      };
+    }
+    exports2.getRuntime = getRuntime;
+  }
+});
+
+// node_modules/groq-sdk/_shims/auto/runtime-node.js
+var require_runtime_node = __commonJS({
+  "node_modules/groq-sdk/_shims/auto/runtime-node.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_node_runtime(), exports2);
+  }
+});
+
+// node_modules/groq-sdk/_shims/index.js
+var require_shims = __commonJS({
+  "node_modules/groq-sdk/_shims/index.js"(exports2) {
+    var shims = require_registry();
+    var auto = require_runtime_node();
+    exports2.init = () => {
+      if (!shims.kind) shims.setShims(auto.getRuntime(), { auto: true });
+    };
+    for (const property of Object.keys(shims)) {
+      Object.defineProperty(exports2, property, {
+        get() {
+          return shims[property];
+        }
+      });
+    }
+    exports2.init();
+  }
+});
+
+// node_modules/groq-sdk/error.js
+var require_error = __commonJS({
+  "node_modules/groq-sdk/error.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.InternalServerError = exports2.RateLimitError = exports2.UnprocessableEntityError = exports2.ConflictError = exports2.NotFoundError = exports2.PermissionDeniedError = exports2.AuthenticationError = exports2.BadRequestError = exports2.APIConnectionTimeoutError = exports2.APIConnectionError = exports2.APIUserAbortError = exports2.APIError = exports2.GroqError = void 0;
+    var core_1 = require_core();
+    var GroqError = class extends Error {
+    };
+    exports2.GroqError = GroqError;
+    var APIError = class _APIError extends GroqError {
+      constructor(status, error, message, headers) {
+        super(`${_APIError.makeMessage(status, error, message)}`);
+        this.status = status;
+        this.headers = headers;
+        this.error = error;
+      }
+      static makeMessage(status, error, message) {
+        const msg = error?.message ? typeof error.message === "string" ? error.message : JSON.stringify(error.message) : error ? JSON.stringify(error) : message;
+        if (status && msg) {
+          return `${status} ${msg}`;
+        }
+        if (status) {
+          return `${status} status code (no body)`;
+        }
+        if (msg) {
+          return msg;
+        }
+        return "(no status code or body)";
+      }
+      static generate(status, errorResponse, message, headers) {
+        if (!status || !headers) {
+          return new APIConnectionError({ message, cause: (0, core_1.castToError)(errorResponse) });
+        }
+        const error = errorResponse;
+        if (status === 400) {
+          return new BadRequestError(status, error, message, headers);
+        }
+        if (status === 401) {
+          return new AuthenticationError(status, error, message, headers);
+        }
+        if (status === 403) {
+          return new PermissionDeniedError(status, error, message, headers);
+        }
+        if (status === 404) {
+          return new NotFoundError(status, error, message, headers);
+        }
+        if (status === 409) {
+          return new ConflictError(status, error, message, headers);
+        }
+        if (status === 422) {
+          return new UnprocessableEntityError(status, error, message, headers);
+        }
+        if (status === 429) {
+          return new RateLimitError(status, error, message, headers);
+        }
+        if (status >= 500) {
+          return new InternalServerError(status, error, message, headers);
+        }
+        return new _APIError(status, error, message, headers);
+      }
+    };
+    exports2.APIError = APIError;
+    var APIUserAbortError = class extends APIError {
+      constructor({ message } = {}) {
+        super(void 0, void 0, message || "Request was aborted.", void 0);
+      }
+    };
+    exports2.APIUserAbortError = APIUserAbortError;
+    var APIConnectionError = class extends APIError {
+      constructor({ message, cause }) {
+        super(void 0, void 0, message || "Connection error.", void 0);
+        if (cause)
+          this.cause = cause;
+      }
+    };
+    exports2.APIConnectionError = APIConnectionError;
+    var APIConnectionTimeoutError = class extends APIConnectionError {
+      constructor({ message } = {}) {
+        super({ message: message ?? "Request timed out." });
+      }
+    };
+    exports2.APIConnectionTimeoutError = APIConnectionTimeoutError;
+    var BadRequestError = class extends APIError {
+    };
+    exports2.BadRequestError = BadRequestError;
+    var AuthenticationError = class extends APIError {
+    };
+    exports2.AuthenticationError = AuthenticationError;
+    var PermissionDeniedError = class extends APIError {
+    };
+    exports2.PermissionDeniedError = PermissionDeniedError;
+    var NotFoundError = class extends APIError {
+    };
+    exports2.NotFoundError = NotFoundError;
+    var ConflictError = class extends APIError {
+    };
+    exports2.ConflictError = ConflictError;
+    var UnprocessableEntityError = class extends APIError {
+    };
+    exports2.UnprocessableEntityError = UnprocessableEntityError;
+    var RateLimitError = class extends APIError {
+    };
+    exports2.RateLimitError = RateLimitError;
+    var InternalServerError = class extends APIError {
+    };
+    exports2.InternalServerError = InternalServerError;
+  }
+});
+
+// node_modules/groq-sdk/lib/streaming.js
+var require_streaming = __commonJS({
+  "node_modules/groq-sdk/lib/streaming.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.readableStreamAsyncIterable = exports2.Stream = void 0;
+    var index_1 = require_shims();
+    var error_1 = require_error();
+    var error_2 = require_error();
+    var Stream = class _Stream {
+      constructor(iterator, controller) {
+        this.iterator = iterator;
+        this.controller = controller;
+      }
+      static fromSSEResponse(response, controller) {
+        let consumed = false;
+        const decoder = new SSEDecoder();
+        async function* iterMessages() {
+          if (!response.body) {
+            controller.abort();
+            throw new error_1.GroqError(`Attempted to iterate over a response with no body`);
+          }
+          const lineDecoder = new LineDecoder();
+          const iter = readableStreamAsyncIterable(response.body);
+          for await (const chunk of iter) {
+            for (const line of lineDecoder.decode(chunk)) {
+              const sse = decoder.decode(line);
+              if (sse)
+                yield sse;
+            }
+          }
+          for (const line of lineDecoder.flush()) {
+            const sse = decoder.decode(line);
+            if (sse)
+              yield sse;
+          }
+        }
+        async function* iterator() {
+          if (consumed) {
+            throw new Error("Cannot iterate over a consumed stream, use `.tee()` to split the stream.");
+          }
+          consumed = true;
+          let done = false;
+          try {
+            for await (const sse of iterMessages()) {
+              if (done)
+                continue;
+              if (sse.data.startsWith("[DONE]")) {
+                done = true;
+                continue;
+              }
+              if (sse.event === null || sse.event === "error") {
+                let data;
+                try {
+                  data = JSON.parse(sse.data);
+                } catch (e) {
+                  console.error(`Could not parse message into JSON:`, sse.data);
+                  console.error(`From chunk:`, sse.raw);
+                  throw e;
+                }
+                if (data && data.error) {
+                  throw new error_2.APIError(data.error.status_code, data.error, data.error.message, void 0);
+                }
+                yield data;
+              }
+            }
+            done = true;
+          } catch (e) {
+            if (e instanceof Error && e.name === "AbortError")
+              return;
+            throw e;
+          } finally {
+            if (!done)
+              controller.abort();
+          }
+        }
+        return new _Stream(iterator, controller);
+      }
+      /**
+       * Generates a Stream from a newline-separated ReadableStream
+       * where each item is a JSON value.
+       */
+      static fromReadableStream(readableStream, controller) {
+        let consumed = false;
+        async function* iterLines() {
+          const lineDecoder = new LineDecoder();
+          const iter = readableStreamAsyncIterable(readableStream);
+          for await (const chunk of iter) {
+            for (const line of lineDecoder.decode(chunk)) {
+              yield line;
+            }
+          }
+          for (const line of lineDecoder.flush()) {
+            yield line;
+          }
+        }
+        async function* iterator() {
+          if (consumed) {
+            throw new Error("Cannot iterate over a consumed stream, use `.tee()` to split the stream.");
+          }
+          consumed = true;
+          let done = false;
+          try {
+            for await (const line of iterLines()) {
+              if (done)
+                continue;
+              if (line)
+                yield JSON.parse(line);
+            }
+            done = true;
+          } catch (e) {
+            if (e instanceof Error && e.name === "AbortError")
+              return;
+            throw e;
+          } finally {
+            if (!done)
+              controller.abort();
+          }
+        }
+        return new _Stream(iterator, controller);
+      }
+      [Symbol.asyncIterator]() {
+        return this.iterator();
+      }
+      /**
+       * Splits the stream into two streams which can be
+       * independently read from at different speeds.
+       */
+      tee() {
+        const left = [];
+        const right = [];
+        const iterator = this.iterator();
+        const teeIterator = (queue) => {
+          return {
+            next: () => {
+              if (queue.length === 0) {
+                const result = iterator.next();
+                left.push(result);
+                right.push(result);
+              }
+              return queue.shift();
+            }
+          };
+        };
+        return [
+          new _Stream(() => teeIterator(left), this.controller),
+          new _Stream(() => teeIterator(right), this.controller)
+        ];
+      }
+      /**
+       * Converts this stream to a newline-separated ReadableStream of
+       * JSON stringified values in the stream
+       * which can be turned back into a Stream with `Stream.fromReadableStream()`.
+       */
+      toReadableStream() {
+        const self2 = this;
+        let iter;
+        const encoder = new TextEncoder();
+        return new index_1.ReadableStream({
+          async start() {
+            iter = self2[Symbol.asyncIterator]();
+          },
+          async pull(ctrl) {
+            try {
+              const { value, done } = await iter.next();
+              if (done)
+                return ctrl.close();
+              const bytes = encoder.encode(JSON.stringify(value) + "\n");
+              ctrl.enqueue(bytes);
+            } catch (err) {
+              ctrl.error(err);
+            }
+          },
+          async cancel() {
+            await iter.return?.();
+          }
+        });
+      }
+    };
+    exports2.Stream = Stream;
+    var SSEDecoder = class {
+      constructor() {
+        this.event = null;
+        this.data = [];
+        this.chunks = [];
+      }
+      decode(line) {
+        if (line.endsWith("\r")) {
+          line = line.substring(0, line.length - 1);
+        }
+        if (!line) {
+          if (!this.event && !this.data.length)
+            return null;
+          const sse = {
+            event: this.event,
+            data: this.data.join("\n"),
+            raw: this.chunks
+          };
+          this.event = null;
+          this.data = [];
+          this.chunks = [];
+          return sse;
+        }
+        this.chunks.push(line);
+        if (line.startsWith(":")) {
+          return null;
+        }
+        let [fieldname, _, value] = partition(line, ":");
+        if (value.startsWith(" ")) {
+          value = value.substring(1);
+        }
+        if (fieldname === "event") {
+          this.event = value;
+        } else if (fieldname === "data") {
+          this.data.push(value);
+        }
+        return null;
+      }
+    };
+    var LineDecoder = class _LineDecoder {
+      constructor() {
+        this.buffer = [];
+        this.trailingCR = false;
+      }
+      decode(chunk) {
+        let text = this.decodeText(chunk);
+        if (this.trailingCR) {
+          text = "\r" + text;
+          this.trailingCR = false;
+        }
+        if (text.endsWith("\r")) {
+          this.trailingCR = true;
+          text = text.slice(0, -1);
+        }
+        if (!text) {
+          return [];
+        }
+        const trailingNewline = _LineDecoder.NEWLINE_CHARS.has(text[text.length - 1] || "");
+        let lines = text.split(_LineDecoder.NEWLINE_REGEXP);
+        if (lines.length === 1 && !trailingNewline) {
+          this.buffer.push(lines[0]);
+          return [];
+        }
+        if (this.buffer.length > 0) {
+          lines = [this.buffer.join("") + lines[0], ...lines.slice(1)];
+          this.buffer = [];
+        }
+        if (!trailingNewline) {
+          this.buffer = [lines.pop() || ""];
+        }
+        return lines;
+      }
+      decodeText(bytes) {
+        if (bytes == null)
+          return "";
+        if (typeof bytes === "string")
+          return bytes;
+        if (typeof Buffer !== "undefined") {
+          if (bytes instanceof Buffer) {
+            return bytes.toString();
+          }
+          if (bytes instanceof Uint8Array) {
+            return Buffer.from(bytes).toString();
+          }
+          throw new error_1.GroqError(`Unexpected: received non-Uint8Array (${bytes.constructor.name}) stream chunk in an environment with a global "Buffer" defined, which this library assumes to be Node. Please report this error.`);
+        }
+        if (typeof TextDecoder !== "undefined") {
+          if (bytes instanceof Uint8Array || bytes instanceof ArrayBuffer) {
+            this.textDecoder ?? (this.textDecoder = new TextDecoder("utf8"));
+            return this.textDecoder.decode(bytes);
+          }
+          throw new error_1.GroqError(`Unexpected: received non-Uint8Array/ArrayBuffer (${bytes.constructor.name}) in a web platform. Please report this error.`);
+        }
+        throw new error_1.GroqError(`Unexpected: neither Buffer nor TextDecoder are available as globals. Please report this error.`);
+      }
+      flush() {
+        if (!this.buffer.length && !this.trailingCR) {
+          return [];
+        }
+        const lines = [this.buffer.join("")];
+        this.buffer = [];
+        this.trailingCR = false;
+        return lines;
+      }
+    };
+    LineDecoder.NEWLINE_CHARS = /* @__PURE__ */ new Set(["\n", "\r", "\v", "\f", "", "", "", "\x85", "\u2028", "\u2029"]);
+    LineDecoder.NEWLINE_REGEXP = /\r\n|[\n\r\x0b\x0c\x1c\x1d\x1e\x85\u2028\u2029]/g;
+    function partition(str, delimiter) {
+      const index = str.indexOf(delimiter);
+      if (index !== -1) {
+        return [str.substring(0, index), delimiter, str.substring(index + delimiter.length)];
+      }
+      return [str, "", ""];
+    }
+    function readableStreamAsyncIterable(stream) {
+      if (stream[Symbol.asyncIterator])
+        return stream;
+      const reader = stream.getReader();
+      return {
+        async next() {
+          try {
+            const result = await reader.read();
+            if (result?.done)
+              reader.releaseLock();
+            return result;
+          } catch (e) {
+            reader.releaseLock();
+            throw e;
+          }
+        },
+        async return() {
+          const cancelPromise = reader.cancel();
+          reader.releaseLock();
+          await cancelPromise;
+          return { done: true, value: void 0 };
+        },
+        [Symbol.asyncIterator]() {
+          return this;
+        }
+      };
+    }
+    exports2.readableStreamAsyncIterable = readableStreamAsyncIterable;
+  }
+});
+
+// node_modules/groq-sdk/uploads.js
+var require_uploads = __commonJS({
+  "node_modules/groq-sdk/uploads.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.createForm = exports2.multipartFormRequestOptions = exports2.maybeMultipartFormRequestOptions = exports2.isMultipartBody = exports2.toFile = exports2.isUploadable = exports2.isBlobLike = exports2.isFileLike = exports2.isResponseLike = exports2.fileFromPath = void 0;
+    var index_1 = require_shims();
+    var index_2 = require_shims();
+    Object.defineProperty(exports2, "fileFromPath", { enumerable: true, get: function() {
+      return index_2.fileFromPath;
+    } });
+    var isResponseLike = (value) => value != null && typeof value === "object" && typeof value.url === "string" && typeof value.blob === "function";
+    exports2.isResponseLike = isResponseLike;
+    var isFileLike = (value) => value != null && typeof value === "object" && typeof value.name === "string" && typeof value.lastModified === "number" && (0, exports2.isBlobLike)(value);
+    exports2.isFileLike = isFileLike;
+    var isBlobLike = (value) => value != null && typeof value === "object" && typeof value.size === "number" && typeof value.type === "string" && typeof value.text === "function" && typeof value.slice === "function" && typeof value.arrayBuffer === "function";
+    exports2.isBlobLike = isBlobLike;
+    var isUploadable = (value) => {
+      return (0, exports2.isFileLike)(value) || (0, exports2.isResponseLike)(value) || (0, index_1.isFsReadStream)(value);
+    };
+    exports2.isUploadable = isUploadable;
+    async function toFile(value, name, options) {
+      value = await value;
+      if ((0, exports2.isFileLike)(value)) {
+        return value;
+      }
+      if ((0, exports2.isResponseLike)(value)) {
+        const blob = await value.blob();
+        name || (name = new URL(value.url).pathname.split(/[\\/]/).pop() ?? "unknown_file");
+        const data = (0, exports2.isBlobLike)(blob) ? [await blob.arrayBuffer()] : [blob];
+        return new index_1.File(data, name, options);
+      }
+      const bits = await getBytes(value);
+      name || (name = getName(value) ?? "unknown_file");
+      if (!options?.type) {
+        const type = bits[0]?.type;
+        if (typeof type === "string") {
+          options = { ...options, type };
+        }
+      }
+      return new index_1.File(bits, name, options);
+    }
+    exports2.toFile = toFile;
+    async function getBytes(value) {
+      let parts = [];
+      if (typeof value === "string" || ArrayBuffer.isView(value) || // includes Uint8Array, Buffer, etc.
+      value instanceof ArrayBuffer) {
+        parts.push(value);
+      } else if ((0, exports2.isBlobLike)(value)) {
+        parts.push(await value.arrayBuffer());
+      } else if (isAsyncIterableIterator(value)) {
+        for await (const chunk of value) {
+          parts.push(chunk);
+        }
+      } else {
+        throw new Error(`Unexpected data type: ${typeof value}; constructor: ${value?.constructor?.name}; props: ${propsForError(value)}`);
+      }
+      return parts;
+    }
+    function propsForError(value) {
+      const props = Object.getOwnPropertyNames(value);
+      return `[${props.map((p) => `"${p}"`).join(", ")}]`;
+    }
+    function getName(value) {
+      return getStringFromMaybeBuffer(value.name) || getStringFromMaybeBuffer(value.filename) || // For fs.ReadStream
+      getStringFromMaybeBuffer(value.path)?.split(/[\\/]/).pop();
+    }
+    var getStringFromMaybeBuffer = (x) => {
+      if (typeof x === "string")
+        return x;
+      if (typeof Buffer !== "undefined" && x instanceof Buffer)
+        return String(x);
+      return void 0;
+    };
+    var isAsyncIterableIterator = (value) => value != null && typeof value === "object" && typeof value[Symbol.asyncIterator] === "function";
+    var isMultipartBody = (body) => body && typeof body === "object" && body.body && body[Symbol.toStringTag] === "MultipartBody";
+    exports2.isMultipartBody = isMultipartBody;
+    var maybeMultipartFormRequestOptions = async (opts) => {
+      if (!hasUploadableValue(opts.body))
+        return opts;
+      const form = await (0, exports2.createForm)(opts.body);
+      return (0, index_1.getMultipartRequestOptions)(form, opts);
+    };
+    exports2.maybeMultipartFormRequestOptions = maybeMultipartFormRequestOptions;
+    var multipartFormRequestOptions = async (opts) => {
+      const form = await (0, exports2.createForm)(opts.body);
+      return (0, index_1.getMultipartRequestOptions)(form, opts);
+    };
+    exports2.multipartFormRequestOptions = multipartFormRequestOptions;
+    var createForm = async (body) => {
+      const form = new index_1.FormData();
+      await Promise.all(Object.entries(body || {}).map(([key, value]) => addFormValue(form, key, value)));
+      return form;
+    };
+    exports2.createForm = createForm;
+    var hasUploadableValue = (value) => {
+      if ((0, exports2.isUploadable)(value))
+        return true;
+      if (Array.isArray(value))
+        return value.some(hasUploadableValue);
+      if (value && typeof value === "object") {
+        for (const k in value) {
+          if (hasUploadableValue(value[k]))
+            return true;
+        }
+      }
+      return false;
+    };
+    var addFormValue = async (form, key, value) => {
+      if (value === void 0)
+        return;
+      if (value == null) {
+        throw new TypeError(`Received null for "${key}"; to pass null in FormData, you must use the string 'null'`);
+      }
+      if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+        form.append(key, String(value));
+      } else if ((0, exports2.isUploadable)(value)) {
+        const file = await toFile(value);
+        form.append(key, file);
+      } else if (Array.isArray(value)) {
+        await Promise.all(value.map((entry) => addFormValue(form, key + "[]", entry)));
+      } else if (typeof value === "object") {
+        await Promise.all(Object.entries(value).map(([name, prop]) => addFormValue(form, `${key}[${name}]`, prop)));
+      } else {
+        throw new TypeError(`Invalid value given to form, expected a string, number, boolean, object, Array, File or Blob but got ${value} instead`);
+      }
+    };
+  }
+});
+
+// node_modules/groq-sdk/core.js
+var require_core = __commonJS({
+  "node_modules/groq-sdk/core.js"(exports2) {
+    "use strict";
+    var __classPrivateFieldSet = exports2 && exports2.__classPrivateFieldSet || function(receiver, state, value, kind, f) {
+      if (kind === "m") throw new TypeError("Private method is not writable");
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+      return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+    };
+    var __classPrivateFieldGet = exports2 && exports2.__classPrivateFieldGet || function(receiver, state, kind, f) {
+      if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+      if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+      return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
+    var _APIClient_baseURLOverridden;
+    var _AbstractPage_client;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.isObj = exports2.toBase64 = exports2.getHeader = exports2.getRequiredHeader = exports2.isHeadersProtocol = exports2.isRunningInBrowser = exports2.debug = exports2.hasOwn = exports2.isEmptyObj = exports2.maybeCoerceBoolean = exports2.maybeCoerceFloat = exports2.maybeCoerceInteger = exports2.coerceBoolean = exports2.coerceFloat = exports2.coerceInteger = exports2.readEnv = exports2.ensurePresent = exports2.castToError = exports2.sleep = exports2.safeJSON = exports2.isRequestOptions = exports2.createResponseHeaders = exports2.PagePromise = exports2.AbstractPage = exports2.APIClient = exports2.APIPromise = exports2.createForm = exports2.multipartFormRequestOptions = exports2.maybeMultipartFormRequestOptions = void 0;
+    var version_1 = require_version();
+    var streaming_1 = require_streaming();
+    var error_1 = require_error();
+    var index_1 = require_shims();
+    (0, index_1.init)();
+    var uploads_1 = require_uploads();
+    var uploads_2 = require_uploads();
+    Object.defineProperty(exports2, "maybeMultipartFormRequestOptions", { enumerable: true, get: function() {
+      return uploads_2.maybeMultipartFormRequestOptions;
+    } });
+    Object.defineProperty(exports2, "multipartFormRequestOptions", { enumerable: true, get: function() {
+      return uploads_2.multipartFormRequestOptions;
+    } });
+    Object.defineProperty(exports2, "createForm", { enumerable: true, get: function() {
+      return uploads_2.createForm;
+    } });
+    async function defaultParseResponse(props) {
+      const { response } = props;
+      if (props.options.stream) {
+        debug("response", response.status, response.url, response.headers, response.body);
+        if (props.options.__streamClass) {
+          return props.options.__streamClass.fromSSEResponse(response, props.controller);
+        }
+        return streaming_1.Stream.fromSSEResponse(response, props.controller);
+      }
+      if (response.status === 204) {
+        return null;
+      }
+      if (props.options.__binaryResponse) {
+        return response;
+      }
+      const contentType = response.headers.get("content-type");
+      const mediaType = contentType?.split(";")[0]?.trim();
+      const isJSON = mediaType?.includes("application/json") || mediaType?.endsWith("+json");
+      if (isJSON) {
+        const json = await response.json();
+        debug("response", response.status, response.url, response.headers, json);
+        return json;
+      }
+      const text = await response.text();
+      debug("response", response.status, response.url, response.headers, text);
+      return text;
+    }
+    var APIPromise = class _APIPromise extends Promise {
+      constructor(responsePromise, parseResponse = defaultParseResponse) {
+        super((resolve) => {
+          resolve(null);
+        });
+        this.responsePromise = responsePromise;
+        this.parseResponse = parseResponse;
+      }
+      _thenUnwrap(transform) {
+        return new _APIPromise(this.responsePromise, async (props) => transform(await this.parseResponse(props), props));
+      }
+      /**
+       * Gets the raw `Response` instance instead of parsing the response
+       * data.
+       *
+       * If you want to parse the response body but still get the `Response`
+       * instance, you can use {@link withResponse()}.
+       *
+       * 👋 Getting the wrong TypeScript type for `Response`?
+       * Try setting `"moduleResolution": "NodeNext"` if you can,
+       * or add one of these imports before your first `import … from 'groq-sdk'`:
+       * - `import 'groq-sdk/shims/node'` (if you're running on Node)
+       * - `import 'groq-sdk/shims/web'` (otherwise)
+       */
+      asResponse() {
+        return this.responsePromise.then((p) => p.response);
+      }
+      /**
+       * Gets the parsed response data and the raw `Response` instance.
+       *
+       * If you just want to get the raw `Response` instance without parsing it,
+       * you can use {@link asResponse()}.
+       *
+       *
+       * 👋 Getting the wrong TypeScript type for `Response`?
+       * Try setting `"moduleResolution": "NodeNext"` if you can,
+       * or add one of these imports before your first `import … from 'groq-sdk'`:
+       * - `import 'groq-sdk/shims/node'` (if you're running on Node)
+       * - `import 'groq-sdk/shims/web'` (otherwise)
+       */
+      async withResponse() {
+        const [data, response] = await Promise.all([this.parse(), this.asResponse()]);
+        return { data, response };
+      }
+      parse() {
+        if (!this.parsedPromise) {
+          this.parsedPromise = this.responsePromise.then(this.parseResponse);
+        }
+        return this.parsedPromise;
+      }
+      then(onfulfilled, onrejected) {
+        return this.parse().then(onfulfilled, onrejected);
+      }
+      catch(onrejected) {
+        return this.parse().catch(onrejected);
+      }
+      finally(onfinally) {
+        return this.parse().finally(onfinally);
+      }
+    };
+    exports2.APIPromise = APIPromise;
+    var APIClient = class {
+      constructor({
+        baseURL,
+        baseURLOverridden,
+        maxRetries = 2,
+        timeout = 6e4,
+        // 1 minute
+        httpAgent,
+        fetch: overriddenFetch
+      }) {
+        _APIClient_baseURLOverridden.set(this, void 0);
+        this.baseURL = baseURL;
+        __classPrivateFieldSet(this, _APIClient_baseURLOverridden, baseURLOverridden, "f");
+        this.maxRetries = validatePositiveInteger("maxRetries", maxRetries);
+        this.timeout = validatePositiveInteger("timeout", timeout);
+        this.httpAgent = httpAgent;
+        this.fetch = overriddenFetch ?? index_1.fetch;
+      }
+      authHeaders(opts) {
+        return {};
+      }
+      /**
+       * Override this to add your own default headers, for example:
+       *
+       *  {
+       *    ...super.defaultHeaders(),
+       *    Authorization: 'Bearer 123',
+       *  }
+       */
+      defaultHeaders(opts) {
+        return {
+          Accept: "application/json",
+          ...["head", "get"].includes(opts.method) ? {} : { "Content-Type": "application/json" },
+          "User-Agent": this.getUserAgent(),
+          ...getPlatformHeaders(),
+          ...this.authHeaders(opts)
+        };
+      }
+      /**
+       * Override this to add your own headers validation:
+       */
+      validateHeaders(headers, customHeaders) {
+      }
+      defaultIdempotencyKey() {
+        return `stainless-node-retry-${uuid4()}`;
+      }
+      get(path, opts) {
+        return this.methodRequest("get", path, opts);
+      }
+      post(path, opts) {
+        return this.methodRequest("post", path, opts);
+      }
+      patch(path, opts) {
+        return this.methodRequest("patch", path, opts);
+      }
+      put(path, opts) {
+        return this.methodRequest("put", path, opts);
+      }
+      delete(path, opts) {
+        return this.methodRequest("delete", path, opts);
+      }
+      methodRequest(method, path, opts) {
+        return this.request(Promise.resolve(opts).then(async (opts2) => {
+          const body = opts2 && (0, uploads_1.isBlobLike)(opts2?.body) ? new DataView(await opts2.body.arrayBuffer()) : opts2?.body instanceof DataView ? opts2.body : opts2?.body instanceof ArrayBuffer ? new DataView(opts2.body) : opts2 && ArrayBuffer.isView(opts2?.body) ? new DataView(opts2.body.buffer) : opts2?.body;
+          return { method, path, ...opts2, body };
+        }));
+      }
+      getAPIList(path, Page, opts) {
+        return this.requestAPIList(Page, { method: "get", path, ...opts });
+      }
+      calculateContentLength(body) {
+        if (typeof body === "string") {
+          if (typeof Buffer !== "undefined") {
+            return Buffer.byteLength(body, "utf8").toString();
+          }
+          if (typeof TextEncoder !== "undefined") {
+            const encoder = new TextEncoder();
+            const encoded = encoder.encode(body);
+            return encoded.length.toString();
+          }
+        } else if (ArrayBuffer.isView(body)) {
+          return body.byteLength.toString();
+        }
+        return null;
+      }
+      async buildRequest(inputOptions, { retryCount = 0 } = {}) {
+        const options = { ...inputOptions };
+        const { method, path, query, defaultBaseURL, headers = {} } = options;
+        const body = ArrayBuffer.isView(options.body) || options.__binaryRequest && typeof options.body === "string" ? options.body : (0, uploads_1.isMultipartBody)(options.body) ? options.body.body : options.body ? JSON.stringify(options.body, null, 2) : null;
+        const contentLength = this.calculateContentLength(body);
+        const url = this.buildURL(path, query, defaultBaseURL);
+        if ("timeout" in options)
+          validatePositiveInteger("timeout", options.timeout);
+        options.timeout = options.timeout ?? this.timeout;
+        const httpAgent = options.httpAgent ?? this.httpAgent ?? (0, index_1.getDefaultAgent)(url);
+        const minAgentTimeout = options.timeout + 1e3;
+        if (typeof httpAgent?.options?.timeout === "number" && minAgentTimeout > (httpAgent.options.timeout ?? 0)) {
+          httpAgent.options.timeout = minAgentTimeout;
+        }
+        if (this.idempotencyHeader && method !== "get") {
+          if (!inputOptions.idempotencyKey)
+            inputOptions.idempotencyKey = this.defaultIdempotencyKey();
+          headers[this.idempotencyHeader] = inputOptions.idempotencyKey;
+        }
+        const reqHeaders = this.buildHeaders({ options, headers, contentLength, retryCount });
+        const req = {
+          method,
+          ...body && { body },
+          headers: reqHeaders,
+          ...httpAgent && { agent: httpAgent },
+          // @ts-ignore node-fetch uses a custom AbortSignal type that is
+          // not compatible with standard web types
+          signal: options.signal ?? null
+        };
+        return { req, url, timeout: options.timeout };
+      }
+      buildHeaders({ options, headers, contentLength, retryCount }) {
+        const reqHeaders = {};
+        if (contentLength) {
+          reqHeaders["content-length"] = contentLength;
+        }
+        const defaultHeaders = this.defaultHeaders(options);
+        applyHeadersMut(reqHeaders, defaultHeaders);
+        applyHeadersMut(reqHeaders, headers);
+        if ((0, uploads_1.isMultipartBody)(options.body) && index_1.kind !== "node") {
+          delete reqHeaders["content-type"];
+        }
+        if ((0, exports2.getHeader)(defaultHeaders, "x-stainless-retry-count") === void 0 && (0, exports2.getHeader)(headers, "x-stainless-retry-count") === void 0) {
+          reqHeaders["x-stainless-retry-count"] = String(retryCount);
+        }
+        if ((0, exports2.getHeader)(defaultHeaders, "x-stainless-timeout") === void 0 && (0, exports2.getHeader)(headers, "x-stainless-timeout") === void 0 && options.timeout) {
+          reqHeaders["x-stainless-timeout"] = String(Math.trunc(options.timeout / 1e3));
+        }
+        this.validateHeaders(reqHeaders, headers);
+        return reqHeaders;
+      }
+      /**
+       * Used as a callback for mutating the given `FinalRequestOptions` object.
+       */
+      async prepareOptions(options) {
+      }
+      /**
+       * Used as a callback for mutating the given `RequestInit` object.
+       *
+       * This is useful for cases where you want to add certain headers based off of
+       * the request properties, e.g. `method` or `url`.
+       */
+      async prepareRequest(request, { url, options }) {
+      }
+      parseHeaders(headers) {
+        return !headers ? {} : Symbol.iterator in headers ? Object.fromEntries(Array.from(headers).map((header) => [...header])) : { ...headers };
+      }
+      makeStatusError(status, error, message, headers) {
+        return error_1.APIError.generate(status, error, message, headers);
+      }
+      request(options, remainingRetries = null) {
+        return new APIPromise(this.makeRequest(options, remainingRetries));
+      }
+      async makeRequest(optionsInput, retriesRemaining) {
+        const options = await optionsInput;
+        const maxRetries = options.maxRetries ?? this.maxRetries;
+        if (retriesRemaining == null) {
+          retriesRemaining = maxRetries;
+        }
+        await this.prepareOptions(options);
+        const { req, url, timeout } = await this.buildRequest(options, {
+          retryCount: maxRetries - retriesRemaining
+        });
+        await this.prepareRequest(req, { url, options });
+        debug("request", url, options, req.headers);
+        if (options.signal?.aborted) {
+          throw new error_1.APIUserAbortError();
+        }
+        const controller = new AbortController();
+        const response = await this.fetchWithTimeout(url, req, timeout, controller).catch(exports2.castToError);
+        if (response instanceof Error) {
+          if (options.signal?.aborted) {
+            throw new error_1.APIUserAbortError();
+          }
+          if (retriesRemaining) {
+            return this.retryRequest(options, retriesRemaining);
+          }
+          if (response.name === "AbortError") {
+            throw new error_1.APIConnectionTimeoutError();
+          }
+          throw new error_1.APIConnectionError({ cause: response });
+        }
+        const responseHeaders = (0, exports2.createResponseHeaders)(response.headers);
+        if (!response.ok) {
+          if (retriesRemaining && this.shouldRetry(response)) {
+            const retryMessage2 = `retrying, ${retriesRemaining} attempts remaining`;
+            debug(`response (error; ${retryMessage2})`, response.status, url, responseHeaders);
+            return this.retryRequest(options, retriesRemaining, responseHeaders);
+          }
+          const errText = await response.text().catch((e) => (0, exports2.castToError)(e).message);
+          const errJSON = (0, exports2.safeJSON)(errText);
+          const errMessage = errJSON ? void 0 : errText;
+          const retryMessage = retriesRemaining ? `(error; no more retries left)` : `(error; not retryable)`;
+          debug(`response (error; ${retryMessage})`, response.status, url, responseHeaders, errMessage);
+          const err = this.makeStatusError(response.status, errJSON, errMessage, responseHeaders);
+          throw err;
+        }
+        return { response, options, controller };
+      }
+      requestAPIList(Page, options) {
+        const request = this.makeRequest(options, null);
+        return new PagePromise(this, request, Page);
+      }
+      buildURL(path, query, defaultBaseURL) {
+        const baseURL = !__classPrivateFieldGet(this, _APIClient_baseURLOverridden, "f") && defaultBaseURL || this.baseURL;
+        const url = isAbsoluteURL(path) ? new URL(path) : new URL(baseURL + (baseURL.endsWith("/") && path.startsWith("/") ? path.slice(1) : path));
+        const defaultQuery = this.defaultQuery();
+        if (!isEmptyObj(defaultQuery)) {
+          query = { ...defaultQuery, ...query };
+        }
+        if (typeof query === "object" && query && !Array.isArray(query)) {
+          url.search = this.stringifyQuery(query);
+        }
+        return url.toString();
+      }
+      stringifyQuery(query) {
+        return Object.entries(query).filter(([_, value]) => typeof value !== "undefined").map(([key, value]) => {
+          if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+            return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+          }
+          if (value === null) {
+            return `${encodeURIComponent(key)}=`;
+          }
+          throw new error_1.GroqError(`Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`);
+        }).join("&");
+      }
+      async fetchWithTimeout(url, init, ms, controller) {
+        const { signal, ...options } = init || {};
+        if (signal)
+          signal.addEventListener("abort", () => controller.abort());
+        const timeout = setTimeout(() => controller.abort(), ms);
+        const fetchOptions = {
+          signal: controller.signal,
+          ...options
+        };
+        if (fetchOptions.method) {
+          fetchOptions.method = fetchOptions.method.toUpperCase();
+        }
+        return (
+          // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
+          this.fetch.call(void 0, url, fetchOptions).finally(() => {
+            clearTimeout(timeout);
+          })
+        );
+      }
+      shouldRetry(response) {
+        const shouldRetryHeader = response.headers.get("x-should-retry");
+        if (shouldRetryHeader === "true")
+          return true;
+        if (shouldRetryHeader === "false")
+          return false;
+        if (response.status === 408)
+          return true;
+        if (response.status === 409)
+          return true;
+        if (response.status === 429)
+          return true;
+        if (response.status >= 500)
+          return true;
+        return false;
+      }
+      async retryRequest(options, retriesRemaining, responseHeaders) {
+        let timeoutMillis;
+        const retryAfterMillisHeader = responseHeaders?.["retry-after-ms"];
+        if (retryAfterMillisHeader) {
+          const timeoutMs = parseFloat(retryAfterMillisHeader);
+          if (!Number.isNaN(timeoutMs)) {
+            timeoutMillis = timeoutMs;
+          }
+        }
+        const retryAfterHeader = responseHeaders?.["retry-after"];
+        if (retryAfterHeader && !timeoutMillis) {
+          const timeoutSeconds = parseFloat(retryAfterHeader);
+          if (!Number.isNaN(timeoutSeconds)) {
+            timeoutMillis = timeoutSeconds * 1e3;
+          } else {
+            timeoutMillis = Date.parse(retryAfterHeader) - Date.now();
+          }
+        }
+        if (!(timeoutMillis && 0 <= timeoutMillis && timeoutMillis < 60 * 1e3)) {
+          const maxRetries = options.maxRetries ?? this.maxRetries;
+          timeoutMillis = this.calculateDefaultRetryTimeoutMillis(retriesRemaining, maxRetries);
+        }
+        await (0, exports2.sleep)(timeoutMillis);
+        return this.makeRequest(options, retriesRemaining - 1);
+      }
+      calculateDefaultRetryTimeoutMillis(retriesRemaining, maxRetries) {
+        const initialRetryDelay = 0.5;
+        const maxRetryDelay = 8;
+        const numRetries = maxRetries - retriesRemaining;
+        const sleepSeconds = Math.min(initialRetryDelay * Math.pow(2, numRetries), maxRetryDelay);
+        const jitter = 1 - Math.random() * 0.25;
+        return sleepSeconds * jitter * 1e3;
+      }
+      getUserAgent() {
+        return `${this.constructor.name}/JS ${version_1.VERSION}`;
+      }
+    };
+    exports2.APIClient = APIClient;
+    _APIClient_baseURLOverridden = /* @__PURE__ */ new WeakMap();
+    var AbstractPage = class {
+      constructor(client, response, body, options) {
+        _AbstractPage_client.set(this, void 0);
+        __classPrivateFieldSet(this, _AbstractPage_client, client, "f");
+        this.options = options;
+        this.response = response;
+        this.body = body;
+      }
+      hasNextPage() {
+        const items = this.getPaginatedItems();
+        if (!items.length)
+          return false;
+        return this.nextPageInfo() != null;
+      }
+      async getNextPage() {
+        const nextInfo = this.nextPageInfo();
+        if (!nextInfo) {
+          throw new error_1.GroqError("No next page expected; please check `.hasNextPage()` before calling `.getNextPage()`.");
+        }
+        const nextOptions = { ...this.options };
+        if ("params" in nextInfo && typeof nextOptions.query === "object") {
+          nextOptions.query = { ...nextOptions.query, ...nextInfo.params };
+        } else if ("url" in nextInfo) {
+          const params = [...Object.entries(nextOptions.query || {}), ...nextInfo.url.searchParams.entries()];
+          for (const [key, value] of params) {
+            nextInfo.url.searchParams.set(key, value);
+          }
+          nextOptions.query = void 0;
+          nextOptions.path = nextInfo.url.toString();
+        }
+        return await __classPrivateFieldGet(this, _AbstractPage_client, "f").requestAPIList(this.constructor, nextOptions);
+      }
+      async *iterPages() {
+        let page = this;
+        yield page;
+        while (page.hasNextPage()) {
+          page = await page.getNextPage();
+          yield page;
+        }
+      }
+      async *[(_AbstractPage_client = /* @__PURE__ */ new WeakMap(), Symbol.asyncIterator)]() {
+        for await (const page of this.iterPages()) {
+          for (const item of page.getPaginatedItems()) {
+            yield item;
+          }
+        }
+      }
+    };
+    exports2.AbstractPage = AbstractPage;
+    var PagePromise = class extends APIPromise {
+      constructor(client, request, Page) {
+        super(request, async (props) => new Page(client, props.response, await defaultParseResponse(props), props.options));
+      }
+      /**
+       * Allow auto-paginating iteration on an unawaited list call, eg:
+       *
+       *    for await (const item of client.items.list()) {
+       *      console.log(item)
+       *    }
+       */
+      async *[Symbol.asyncIterator]() {
+        const page = await this;
+        for await (const item of page) {
+          yield item;
+        }
+      }
+    };
+    exports2.PagePromise = PagePromise;
+    var createResponseHeaders = (headers) => {
+      return new Proxy(Object.fromEntries(
+        // @ts-ignore
+        headers.entries()
+      ), {
+        get(target, name) {
+          const key = name.toString();
+          return target[key.toLowerCase()] || target[key];
+        }
+      });
+    };
+    exports2.createResponseHeaders = createResponseHeaders;
+    var requestOptionsKeys = {
+      method: true,
+      path: true,
+      query: true,
+      body: true,
+      headers: true,
+      defaultBaseURL: true,
+      maxRetries: true,
+      stream: true,
+      timeout: true,
+      httpAgent: true,
+      signal: true,
+      idempotencyKey: true,
+      __binaryRequest: true,
+      __binaryResponse: true,
+      __streamClass: true
+    };
+    var isRequestOptions = (obj) => {
+      return typeof obj === "object" && obj !== null && !isEmptyObj(obj) && Object.keys(obj).every((k) => hasOwn(requestOptionsKeys, k));
+    };
+    exports2.isRequestOptions = isRequestOptions;
+    var getPlatformProperties = () => {
+      if (typeof Deno !== "undefined" && Deno.build != null) {
+        return {
+          "X-Stainless-Lang": "js",
+          "X-Stainless-Package-Version": version_1.VERSION,
+          "X-Stainless-OS": normalizePlatform(Deno.build.os),
+          "X-Stainless-Arch": normalizeArch(Deno.build.arch),
+          "X-Stainless-Runtime": "deno",
+          "X-Stainless-Runtime-Version": typeof Deno.version === "string" ? Deno.version : Deno.version?.deno ?? "unknown"
+        };
+      }
+      if (typeof EdgeRuntime !== "undefined") {
+        return {
+          "X-Stainless-Lang": "js",
+          "X-Stainless-Package-Version": version_1.VERSION,
+          "X-Stainless-OS": "Unknown",
+          "X-Stainless-Arch": `other:${EdgeRuntime}`,
+          "X-Stainless-Runtime": "edge",
+          "X-Stainless-Runtime-Version": process.version
+        };
+      }
+      if (Object.prototype.toString.call(typeof process !== "undefined" ? process : 0) === "[object process]") {
+        return {
+          "X-Stainless-Lang": "js",
+          "X-Stainless-Package-Version": version_1.VERSION,
+          "X-Stainless-OS": normalizePlatform(process.platform),
+          "X-Stainless-Arch": normalizeArch(process.arch),
+          "X-Stainless-Runtime": "node",
+          "X-Stainless-Runtime-Version": process.version
+        };
+      }
+      const browserInfo = getBrowserInfo();
+      if (browserInfo) {
+        return {
+          "X-Stainless-Lang": "js",
+          "X-Stainless-Package-Version": version_1.VERSION,
+          "X-Stainless-OS": "Unknown",
+          "X-Stainless-Arch": "unknown",
+          "X-Stainless-Runtime": `browser:${browserInfo.browser}`,
+          "X-Stainless-Runtime-Version": browserInfo.version
+        };
+      }
+      return {
+        "X-Stainless-Lang": "js",
+        "X-Stainless-Package-Version": version_1.VERSION,
+        "X-Stainless-OS": "Unknown",
+        "X-Stainless-Arch": "unknown",
+        "X-Stainless-Runtime": "unknown",
+        "X-Stainless-Runtime-Version": "unknown"
+      };
+    };
+    function getBrowserInfo() {
+      if (typeof navigator === "undefined" || !navigator) {
+        return null;
+      }
+      const browserPatterns = [
+        { key: "edge", pattern: /Edge(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
+        { key: "ie", pattern: /MSIE(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
+        { key: "ie", pattern: /Trident(?:.*rv\:(\d+)\.(\d+)(?:\.(\d+))?)?/ },
+        { key: "chrome", pattern: /Chrome(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
+        { key: "firefox", pattern: /Firefox(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
+        { key: "safari", pattern: /(?:Version\W+(\d+)\.(\d+)(?:\.(\d+))?)?(?:\W+Mobile\S*)?\W+Safari/ }
+      ];
+      for (const { key, pattern } of browserPatterns) {
+        const match = pattern.exec(navigator.userAgent);
+        if (match) {
+          const major = match[1] || 0;
+          const minor = match[2] || 0;
+          const patch = match[3] || 0;
+          return { browser: key, version: `${major}.${minor}.${patch}` };
+        }
+      }
+      return null;
+    }
+    var normalizeArch = (arch) => {
+      if (arch === "x32")
+        return "x32";
+      if (arch === "x86_64" || arch === "x64")
+        return "x64";
+      if (arch === "arm")
+        return "arm";
+      if (arch === "aarch64" || arch === "arm64")
+        return "arm64";
+      if (arch)
+        return `other:${arch}`;
+      return "unknown";
+    };
+    var normalizePlatform = (platform) => {
+      platform = platform.toLowerCase();
+      if (platform.includes("ios"))
+        return "iOS";
+      if (platform === "android")
+        return "Android";
+      if (platform === "darwin")
+        return "MacOS";
+      if (platform === "win32")
+        return "Windows";
+      if (platform === "freebsd")
+        return "FreeBSD";
+      if (platform === "openbsd")
+        return "OpenBSD";
+      if (platform === "linux")
+        return "Linux";
+      if (platform)
+        return `Other:${platform}`;
+      return "Unknown";
+    };
+    var _platformHeaders;
+    var getPlatformHeaders = () => {
+      return _platformHeaders ?? (_platformHeaders = getPlatformProperties());
+    };
+    var safeJSON = (text) => {
+      try {
+        return JSON.parse(text);
+      } catch (err) {
+        return void 0;
+      }
+    };
+    exports2.safeJSON = safeJSON;
+    var startsWithSchemeRegexp = /^[a-z][a-z0-9+.-]*:/i;
+    var isAbsoluteURL = (url) => {
+      return startsWithSchemeRegexp.test(url);
+    };
+    var sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    exports2.sleep = sleep;
+    var validatePositiveInteger = (name, n) => {
+      if (typeof n !== "number" || !Number.isInteger(n)) {
+        throw new error_1.GroqError(`${name} must be an integer`);
+      }
+      if (n < 0) {
+        throw new error_1.GroqError(`${name} must be a positive integer`);
+      }
+      return n;
+    };
+    var castToError = (err) => {
+      if (err instanceof Error)
+        return err;
+      if (typeof err === "object" && err !== null) {
+        try {
+          return new Error(JSON.stringify(err));
+        } catch {
+        }
+      }
+      return new Error(err);
+    };
+    exports2.castToError = castToError;
+    var ensurePresent = (value) => {
+      if (value == null)
+        throw new error_1.GroqError(`Expected a value to be given but received ${value} instead.`);
+      return value;
+    };
+    exports2.ensurePresent = ensurePresent;
+    var readEnv = (env) => {
+      if (typeof process !== "undefined") {
+        return process.env?.[env]?.trim() ?? void 0;
+      }
+      if (typeof Deno !== "undefined") {
+        return Deno.env?.get?.(env)?.trim();
+      }
+      return void 0;
+    };
+    exports2.readEnv = readEnv;
+    var coerceInteger = (value) => {
+      if (typeof value === "number")
+        return Math.round(value);
+      if (typeof value === "string")
+        return parseInt(value, 10);
+      throw new error_1.GroqError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
+    };
+    exports2.coerceInteger = coerceInteger;
+    var coerceFloat = (value) => {
+      if (typeof value === "number")
+        return value;
+      if (typeof value === "string")
+        return parseFloat(value);
+      throw new error_1.GroqError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
+    };
+    exports2.coerceFloat = coerceFloat;
+    var coerceBoolean = (value) => {
+      if (typeof value === "boolean")
+        return value;
+      if (typeof value === "string")
+        return value === "true";
+      return Boolean(value);
+    };
+    exports2.coerceBoolean = coerceBoolean;
+    var maybeCoerceInteger = (value) => {
+      if (value == null) {
+        return void 0;
+      }
+      return (0, exports2.coerceInteger)(value);
+    };
+    exports2.maybeCoerceInteger = maybeCoerceInteger;
+    var maybeCoerceFloat = (value) => {
+      if (value == null) {
+        return void 0;
+      }
+      return (0, exports2.coerceFloat)(value);
+    };
+    exports2.maybeCoerceFloat = maybeCoerceFloat;
+    var maybeCoerceBoolean = (value) => {
+      if (value == null) {
+        return void 0;
+      }
+      return (0, exports2.coerceBoolean)(value);
+    };
+    exports2.maybeCoerceBoolean = maybeCoerceBoolean;
+    function isEmptyObj(obj) {
+      if (!obj)
+        return true;
+      for (const _k in obj)
+        return false;
+      return true;
+    }
+    exports2.isEmptyObj = isEmptyObj;
+    function hasOwn(obj, key) {
+      return Object.prototype.hasOwnProperty.call(obj, key);
+    }
+    exports2.hasOwn = hasOwn;
+    function applyHeadersMut(targetHeaders, newHeaders) {
+      for (const k in newHeaders) {
+        if (!hasOwn(newHeaders, k))
+          continue;
+        const lowerKey = k.toLowerCase();
+        if (!lowerKey)
+          continue;
+        const val = newHeaders[k];
+        if (val === null) {
+          delete targetHeaders[lowerKey];
+        } else if (val !== void 0) {
+          targetHeaders[lowerKey] = val;
+        }
+      }
+    }
+    function debug(action, ...args) {
+      if (typeof process !== "undefined" && process?.env?.["DEBUG"] === "true") {
+        console.log(`Groq:DEBUG:${action}`, ...args);
+      }
+    }
+    exports2.debug = debug;
+    var uuid4 = () => {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+        const r = Math.random() * 16 | 0;
+        const v = c === "x" ? r : r & 3 | 8;
+        return v.toString(16);
+      });
+    };
+    var isRunningInBrowser = () => {
+      return (
+        // @ts-ignore
+        typeof window !== "undefined" && // @ts-ignore
+        typeof window.document !== "undefined" && // @ts-ignore
+        typeof navigator !== "undefined"
+      );
+    };
+    exports2.isRunningInBrowser = isRunningInBrowser;
+    var isHeadersProtocol = (headers) => {
+      return typeof headers?.get === "function";
+    };
+    exports2.isHeadersProtocol = isHeadersProtocol;
+    var getRequiredHeader = (headers, header) => {
+      const foundHeader = (0, exports2.getHeader)(headers, header);
+      if (foundHeader === void 0) {
+        throw new Error(`Could not find ${header} header`);
+      }
+      return foundHeader;
+    };
+    exports2.getRequiredHeader = getRequiredHeader;
+    var getHeader = (headers, header) => {
+      const lowerCasedHeader = header.toLowerCase();
+      if ((0, exports2.isHeadersProtocol)(headers)) {
+        const intercapsHeader = header[0]?.toUpperCase() + header.substring(1).replace(/([^\w])(\w)/g, (_m, g1, g2) => g1 + g2.toUpperCase());
+        for (const key of [header, lowerCasedHeader, header.toUpperCase(), intercapsHeader]) {
+          const value = headers.get(key);
+          if (value) {
+            return value;
+          }
+        }
+      }
+      for (const [key, value] of Object.entries(headers)) {
+        if (key.toLowerCase() === lowerCasedHeader) {
+          if (Array.isArray(value)) {
+            if (value.length <= 1)
+              return value[0];
+            console.warn(`Received ${value.length} entries for the ${header} header, using the first entry.`);
+            return value[0];
+          }
+          return value;
+        }
+      }
+      return void 0;
+    };
+    exports2.getHeader = getHeader;
+    var toBase64 = (str) => {
+      if (!str)
+        return "";
+      if (typeof Buffer !== "undefined") {
+        return Buffer.from(str).toString("base64");
+      }
+      if (typeof btoa !== "undefined") {
+        return btoa(str);
+      }
+      throw new error_1.GroqError("Cannot generate b64 string; Expected `Buffer` or `btoa` to be defined");
+    };
+    exports2.toBase64 = toBase64;
+    function isObj(obj) {
+      return obj != null && typeof obj === "object" && !Array.isArray(obj);
+    }
+    exports2.isObj = isObj;
+  }
+});
+
+// node_modules/groq-sdk/resources/shared.js
+var require_shared = __commonJS({
+  "node_modules/groq-sdk/resources/shared.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/groq-sdk/resource.js
+var require_resource = __commonJS({
+  "node_modules/groq-sdk/resource.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.APIResource = void 0;
+    var APIResource = class {
+      constructor(client) {
+        this._client = client;
+      }
+    };
+    exports2.APIResource = APIResource;
+  }
+});
+
+// node_modules/groq-sdk/resources/audio/speech.js
+var require_speech = __commonJS({
+  "node_modules/groq-sdk/resources/audio/speech.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Speech = void 0;
+    var resource_1 = require_resource();
+    var Speech = class extends resource_1.APIResource {
+      /**
+       * Generates audio from the input text.
+       *
+       * @example
+       * ```ts
+       * const speech = await client.audio.speech.create({
+       *   input: 'The quick brown fox jumped over the lazy dog',
+       *   model: 'playai-tts',
+       *   voice: 'Fritz-PlayAI',
+       * });
+       *
+       * const content = await speech.blob();
+       * console.log(content);
+       * ```
+       */
+      create(body, options) {
+        return this._client.post("/openai/v1/audio/speech", {
+          body,
+          ...options,
+          headers: { Accept: "audio/wav", ...options?.headers },
+          __binaryResponse: true
+        });
+      }
+    };
+    exports2.Speech = Speech;
+  }
+});
+
+// node_modules/groq-sdk/resources/audio/transcriptions.js
+var require_transcriptions = __commonJS({
+  "node_modules/groq-sdk/resources/audio/transcriptions.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Transcriptions = void 0;
+    var resource_1 = require_resource();
+    var Core = __importStar(require_core());
+    var Transcriptions = class extends resource_1.APIResource {
+      /**
+       * Transcribes audio into the input language.
+       *
+       * @example
+       * ```ts
+       * const transcription =
+       *   await client.audio.transcriptions.create({
+       *     model: 'whisper-large-v3-turbo',
+       *   });
+       * ```
+       */
+      create(body, options) {
+        return this._client.post("/openai/v1/audio/transcriptions", Core.multipartFormRequestOptions({ body, ...options }));
+      }
+    };
+    exports2.Transcriptions = Transcriptions;
+  }
+});
+
+// node_modules/groq-sdk/resources/audio/translations.js
+var require_translations = __commonJS({
+  "node_modules/groq-sdk/resources/audio/translations.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Translations = void 0;
+    var resource_1 = require_resource();
+    var Core = __importStar(require_core());
+    var Translations = class extends resource_1.APIResource {
+      /**
+       * Translates audio into English.
+       *
+       * @example
+       * ```ts
+       * const translation = await client.audio.translations.create({
+       *   model: 'whisper-large-v3-turbo',
+       * });
+       * ```
+       */
+      create(body, options) {
+        return this._client.post("/openai/v1/audio/translations", Core.multipartFormRequestOptions({ body, ...options }));
+      }
+    };
+    exports2.Translations = Translations;
+  }
+});
+
+// node_modules/groq-sdk/resources/audio/audio.js
+var require_audio = __commonJS({
+  "node_modules/groq-sdk/resources/audio/audio.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Audio = void 0;
+    var resource_1 = require_resource();
+    var SpeechAPI = __importStar(require_speech());
+    var speech_1 = require_speech();
+    var TranscriptionsAPI = __importStar(require_transcriptions());
+    var transcriptions_1 = require_transcriptions();
+    var TranslationsAPI = __importStar(require_translations());
+    var translations_1 = require_translations();
+    var Audio = class extends resource_1.APIResource {
+      constructor() {
+        super(...arguments);
+        this.speech = new SpeechAPI.Speech(this._client);
+        this.transcriptions = new TranscriptionsAPI.Transcriptions(this._client);
+        this.translations = new TranslationsAPI.Translations(this._client);
+      }
+    };
+    exports2.Audio = Audio;
+    Audio.Speech = speech_1.Speech;
+    Audio.Transcriptions = transcriptions_1.Transcriptions;
+    Audio.Translations = translations_1.Translations;
+  }
+});
+
+// node_modules/groq-sdk/resources/batches.js
+var require_batches = __commonJS({
+  "node_modules/groq-sdk/resources/batches.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Batches = void 0;
+    var resource_1 = require_resource();
+    var Batches = class extends resource_1.APIResource {
+      /**
+       * Creates and executes a batch from an uploaded file of requests.
+       * [Learn more](/docs/batch).
+       */
+      create(body, options) {
+        return this._client.post("/openai/v1/batches", { body, ...options });
+      }
+      /**
+       * Retrieves a batch.
+       */
+      retrieve(batchId, options) {
+        return this._client.get(`/openai/v1/batches/${batchId}`, options);
+      }
+      /**
+       * List your organization's batches.
+       */
+      list(options) {
+        return this._client.get("/openai/v1/batches", options);
+      }
+      /**
+       * Cancels a batch.
+       */
+      cancel(batchId, options) {
+        return this._client.post(`/openai/v1/batches/${batchId}/cancel`, options);
+      }
+    };
+    exports2.Batches = Batches;
+  }
+});
+
+// node_modules/groq-sdk/resources/chat/completions.js
+var require_completions = __commonJS({
+  "node_modules/groq-sdk/resources/chat/completions.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Completions = void 0;
+    var resource_1 = require_resource();
+    var Completions = class extends resource_1.APIResource {
+      create(body, options) {
+        return this._client.post("/openai/v1/chat/completions", {
+          body,
+          ...options,
+          stream: body.stream ?? false
+        });
+      }
+    };
+    exports2.Completions = Completions;
+  }
+});
+
+// node_modules/groq-sdk/resources/chat/chat.js
+var require_chat = __commonJS({
+  "node_modules/groq-sdk/resources/chat/chat.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Chat = void 0;
+    var resource_1 = require_resource();
+    var CompletionsAPI = __importStar(require_completions());
+    var completions_1 = require_completions();
+    var Chat = class extends resource_1.APIResource {
+      constructor() {
+        super(...arguments);
+        this.completions = new CompletionsAPI.Completions(this._client);
+      }
+    };
+    exports2.Chat = Chat;
+    Chat.Completions = completions_1.Completions;
+  }
+});
+
+// node_modules/groq-sdk/resources/completions.js
+var require_completions2 = __commonJS({
+  "node_modules/groq-sdk/resources/completions.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Completions = void 0;
+    var resource_1 = require_resource();
+    var Completions = class extends resource_1.APIResource {
+    };
+    exports2.Completions = Completions;
+  }
+});
+
+// node_modules/groq-sdk/resources/embeddings.js
+var require_embeddings = __commonJS({
+  "node_modules/groq-sdk/resources/embeddings.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Embeddings = void 0;
+    var resource_1 = require_resource();
+    var Embeddings = class extends resource_1.APIResource {
+      /**
+       * Creates an embedding vector representing the input text.
+       *
+       * @example
+       * ```ts
+       * const createEmbeddingResponse =
+       *   await client.embeddings.create({
+       *     input: 'The quick brown fox jumped over the lazy dog',
+       *     model: 'nomic-embed-text-v1_5',
+       *   });
+       * ```
+       */
+      create(body, options) {
+        return this._client.post("/openai/v1/embeddings", { body, ...options });
+      }
+    };
+    exports2.Embeddings = Embeddings;
+  }
+});
+
+// node_modules/groq-sdk/resources/files.js
+var require_files = __commonJS({
+  "node_modules/groq-sdk/resources/files.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Files = void 0;
+    var resource_1 = require_resource();
+    var Core = __importStar(require_core());
+    var Files = class extends resource_1.APIResource {
+      /**
+       * Upload a file that can be used across various endpoints.
+       *
+       * The Batch API only supports `.jsonl` files up to 100 MB in size. The input also
+       * has a specific required [format](/docs/batch).
+       *
+       * Please contact us if you need to increase these storage limits.
+       */
+      create(body, options) {
+        return this._client.post("/openai/v1/files", Core.multipartFormRequestOptions({ body, ...options }));
+      }
+      /**
+       * Returns a list of files.
+       */
+      list(options) {
+        return this._client.get("/openai/v1/files", options);
+      }
+      /**
+       * Delete a file.
+       */
+      delete(fileId, options) {
+        return this._client.delete(`/openai/v1/files/${fileId}`, options);
+      }
+      /**
+       * Returns the contents of the specified file.
+       */
+      content(fileId, options) {
+        return this._client.get(`/openai/v1/files/${fileId}/content`, {
+          ...options,
+          headers: { Accept: "application/octet-stream", ...options?.headers },
+          __binaryResponse: true
+        });
+      }
+      /**
+       * Returns information about a file.
+       */
+      info(fileId, options) {
+        return this._client.get(`/openai/v1/files/${fileId}`, options);
+      }
+    };
+    exports2.Files = Files;
+  }
+});
+
+// node_modules/groq-sdk/resources/models.js
+var require_models = __commonJS({
+  "node_modules/groq-sdk/resources/models.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Models = void 0;
+    var resource_1 = require_resource();
+    var Models = class extends resource_1.APIResource {
+      /**
+       * Get a specific model
+       */
+      retrieve(model, options) {
+        return this._client.get(`/openai/v1/models/${model}`, options);
+      }
+      /**
+       * get all available models
+       */
+      list(options) {
+        return this._client.get("/openai/v1/models", options);
+      }
+      /**
+       * Delete a model
+       */
+      delete(model, options) {
+        return this._client.delete(`/openai/v1/models/${model}`, options);
+      }
+    };
+    exports2.Models = Models;
+  }
+});
+
+// node_modules/groq-sdk/resources/index.js
+var require_resources = __commonJS({
+  "node_modules/groq-sdk/resources/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.Models = exports2.Files = exports2.Embeddings = exports2.Completions = exports2.Chat = exports2.Batches = exports2.Audio = void 0;
+    __exportStar(require_shared(), exports2);
+    var audio_1 = require_audio();
+    Object.defineProperty(exports2, "Audio", { enumerable: true, get: function() {
+      return audio_1.Audio;
+    } });
+    var batches_1 = require_batches();
+    Object.defineProperty(exports2, "Batches", { enumerable: true, get: function() {
+      return batches_1.Batches;
+    } });
+    var chat_1 = require_chat();
+    Object.defineProperty(exports2, "Chat", { enumerable: true, get: function() {
+      return chat_1.Chat;
+    } });
+    var completions_1 = require_completions2();
+    Object.defineProperty(exports2, "Completions", { enumerable: true, get: function() {
+      return completions_1.Completions;
+    } });
+    var embeddings_1 = require_embeddings();
+    Object.defineProperty(exports2, "Embeddings", { enumerable: true, get: function() {
+      return embeddings_1.Embeddings;
+    } });
+    var files_1 = require_files();
+    Object.defineProperty(exports2, "Files", { enumerable: true, get: function() {
+      return files_1.Files;
+    } });
+    var models_1 = require_models();
+    Object.defineProperty(exports2, "Models", { enumerable: true, get: function() {
+      return models_1.Models;
+    } });
+  }
+});
+
+// node_modules/groq-sdk/index.js
+var require_groq_sdk = __commonJS({
+  "node_modules/groq-sdk/index.js"(exports2, module2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    }));
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? (function(o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+      o["default"] = v;
+    });
+    var __importStar = exports2 && exports2.__importStar || function(mod) {
+      if (mod && mod.__esModule) return mod;
+      var result = {};
+      if (mod != null) {
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+      }
+      __setModuleDefault(result, mod);
+      return result;
+    };
+    var _Groq_instances;
+    var _a;
+    var _Groq_baseURLOverridden;
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.UnprocessableEntityError = exports2.PermissionDeniedError = exports2.InternalServerError = exports2.AuthenticationError = exports2.BadRequestError = exports2.RateLimitError = exports2.ConflictError = exports2.NotFoundError = exports2.APIUserAbortError = exports2.APIConnectionTimeoutError = exports2.APIConnectionError = exports2.APIError = exports2.GroqError = exports2.fileFromPath = exports2.toFile = exports2.Groq = void 0;
+    var Core = __importStar(require_core());
+    var Errors = __importStar(require_error());
+    var Uploads = __importStar(require_uploads());
+    var API = __importStar(require_resources());
+    var batches_1 = require_batches();
+    var completions_1 = require_completions2();
+    var embeddings_1 = require_embeddings();
+    var files_1 = require_files();
+    var models_1 = require_models();
+    var audio_1 = require_audio();
+    var chat_1 = require_chat();
+    var Groq2 = class extends Core.APIClient {
+      /**
+       * API Client for interfacing with the Groq API.
+       *
+       * @param {string | undefined} [opts.apiKey=process.env['GROQ_API_KEY'] ?? undefined]
+       * @param {string} [opts.baseURL=process.env['GROQ_BASE_URL'] ?? https://api.groq.com] - Override the default base URL for the API.
+       * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
+       * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
+       * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
+       * @param {number} [opts.maxRetries=2] - The maximum number of times the client will retry a request.
+       * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
+       * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
+       * @param {boolean} [opts.dangerouslyAllowBrowser=false] - By default, client-side use of this library is not allowed, as it risks exposing your secret API credentials to attackers.
+       */
+      constructor({ baseURL = Core.readEnv("GROQ_BASE_URL"), apiKey = Core.readEnv("GROQ_API_KEY"), ...opts } = {}) {
+        if (apiKey === void 0) {
+          throw new Errors.GroqError("The GROQ_API_KEY environment variable is missing or empty; either provide it, or instantiate the Groq client with an apiKey option, like new Groq({ apiKey: 'My API Key' }).");
+        }
+        const options = {
+          apiKey,
+          ...opts,
+          baseURL: baseURL || `https://api.groq.com`
+        };
+        if (!options.dangerouslyAllowBrowser && Core.isRunningInBrowser()) {
+          throw new Errors.GroqError("It looks like you're running in a browser-like environment.\n\nThis is disabled by default, as it risks exposing your secret API credentials to attackers.\nIf you understand the risks and have appropriate mitigations in place,\nyou can set the `dangerouslyAllowBrowser` option to `true`, e.g.,\n\nnew Groq({ apiKey, dangerouslyAllowBrowser: true })");
+        }
+        super({
+          baseURL: options.baseURL,
+          baseURLOverridden: baseURL ? baseURL !== "https://api.groq.com" : false,
+          timeout: options.timeout ?? 6e4,
+          httpAgent: options.httpAgent,
+          maxRetries: options.maxRetries,
+          fetch: options.fetch
+        });
+        _Groq_instances.add(this);
+        this.completions = new API.Completions(this);
+        this.chat = new API.Chat(this);
+        this.embeddings = new API.Embeddings(this);
+        this.audio = new API.Audio(this);
+        this.models = new API.Models(this);
+        this.batches = new API.Batches(this);
+        this.files = new API.Files(this);
+        this._options = options;
+        this.apiKey = apiKey;
+      }
+      defaultQuery() {
+        return this._options.defaultQuery;
+      }
+      defaultHeaders(opts) {
+        return {
+          ...super.defaultHeaders(opts),
+          ...this._options.defaultHeaders
+        };
+      }
+      authHeaders(opts) {
+        return { Authorization: `Bearer ${this.apiKey}` };
+      }
+    };
+    exports2.Groq = Groq2;
+    _a = Groq2, _Groq_instances = /* @__PURE__ */ new WeakSet(), _Groq_baseURLOverridden = function _Groq_baseURLOverridden2() {
+      return this.baseURL !== "https://api.groq.com";
+    };
+    Groq2.Groq = _a;
+    Groq2.DEFAULT_TIMEOUT = 6e4;
+    Groq2.GroqError = Errors.GroqError;
+    Groq2.APIError = Errors.APIError;
+    Groq2.APIConnectionError = Errors.APIConnectionError;
+    Groq2.APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
+    Groq2.APIUserAbortError = Errors.APIUserAbortError;
+    Groq2.NotFoundError = Errors.NotFoundError;
+    Groq2.ConflictError = Errors.ConflictError;
+    Groq2.RateLimitError = Errors.RateLimitError;
+    Groq2.BadRequestError = Errors.BadRequestError;
+    Groq2.AuthenticationError = Errors.AuthenticationError;
+    Groq2.InternalServerError = Errors.InternalServerError;
+    Groq2.PermissionDeniedError = Errors.PermissionDeniedError;
+    Groq2.UnprocessableEntityError = Errors.UnprocessableEntityError;
+    Groq2.toFile = Uploads.toFile;
+    Groq2.fileFromPath = Uploads.fileFromPath;
+    Groq2.Completions = completions_1.Completions;
+    Groq2.Chat = chat_1.Chat;
+    Groq2.Embeddings = embeddings_1.Embeddings;
+    Groq2.Audio = audio_1.Audio;
+    Groq2.Models = models_1.Models;
+    Groq2.Batches = batches_1.Batches;
+    Groq2.Files = files_1.Files;
+    var uploads_1 = require_uploads();
+    Object.defineProperty(exports2, "toFile", { enumerable: true, get: function() {
+      return uploads_1.toFile;
+    } });
+    Object.defineProperty(exports2, "fileFromPath", { enumerable: true, get: function() {
+      return uploads_1.fileFromPath;
+    } });
+    var error_1 = require_error();
+    Object.defineProperty(exports2, "GroqError", { enumerable: true, get: function() {
+      return error_1.GroqError;
+    } });
+    Object.defineProperty(exports2, "APIError", { enumerable: true, get: function() {
+      return error_1.APIError;
+    } });
+    Object.defineProperty(exports2, "APIConnectionError", { enumerable: true, get: function() {
+      return error_1.APIConnectionError;
+    } });
+    Object.defineProperty(exports2, "APIConnectionTimeoutError", { enumerable: true, get: function() {
+      return error_1.APIConnectionTimeoutError;
+    } });
+    Object.defineProperty(exports2, "APIUserAbortError", { enumerable: true, get: function() {
+      return error_1.APIUserAbortError;
+    } });
+    Object.defineProperty(exports2, "NotFoundError", { enumerable: true, get: function() {
+      return error_1.NotFoundError;
+    } });
+    Object.defineProperty(exports2, "ConflictError", { enumerable: true, get: function() {
+      return error_1.ConflictError;
+    } });
+    Object.defineProperty(exports2, "RateLimitError", { enumerable: true, get: function() {
+      return error_1.RateLimitError;
+    } });
+    Object.defineProperty(exports2, "BadRequestError", { enumerable: true, get: function() {
+      return error_1.BadRequestError;
+    } });
+    Object.defineProperty(exports2, "AuthenticationError", { enumerable: true, get: function() {
+      return error_1.AuthenticationError;
+    } });
+    Object.defineProperty(exports2, "InternalServerError", { enumerable: true, get: function() {
+      return error_1.InternalServerError;
+    } });
+    Object.defineProperty(exports2, "PermissionDeniedError", { enumerable: true, get: function() {
+      return error_1.PermissionDeniedError;
+    } });
+    Object.defineProperty(exports2, "UnprocessableEntityError", { enumerable: true, get: function() {
+      return error_1.UnprocessableEntityError;
+    } });
+    exports2 = module2.exports = Groq2;
+    exports2.default = Groq2;
+  }
+});
+
+// netlify/functions/groq.cjs
+var Groq = require_groq_sdk();
+exports.handler = async (event) => {
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
+  const groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY
+  });
+  try {
+    const { prompt } = JSON.parse(event.body);
+    const completion = await groq.chat.completions.create({
+      messages: [{ role: "user", content: prompt }],
+      model: "llama-3.3-70b-versatile",
+      temperature: 0.7,
+      max_tokens: 1024
+    });
     return {
       statusCode: 200,
-      headers,
       body: JSON.stringify({
-        text,
-        usage: data.usage
+        text: completion.choices[0]?.message?.content || ""
       })
     };
   } catch (error) {
-    console.error("Groq Error:", error.message);
+    console.error("Groq Error:", error);
     return {
       statusCode: 500,
-      headers,
-      body: JSON.stringify({
-        error: "Failed to generate content",
-        details: error.message
-      })
+      body: JSON.stringify({ error: error.message })
     };
   }
 };
+/*! Bundled license information:
+
+web-streams-polyfill/dist/ponyfill.js:
+  (**
+   * @license
+   * web-streams-polyfill v4.0.0-beta.3
+   * Copyright 2021 Mattias Buelens, Diwank Singh Tomer and other contributors.
+   * This code is released under the MIT license.
+   * SPDX-License-Identifier: MIT
+   *)
+
+formdata-node/lib/cjs/blobHelpers.js:
+formdata-node/lib/cjs/Blob.js:
+  (*! Based on fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> & David Frank *)
+
+humanize-ms/index.js:
+  (*!
+   * humanize-ms - index.js
+   * Copyright(c) 2014 dead_horse <dead_horse@qq.com>
+   * MIT Licensed
+   *)
+
+node-domexception/index.js:
+  (*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> *)
+*/
 //# sourceMappingURL=groq.js.map

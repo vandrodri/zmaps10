@@ -30,3 +30,6 @@ dist-ssr
 =======
 .env.production
 >>>>>>> fd3e5c63931777c9b37713cb155d0aa923341380
+
+# Local Netlify folder
+.netlify
