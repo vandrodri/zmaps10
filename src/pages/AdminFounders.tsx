@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../services/firebaseConfig';
-import { makeUserFounder, getFounderInfo } from '../services/founderService';
-
+import { db } from '../firebaseConfig';
+import { makeUserFounder, getFounderInfo } from '../founderService';
 export const AdminFounders: React.FC = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);

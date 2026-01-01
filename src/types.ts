@@ -24,8 +24,7 @@ export interface FaqResult {
   tone: string;
 }
 
-export type AppView = 'dashboard' | 'posts' | 'reviews' | 'consultation' | 'faq';
-
+export type AppView = 'posts' | 'reviews' | 'faq' | 'consultation' | 'admin';
 export interface UserProfile {
   name: string;
   email: string;
