@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
+import { isAdmin } from '../adminConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { makeUserFounder, getFounderInfo } from '../founderService';
 export const AdminFounders: React.FC = () => {
+  const userEmail = auth.currentUser?.email || '';
+  
+  if (!isAdmin(userEmail)) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center p-8">
+        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md text-center">
+          <span className="text-6xl mb-4 block">🚫</span>
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">Acesso Negado</h1>
+          <p className="text-gray-600">Você não tem permissão para acessar esta área.</p>
+        </div>
+      </div>
+    );
+  }
+
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');

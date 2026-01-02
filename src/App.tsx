@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { isAdmin } from './adminConfig';
 import { User } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from './firebaseConfig';
