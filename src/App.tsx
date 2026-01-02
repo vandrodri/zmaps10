@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { TrialStatusBanner } from './components/TrialStatusBanner';
 import { isAdmin } from './adminConfig';
 import { User } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -349,13 +350,13 @@ const App: React.FC = () => {
           <div className="flex-1 p-4 md:p-8">
             <div className="max-w-7xl mx-auto">
               
-              {/* Alertas de Trial */}
-              {userPlan && shouldShowAlert(getDaysRemaining(userPlan.trialEndsAt)) && (
-                <TrialAlert 
-                  daysRemaining={getDaysRemaining(userPlan.trialEndsAt)}
-                  onUpgrade={() => setShowUpgradeModal(true)}
-                />
-              )}
+              {/* Banner de Status do Trial */}
+{userPlan && (
+  <TrialStatusBanner 
+    userPlan={userPlan}
+    onUpgrade={() => setShowUpgradeModal(true)}
+  />
+)}
               
               {/* Banner de Trial Expirado */}
               {userPlan && !canUseApp(userPlan) && (
