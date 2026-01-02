@@ -1,3 +1,6 @@
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "./firebaseConfig";
+import { User } from "firebase/auth";
 export const createOrUpdateUser = async (firebaseUser: User) => {
   try {
     const userRef = doc(db, "users", firebaseUser.uid);
