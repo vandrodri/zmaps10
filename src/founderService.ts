@@ -41,10 +41,13 @@ export const makeUserFounder = async (userId: string): Promise<boolean> => {
     // Atualiza o usuário
     const userRef = doc(db, "users", userId);
     await updateDoc(userRef, {
-      isFounder: true,
-      founderNumber: founderNumber,
-      founderPaidAt: serverTimestamp()
-    });
+  isFounder: true,
+  founderNumber: founderNumber,
+  founderPaidAt: serverTimestamp(),
+  // ✅ Libera acesso removendo expiração do trial
+  trialEndsAt: null,
+  isPaid: true
+});
     
     console.log(`✅ Usuário virou fundador #${founderNumber}`);
     return true;
