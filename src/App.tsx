@@ -47,7 +47,18 @@ const App: React.FC = () => {
             setFounderNumber(userData.founderNumber || null);
           }
         }
-        
+        // 🐛 DEBUG TEMPORÁRIO
+useEffect(() => {
+  if (userPlan) {
+    console.log('===== DEBUG USER PLAN =====');
+    console.log('Plan:', userPlan.plan);
+    console.log('Status:', userPlan.subscriptionStatus);
+    console.log('Is Founder:', userPlan.isFounder);
+    console.log('Trial Ends:', userPlan.trialEndsAt);
+    console.log('Can Use App:', canUseApp(userPlan));
+    console.log('==========================');
+  }
+}, [userPlan]);
         setUser({
           name: firebaseUser.displayName || 'Usuário',
           email: firebaseUser.email || '',
@@ -226,14 +237,18 @@ const App: React.FC = () => {
                 <span className="font-medium">Consultor IA</span>
               </button>
               <button 
-                onClick={() => navigateTo('admin')}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'admin' ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <span className="font-medium">Admin Fundadores</span>
-              </button>
+                {/* Botão Admin - só aparece para admins */}
+{user && isAdmin(user.email) && (
+  <button 
+    onClick={() => navigateTo('admin')}
+    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'admin' ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+  >
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+    <span className="font-medium">Admin Fundadores</span>
+  </button>
+)}
             </nav>
         </div>
 
