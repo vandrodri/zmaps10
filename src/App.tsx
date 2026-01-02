@@ -237,7 +237,7 @@ const App: React.FC = () => {
                 </svg>
                 <span className="font-medium">Consultor IA</span>
               </button>
-              <button 
+          
                 {/* Botão Admin - só aparece para admins */}
 {user && isAdmin(user.email) && (
   <button 
