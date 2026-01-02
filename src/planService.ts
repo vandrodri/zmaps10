@@ -54,6 +54,9 @@ export const shouldShowAlert = (daysRemaining: number): boolean => {
 export const canUseApp = (userPlan: UserPlan | null): boolean => {
   if (!userPlan) return false;
   
+  // ✅ FUNDADORES TÊM ACESSO VITALÍCIO
+  if (userPlan.isFounder) return true;
+  
   // Se tem plano pago, pode usar
   if (userPlan.subscriptionStatus === "active") return true;
   
