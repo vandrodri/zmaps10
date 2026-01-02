@@ -47,18 +47,7 @@ const App: React.FC = () => {
             setFounderNumber(userData.founderNumber || null);
           }
         }
-        // 🐛 DEBUG TEMPORÁRIO
-useEffect(() => {
-  if (userPlan) {
-    console.log('===== DEBUG USER PLAN =====');
-    console.log('Plan:', userPlan.plan);
-    console.log('Status:', userPlan.subscriptionStatus);
-    console.log('Is Founder:', userPlan.isFounder);
-    console.log('Trial Ends:', userPlan.trialEndsAt);
-    console.log('Can Use App:', canUseApp(userPlan));
-    console.log('==========================');
-  }
-}, [userPlan]);
+        
         setUser({
           name: firebaseUser.displayName || 'Usuário',
           email: firebaseUser.email || '',
@@ -75,6 +64,18 @@ useEffect(() => {
 
     return () => unsubscribe();
   }, []);
+  // 🐛 DEBUG TEMPORÁRIO - COLOCAR AQUI EMBAIXO
+  useEffect(() => {
+    if (userPlan) {
+      console.log('===== DEBUG USER PLAN =====');
+      console.log('Plan:', userPlan.plan);
+      console.log('Status:', userPlan.subscriptionStatus);
+      console.log('Is Founder:', userPlan.isFounder);
+      console.log('Trial Ends:', userPlan.trialEndsAt);
+      console.log('Can Use App:', canUseApp(userPlan));
+      console.log('==========================');
+    }
+  }, [userPlan]);
 
   // Funções
   const handleLogin = async (firebaseUser: User) => {
