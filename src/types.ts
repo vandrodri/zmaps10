@@ -25,9 +25,21 @@ export interface FaqResult {
 }
 
 export type AppView = 'posts' | 'reviews' | 'faq' | 'consultation' | 'admin';
+
 export interface UserProfile {
   name: string;
   email: string;
   avatar: string;
-  photoURL?: string; // Foto do perfil do Google
+  photoURL?: string;
+}
+
+// ✅ ADICIONE ESTA INTERFACE
+export interface UserPlan {
+  plan: string;
+  subscriptionStatus: string;
+  trialEndsAt: Date | null;
+  isFounder: boolean;
+  paidPlan: string | null;
+  usageCount?: number;
+  usageLimit?: number;
 }
