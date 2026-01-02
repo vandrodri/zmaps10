@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { WelcomeModal } from './components/WelcomeModal';
+import { GuidedTour } from './components/GuidedTour';
 import { TrialStatusBanner } from './components/TrialStatusBanner';
 import { isAdmin } from './adminConfig';
 import { User } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from './firebaseConfig';
 import { onAuthChange, logout } from './authService';
 import { createOrUpdateUser } from './firestoreService';
@@ -29,6 +31,8 @@ const App: React.FC = () => {
   const [userPlan, setUserPlan] = useState<UserPlan | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [founderNumber, setFounderNumber] = useState<number | null>(null);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+const [showTour, setShowTour] = useState(false);
 
   // useEffect para autenticação e plano
   useEffect(() => {
@@ -55,6 +59,17 @@ const App: React.FC = () => {
           avatar: firebaseUser.displayName?.charAt(0).toUpperCase() || 'U',
           photoURL: firebaseUser.photoURL || undefined
         });
+        // ✅ ADICIONE AQUI:
+// Verificar se é primeira vez
+const userRef = doc(db, "users", firebaseUser.uid);
+const userSnap = await getDoc(userRef);
+if (userSnap.exists()) {
+  const userData = userSnap.data();
+  // Se não tem campo hasSeenOnboarding, mostra o modal
+  if (!userData.hasSeenOnboarding) {
+    setShowWelcomeModal(true);
+  }
+}
       } else {
         setUser(null);
         setUserPlan(null);
@@ -119,8 +134,30 @@ const App: React.FC = () => {
     setCurrentView(view);
     setIsMobileMenuOpen(false);
   };
+// ✅ ADICIONE AQUI - Funções de Onboarding
+  const handleCloseWelcome = async () => {
+    setShowWelcomeModal(false);
+    // Salvar que já viu o onboarding
+    if (auth.currentUser) {
+      const userRef = doc(db, "users", auth.currentUser.uid);
+      await setDoc(userRef, { hasSeenOnboarding: true }, { merge: true });
+    }
+  };
 
-  const renderContent = () => {
+  const handleStartTour = () => {
+    setShowTour(true);
+  };
+
+  const handleCompleteTour = async () => {
+    setShowTour(false);
+    // Salvar que completou o tour
+    if (auth.currentUser) {
+      const userRef = doc(db, "users", auth.currentUser.uid);
+      await setDoc(userRef, { hasCompletedTour: true }, { merge: true });
+    }
+  };
+
+const renderContent = () => {
   switch (currentView) {
     case 'posts':
       return <PostGenerator />;
@@ -197,6 +234,7 @@ const App: React.FC = () => {
             <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Criação de Conteúdo</p>
             <nav className="space-y-1">
               <button 
+               data-tour="create-post"
                 onClick={() => navigateTo('posts')}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'posts' ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
               >
@@ -207,6 +245,7 @@ const App: React.FC = () => {
               </button>
 
               <button 
+              data-tour="reviews"
                 onClick={() => navigateTo('reviews')}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'reviews' ? 'bg-green-600 text-white shadow-lg shadow-green-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
               >
@@ -217,6 +256,7 @@ const App: React.FC = () => {
               </button>
 
                <button 
+                data-tour="faq"
                 onClick={() => navigateTo('faq')}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'faq' ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
               >
@@ -230,6 +270,7 @@ const App: React.FC = () => {
             <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mt-6 mb-2">Estratégia</p>
             <nav className="space-y-1">
               <button 
+              data-tour="consultant"
                 onClick={() => navigateTo('consultation')}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'consultation' ? 'bg-orange-500 text-white shadow-lg shadow-orange-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
               >
@@ -364,7 +405,8 @@ const App: React.FC = () => {
                   onUpgrade={() => setShowUpgradeModal(true)}
                 />
               )}
-             
+            
+
               {renderContent()}
 
             </div>
@@ -391,6 +433,21 @@ const App: React.FC = () => {
           userName={user.name}
         />
       )}
+      {/* Modais de Onboarding */}
+      <WelcomeModal
+        isOpen={showWelcomeModal}
+        onClose={handleCloseWelcome}
+        onStartTour={handleStartTour}
+        userName={user?.name || 'Usuário'}
+      />
+      
+      <GuidedTour
+        isActive={showTour}
+        onComplete={handleCompleteTour}
+      />
+   </div>
+  );
+};
    </div>
   );
 };
