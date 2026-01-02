@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { isAdmin } from '../adminConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
+import { db, auth } from '../firebaseConfig';
 import { makeUserFounder, getFounderInfo } from '../founderService';
 export const AdminFounders: React.FC = () => {
   const userEmail = auth.currentUser?.email || '';
