@@ -448,8 +448,5 @@ const renderContent = () => {
    </div>
   );
 };
-   </div>
-  );
-};
-
+   
 export default App;
