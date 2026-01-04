@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { generateReviewResponse } from '../services/groqService';
 import { ReviewResponseResult } from '../types';
+import { GBPQuickAccessButton } from './GBPQuickAccessButton';
 
 export const ReviewResponder: React.FC = () => {
   const [review, setReview] = useState('');
@@ -94,6 +95,7 @@ export const ReviewResponder: React.FC = () => {
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-2M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
                     Copiar Resposta
                 </button>
+                <GBPQuickAccessButton variant="primary" className="mt-4" />
            </div>
         </div>
       )}

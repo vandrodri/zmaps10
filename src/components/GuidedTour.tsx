@@ -98,12 +98,12 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({ isActive, onComplete }) 
 
   return (
     <>
-      {/* Overlay escuro */}
-      <div className="fixed inset-0 bg-black/60 z-[9998]" onClick={handleSkip} />
+      {/* Overlay escuro - SEM onClick para não fechar acidentalmente */}
+      <div className="fixed inset-0 bg-black/60 z-[9998] pointer-events-none" />
       
       {/* Tooltip */}
       <div 
-        className="fixed z-[9999] bg-white rounded-2xl shadow-2xl p-6 max-w-sm animate-scale-in"
+        className="fixed z-[9999] bg-white rounded-2xl shadow-2xl p-6 max-w-sm animate-scale-in pointer-events-auto"
         style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
       >
         <div className="flex items-start justify-between mb-3">
@@ -115,7 +115,8 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({ isActive, onComplete }) 
           </div>
           <button 
             onClick={handleSkip}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-gray-600 transition-colors ml-4 flex-shrink-0"
+            title="Fechar tour"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -141,7 +142,7 @@ export const GuidedTour: React.FC<GuidedTourProps> = ({ isActive, onComplete }) 
             {!isLastStep && (
               <button
                 onClick={handleSkip}
-                className="px-4 py-2 text-gray-600 hover:text-gray-800 font-semibold text-sm"
+                className="px-4 py-2 text-gray-600 hover:text-gray-800 font-semibold text-sm transition-colors"
               >
                 Pular
               </button>

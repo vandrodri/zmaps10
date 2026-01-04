@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { generatePost, generateAiImage, remixImage, generateImageOverlays } from '../services/groqService';
 import { PostResult } from '../types';
+import { GBPQuickAccessButton } from './GBPQuickAccessButton';
 
 // --- CONFIGURAÇÕES DO EDITOR DE IMAGEM ---
 interface TextElement {
@@ -572,10 +573,12 @@ export const PostGenerator: React.FC = () => {
                         Gerar Imagem Sugerida
                     </button>
                 </div>
+                                <GBPQuickAccessButton variant="primary" className="mt-4" />
+
             </div>
         )}
       </div>
-
+    
       {/* COLUNA DIREITA: EDITOR VISUAL */}
       <div className="flex flex-col h-full bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden">
         

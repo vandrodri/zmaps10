@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { PrivacyPolicy, TermsOfService, CookiePolicy } from './components/LegalDocuments';
+import { SupportWidget } from './components/SupportWidget';
+import { BusinessProfile } from './components/BusinessProfile';
+import { BusinessSetupModal, BusinessSetupData } from './components/BusinessSetupModal';
 import { WelcomeModal } from './components/WelcomeModal';
 import { GuidedTour } from './components/GuidedTour';
+import { OnboardingChecklist } from './components/OnboardingChecklist';
 import { TrialStatusBanner } from './components/TrialStatusBanner';
 import { isAdmin } from './adminConfig';
 import { User } from 'firebase/auth';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from './firebaseConfig';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'; 
 import { onAuthChange, logout } from './authService';
 import { createOrUpdateUser } from './firestoreService';
 import { PostGenerator } from './components/PostGenerator';
@@ -33,6 +38,7 @@ const App: React.FC = () => {
   const [founderNumber, setFounderNumber] = useState<number | null>(null);
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 const [showTour, setShowTour] = useState(false);
+const [showBusinessSetup, setShowBusinessSetup] = useState(false);
 
   // useEffect para autenticação e plano
   useEffect(() => {
@@ -135,27 +141,43 @@ if (userSnap.exists()) {
     setIsMobileMenuOpen(false);
   };
 // ✅ ADICIONE AQUI - Funções de Onboarding
-  const handleCloseWelcome = async () => {
-    setShowWelcomeModal(false);
-    // Salvar que já viu o onboarding
-    if (auth.currentUser) {
-      const userRef = doc(db, "users", auth.currentUser.uid);
-      await setDoc(userRef, { hasSeenOnboarding: true }, { merge: true });
-    }
-  };
+const handleCloseWelcome = async () => {
+  setShowWelcomeModal(false);
+  setShowBusinessSetup(true); // 👈 Abre o setup do negócio
+};
 
-  const handleStartTour = () => {
-    setShowTour(true);
-  };
-
-  const handleCompleteTour = async () => {
-    setShowTour(false);
-    // Salvar que completou o tour
-    if (auth.currentUser) {
-      const userRef = doc(db, "users", auth.currentUser.uid);
-      await setDoc(userRef, { hasCompletedTour: true }, { merge: true });
+// 
+const handleBusinessSetupComplete = async (data: BusinessSetupData) => {
+  setShowBusinessSetup(false);
+  
+  // Salvar no Firebase
+  if (auth.currentUser) {
+    try {
+      await updateDoc(doc(db, 'users', auth.currentUser.uid), {
+        businessName: data.businessName,
+        gbpLink: data.gbpLink,
+        businessSetupCompleted: true
+      });
+      console.log('Dados do negócio salvos!');
+    } catch (error) {
+      console.error('Erro ao salvar dados do negócio:', error);
     }
-  };
+  }
+};
+
+const handleBusinessSetupSkip = () => {
+  setShowBusinessSetup(false);
+};
+
+const handleStartTour = () => {
+  setShowTour(true);
+};
+
+const handleCompleteTour = async () => {
+  setShowTour(false);
+  
+
+  }
 
 const renderContent = () => {
   switch (currentView) {
@@ -167,6 +189,14 @@ const renderContent = () => {
       return <FaqGenerator />;
     case 'consultation':
       return <BusinessConsultant />;
+    case 'profile':
+      return <BusinessProfile />;
+    case 'privacy':
+      return <PrivacyPolicy />;
+    case 'terms':
+      return <TermsOfService />;
+    case 'cookies':
+      return <CookiePolicy />;  // 👈 ADICIONAR ESSA LINHA!
     case 'admin':
       return <AdminFounders />;
     default:
@@ -180,6 +210,7 @@ const renderContent = () => {
     case 'reviews': return 'Gestão de Reviews';
     case 'faq': return 'Perguntas Frequentes (FAQ)';
     case 'consultation': return 'Consultoria Estratégica';
+    case 'profile': return 'Perfil do Negócio';
     case 'admin': return '🛡️ Painel Admin';
     default: return 'Estúdio de Criação';
   }
@@ -293,6 +324,18 @@ const renderContent = () => {
   </button>
 )}
             </nav>
+            <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mt-6 mb-2">Configurações</p>
+<nav className="space-y-1">
+  <button 
+  onClick={() => navigateTo('profile')}
+  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${currentView === 'profile' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-900/20' : 'text-slate-400 hover:text-white hover:bg-slate-800'}`}
+>
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  </svg>
+  <span className="font-medium">Perfil do Negócio</span>
+</button>
+</nav>
         </div>
 
         <div className="mt-auto p-4 border-t border-slate-800">
@@ -411,7 +454,7 @@ const renderContent = () => {
 
             </div>
           </div>
-          <Footer />
+          <Footer onNavigate={navigateTo} />
         </main>
 
       </div>
@@ -440,13 +483,20 @@ const renderContent = () => {
         onStartTour={handleStartTour}
         userName={user?.name || 'Usuário'}
       />
-      
+      <BusinessSetupModal
+  isOpen={showBusinessSetup}
+  onComplete={handleBusinessSetupComplete}
+  onSkip={handleBusinessSetupSkip}
+  userName={user?.name || 'Usuário'}
+/>
       <GuidedTour
         isActive={showTour}
         onComplete={handleCompleteTour}
       />
-   </div>
-  );
-};
-   
-export default App;
+      <OnboardingChecklist /> {/* 👈 Só isso! */}
+      <SupportWidget />
+  </div>
+    );
+}
+      
+      export default App;

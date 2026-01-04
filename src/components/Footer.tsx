@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (view: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [showCookieConsent, setShowCookieConsent] = useState(false);
 
   useEffect(() => {
@@ -55,21 +59,27 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Coluna 3: Links Legais */}
-            <div className="col-span-1">
-              <h4 className="font-bold text-slate-800 mb-4 uppercase text-xs tracking-wider">Legal</h4>
-              <ul className="space-y-3 text-sm text-slate-600">
-                <li>
-                  <a href="#" className="hover:text-indigo-600 transition-colors">Termos de Uso</a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-indigo-600 transition-colors">Política de Privacidade</a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-indigo-600 transition-colors">LGPD</a>
-                </li>
-              </ul>
-            </div>
+           {/* Coluna 3: Links Legais */}
+<div className="col-span-1">
+  <h4 className="font-bold text-slate-800 mb-4 uppercase text-xs tracking-wider">Legal</h4>
+  <ul className="space-y-3 text-sm text-slate-600">
+    <li>
+      <button onClick={() => onNavigate('terms')} className="hover:text-indigo-600 transition-colors text-left">
+        Termos de Uso
+      </button>
+    </li>
+    <li>
+      <button onClick={() => onNavigate('privacy')} className="hover:text-indigo-600 transition-colors text-left">
+        Política de Privacidade
+      </button>
+    </li>
+    <li>
+      <button onClick={() => onNavigate('cookies')} className="hover:text-indigo-600 transition-colors text-left">
+        Cookies
+      </button>
+    </li>
+  </ul>
+</div>
 
             {/* Coluna 4: Social */}
             <div className="col-span-1">
@@ -112,8 +122,7 @@ export const Footer: React.FC = () => {
                         <p className="text-white font-bold text-sm mb-1">Respeitamos sua privacidade</p>
                         <p className="text-slate-300 text-xs md:text-sm">
                             Utilizamos cookies para melhorar sua experiência no ZMaps e analisar nosso tráfego. 
-                            Ao continuar, você concorda com nossa <a href="#" className="text-indigo-400 underline hover:text-indigo-300">Política de Privacidade</a>.
-                        </p>
+Ao continuar, você concorda com nossa <button onClick={() => onNavigate('privacy')} className="text-indigo-400 underline hover:text-indigo-300">Política de Privacidade</button>.                        </p>
                     </div>
                 </div>
                 <div className="flex gap-2 w-full md:w-auto">

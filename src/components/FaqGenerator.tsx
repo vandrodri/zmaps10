@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { generateFaqAnswer } from '../services/groqService';
 import { FaqResult } from '../types';
+import { GBPQuickAccessButton } from './GBPQuickAccessButton';
 
 const FaqGenerator: React.FC = () => {
   const [question, setQuestion] = useState('');
@@ -111,6 +112,7 @@ const FaqGenerator: React.FC = () => {
               </svg>
               Copiar Resposta
             </button>
+            <GBPQuickAccessButton variant="primary" className="mt-4" />
           </div>
         </div>
       )}
