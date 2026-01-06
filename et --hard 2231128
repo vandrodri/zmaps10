@@ -1,0 +1,42 @@
+[33m8ca8674[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m fix: resolve mime type and manifest path
+[33mcf011ef[m fix: resolve mime type and manifest path
+[33m0d52613[m fix: corrige tipagem das props do modal para build
+[33m7611ba2[m fix: corrige tipagem das props do modal para build
+[33mab0244a[m feat: modal de pagamento finalizado com links MP e ajustes de layout
+[33m8b9bb95[m atualizações no footer com links sociais
+[33m29e9eb3[m fix: corrige tipos TypeScript para deploy
+[33m2231128[m feat: versão final para lançamento - onboarding, perfil, suporte, favicon, docs legais e botão GMN
+[33m2ef0161[m Improve: Modal responsivo com ícones SVG profissionais
+[33mc2cca53[m Fix: Remover fechamento duplicado do App
+[33ma1add39[m Add: Welcome modal e guided tour - onboarding completo
+[33m3231ee4[m Fix: Corrigir timestamp do trial para 7 dias
+[33me169484[m Fix: Adicionar interface UserPlan no types.ts
+[33m0c03436[m Add: Banner de status do trial sempre visível
+[33m5d7bb1a[m Fix: Impedir renovação automática do trial no login
+[33m4e15d82[m Fix: Impedir renovação automática do trial no login
+[33m38cebb2[m Fix: Fundadores têm acesso vitalício garantido
+[33m4f31b9b[m Debug: Adicionar logs do userPlan
+[33mb7db1cf[m Debug: Adicionar logs do userPlan
+[33m71f9229[m Fix: Fundadores têm acesso vitalício garantido
+[33m660e2ab[m Fix: Liberar acesso automaticamente ao tornar fundador
+[33mf44a019[m Fix: Importar auth no AdminFounders
+[33md003327[m Security: Proteger painel admin - apenas emails autorizados
+[33m5d98f92[m Restore: groqService.ts recuperado
+[33m63fa434[m Fix: Corrigido tipo AppView e imports do AdminFounders
+[33m2a8b156[m Add: Painel Admin para gerenciar fundadores manualmente
+[33m03fcb88[m Fix: Corrigido editor de imagens - drag mobile, logo, preview modal
+[33m505c1f9[m  Sistema completo: Login profissional + Pagamentos + Badge Fundador + Webhooks
+[33mc5826db[m Add groq-sdk dependency
+[33md55acc0[m Fix: Resolve merge conflict in groq.cjs
+[33m5362b04[m Trigger Netlify rebuild
+[33mc5de341[m Fix: Remove merge conflicts e auditoria do app
+[33m536b2f5[m Remove auditoria do app
+[33mf137cd6[m Remove auditoria do app
+[33mfd3e5c6[m Adiciona HuggingFace para geração de imagens
+[33me2fa27f[m Adiciona validação de tipos no Groq
+[33m4421376[m Corrige aspas nas importações
+[33m5ed0a25[m Corrige aspas nas importações
+[33m73c1d47[m Atualiza todas importações para Groq
+[33m9a46df3[m Implementa Groq API - super rápida
+[33m2e344c8[m Testa com prompt curto
+[33m049b114[m Implementa DeepSeek API

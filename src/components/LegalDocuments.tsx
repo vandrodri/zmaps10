@@ -444,7 +444,7 @@ const LegalDocument: React.FC<LegalDocumentProps & { children: React.ReactNode }
         <p>© 2026 ZMaps. Todos os direitos reservados.</p>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .legal-content h2 {
           font-size: 1.5rem;
           font-weight: 700;
