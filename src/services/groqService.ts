@@ -1,4 +1,5 @@
 import { AnalysisResult, PostResult, ReviewResponseResult, FaqResult } from "../types";
+import { translateToEnglish } from '../utils/translatePrompt';
 
 const GROQ_FUNCTION_URL = '/.netlify/functions/groq';
 
@@ -241,6 +242,8 @@ const HF_IMAGE_FUNCTION_URL = '/.netlify/functions/huggingface-image';
 export const generateAiImage = async (prompt: string): Promise<string> => {
   try {
     console.log('Generating image with HuggingFace...');
+    const promptIngles = await translateToEnglish(prompt);
+    console.log(`Prompt traduzido: "${prompt}" → "${promptIngles}"`);
     
     const response = await fetch(HF_IMAGE_FUNCTION_URL, {
       method: 'POST',
@@ -248,7 +251,7 @@ export const generateAiImage = async (prompt: string): Promise<string> => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
-        prompt,
+        prompt: promptIngles,
         action: 'generate',
         model: 'stabilityai/stable-diffusion-xl-base-1.0'
       })
@@ -281,6 +284,8 @@ export const remixImage = async (
 ): Promise<string> => {
   try {
     console.log('Remixing image with HuggingFace...');
+    const promptIngles = await translateToEnglish(promptInstruction);
+    console.log(`Prompt remix traduzido: "${promptInstruction}" → "${promptIngles}"`);
     
     const response = await fetch(HF_IMAGE_FUNCTION_URL, {
       method: 'POST',
@@ -288,7 +293,7 @@ export const remixImage = async (
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
-        prompt: promptInstruction,
+        prompt: promptIngles,
         base64Image: base64Image,
         action: 'remix'
       })
