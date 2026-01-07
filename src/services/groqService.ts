@@ -56,7 +56,7 @@ Seja direto, profissional e use emojis quando apropriado.
   }
 };
 
-// --- 2. Gerador de Posts ---
+// --- 2. Gerador de Posts (CORRIGIDO) ---
 export const generatePost = async (
   topic: string,
   tone: string,
@@ -67,19 +67,35 @@ export const generatePost = async (
 ATUE COMO: Um Copywriter Especialista e Diretor de Arte.
 TAREFA: Criar um post para ${platform} sobre "${topic}" com tom "${tone}".
 
-REGRAS PARA O PROMPT DE IMAGEM:
-1. Evite estilos cartoon ou 3D genéricos. Use termos como "professional food photography", "macro shot", "cinematic lighting", "8k resolution".
-2. Se for comida (ex: hamburguer), especifique "realistic proportions", "appetizing", "steam rising". 
-3. Para 'Smash Burger', especifique: "flat patty", "crispy edges", "melted cheese", "not too tall", "authentic street food style".
+REGRAS PARA O CONTEÚDO DO POST:
+- Texto do post em PORTUGUÊS com emojis apropriados
+- 5 hashtags relevantes
+
+REGRAS PARA O PROMPT DE IMAGEM (CRITICAL - MUST BE IN ENGLISH):
+1. The imagePrompt MUST be written ENTIRELY IN ENGLISH - no Portuguese words allowed
+2. Avoid cartoon or generic 3D styles. Use terms like "professional food photography", "macro shot", "cinematic lighting", "8k resolution"
+3. For food (e.g., burger), specify "realistic proportions", "appetizing", "steam rising"
+4. For 'Smash Burger', specify: "flat patty", "crispy edges", "melted cheese", "not too tall", "authentic street food style"
+5. Focus on photorealistic details and professional photography terms
 
 SAÍDA ESPERADA (JSON válido):
 {
-  "content": "O texto do post (com emojis)",
+  "content": "O texto do post em português (com emojis)",
   "hashtags": ["hashtag1", "hashtag2", "hashtag3", "hashtag4", "hashtag5"],
-  "imagePrompt": "Um prompt visual extremamente detalhado focado em realismo fotográfico"
+  "imagePrompt": "A highly detailed visual prompt in PURE ENGLISH for photorealistic image generation"
 }
 
-IMPORTANTE: Retorne APENAS o JSON, sem texto adicional antes ou depois.
+EXAMPLE OUTPUT:
+{
+  "content": "🍔 Que tal um hambúrguer delicioso hoje? Venha experimentar!",
+  "hashtags": ["#burger", "#food", "#delicious", "#lunch", "#foodporn"],
+  "imagePrompt": "Professional food photography of a gourmet smash burger with flat patty, crispy caramelized edges, melted cheddar cheese, fresh lettuce and tomato on a toasted brioche bun, shot from 45 degree angle with cinematic lighting, shallow depth of field, steam rising, appetizing presentation, 8k resolution, hyper realistic"
+}
+
+IMPORTANTE: 
+- O "content" e "hashtags" devem estar em PORTUGUÊS
+- O "imagePrompt" DEVE estar COMPLETAMENTE EM INGLÊS
+- Retorne APENAS o JSON, sem texto adicional antes ou depois
     `;
 
     const text = await callGroq(prompt, true);
