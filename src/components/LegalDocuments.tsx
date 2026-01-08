@@ -422,9 +422,27 @@ const LegalDocument: React.FC<LegalDocumentProps & { children: React.ReactNode }
         )}
         
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-700 via-indigo-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 transform -rotate-3 border border-white/20">
-            <span className="text-white font-black text-4xl font-serif italic drop-shadow-md select-none">Z</span>
-          </div>
+  <div className="w-16 h-16 bg-[#1A73E8] rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 hover:scale-105 transition-all duration-300 border border-white/20">
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="MapsGuru"
+    >
+      {/* Pin */}
+      <path
+        d="M12 2C7.86 2 4.5 5.36 4.5 9.5C4.5 14.47 12 22 12 22C12 22 19.5 14.47 19.5 9.5C19.5 5.36 16.14 2 12 2Z"
+        fill="white"
+      />
+      {/* Estrela */}
+      <path
+        d="M12 7.2L13.09 9.41L15.53 9.76L13.76 11.48L14.18 13.9L12 12.75L9.82 13.9L10.24 11.48L8.47 9.76L10.91 9.41L12 7.2Z"
+        fill="#FBBC05"
+      />
+    </svg>
+  </div>
           <div>
             <h1 className="text-4xl font-black text-gray-800">{title}</h1>
             <p className="text-sm text-gray-500 mt-1">Última atualização: {lastUpdated}</p>
