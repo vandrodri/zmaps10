@@ -19,7 +19,7 @@ export const SupportWidget: React.FC = () => {
   const whatsappNumber = '5511957055256'; // Formato internacional
 
   const openWhatsApp = () => {
-    const message = encodeURIComponent('Olá! Estou usando o ZMaps e gostaria de falar com o suporte.');
+    const message = encodeURIComponent('Olá! Estou usando o MapsGuru e gostaria de falar com o suporte.');
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
     setIsOpen(false);
   };
@@ -49,7 +49,7 @@ export const SupportWidget: React.FC = () => {
       };
       
       const message = encodeURIComponent(
-        `📝 *Feedback ZMaps*\n\n` +
+        `📝 *Feedback Maps*\n\n` +
         `*Tipo:* ${typeLabels[feedback.type]}\n` +
         `*Usuário:* ${auth.currentUser?.email || 'não informado'}\n\n` +
         `*Mensagem:*\n${feedback.message}`
@@ -166,7 +166,7 @@ export const SupportWidget: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p className="text-xs text-orange-800">
-                  Seu feedback é essencial para melhorarmos o ZMaps! 🚀
+                  Seu feedback é essencial para melhorarmos o MapsGuru! 🚀
                 </p>
               </div>
             </div>

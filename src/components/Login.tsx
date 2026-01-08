@@ -127,7 +127,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             {view === 'FORGOT_PASSWORD' && 'Recuperar senha'}
           </h1>
           <p className="text-gray-500 mt-2">
-            {view === 'LOGIN' && 'Faça login para continuar no ZMaps'}
+            {view === 'LOGIN' && 'Faça login para continuar no MapsGuru'}
             {view === 'SIGNUP' && 'Junte-se a nós hoje mesmo'}
             {view === 'FORGOT_PASSWORD' && 'Enviaremos um link de recuperação'}
           </p>

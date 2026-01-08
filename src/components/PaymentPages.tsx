@@ -45,7 +45,7 @@ export const PaymentSuccess: React.FC = () => {
         </h1>
         
         <p className="text-gray-600 mb-2">
-          Parabéns! Você agora é um <span className="font-bold text-[#4285F4]">Fundador ZMaps</span>!
+          Parabéns! Você agora é um <span className="font-bold text-[#4285F4]">Fundador MapsGuru</span>!
         </p>
         
         <p className="text-sm text-gray-500 mb-8">

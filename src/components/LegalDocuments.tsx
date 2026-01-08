@@ -11,7 +11,7 @@ export const PrivacyPolicy: React.FC<{ onClose?: () => void }> = ({ onClose }) =
     <LegalDocument title="Política de Privacidade" lastUpdated="03 de janeiro de 2026" onClose={onClose}>
       <section>
         <h2>1. Introdução</h2>
-        <p>Bem-vindo ao <strong>ZMaps</strong> ("nós", "nosso" ou "plataforma"). Levamos sua privacidade a sério e nos comprometemos a proteger seus dados pessoais de acordo com a <strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong> e demais legislações aplicáveis.</p>
+        <p>Bem-vindo ao <strong>MapsGuru</strong> ("nós", "nosso" ou "plataforma"). Levamos sua privacidade a sério e nos comprometemos a proteger seus dados pessoais de acordo com a <strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong> e demais legislações aplicáveis.</p>
         <p>Esta Política de Privacidade explica como coletamos, usamos, armazenamos e protegemos suas informações pessoais quando você utiliza nossos serviços.</p>
       </section>
 
@@ -118,7 +118,7 @@ export const PrivacyPolicy: React.FC<{ onClose?: () => void }> = ({ onClose }) =
       <section>
         <h2>10. Contato</h2>
         <div className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl p-5 shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)]">
-          <p className="font-bold text-gray-800 mb-2">ZMaps - Google Maps na Mão</p>
+          <p className="font-bold text-gray-800 mb-2">MapsGuru - Cliente procura, você aparece</p>
           <p className="text-sm text-gray-700">📧 E-mail: suporte@zmaps.app</p>
           <p className="text-sm text-gray-700">💬 WhatsApp: (11) 95705-5256</p>
           <p className="text-sm text-gray-700">🌐 Website: zmaps.app</p>
@@ -127,7 +127,7 @@ export const PrivacyPolicy: React.FC<{ onClose?: () => void }> = ({ onClose }) =
 
       <div className="bg-green-50 border border-green-200 rounded-xl p-4 mt-8">
         <p className="text-sm font-semibold text-green-900 text-center">
-          Ao utilizar o ZMaps, você concorda com esta Política de Privacidade.
+          Ao utilizar o MapsGuru, você concorda com esta Política de Privacidade.
         </p>
       </div>
     </LegalDocument>
@@ -139,12 +139,12 @@ export const TermsOfService: React.FC<{ onClose?: () => void }> = ({ onClose }) 
     <LegalDocument title="Termos de Uso" lastUpdated="03 de janeiro de 2026" onClose={onClose}>
       <section>
         <h2>1. Aceitação dos Termos</h2>
-        <p>Bem-vindo ao <strong>ZMaps</strong>! Ao acessar e usar nossa plataforma, você concorda com estes Termos de Uso. Se não concordar, não utilize nossos serviços.</p>
+        <p>Bem-vindo ao <strong>MapsGuru</strong>! Ao acessar e usar nossa plataforma, você concorda com estes Termos de Uso. Se não concordar, não utilize nossos serviços.</p>
       </section>
 
       <section>
         <h2>2. Descrição do Serviço</h2>
-        <p>O <strong>ZMaps</strong> é uma plataforma SaaS que utiliza <strong>Inteligência Artificial</strong> para ajudar pequenos negócios a gerenciar seu perfil do <strong>Google Meu Negócio</strong>.</p>
+        <p>O <strong>MapsGuru</strong> é uma plataforma SaaS que utiliza <strong>Inteligência Artificial</strong> para ajudar pequenos negócios a gerenciar seu perfil do <strong>Google Meu Negócio</strong>.</p>
         <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mt-4">
           <p className="text-sm font-semibold text-orange-900">⚠️ Status Atual: Versão Beta</p>
           <p className="text-sm text-orange-800">O serviço está em desenvolvimento ativo e pode conter bugs ou limitações.</p>
@@ -219,7 +219,7 @@ export const TermsOfService: React.FC<{ onClose?: () => void }> = ({ onClose }) 
         <h2>6. Propriedade Intelectual</h2>
         
         <h3>6.1 Nossa Propriedade</h3>
-        <p>O <strong>ZMaps</strong>, sua marca, logo e tecnologia são de nossa propriedade exclusiva.</p>
+        <p>O <strong>MapsGuru</strong>, sua marca, logo e tecnologia são de nossa propriedade exclusiva.</p>
 
         <h3>6.2 Seu Conteúdo</h3>
         <ul>
@@ -266,7 +266,7 @@ export const TermsOfService: React.FC<{ onClose?: () => void }> = ({ onClose }) 
 
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-8">
         <p className="text-sm font-semibold text-blue-900 text-center">
-          Ao usar o ZMaps, você confirma ter lido e concordado com estes Termos.
+          Ao usar o MapsGuru, você confirma ter lido e concordado com estes Termos.
         </p>
       </div>
     </LegalDocument>
@@ -282,7 +282,7 @@ export const CookiePolicy: React.FC<{ onClose?: () => void }> = ({ onClose }) =>
       </section>
 
       <section>
-        <h2>2. Como o ZMaps Usa Cookies</h2>
+        <h2>2. Como o MapsGuru Usa Cookies</h2>
         <ul>
           <li>✅ <strong>Autenticação:</strong> Manter você logado na plataforma</li>
           <li>✅ <strong>Preferências:</strong> Lembrar suas configurações</li>
@@ -392,7 +392,7 @@ export const CookiePolicy: React.FC<{ onClose?: () => void }> = ({ onClose }) =>
 
       <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mt-8">
         <p className="text-sm font-semibold text-purple-900 text-center">
-          Ao usar o ZMaps, você concorda com o uso de cookies conforme descrito.
+          Ao usar o MapsGuru, você concorda com o uso de cookies conforme descrito.
         </p>
       </div>
     </LegalDocument>
@@ -441,7 +441,7 @@ const LegalDocument: React.FC<LegalDocumentProps & { children: React.ReactNode }
 
       {/* Footer */}
       <div className="mt-8 text-center text-sm text-gray-500">
-        <p>© 2026 ZMaps. Todos os direitos reservados.</p>
+        <p>© 2026 MapsGuru. Todos os direitos reservados.</p>
       </div>
 
       <style>{`
