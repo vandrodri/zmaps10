@@ -92,7 +92,7 @@ export const createMonthlySubscription = async (data: SubscriptionData) => {
     const price = data.isFounder ? 29.70 : 39.90;
     
     const subscriptionData = {
-      reason: "ZMaps Pro - Plano Mensal",
+      reason: "MapsGuru Pro - Plano Mensal",
       auto_recurring: {
         frequency: 1,
         frequency_type: "months",
