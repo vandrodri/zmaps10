@@ -17,6 +17,7 @@ const NAV_ITEMS = [
     ),
     activeColor: 'text-purple-600',
     activeBg: 'bg-purple-50',
+    activeBar: 'bg-purple-600',
   },
   {
     view: 'reviews' as AppView,
@@ -28,6 +29,7 @@ const NAV_ITEMS = [
     ),
     activeColor: 'text-green-600',
     activeBg: 'bg-green-50',
+    activeBar: 'bg-green-600',
   },
   {
     view: 'faq' as AppView,
@@ -39,6 +41,7 @@ const NAV_ITEMS = [
     ),
     activeColor: 'text-cyan-600',
     activeBg: 'bg-cyan-50',
+    activeBar: 'bg-cyan-600',
   },
   {
     view: 'consultation' as AppView,
@@ -50,6 +53,7 @@ const NAV_ITEMS = [
     ),
     activeColor: 'text-orange-500',
     activeBg: 'bg-orange-50',
+    activeBar: 'bg-orange-500',
   },
   {
     view: 'profile' as AppView,
@@ -61,12 +65,12 @@ const NAV_ITEMS = [
     ),
     activeColor: 'text-indigo-600',
     activeBg: 'bg-indigo-50',
+    activeBar: 'bg-indigo-600',
   },
 ];
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, currentView }) => {
   const [showCookieConsent, setShowCookieConsent] = useState(false);
-  const [showLegalMenu, setShowLegalMenu] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookieConsent');
@@ -80,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentView }) => {
 
   return (
     <>
-      {/* BOTTOM NAV BAR */}
+      {/* BOTTOM NAV BAR - mobile */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
         <div className="flex items-stretch h-16">
           {NAV_ITEMS.map((item) => {
@@ -93,41 +97,37 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentView }) => {
                   ${active ? item.activeColor : 'text-slate-400 hover:text-slate-600'}
                 `}
               >
-                {/* Indicador ativo */}
                 {active && (
-                  <span className={`absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-b-full ${item.activeBg.replace('bg-', 'bg-').replace('-50', '-500').replace('bg-purple-500', 'bg-purple-600').replace('bg-green-500', 'bg-green-600').replace('bg-cyan-500', 'bg-cyan-600').replace('bg-orange-500', 'bg-orange-500').replace('bg-indigo-500', 'bg-indigo-600')}`} />
+                  <span className={`absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-b-full ${item.activeBar}`} />
                 )}
                 <div className={`p-1 rounded-xl transition-all ${active ? item.activeBg : ''}`}>
                   {item.icon(active)}
                 </div>
-                <span className={`text-[10px] font-${active ? 'bold' : 'medium'} leading-none`}>
+                <span className={`text-[10px] leading-none ${active ? 'font-bold' : 'font-medium'}`}>
                   {item.label}
                 </span>
               </button>
             );
           })}
         </div>
-        {/* Safe area para iPhone */}
         <div className="h-safe-area-inset-bottom bg-white" />
       </nav>
 
-      {/* Espaçador para o conteúdo não ficar atrás da nav bar no mobile */}
+      {/* Espaçador mobile */}
       <div className="md:hidden h-16" />
 
-      {/* FOOTER DESKTOP - minimalista */}
+      {/* FOOTER DESKTOP - minimalista com logo real */}
       <footer className="hidden md:block bg-white border-t border-slate-100 mt-auto">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-4 text-xs text-slate-400">
-            
-            {/* Marca */}
-            <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-[#1A73E8] rounded flex items-center justify-center">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5C4.5 14.47 12 22 12 22C12 22 19.5 14.47 19.5 9.5C19.5 5.36 16.14 2 12 2Z" fill="white" />
-                  <path d="M12 7.2L13.09 9.41L15.53 9.76L13.76 11.48L14.18 13.9L12 12.75L9.82 13.9L10.24 11.48L8.47 9.76L10.91 9.41L12 7.2Z" fill="#FBBC05" />
-                </svg>
-              </div>
-              <span className="font-semibold text-slate-500">MapsGuru</span>
+
+            {/* Logo real */}
+            <div className="flex items-center gap-3">
+              <img
+                src="https://i.postimg.cc/NG1M7wXY/maps-guru-logo.png"
+                alt="MapsGuru"
+                className="h-6 w-auto object-contain"
+              />
               <span>·</span>
               <span>© 2024 Zapy Marketing Local</span>
             </div>

@@ -23,6 +23,8 @@ import { auth } from './firebaseConfig';
 import { AdminFounders } from './pages/AdminFounders';
 import { BannerCarousel } from './components/BannerCarousel';
 
+const LOGO_URL = 'https://i.postimg.cc/NG1M7wXY/maps-guru-logo.png';
+
 const App: React.FC = () => {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -211,18 +213,16 @@ const App: React.FC = () => {
         <div className="fixed inset-0 bg-black/60 z-20 md:hidden backdrop-blur-sm transition-opacity duration-300" onClick={() => setIsMobileMenuOpen(false)} />
       )}
 
+      {/* SIDEBAR */}
       <aside className={`fixed inset-y-0 left-0 z-30 w-72 bg-slate-900 text-white shadow-2xl transition-transform duration-300 ease-in-out flex flex-col md:relative md:translate-x-0 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+
+        {/* Topo sidebar - logo real */}
         <div className="flex items-center gap-3 px-6 h-24 border-b border-slate-800">
-          <div className="w-8 h-8 bg-[#1A73E8] rounded-lg flex items-center justify-center shadow-md">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-label="MapsGuru">
-              <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5C4.5 14.47 12 22 12 22C12 22 19.5 14.47 19.5 9.5C19.5 5.36 16.14 2 12 2Z" fill="white" />
-              <path d="M12 7.2L13.09 9.41L15.53 9.76L13.76 11.48L14.18 13.9L12 12.75L9.82 13.9L10.24 11.48L8.47 9.76L10.91 9.41L12 7.2Z" fill="#FBBC05" />
-            </svg>
-          </div>
-          <div>
-            <span className="block text-xl font-bold tracking-tight leading-none text-white">MapsGuru</span>
-            <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">AI Suite Pro</span>
-          </div>
+          <img
+            src={LOGO_URL}
+            alt="MapsGuru"
+            className="h-9 w-auto object-contain"
+          />
           <button onClick={() => setIsMobileMenuOpen(false)} className="md:hidden ml-auto text-slate-400">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -230,6 +230,7 @@ const App: React.FC = () => {
           </button>
         </div>
 
+        {/* Menu de navegação */}
         <div className="px-4 py-6 flex-1 overflow-y-auto">
           <p className="px-4 text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Criação de Conteúdo</p>
           <nav className="space-y-1">
@@ -268,6 +269,7 @@ const App: React.FC = () => {
               <span className="font-medium">Perfil do Negócio</span>
             </button>
 
+            {/* Suporte & Feedback */}
             <div ref={supportRef} className="relative">
               <button onClick={() => { setSupportOpen(!supportOpen); setShowFeedbackForm(false); }} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-400 hover:text-white hover:bg-slate-800">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -345,6 +347,7 @@ const App: React.FC = () => {
           </nav>
         </div>
 
+        {/* Rodapé sidebar - usuário */}
         <div className="mt-auto p-4 border-t border-slate-800">
           <div className="bg-slate-800 rounded-xl p-4 border border-slate-700/50">
             <div className="flex items-center justify-between mb-3">
@@ -372,20 +375,19 @@ const App: React.FC = () => {
         </div>
       </aside>
 
+      {/* ÁREA PRINCIPAL */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden bg-slate-50 relative">
-        <header className="h-20 bg-white/90 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm transition-all">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-[#1A73E8] rounded-xl flex items-center justify-center shadow-md transition-all">
-              <svg width="24" height="24" className="md:w-7 md:h-7" viewBox="0 0 24 24" fill="none" aria-label="MapsGuru">
-                <path d="M12 2C7.86 2 4.5 5.36 4.5 9.5C4.5 14.47 12 22 12 22C12 22 19.5 14.47 19.5 9.5C19.5 5.36 16.14 2 12 2Z" fill="white" />
-                <path d="M12 7.2L13.09 9.41L15.53 9.76L13.76 11.48L14.18 13.9L12 12.75L9.82 13.9L10.24 11.48L8.47 9.76L10.91 9.41L12 7.2Z" fill="#FBBC05" />
-              </svg>
-            </div>
-            <div className="flex flex-col leading-tight">
-              <h1 className="text-lg md:text-xl font-semibold text-slate-800 tracking-tight">MapsGuru</h1>
-              <p className="text-[10px] md:text-[11px] font-medium text-slate-500">Cliente procura, você aparece</p>
-            </div>
+
+        {/* HEADER com logo real */}
+        <header className="h-20 bg-white/90 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm">
+          <div className="flex items-center">
+            <img
+              src={LOGO_URL}
+              alt="MapsGuru"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
           </div>
+
           <div className="flex items-center gap-4">
             <div className="hidden md:block text-right mr-4 border-r border-slate-200 pr-6">
               <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Módulo Atual</p>
@@ -414,18 +416,14 @@ const App: React.FC = () => {
         <main className="flex-1 overflow-y-auto flex flex-col scroll-smooth">
           <div className="flex-1 p-4 md:p-8">
             <div className="max-w-7xl mx-auto">
-
               <BannerCarousel onNavigate={navigateTo} />
-
               {userPlan && (
                 <TrialStatusBanner userPlan={userPlan} onUpgrade={() => setShowUpgradeModal(true)} />
               )}
               {userPlan && !canUseApp(userPlan) && (
                 <ExpiredTrialBanner onUpgrade={() => setShowUpgradeModal(true)} />
               )}
-
               {renderContent()}
-
             </div>
           </div>
           <Footer onNavigate={navigateTo} currentView={currentView} />
