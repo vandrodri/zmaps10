@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { db } from '../firebaseConfig';
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
+import { AppView } from '../types';
 
 interface Banner {
   id: string;
@@ -56,7 +57,7 @@ const DEFAULT_BANNERS: Banner[] = [
 ];
 
 interface BannerCarouselProps {
-  onNavigate?: (view: string) => void;
+  onNavigate?: (view: AppView) => void;
 }
 
 export const BannerCarousel: React.FC<BannerCarouselProps> = ({ onNavigate }) => {
@@ -148,7 +149,7 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ onNavigate }) =>
           {banner.ctaText && (
             <button
               onClick={() => {
-                if (banner.ctaLink && onNavigate) onNavigate(banner.ctaLink as any);
+                if (banner.ctaLink && onNavigate) onNavigate(banner.ctaLink as AppView);
               }}
               className={`flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded-lg transition-all shadow-sm ${colors.cta}`}
             >
