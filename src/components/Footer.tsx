@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, currentView }) => {
               <img
                 src="https://i.postimg.cc/NG1M7wXY/maps-guru-logo.png"
                 alt="MapsGuru"
-                className="h-5 w-auto object-contain"
+                className="h-8 w-auto object-contain"
               />
               <span>·</span>
               <span>© 2024 Zapy Marketing Local</span>

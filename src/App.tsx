@@ -23,7 +23,7 @@ import { auth } from './firebaseConfig';
 import { AdminFounders } from './pages/AdminFounders';
 import { BannerCarousel } from './components/BannerCarousel';
 
-const LOGO_URL = 'https://i.postimg.cc/5t6M2DLV/mapsguru-logo-lado300.png';
+const LOGO_URL = 'https://i.postimg.cc/HsQbdtQz/mapsguru-logo-lado180.webp';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<UserProfile | null>(null);
