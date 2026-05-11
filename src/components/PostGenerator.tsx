@@ -874,3 +874,6 @@ export const PostGenerator: React.FC = () => {
     </div>
   </div>
 )}
+    </div>
+  );
+};
