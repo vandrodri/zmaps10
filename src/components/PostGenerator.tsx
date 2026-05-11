@@ -16,6 +16,8 @@ interface TextElement {
   rotation: number;
   isBold: boolean;
   isItalic: boolean;
+  borderColor?: string;
+  borderWidth?: number;
 }
 
 interface LogoElement {
@@ -88,6 +90,16 @@ export const PostGenerator: React.FC = () => {
   const [mobileCaptionPos, setMobileCaptionPos] = useState<'top' | 'center' | 'bottom'>('bottom');
   const [showCaption, setShowCaption] = useState(false);
 
+  // Fundo e borda — título
+  const [mobileTitleBg, setMobileTitleBg] = useState('transparent');
+  const [mobileTitleBorderColor, setMobileTitleBorderColor] = useState('#000000');
+  const [mobileTitleBorderWidth, setMobileTitleBorderWidth] = useState(0);
+
+  // Fundo e borda — legenda
+  const [mobileCaptionBg, setMobileCaptionBg] = useState('transparent');
+  const [mobileCaptionBorderColor, setMobileCaptionBorderColor] = useState('#000000');
+  const [mobileCaptionBorderWidth, setMobileCaptionBorderWidth] = useState(0);
+
   // Aplica textos mobile no canvas quando mudam (sem re-render do input)
   const applyMobileTexts = useCallback(() => {
     const canvas = canvasRef.current;
@@ -107,12 +119,14 @@ export const PostGenerator: React.FC = () => {
           x: w / 2,
           y: getPosY(mobileTitlePos, mobileTitleSize),
           color: mobileTitleColor,
-          backgroundColor: 'transparent',
+          backgroundColor: mobileTitleBg,
           fontSize: mobileTitleSize,
           fontFamily: mobileTitleFont,
           rotation: 0,
           isBold: mobileTitleBold,
           isItalic: false,
+          borderColor: mobileTitleBorderColor,
+          borderWidth: mobileTitleBorderWidth,
         }];
       }
       if (showCaption && mobileCaptionText.trim()) {
@@ -122,12 +136,14 @@ export const PostGenerator: React.FC = () => {
           x: w / 2,
           y: getPosY(mobileCaptionPos, mobileCaptionSize),
           color: mobileCaptionColor,
-          backgroundColor: 'transparent',
+          backgroundColor: mobileCaptionBg,
           fontSize: mobileCaptionSize,
           fontFamily: mobileCaptionFont,
           rotation: 0,
           isBold: mobileCaptionBold,
           isItalic: false,
+          borderColor: mobileCaptionBorderColor,
+          borderWidth: mobileCaptionBorderWidth,
         }];
       }
       return next;
@@ -142,7 +158,9 @@ export const PostGenerator: React.FC = () => {
     applyMobileTexts();
   }, [
     showTitle, mobileTitleSize, mobileTitleColor, mobileTitleBold, mobileTitleFont, mobileTitlePos,
+    mobileTitleBg, mobileTitleBorderColor, mobileTitleBorderWidth,
     showCaption, mobileCaptionSize, mobileCaptionColor, mobileCaptionBold, mobileCaptionFont, mobileCaptionPos,
+    mobileCaptionBg, mobileCaptionBorderColor, mobileCaptionBorderWidth,
   ]);
 
   // --- GERAÇÃO DE TEXTO ---
@@ -305,6 +323,12 @@ export const PostGenerator: React.FC = () => {
           ctx.shadowColor = textEl.backgroundColor === 'transparent' ? 'rgba(0,0,0,0.5)' : 'transparent';
           ctx.shadowBlur = textEl.backgroundColor === 'transparent' ? 4 : 0;
           ctx.fillText(textEl.text, 0, 0);
+          if (textEl.borderWidth && textEl.borderWidth > 0) {
+            ctx.shadowBlur = 0;
+            ctx.strokeStyle = textEl.borderColor || '#000000';
+            ctx.lineWidth = textEl.borderWidth;
+            ctx.strokeText(textEl.text, 0, 0);
+          }
           if (selectedTextId === textEl.id) {
             const m = ctx.measureText(textEl.text);
             ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
