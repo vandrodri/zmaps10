@@ -847,18 +847,30 @@ export const PostGenerator: React.FC = () => {
 
       {/* MODAL DE PREVIEW */}
       {showImagePreview && imageSrc && (
-        <div className="fixed inset-0 bg-black/95 z-[99999] flex items-center justify-center p-6">
-          <button onClick={() => setShowImagePreview(false)}
-            className="fixed top-6 right-6 bg-white/90 rounded-full p-3 shadow-xl hover:bg-white transition-all z-[100000]">
-            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
-          <canvas ref={previewCanvasRef}
-            onMouseDown={(e) => handleStart(e, previewCanvasRef.current!)}
-            onMouseMove={(e) => handleMove(e, previewCanvasRef.current!)}
-            onMouseUp={handleEnd} onMouseLeave={handleEnd}
-            className="max-w-[calc(100vw-3rem)] max-h-[calc(100vh-3rem)] object-contain" />
-        </div>
-      )}
+  <div className="fixed inset-0 bg-black/95 z-[99999] flex flex-col items-center justify-center">
+    
+    {/* Barra superior com X — sempre visível sobre a foto */}
+    <div className="w-full flex justify-end px-4 py-3 flex-shrink-0">
+      <button
+        onClick={() => setShowImagePreview(false)}
+        className="bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-xl transition-all"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
-  );
-};
+
+    {/* Canvas centralizado no espaço restante */}
+    <div className="flex-1 flex items-center justify-center w-full px-4 pb-4 min-h-0">
+      <canvas
+        ref={previewCanvasRef}
+        onMouseDown={(e) => handleStart(e, previewCanvasRef.current!)}
+        onMouseMove={(e) => handleMove(e, previewCanvasRef.current!)}
+        onMouseUp={handleEnd}
+        onMouseLeave={handleEnd}
+        className="max-w-full max-h-full object-contain"
+      />
+    </div>
+  </div>
+)}
