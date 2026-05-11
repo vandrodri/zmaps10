@@ -336,15 +336,21 @@ export const PostGenerator: React.FC = () => {
   useEffect(() => { if (showImagePreview && previewCanvasRef.current) drawCanvas(previewCanvasRef.current); }, [showImagePreview, drawCanvas]);
 
   useEffect(() => {
-  if (showImagePreview) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-  return () => {
-    document.body.style.overflow = '';
-  };
-}, [showImagePreview]);
+    if (showImagePreview) {
+      document.body.style.overflow = 'hidden';
+      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', 'none');
+      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', 'none');
+    } else {
+      document.body.style.overflow = '';
+      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', '');
+      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', '');
+    }
+    return () => {
+      document.body.style.overflow = '';
+      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', '');
+      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', '');
+    };
+  }, [showImagePreview]);
 
   // --- DRAG DESKTOP ---
   const getPos = (e: React.MouseEvent | React.TouchEvent, canvas: HTMLCanvasElement) => {
@@ -847,33 +853,27 @@ export const PostGenerator: React.FC = () => {
 
       {/* MODAL DE PREVIEW */}
       {showImagePreview && imageSrc && (
-  <div className="fixed inset-0 bg-black/95 z-[99999] flex flex-col items-center justify-center">
-    
-    {/* Barra superior com X — sempre visível sobre a foto */}
-    <div className="w-full flex justify-end px-4 py-3 flex-shrink-0">
-      <button
-        onClick={() => setShowImagePreview(false)}
-        className="bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-xl transition-all"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-
-    {/* Canvas centralizado no espaço restante */}
-    <div className="flex-1 flex items-center justify-center w-full px-4 pb-4 min-h-0">
-      <canvas
-        ref={previewCanvasRef}
-        onMouseDown={(e) => handleStart(e, previewCanvasRef.current!)}
-        onMouseMove={(e) => handleMove(e, previewCanvasRef.current!)}
-        onMouseUp={handleEnd}
-        onMouseLeave={handleEnd}
-        className="max-w-full max-h-full object-contain"
-      />
-    </div>
-  </div>
-)}
+        <div className="fixed inset-0 bg-black/95 z-[99999] flex items-center justify-center p-4">
+          <div className="relative inline-flex">
+            <canvas
+              ref={previewCanvasRef}
+              onMouseDown={(e) => handleStart(e, previewCanvasRef.current!)}
+              onMouseMove={(e) => handleMove(e, previewCanvasRef.current!)}
+              onMouseUp={handleEnd}
+              onMouseLeave={handleEnd}
+              className="max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] object-contain block"
+            />
+            <button
+              onClick={() => setShowImagePreview(false)}
+              className="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-2 transition-all shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
