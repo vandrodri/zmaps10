@@ -23,7 +23,7 @@ import { auth } from './firebaseConfig';
 import { AdminFounders } from './pages/AdminFounders';
 import { BannerCarousel } from './components/BannerCarousel';
 
-const LOGO_URL = 'https://i.postimg.cc/NG1M7wXY/maps-guru-logo.png';
+const LOGO_URL = 'https://i.postimg.cc/5t6M2DLV/mapsguru-logo-lado300.png';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<UserProfile | null>(null);
@@ -221,7 +221,7 @@ const App: React.FC = () => {
           <img
             src={LOGO_URL}
             alt="MapsGuru"
-            className="h-9 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
           <button onClick={() => setIsMobileMenuOpen(false)} className="md:hidden ml-auto text-slate-400">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -355,7 +355,7 @@ const App: React.FC = () => {
                 {user.photoURL ? (
                   <img src={user.photoURL} alt={user.name} className="w-8 h-8 rounded-full" />
                 ) : (
-                  <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-sm">{user.avatar}</div>
+                  <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-sm">{user.avatar}</div>
                 )}
                 <div className="overflow-hidden">
                   <p className="text-sm font-semibold text-white truncate w-24">{user.name}</p>
@@ -384,7 +384,7 @@ const App: React.FC = () => {
             <img
               src={LOGO_URL}
               alt="MapsGuru"
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-10 md:h-16 w-auto object-contain"
             />
           </div>
 
