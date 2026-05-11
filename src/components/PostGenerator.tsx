@@ -336,21 +336,15 @@ export const PostGenerator: React.FC = () => {
   useEffect(() => { if (showImagePreview && previewCanvasRef.current) drawCanvas(previewCanvasRef.current); }, [showImagePreview, drawCanvas]);
 
   useEffect(() => {
-    if (showImagePreview) {
-      document.body.style.overflow = 'hidden';
-      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', 'none');
-      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', 'none');
-    } else {
-      document.body.style.overflow = '';
-      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', '');
-      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', '');
-    }
-    return () => {
-      document.body.style.overflow = '';
-      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', '');
-      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', '');
-    };
-  }, [showImagePreview]);
+  if (showImagePreview) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+  return () => {
+    document.body.style.overflow = '';
+  };
+}, [showImagePreview]);
 
   // --- DRAG DESKTOP ---
   const getPos = (e: React.MouseEvent | React.TouchEvent, canvas: HTMLCanvasElement) => {
