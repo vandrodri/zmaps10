@@ -610,32 +610,35 @@ export const PostGenerator: React.FC = () => {
               Editor de Imagem
             </h2>
           </div>
-          <div className="px-4 py-3 space-y-2">
-            <div className="flex gap-2">
-              <input type="text" value={aiPrompt} onChange={(e) => setAiPrompt(e.target.value)} placeholder="Descreva a imagem para IA..."
-                className="flex-1 text-sm p-2.5 border border-slate-300 rounded-xl outline-none text-slate-800 placeholder-slate-400" />
-              <button onClick={handleAiGenerateImage} disabled={imageLoading || !aiPrompt}
-                className="bg-pink-600 text-white px-4 py-2.5 rounded-xl text-sm font-bold disabled:opacity-50 whitespace-nowrap">
-                {imageLoading ? '...' : 'Criar'}
-              </button>
-            </div>
-            <div className="flex gap-2">
-              <input type="file" accept="image/*" onChange={handleFileUpload} id="file-upload-mobile" className="hidden" />
-              <label htmlFor="file-upload-mobile" className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 cursor-pointer">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
-                Upload
-              </label>
-              {imageSrc && (
-                <button onClick={handleRemixImage} disabled={remixLoading}
-                  className="flex items-center gap-1 px-3 py-2.5 bg-purple-100 text-purple-700 rounded-xl text-sm font-bold disabled:opacity-50">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                  {remixLoading ? '...' : 'Recriar'}
+          {/* Controles ocultos na aba Textos */}
+          {mobileEditorTab !== 'texts' && (
+            <div className="px-4 pt-3 pb-4 space-y-2">
+              <div className="flex gap-2">
+                <input type="text" value={aiPrompt} onChange={(e) => setAiPrompt(e.target.value)} placeholder="Descreva a imagem para IA..."
+                  className="flex-1 text-sm p-2.5 border border-slate-300 rounded-xl outline-none text-slate-800 placeholder-slate-400" />
+                <button onClick={handleAiGenerateImage} disabled={imageLoading || !aiPrompt}
+                  className="bg-pink-600 text-white px-4 py-2.5 rounded-xl text-sm font-bold disabled:opacity-50 whitespace-nowrap">
+                  {imageLoading ? '...' : 'Criar'}
                 </button>
-              )}
+              </div>
+              <div className="flex gap-2">
+                <input type="file" accept="image/*" onChange={handleFileUpload} id="file-upload-mobile" className="hidden" />
+                <label htmlFor="file-upload-mobile" className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 cursor-pointer">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                  Upload
+                </label>
+                {imageSrc && (
+                  <button onClick={handleRemixImage} disabled={remixLoading}
+                    className="flex items-center gap-1 px-3 py-2.5 bg-purple-100 text-purple-700 rounded-xl text-sm font-bold disabled:opacity-50">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                    {remixLoading ? '...' : 'Recriar'}
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
+          )}
           {imageSrc && (
-            <div className="flex border-t border-slate-100">
+            <div className="flex border-t-2 border-slate-200 mt-1">
               <button onClick={() => setMobileEditorTab('image')}
                 className={`flex-1 py-2.5 text-sm font-bold flex items-center justify-center gap-1.5 transition-all ${mobileEditorTab === 'image' ? 'text-pink-600 border-b-2 border-pink-600 bg-pink-50' : 'text-slate-500'}`}>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
