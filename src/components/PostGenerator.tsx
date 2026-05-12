@@ -313,16 +313,19 @@ export const PostGenerator: React.FC = () => {
             ctx.fill();
           }
 
-          // Borda do texto — desenhada ANTES do fill para não transpassar
+          // Borda do texto — stroke antes do fill, proporcional ao fontSize
           if (textEl.borderWidth && textEl.borderWidth > 0) {
             ctx.shadowBlur = 0;
             ctx.strokeStyle = textEl.borderColor || '#000000';
-            ctx.lineWidth = textEl.borderWidth * 2; // *2 porque metade fica coberta pelo fill
+            // Escala a espessura proporcional ao fontSize para consistência entre dispositivos
+            const scaledBorder = (textEl.borderWidth / 100) * textEl.fontSize;
+            ctx.lineWidth = Math.max(1, scaledBorder * 2);
             ctx.lineJoin = 'round';
+            ctx.miterLimit = 2;
             ctx.strokeText(textEl.text, 0, 0);
           }
 
-          // Texto preenchido — cobre o centro da borda
+          // Texto preenchido — cobre o interior da borda
           ctx.fillStyle = textEl.color;
           ctx.shadowColor = (!textEl.backgroundColor || textEl.backgroundColor === 'transparent') ? 'rgba(0,0,0,0.6)' : 'transparent';
           ctx.shadowBlur = (!textEl.backgroundColor || textEl.backgroundColor === 'transparent') ? 4 : 0;
