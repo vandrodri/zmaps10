@@ -29,7 +29,6 @@ interface LogoElement {
   height: number;
 }
 
-// IDs fixos para título e legenda no mobile
 const MOBILE_TITLE_ID = 1;
 const MOBILE_CAPTION_ID = 2;
 
@@ -61,7 +60,6 @@ export const PostGenerator: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Textos no canvas (desktop usa array completo)
   const [texts, setTexts] = useState<TextElement[]>([]);
   const [selectedTextId, setSelectedTextId] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -72,41 +70,39 @@ export const PostGenerator: React.FC = () => {
   const [isResizingLogo, setIsResizingLogo] = useState(false);
   const [showImagePreview, setShowImagePreview] = useState(false);
 
-  // --- ESTADOS MOBILE SEPARADOS (evitam re-render ao digitar) ---
+  // --- ESTADOS MOBILE ---
   const [mobileEditorTab, setMobileEditorTab] = useState<'image' | 'texts'>('image');
+
+  // Título mobile
   const [mobileTitleText, setMobileTitleText] = useState('');
   const [mobileTitleSize, setMobileTitleSize] = useState(60);
   const [mobileTitleColor, setMobileTitleColor] = useState('#ffffff');
   const [mobileTitleBold, setMobileTitleBold] = useState(true);
   const [mobileTitleFont, setMobileTitleFont] = useState('Inter, sans-serif');
   const [mobileTitlePos, setMobileTitlePos] = useState<'top' | 'center' | 'bottom'>('top');
+  const [mobileTitleBg, setMobileTitleBg] = useState('transparent');
+  const [mobileTitleBorderColor, setMobileTitleBorderColor] = useState('#000000');
+  const [mobileTitleBorderWidth, setMobileTitleBorderWidth] = useState(0);
   const [showTitle, setShowTitle] = useState(false);
 
+  // Legenda mobile
   const [mobileCaptionText, setMobileCaptionText] = useState('');
   const [mobileCaptionSize, setMobileCaptionSize] = useState(28);
   const [mobileCaptionColor, setMobileCaptionColor] = useState('#ffffff');
   const [mobileCaptionBold, setMobileCaptionBold] = useState(false);
   const [mobileCaptionFont, setMobileCaptionFont] = useState('Inter, sans-serif');
   const [mobileCaptionPos, setMobileCaptionPos] = useState<'top' | 'center' | 'bottom'>('bottom');
-  const [showCaption, setShowCaption] = useState(false);
-
-  // Fundo e borda — título
-  const [mobileTitleBg, setMobileTitleBg] = useState('transparent');
-  const [mobileTitleBorderColor, setMobileTitleBorderColor] = useState('#000000');
-  const [mobileTitleBorderWidth, setMobileTitleBorderWidth] = useState(0);
-
-  // Fundo e borda — legenda
   const [mobileCaptionBg, setMobileCaptionBg] = useState('transparent');
   const [mobileCaptionBorderColor, setMobileCaptionBorderColor] = useState('#000000');
   const [mobileCaptionBorderWidth, setMobileCaptionBorderWidth] = useState(0);
+  const [showCaption, setShowCaption] = useState(false);
 
-  // Aplica textos mobile no canvas quando mudam (sem re-render do input)
+  // --- APPLY MOBILE TEXTS ---
   const applyMobileTexts = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const w = canvas.width || 800;
     const h = canvas.height || 600;
-
     const getPosY = (pos: 'top' | 'center' | 'bottom', size: number) =>
       pos === 'top' ? size * 1.5 : pos === 'bottom' ? h - size * 1.5 : h / 2;
 
@@ -149,18 +145,15 @@ export const PostGenerator: React.FC = () => {
       return next;
     });
   }, [
-    showTitle, mobileTitleText, mobileTitleSize, mobileTitleColor, mobileTitleBold, mobileTitleFont, mobileTitlePos,
-    showCaption, mobileCaptionText, mobileCaptionSize, mobileCaptionColor, mobileCaptionBold, mobileCaptionFont, mobileCaptionPos,
+    showTitle, mobileTitleText, mobileTitleSize, mobileTitleColor, mobileTitleBold, mobileTitleFont, mobileTitlePos, mobileTitleBg, mobileTitleBorderColor, mobileTitleBorderWidth,
+    showCaption, mobileCaptionText, mobileCaptionSize, mobileCaptionColor, mobileCaptionBold, mobileCaptionFont, mobileCaptionPos, mobileCaptionBg, mobileCaptionBorderColor, mobileCaptionBorderWidth,
   ]);
 
-  // Aplica textos mobile nas mudanças de estilo/posição (não ao digitar)
   useEffect(() => {
     applyMobileTexts();
   }, [
-    showTitle, mobileTitleSize, mobileTitleColor, mobileTitleBold, mobileTitleFont, mobileTitlePos,
-    mobileTitleBg, mobileTitleBorderColor, mobileTitleBorderWidth,
-    showCaption, mobileCaptionSize, mobileCaptionColor, mobileCaptionBold, mobileCaptionFont, mobileCaptionPos,
-    mobileCaptionBg, mobileCaptionBorderColor, mobileCaptionBorderWidth,
+    showTitle, mobileTitleSize, mobileTitleColor, mobileTitleBold, mobileTitleFont, mobileTitlePos, mobileTitleBg, mobileTitleBorderColor, mobileTitleBorderWidth,
+    showCaption, mobileCaptionSize, mobileCaptionColor, mobileCaptionBold, mobileCaptionFont, mobileCaptionPos, mobileCaptionBg, mobileCaptionBorderColor, mobileCaptionBorderWidth,
   ]);
 
   // --- GERAÇÃO DE TEXTO ---
@@ -174,11 +167,8 @@ export const PostGenerator: React.FC = () => {
       setEditableContent(data.content);
       if (data.imagePrompt) setAiPrompt(data.imagePrompt);
       handleGenerateOverlays();
-    } catch {
-      alert('Erro ao gerar post');
-    } finally {
-      setTextLoading(false);
-    }
+    } catch { alert('Erro ao gerar post'); }
+    finally { setTextLoading(false); }
   };
 
   const handleGenerateOverlays = async () => {
@@ -187,23 +177,18 @@ export const PostGenerator: React.FC = () => {
     try {
       const suggestions = await generateImageOverlays(topic);
       setOverlaySuggestions(suggestions);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setOverlayLoading(false);
-    }
+    } catch (e) { console.error(e); }
+    finally { setOverlayLoading(false); }
   };
 
   // --- EDITOR DESKTOP ---
   const addTextDesktop = (initialText = 'Novo Texto', fontSize = 40, isBold = true) => {
     const canvas = canvasRef.current;
-    const h = canvas?.height || 400;
-    const w = canvas?.width || 400;
     const newText: TextElement = {
       id: Date.now(),
       text: initialText,
-      x: w / 2,
-      y: h / 2,
+      x: (canvas?.width || 400) / 2,
+      y: (canvas?.height || 400) / 2,
       color: '#ffffff',
       backgroundColor: 'transparent',
       fontSize,
@@ -211,6 +196,8 @@ export const PostGenerator: React.FC = () => {
       rotation: 0,
       isBold,
       isItalic: false,
+      borderColor: '#000000',
+      borderWidth: 0,
     };
     setTexts(prev => [...prev, newText]);
     setSelectedTextId(newText.id);
@@ -220,12 +207,9 @@ export const PostGenerator: React.FC = () => {
     const file = e.target.files?.[0];
     if (file) {
       setImageSrc(URL.createObjectURL(file));
-      setTexts([]);
-      setLogo(null);
-      setShowTitle(false);
-      setShowCaption(false);
-      setMobileTitleText('');
-      setMobileCaptionText('');
+      setTexts([]); setLogo(null);
+      setShowTitle(false); setShowCaption(false);
+      setMobileTitleText(''); setMobileCaptionText('');
     }
   };
 
@@ -244,8 +228,7 @@ export const PostGenerator: React.FC = () => {
           else { width = (maxSize / height) * width; height = maxSize; }
         }
         setLogo({ id: Date.now(), src: event.target?.result as string, x: 50, y: 50, width, height });
-        setSelectedLogo(true);
-        setSelectedTextId(null);
+        setSelectedLogo(true); setSelectedTextId(null);
       };
     };
     reader.readAsDataURL(file);
@@ -257,17 +240,11 @@ export const PostGenerator: React.FC = () => {
     try {
       const base64Image = await generateAiImage(aiPrompt);
       setImageSrc(base64Image);
-      setTexts([]);
-      setLogo(null);
-      setShowTitle(false);
-      setShowCaption(false);
-      setMobileTitleText('');
-      setMobileCaptionText('');
-    } catch {
-      alert('Erro ao gerar imagem.');
-    } finally {
-      setImageLoading(false);
-    }
+      setTexts([]); setLogo(null);
+      setShowTitle(false); setShowCaption(false);
+      setMobileTitleText(''); setMobileCaptionText('');
+    } catch { alert('Erro ao gerar imagem.'); }
+    finally { setImageLoading(false); }
   };
 
   const handleRemixImage = async () => {
@@ -278,11 +255,8 @@ export const PostGenerator: React.FC = () => {
       if (!canvas) throw new Error('Canvas não disponível');
       const remixedBase64 = await remixImage(canvas.toDataURL('image/png'), aiPrompt || 'Make it photorealistic and professional');
       setImageSrc(remixedBase64);
-    } catch {
-      alert('Erro ao recriar imagem com IA.');
-    } finally {
-      setRemixLoading(false);
-    }
+    } catch { alert('Erro ao recriar imagem com IA.'); }
+    finally { setRemixLoading(false); }
   };
 
   const openGoogleImages = () => {
@@ -302,10 +276,10 @@ export const PostGenerator: React.FC = () => {
       const maxWidth = 800;
       let { width, height } = img;
       if (width > maxWidth) { height = (maxWidth / width) * height; width = maxWidth; }
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = width; canvas.height = height;
       ctx.clearRect(0, 0, width, height);
       ctx.drawImage(img, 0, 0, width, height);
+
       const doDrawTexts = () => {
         texts.forEach(textEl => {
           ctx.save();
@@ -314,29 +288,58 @@ export const PostGenerator: React.FC = () => {
           ctx.textAlign = 'center';
           ctx.translate(textEl.x, textEl.y);
           ctx.rotate((textEl.rotation * Math.PI) / 180);
-          if (textEl.backgroundColor !== 'transparent') {
+
+          // Fundo
+          if (textEl.backgroundColor && textEl.backgroundColor !== 'transparent') {
             const m = ctx.measureText(textEl.text);
+            const padX = 16, padY = 8;
             ctx.fillStyle = textEl.backgroundColor;
-            ctx.fillRect(-(m.width + 20) / 2, -(textEl.fontSize * 1.2) / 2, m.width + 20, textEl.fontSize * 1.2);
+            ctx.beginPath();
+            const bx = -(m.width + padX * 2) / 2;
+            const by = -(textEl.fontSize + padY * 2) / 2;
+            const bw = m.width + padX * 2;
+            const bh = textEl.fontSize + padY * 2;
+            const r = 6;
+            ctx.moveTo(bx + r, by);
+            ctx.lineTo(bx + bw - r, by);
+            ctx.quadraticCurveTo(bx + bw, by, bx + bw, by + r);
+            ctx.lineTo(bx + bw, by + bh - r);
+            ctx.quadraticCurveTo(bx + bw, by + bh, bx + bw - r, by + bh);
+            ctx.lineTo(bx + r, by + bh);
+            ctx.quadraticCurveTo(bx, by + bh, bx, by + bh - r);
+            ctx.lineTo(bx, by + r);
+            ctx.quadraticCurveTo(bx, by, bx + r, by);
+            ctx.closePath();
+            ctx.fill();
           }
+
+          // Texto
           ctx.fillStyle = textEl.color;
-          ctx.shadowColor = textEl.backgroundColor === 'transparent' ? 'rgba(0,0,0,0.5)' : 'transparent';
-          ctx.shadowBlur = textEl.backgroundColor === 'transparent' ? 4 : 0;
+          ctx.shadowColor = (!textEl.backgroundColor || textEl.backgroundColor === 'transparent') ? 'rgba(0,0,0,0.6)' : 'transparent';
+          ctx.shadowBlur = (!textEl.backgroundColor || textEl.backgroundColor === 'transparent') ? 4 : 0;
           ctx.fillText(textEl.text, 0, 0);
+
+          // Borda do texto
           if (textEl.borderWidth && textEl.borderWidth > 0) {
             ctx.shadowBlur = 0;
             ctx.strokeStyle = textEl.borderColor || '#000000';
             ctx.lineWidth = textEl.borderWidth;
+            ctx.lineJoin = 'round';
             ctx.strokeText(textEl.text, 0, 0);
           }
+
+          // Seleção (desktop)
           if (selectedTextId === textEl.id) {
             const m = ctx.measureText(textEl.text);
+            ctx.shadowBlur = 0;
             ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
             ctx.strokeRect(-(m.width + 30) / 2, -(textEl.fontSize * 1.4) / 2, m.width + 30, textEl.fontSize * 1.4);
+            ctx.setLineDash([]);
           }
           ctx.restore();
         });
       };
+
       if (logo) {
         const logoImg = new Image();
         logoImg.src = logo.src;
@@ -345,6 +348,7 @@ export const PostGenerator: React.FC = () => {
           if (selectedLogo) {
             ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
             ctx.strokeRect(logo.x, logo.y, logo.width, logo.height);
+            ctx.setLineDash([]);
             ctx.fillStyle = '#3b82f6';
             ctx.fillRect(logo.x + logo.width - 8, logo.y + logo.height - 8, 16, 16);
           }
@@ -358,31 +362,17 @@ export const PostGenerator: React.FC = () => {
 
   useEffect(() => { if (imageSrc) drawCanvas(); }, [drawCanvas]);
   useEffect(() => { if (showImagePreview && previewCanvasRef.current) drawCanvas(previewCanvasRef.current); }, [showImagePreview, drawCanvas]);
-
   useEffect(() => {
-    if (showImagePreview) {
-      document.body.style.overflow = 'hidden';
-      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', 'none');
-      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', 'none');
-    } else {
-      document.body.style.overflow = '';
-      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', '');
-      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', '');
-    }
-    return () => {
-      document.body.style.overflow = '';
-      (document.querySelector('header') as HTMLElement | null)?.style.setProperty('display', '');
-      (document.querySelector('nav') as HTMLElement | null)?.style.setProperty('display', '');
-    };
+    if (showImagePreview) { document.body.style.overflow = 'hidden'; }
+    else { document.body.style.overflow = ''; }
+    return () => { document.body.style.overflow = ''; };
   }, [showImagePreview]);
 
   // --- DRAG DESKTOP ---
   const getPos = (e: React.MouseEvent | React.TouchEvent, canvas: HTMLCanvasElement) => {
     const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
     const src = 'touches' in e ? e.touches[0] : e;
-    return { x: (src.clientX - rect.left) * scaleX, y: (src.clientY - rect.top) * scaleY };
+    return { x: (src.clientX - rect.left) * (canvas.width / rect.width), y: (src.clientY - rect.top) * (canvas.height / rect.height) };
   };
 
   const handleStart = (e: React.MouseEvent | React.TouchEvent, canvasEl = canvasRef.current!) => {
@@ -390,21 +380,15 @@ export const PostGenerator: React.FC = () => {
     const pos = getPos(e, canvasEl);
     if (logo && selectedLogo) {
       const hx = logo.x + logo.width - 8, hy = logo.y + logo.height - 8;
-      if (pos.x >= hx && pos.x <= hx + 16 && pos.y >= hy && pos.y <= hy + 16) {
-        setIsResizingLogo(true); setDragStart({ x: pos.x, y: pos.y }); return;
-      }
+      if (pos.x >= hx && pos.x <= hx + 16 && pos.y >= hy && pos.y <= hy + 16) { setIsResizingLogo(true); setDragStart({ x: pos.x, y: pos.y }); return; }
     }
     if (logo && pos.x >= logo.x && pos.x <= logo.x + logo.width && pos.y >= logo.y && pos.y <= logo.y + logo.height) {
       setSelectedLogo(true); setSelectedTextId(null); setIsDragging(true);
       setDragStart({ x: pos.x - logo.x, y: pos.y - logo.y }); return;
     }
     const clicked = [...texts].reverse().find(t => Math.sqrt((pos.x - t.x) ** 2 + (pos.y - t.y) ** 2) < t.fontSize * 2);
-    if (clicked) {
-      setSelectedTextId(clicked.id); setSelectedLogo(false); setIsDragging(true);
-      setDragStart({ x: pos.x - clicked.x, y: pos.y - clicked.y });
-    } else {
-      setSelectedTextId(null); setSelectedLogo(false);
-    }
+    if (clicked) { setSelectedTextId(clicked.id); setSelectedLogo(false); setIsDragging(true); setDragStart({ x: pos.x - clicked.x, y: pos.y - clicked.y }); }
+    else { setSelectedTextId(null); setSelectedLogo(false); }
   };
 
   const handleMove = (e: React.MouseEvent | React.TouchEvent, canvasEl = canvasRef.current!) => {
@@ -430,26 +414,65 @@ export const PostGenerator: React.FC = () => {
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
-    if (canvas) {
-      const link = document.createElement('a');
-      link.download = 'post-gbp-pro.png';
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    }
+    if (canvas) { const link = document.createElement('a'); link.download = 'post-gbp-pro.png'; link.href = canvas.toDataURL('image/png'); link.click(); }
   };
 
   const selectedText = texts.find(t => t.id === selectedTextId);
+  const getPosLabel = (pos: 'top' | 'center' | 'bottom') => pos === 'top' ? 'Topo' : pos === 'bottom' ? 'Base' : 'Centro';
 
-  // Helpers para posição mobile
-  const getPosLabel = (pos: 'top' | 'center' | 'bottom') =>
-    pos === 'top' ? 'Topo' : pos === 'bottom' ? 'Base' : 'Centro';
-
-  const changeMobileTitlePos = (pos: 'top' | 'center' | 'bottom') => {
-    setMobileTitlePos(pos);
-  };
-  const changeMobileCaptionPos = (pos: 'top' | 'center' | 'bottom') => {
-    setMobileCaptionPos(pos);
-  };
+  // --- COMPONENTE REUTILIZÁVEL: controles de fundo + borda ---
+  const BgBorderControls = ({
+    bg, onBgChange, onBgRemove,
+    borderColor, onBorderColorChange,
+    borderWidth, onBorderWidthChange,
+    accentClass = 'accent-blue-600',
+  }: {
+    bg: string; onBgChange: (v: string) => void; onBgRemove: () => void;
+    borderColor: string; onBorderColorChange: (v: string) => void;
+    borderWidth: number; onBorderWidthChange: (v: number) => void;
+    accentClass?: string;
+  }) => (
+    <div className="space-y-2.5 pt-1">
+      {/* Fundo */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <label className="text-xs text-slate-500 font-medium w-10">Fundo</label>
+        <input
+          type="color"
+          value={bg === 'transparent' ? '#000000' : bg}
+          onChange={(e) => onBgChange(e.target.value)}
+          className="w-8 h-8 rounded cursor-pointer border border-slate-200 flex-shrink-0"
+        />
+        <button
+          onClick={onBgRemove}
+          className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${bg === 'transparent' ? 'bg-slate-200 text-slate-500' : 'bg-red-100 text-red-600'}`}
+        >
+          {bg === 'transparent' ? 'Sem fundo' : 'Remover'}
+        </button>
+      </div>
+      {/* Borda */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <label className="text-xs text-slate-500 font-medium w-10">Borda</label>
+        <input
+          type="color"
+          value={borderColor}
+          onChange={(e) => onBorderColorChange(e.target.value)}
+          className="w-8 h-8 rounded cursor-pointer border border-slate-200 flex-shrink-0"
+        />
+        <div className="flex-1 min-w-[80px]">
+          <div className="flex justify-between mb-0.5">
+            <span className="text-[10px] text-slate-400">Espessura</span>
+            <span className="text-[10px] font-bold text-slate-600">{borderWidth}px</span>
+          </div>
+          <input
+            type="range" min="0" max="10" step="1"
+            value={borderWidth}
+            onChange={(e) => onBorderWidthChange(Number(e.target.value))}
+            className={`w-full ${accentClass}`}
+          />
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="animate-fade-in flex flex-col xl:grid xl:grid-cols-2 gap-8 xl:h-[calc(100vh-8rem)]">
@@ -466,8 +489,7 @@ export const PostGenerator: React.FC = () => {
           <form onSubmit={handleGenerateText} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Tema</label>
-              <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)}
-                placeholder="Ex: Promoção de pizza..."
+              <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="Ex: Promoção de pizza..."
                 className="w-full p-2 border border-slate-700 bg-slate-900 text-white rounded-lg outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-400" />
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -528,7 +550,7 @@ export const PostGenerator: React.FC = () => {
       <div className="flex flex-col h-full bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden">
 
         {/* ===== TOOLBAR DESKTOP ===== */}
-        <div className="hidden md:block bg-white p-4 border-b border-slate-200 space-y-4 overflow-y-auto max-h-[300px]">
+        <div className="hidden md:block bg-white p-4 border-b border-slate-200 space-y-4 overflow-y-auto max-h-[320px]">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
               <svg className="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -592,6 +614,8 @@ export const PostGenerator: React.FC = () => {
               ))}
             </div>
           </div>
+
+          {/* Painel de edição de texto selecionado - DESKTOP */}
           {selectedText && (
             <div className="bg-slate-50 p-3 rounded border border-slate-200 space-y-3">
               <div className="flex justify-between items-center">
@@ -600,7 +624,8 @@ export const PostGenerator: React.FC = () => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                 </button>
               </div>
-              <input value={selectedText.text} onChange={(e) => updateSelectedText('text', e.target.value)} className="w-full border border-slate-700 bg-slate-900 text-white rounded text-sm p-2" />
+              <input value={selectedText.text} onChange={(e) => updateSelectedText('text', e.target.value)}
+                className="w-full border border-slate-700 bg-slate-900 text-white rounded text-sm p-2" />
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-slate-400 mb-1">Tamanho: {selectedText.fontSize}px</label>
@@ -611,14 +636,34 @@ export const PostGenerator: React.FC = () => {
                   <input type="range" min="0" max="360" value={selectedText.rotation} onChange={(e) => updateSelectedText('rotation', Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
               </div>
+              {/* Cor do texto + negrito + fonte */}
               <div className="flex flex-wrap gap-2 items-center">
-                <input type="color" value={selectedText.color} onChange={(e) => updateSelectedText('color', e.target.value)} className="w-8 h-8" />
-                <input type="color" value={selectedText.backgroundColor === 'transparent' ? '#000000' : selectedText.backgroundColor} onChange={(e) => updateSelectedText('backgroundColor', e.target.value)} className="w-8 h-8" />
-                <button onClick={() => updateSelectedText('backgroundColor', selectedText.backgroundColor === 'transparent' ? '#000000' : 'transparent')} className="text-xs px-2 py-1 bg-red-100 text-red-600 rounded">Sem Fundo</button>
-                <button onClick={() => updateSelectedText('isBold', !selectedText.isBold)} className={`text-xs px-3 py-1 rounded font-bold ${selectedText.isBold ? 'bg-blue-600 text-white' : 'bg-white border'}`}>B</button>
-                <select value={selectedText.fontFamily} onChange={(e) => updateSelectedText('fontFamily', e.target.value)} className="border bg-slate-900 text-white rounded text-xs p-1">
+                <div className="flex items-center gap-1">
+                  <label className="text-xs text-slate-400">Texto</label>
+                  <input type="color" value={selectedText.color} onChange={(e) => updateSelectedText('color', e.target.value)} className="w-8 h-8" />
+                </div>
+                <button onClick={() => updateSelectedText('isBold', !selectedText.isBold)}
+                  className={`text-xs px-3 py-1 rounded font-bold ${selectedText.isBold ? 'bg-blue-600 text-white' : 'bg-white border'}`}>B</button>
+                <button onClick={() => updateSelectedText('isItalic', !selectedText.isItalic)}
+                  className={`text-xs px-3 py-1 rounded italic ${selectedText.isItalic ? 'bg-blue-600 text-white' : 'bg-white border'}`}>I</button>
+                <select value={selectedText.fontFamily} onChange={(e) => updateSelectedText('fontFamily', e.target.value)}
+                  className="border bg-slate-900 text-white rounded text-xs p-1 flex-1">
                   {FONTS.map(f => <option key={f.value} value={f.value}>{f.name.split(' ')[0]}</option>)}
                 </select>
+              </div>
+              {/* Fundo e borda - DESKTOP */}
+              <div className="border-t border-slate-200 pt-2">
+                <p className="text-xs font-bold text-slate-500 uppercase mb-2">Fundo & Borda</p>
+                <BgBorderControls
+                  bg={selectedText.backgroundColor}
+                  onBgChange={(v) => updateSelectedText('backgroundColor', v)}
+                  onBgRemove={() => updateSelectedText('backgroundColor', 'transparent')}
+                  borderColor={selectedText.borderColor || '#000000'}
+                  onBorderColorChange={(v) => updateSelectedText('borderColor', v)}
+                  borderWidth={selectedText.borderWidth || 0}
+                  onBorderWidthChange={(v) => updateSelectedText('borderWidth', v)}
+                  accentClass="accent-blue-600"
+                />
               </div>
             </div>
           )}
@@ -634,7 +679,6 @@ export const PostGenerator: React.FC = () => {
               Editor de Imagem
             </h2>
           </div>
-          {/* Controles ocultos na aba Textos */}
           {mobileEditorTab !== 'texts' && (
             <div className="px-4 pt-3 pb-4 space-y-2">
               <div className="flex gap-2">
@@ -690,8 +734,7 @@ export const PostGenerator: React.FC = () => {
               <p className="text-sm">Gere, busque ou faça upload de uma imagem</p>
             </div>
           ) : (
-            <canvas ref={canvasRef}
-              onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd}
+            <canvas ref={canvasRef} onMouseDown={handleStart} onMouseMove={handleMove} onMouseUp={handleEnd} onMouseLeave={handleEnd}
               className="max-w-full max-h-full object-contain shadow-lg" />
           )}
           {imageSrc && (
@@ -725,50 +768,36 @@ export const PostGenerator: React.FC = () => {
                   <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" /></svg>
                   <span className="font-bold text-sm text-slate-800">Título</span>
                 </div>
-                <button
-                  onClick={() => {
-                    const next = !showTitle;
-                    setShowTitle(next);
-                    if (!next) setMobileTitleText('');
-                  }}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${showTitle ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600'}`}
-                >
+                <button onClick={() => { const next = !showTitle; setShowTitle(next); if (!next) setMobileTitleText(''); }}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${showTitle ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600'}`}>
                   {showTitle ? 'Ativo' : 'Adicionar'}
                 </button>
               </div>
-
               {showTitle && (
                 <div className="p-4 space-y-3">
-                  {/* Input SEM onChange no canvas - só onBlur */}
-                  <input
-                    type="text"
-                    value={mobileTitleText}
-                    onChange={(e) => setMobileTitleText(e.target.value)}
-                    onBlur={applyMobileTexts}
+                  <input type="text" value={mobileTitleText} onChange={(e) => setMobileTitleText(e.target.value)} onBlur={applyMobileTexts}
                     placeholder="Digite o título..."
-                    className="w-full border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                    className="w-full border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   <div>
                     <div className="flex justify-between mb-1">
                       <label className="text-xs text-slate-500 font-medium">Tamanho</label>
                       <span className="text-xs font-bold text-slate-700">{mobileTitleSize}px</span>
                     </div>
-                    <input type="range" min="16" max="120" value={mobileTitleSize}
-                      onChange={(e) => setMobileTitleSize(Number(e.target.value))}
-                      className="w-full accent-blue-600" />
+                    <input type="range" min="16" max="120" value={mobileTitleSize} onChange={(e) => setMobileTitleSize(Number(e.target.value))} className="w-full accent-blue-600" />
                   </div>
                   <div>
                     <label className="text-xs text-slate-500 font-medium block mb-1.5">Posição</label>
                     <div className="grid grid-cols-3 gap-1.5">
                       {(['top', 'center', 'bottom'] as const).map(pos => (
-                        <button key={pos} onClick={() => changeMobileTitlePos(pos)}
+                        <button key={pos} onClick={() => setMobileTitlePos(pos)}
                           className={`py-2 rounded-lg text-xs font-bold transition-all ${mobileTitlePos === pos ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'}`}>
                           {getPosLabel(pos)}
                         </button>
                       ))}
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 flex-wrap">
+                  {/* Cor + negrito + fonte */}
+                  <div className="flex items-center gap-2 flex-wrap">
                     <div className="flex items-center gap-1.5">
                       <label className="text-xs text-slate-500">Cor</label>
                       <input type="color" value={mobileTitleColor} onChange={(e) => setMobileTitleColor(e.target.value)}
@@ -780,6 +809,20 @@ export const PostGenerator: React.FC = () => {
                       className="flex-1 border border-slate-200 rounded-lg text-xs p-1.5 text-slate-700 focus:outline-none">
                       {FONTS.map(f => <option key={f.value} value={f.value}>{f.name}</option>)}
                     </select>
+                  </div>
+                  {/* Fundo e borda - MOBILE TÍTULO */}
+                  <div className="border-t border-slate-100 pt-2">
+                    <p className="text-xs font-bold text-slate-500 uppercase mb-2">Fundo & Borda</p>
+                    <BgBorderControls
+                      bg={mobileTitleBg}
+                      onBgChange={setMobileTitleBg}
+                      onBgRemove={() => setMobileTitleBg('transparent')}
+                      borderColor={mobileTitleBorderColor}
+                      onBorderColorChange={setMobileTitleBorderColor}
+                      borderWidth={mobileTitleBorderWidth}
+                      onBorderWidthChange={setMobileTitleBorderWidth}
+                      accentClass="accent-blue-600"
+                    />
                   </div>
                   <button onClick={applyMobileTexts}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2.5 rounded-xl transition-all">
@@ -796,49 +839,35 @@ export const PostGenerator: React.FC = () => {
                   <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h8" /></svg>
                   <span className="font-bold text-sm text-slate-800">Legenda</span>
                 </div>
-                <button
-                  onClick={() => {
-                    const next = !showCaption;
-                    setShowCaption(next);
-                    if (!next) setMobileCaptionText('');
-                  }}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${showCaption ? 'bg-green-600 text-white' : 'bg-slate-200 text-slate-600'}`}
-                >
+                <button onClick={() => { const next = !showCaption; setShowCaption(next); if (!next) setMobileCaptionText(''); }}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${showCaption ? 'bg-green-600 text-white' : 'bg-slate-200 text-slate-600'}`}>
                   {showCaption ? 'Ativo' : 'Adicionar'}
                 </button>
               </div>
-
               {showCaption && (
                 <div className="p-4 space-y-3">
-                  <input
-                    type="text"
-                    value={mobileCaptionText}
-                    onChange={(e) => setMobileCaptionText(e.target.value)}
-                    onBlur={applyMobileTexts}
+                  <input type="text" value={mobileCaptionText} onChange={(e) => setMobileCaptionText(e.target.value)} onBlur={applyMobileTexts}
                     placeholder="Digite a legenda..."
-                    className="w-full border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-green-500"
-                  />
+                    className="w-full border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-green-500" />
                   <div>
                     <div className="flex justify-between mb-1">
                       <label className="text-xs text-slate-500 font-medium">Tamanho</label>
                       <span className="text-xs font-bold text-slate-700">{mobileCaptionSize}px</span>
                     </div>
-                    <input type="range" min="12" max="80" value={mobileCaptionSize}
-                      onChange={(e) => setMobileCaptionSize(Number(e.target.value))}
-                      className="w-full accent-green-600" />
+                    <input type="range" min="12" max="80" value={mobileCaptionSize} onChange={(e) => setMobileCaptionSize(Number(e.target.value))} className="w-full accent-green-600" />
                   </div>
                   <div>
                     <label className="text-xs text-slate-500 font-medium block mb-1.5">Posição</label>
                     <div className="grid grid-cols-3 gap-1.5">
                       {(['top', 'center', 'bottom'] as const).map(pos => (
-                        <button key={pos} onClick={() => changeMobileCaptionPos(pos)}
+                        <button key={pos} onClick={() => setMobileCaptionPos(pos)}
                           className={`py-2 rounded-lg text-xs font-bold transition-all ${mobileCaptionPos === pos ? 'bg-green-600 text-white' : 'bg-slate-100 text-slate-600'}`}>
                           {getPosLabel(pos)}
                         </button>
                       ))}
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 flex-wrap">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <div className="flex items-center gap-1.5">
                       <label className="text-xs text-slate-500">Cor</label>
                       <input type="color" value={mobileCaptionColor} onChange={(e) => setMobileCaptionColor(e.target.value)}
@@ -850,6 +879,20 @@ export const PostGenerator: React.FC = () => {
                       className="flex-1 border border-slate-200 rounded-lg text-xs p-1.5 text-slate-700 focus:outline-none">
                       {FONTS.map(f => <option key={f.value} value={f.value}>{f.name}</option>)}
                     </select>
+                  </div>
+                  {/* Fundo e borda - MOBILE LEGENDA */}
+                  <div className="border-t border-slate-100 pt-2">
+                    <p className="text-xs font-bold text-slate-500 uppercase mb-2">Fundo & Borda</p>
+                    <BgBorderControls
+                      bg={mobileCaptionBg}
+                      onBgChange={setMobileCaptionBg}
+                      onBgRemove={() => setMobileCaptionBg('transparent')}
+                      borderColor={mobileCaptionBorderColor}
+                      onBorderColorChange={setMobileCaptionBorderColor}
+                      borderWidth={mobileCaptionBorderWidth}
+                      onBorderWidthChange={setMobileCaptionBorderWidth}
+                      accentClass="accent-green-600"
+                    />
                   </div>
                   <button onClick={applyMobileTexts}
                     className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2.5 rounded-xl transition-all">
@@ -865,11 +908,8 @@ export const PostGenerator: React.FC = () => {
                 <p className="text-xs font-bold text-slate-500 uppercase mb-2">Sugestões IA</p>
                 <div className="flex flex-wrap gap-2">
                   {overlaySuggestions.map((text, idx) => (
-                    <button key={idx}
-                      onClick={() => { setMobileTitleText(text); setShowTitle(true); }}
-                      className="text-xs bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg">
-                      {text}
-                    </button>
+                    <button key={idx} onClick={() => { setMobileTitleText(text); setShowTitle(true); }}
+                      className="text-xs bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg">{text}</button>
                   ))}
                 </div>
               </div>
@@ -882,18 +922,13 @@ export const PostGenerator: React.FC = () => {
       {showImagePreview && imageSrc && (
         <div className="fixed inset-0 bg-black/95 z-[99999] flex items-center justify-center p-4">
           <div className="relative inline-flex">
-            <canvas
-              ref={previewCanvasRef}
+            <canvas ref={previewCanvasRef}
               onMouseDown={(e) => handleStart(e, previewCanvasRef.current!)}
               onMouseMove={(e) => handleMove(e, previewCanvasRef.current!)}
-              onMouseUp={handleEnd}
-              onMouseLeave={handleEnd}
-              className="max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] object-contain block"
-            />
-            <button
-              onClick={() => setShowImagePreview(false)}
-              className="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-2 transition-all shadow-lg"
-            >
+              onMouseUp={handleEnd} onMouseLeave={handleEnd}
+              className="max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)] object-contain block" />
+            <button onClick={() => setShowImagePreview(false)}
+              className="absolute top-2 right-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-2 transition-all shadow-lg">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
               </svg>
