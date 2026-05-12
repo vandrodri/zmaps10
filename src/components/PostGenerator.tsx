@@ -313,20 +313,20 @@ export const PostGenerator: React.FC = () => {
             ctx.fill();
           }
 
-          // Texto
+          // Borda do texto — desenhada ANTES do fill para não transpassar
+          if (textEl.borderWidth && textEl.borderWidth > 0) {
+            ctx.shadowBlur = 0;
+            ctx.strokeStyle = textEl.borderColor || '#000000';
+            ctx.lineWidth = textEl.borderWidth * 2; // *2 porque metade fica coberta pelo fill
+            ctx.lineJoin = 'round';
+            ctx.strokeText(textEl.text, 0, 0);
+          }
+
+          // Texto preenchido — cobre o centro da borda
           ctx.fillStyle = textEl.color;
           ctx.shadowColor = (!textEl.backgroundColor || textEl.backgroundColor === 'transparent') ? 'rgba(0,0,0,0.6)' : 'transparent';
           ctx.shadowBlur = (!textEl.backgroundColor || textEl.backgroundColor === 'transparent') ? 4 : 0;
           ctx.fillText(textEl.text, 0, 0);
-
-          // Borda do texto
-          if (textEl.borderWidth && textEl.borderWidth > 0) {
-            ctx.shadowBlur = 0;
-            ctx.strokeStyle = textEl.borderColor || '#000000';
-            ctx.lineWidth = textEl.borderWidth;
-            ctx.lineJoin = 'round';
-            ctx.strokeText(textEl.text, 0, 0);
-          }
 
           // Seleção (desktop)
           if (selectedTextId === textEl.id) {
