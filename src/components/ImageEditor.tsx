@@ -313,12 +313,12 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
     <div className="fixed inset-0 z-[99999] bg-black flex flex-col" style={{ fontFamily: 'Inter, sans-serif' }}>
 
       {/* ===== TOP BAR ===== */}
-      <div className="flex items-center justify-between px-4 py-3 z-10 flex-shrink-0"
+      <div className="flex items-center justify-center gap-7 px-3 py-3 z-10 flex-shrink-0"
         style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)' }}>
 
         {/* Fechar */}
         <button onClick={onClose}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm">
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm flex-shrink-0">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -329,13 +329,13 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
 
         {/* Download */}
         <button onClick={handleDownload} disabled={!imageSrc}
-          className="px-4 py-2 bg-white text-black text-sm font-bold rounded-full disabled:opacity-30 transition-all active:scale-95">
+          className="px-3 py-1.5 bg-white text-black text-sm font-bold rounded-full disabled:opacity-30 transition-all active:scale-95 flex-shrink-0">
           Salvar
         </button>
       </div>
 
       {/* ===== CANVAS AREA ===== */}
-      <div ref={containerRef} className="flex-1 flex items-center justify-center overflow-hidden relative px-2">
+      <div ref={containerRef} className="flex-1 flex items-center justify-center overflow-hidden relative px-1">
 
         {!imageSrc && !imageLoading && (
           <div className="flex flex-col items-center gap-6 text-white/60 select-none">
@@ -420,14 +420,14 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
         )}
 
         {/* Main toolbar */}
-        <div className="flex items-center justify-between px-6">
+        <div className="flex items-center justify-center gap-3 px-2">
 
           {/* LEFT: Image tools */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {/* Upload */}
             <label className="flex flex-col items-center gap-1 cursor-pointer">
               <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
-              <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 active:scale-95 transition-transform">
+              <div className="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 active:scale-95 transition-transform">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                 </svg>
@@ -437,7 +437,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
 
             {/* IA */}
             <button onClick={() => setShowPromptBar(p => !p)} className="flex flex-col items-center gap-1">
-              <div className={`w-12 h-12 rounded-2xl backdrop-blur-sm flex items-center justify-center border transition-all active:scale-95 ${showPromptBar ? 'bg-white/30 border-white/50' : 'bg-white/15 border-white/20'}`}>
+              <div className={`w-10 h-10 rounded-2xl backdrop-blur-sm flex items-center justify-center border transition-all active:scale-95 ${showPromptBar ? 'bg-white/30 border-white/50' : 'bg-white/15 border-white/20'}`}>
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
@@ -448,7 +448,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
             {/* Remix */}
             {imageSrc && (
               <button onClick={handleRemix} disabled={remixLoading} className="flex flex-col items-center gap-1">
-                <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 active:scale-95 transition-transform disabled:opacity-40">
+                <div className="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 active:scale-95 transition-transform disabled:opacity-40">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
@@ -462,7 +462,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
           {imageSrc && (
             <button onClick={() => addLayer('Texto')}
               className="flex flex-col items-center gap-1">
-              <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-lg active:scale-95 transition-transform">
                 <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
                 </svg>
@@ -472,11 +472,11 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
           )}
 
           {/* RIGHT: Text style tools */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {/* Sugestões IA */}
             {imageSrc && aiPrompt && (
               <button onClick={handleGetSuggestions} className="flex flex-col items-center gap-1">
-                <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 active:scale-95 transition-transform">
+                <div className="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20 active:scale-95 transition-transform">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                   </svg>
@@ -490,7 +490,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
               <>
                 <button onClick={() => setActivePanel(p => p === 'text' ? null : 'text')}
                   className="flex flex-col items-center gap-1">
-                  <div className={`w-12 h-12 rounded-2xl backdrop-blur-sm flex items-center justify-center border transition-all active:scale-95 ${activePanel === 'text' ? 'bg-white/30 border-white/50' : 'bg-white/15 border-white/20'}`}>
+                  <div className={`w-10 h-10 rounded-2xl backdrop-blur-sm flex items-center justify-center border transition-all active:scale-95 ${activePanel === 'text' ? 'bg-white/30 border-white/50' : 'bg-white/15 border-white/20'}`}>
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
@@ -500,7 +500,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
 
                 <button onClick={() => setActivePanel(p => p === 'style' ? null : 'style')}
                   className="flex flex-col items-center gap-1">
-                  <div className={`w-12 h-12 rounded-2xl backdrop-blur-sm flex items-center justify-center border transition-all active:scale-95 ${activePanel === 'style' ? 'bg-white/30 border-white/50' : 'bg-white/15 border-white/20'}`}>
+                  <div className={`w-10 h-10 rounded-2xl backdrop-blur-sm flex items-center justify-center border transition-all active:scale-95 ${activePanel === 'style' ? 'bg-white/30 border-white/50' : 'bg-white/15 border-white/20'}`}>
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                     </svg>
@@ -509,7 +509,7 @@ export const ImageEditor: React.FC<ImageEditorProps> = ({ isOpen, onClose, initi
                 </button>
 
                 <button onClick={() => deleteLayer(selectedId!)} className="flex flex-col items-center gap-1">
-                  <div className="w-12 h-12 rounded-2xl bg-red-500/30 backdrop-blur-sm flex items-center justify-center border border-red-400/30 active:scale-95 transition-transform">
+                  <div className="w-10 h-10 rounded-2xl bg-red-500/30 backdrop-blur-sm flex items-center justify-center border border-red-400/30 active:scale-95 transition-transform">
                     <svg className="w-5 h-5 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>

@@ -167,8 +167,8 @@ var require_utils = __commonJS({
         Object.defineProperty(target, keys[i], Object.getOwnPropertyDescriptor(source, keys[i]));
       }
     };
-    module2.exports.wrapperSymbol = Symbol("wrapper");
-    module2.exports.implSymbol = Symbol("impl");
+    module2.exports.wrapperSymbol = /* @__PURE__ */ Symbol("wrapper");
+    module2.exports.implSymbol = /* @__PURE__ */ Symbol("impl");
     module2.exports.wrapperForImpl = function(impl) {
       return impl[module2.exports.wrapperSymbol];
     };
@@ -361,7 +361,7 @@ var require_url_state_machine = __commonJS({
       ws: 80,
       wss: 443
     };
-    var failure = Symbol("failure");
+    var failure = /* @__PURE__ */ Symbol("failure");
     function countSymbols(str) {
       return punycode.ucs2.decode(str).length;
     }
@@ -1788,8 +1788,8 @@ var require_lib2 = __commonJS({
     var https = _interopDefault(require("https"));
     var zlib = _interopDefault(require("zlib"));
     var Readable = Stream.Readable;
-    var BUFFER = Symbol("buffer");
-    var TYPE = Symbol("type");
+    var BUFFER = /* @__PURE__ */ Symbol("buffer");
+    var TYPE = /* @__PURE__ */ Symbol("type");
     var Blob = class _Blob {
       constructor() {
         this[TYPE] = "";
@@ -1904,7 +1904,7 @@ var require_lib2 = __commonJS({
       convert = require("encoding").convert;
     } catch (e) {
     }
-    var INTERNALS = Symbol("Body internals");
+    var INTERNALS = /* @__PURE__ */ Symbol("Body internals");
     var PassThrough = Stream.PassThrough;
     function Body(body) {
       var _this = this;
@@ -2244,7 +2244,7 @@ var require_lib2 = __commonJS({
       }
       return void 0;
     }
-    var MAP = Symbol("map");
+    var MAP = /* @__PURE__ */ Symbol("map");
     var Headers = class _Headers {
       /**
        * Headers class
@@ -2452,7 +2452,7 @@ var require_lib2 = __commonJS({
         return [k.toLowerCase(), headers[MAP][k].join(", ")];
       });
     }
-    var INTERNAL = Symbol("internal");
+    var INTERNAL = /* @__PURE__ */ Symbol("internal");
     function createHeadersIterator(target, kind) {
       const iterator = Object.create(HeadersIteratorPrototype);
       iterator[INTERNAL] = {
@@ -2521,7 +2521,7 @@ var require_lib2 = __commonJS({
       }
       return headers;
     }
-    var INTERNALS$1 = Symbol("Response internals");
+    var INTERNALS$1 = /* @__PURE__ */ Symbol("Response internals");
     var STATUS_CODES = http.STATUS_CODES;
     var Response = class _Response {
       constructor() {
@@ -2597,7 +2597,7 @@ var require_lib2 = __commonJS({
       enumerable: false,
       configurable: true
     });
-    var INTERNALS$2 = Symbol("Request internals");
+    var INTERNALS$2 = /* @__PURE__ */ Symbol("Request internals");
     var URL = Url.URL || whatwgUrl.URL;
     var parse_url = Url.parse;
     var format_url = Url.format;
